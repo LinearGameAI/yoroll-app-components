@@ -10,6 +10,7 @@
   "files": ["src"],
   "scripts": {
     "check": "tsc --noEmit",
+    "build:app": "node scripts/build.mjs --app-root",
     "build": "node scripts/build.mjs"
   },
   "peerDependencies": {

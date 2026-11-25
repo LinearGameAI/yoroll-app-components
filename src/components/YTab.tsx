@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
 import { useTheme } from '../theme';
+import { tabMetrics } from '../foundations';
 
 export interface YTabItem {
   key: string;
@@ -10,7 +11,7 @@ export interface YTabItem {
 
 export type YTabVariant = 'underline' | 'segment' | 'text';
 
-const CONTENT_TAB_GAP = 24;
+const CONTENT_TAB_GAP = tabMetrics.contentGap;
 const CONTENT_TAB_HIT_SLOP = { left: CONTENT_TAB_GAP / 2, right: CONTENT_TAB_GAP / 2 };
 
 export interface YTabProps {
@@ -39,8 +40,8 @@ export function YTab({ items, active, onChange, variant = 'underline', textLayou
         {
           gap: isContentWidth ? CONTENT_TAB_GAP : isSeg || isText ? 0 : 16,
           backgroundColor: isSeg ? `${tokens.bgSecondary}CC` : 'transparent',
-          padding: isSeg ? 3 : 0,
-          borderRadius: isSeg ? 10 : 0,
+          padding: isSeg ? tabMetrics.segmentPadding : 0,
+          borderRadius: isSeg ? tabMetrics.segmentRadius : 0,
           borderBottomWidth: isSeg || isText ? 0 : 1,
           borderBottomColor: isSeg ? 'transparent' : tokens.cardStroke,
         },
@@ -106,9 +107,9 @@ export function YTab({ items, active, onChange, variant = 'underline', textLayou
 }
 
 const styles = StyleSheet.create({
-  textTab: { flex: 1, minWidth: 0, minHeight: 44, paddingHorizontal: 8, paddingVertical: 10, alignItems: 'center', justifyContent: 'center' },
+  textTab: { flex: 1, minWidth: 0, minHeight: tabMetrics.textMinHeight, paddingHorizontal: 8, paddingVertical: 10, alignItems: 'center', justifyContent: 'center' },
   contentTextTab: { flex: 0, flexShrink: 1, paddingHorizontal: 0 },
-  shortLine: { position: 'absolute', bottom: 0, width: 24, height: 2, borderRadius: 1 },
+  shortLine: { position: 'absolute', bottom: 0, width: tabMetrics.indicatorWidth, height: tabMetrics.indicatorHeight, borderRadius: 1 },
   segmentActive: { shadowColor: '#000', shadowOpacity: 0.06, shadowOffset: { width: 0, height: 1 }, shadowRadius: 2 },
   row: {
     flexDirection: 'row',

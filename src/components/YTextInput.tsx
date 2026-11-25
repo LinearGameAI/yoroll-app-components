@@ -10,6 +10,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { useTheme } from '../theme';
+import { inputMetrics } from '../foundations';
 import { IconReview, IconHide } from '@yoroll/rn-icon';
 
 export interface YTextInputProps extends Omit<TextInputProps, 'style'> {
@@ -116,10 +117,10 @@ const styles = StyleSheet.create({
   field: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 12,
+    borderRadius: inputMetrics.borderRadius,
     borderWidth: 1,
-    paddingHorizontal: 14,
-    minHeight: 52,
+    paddingHorizontal: inputMetrics.paddingHorizontal,
+    minHeight: inputMetrics.minHeight,
   },
   leftIconWrap: {
     marginRight: 10,
@@ -128,8 +129,8 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 15,
-    paddingVertical: 14,
+    fontSize: inputMetrics.fontSize,
+    paddingVertical: inputMetrics.paddingVertical,
     includeFontPadding: false,
   },
   rightWrap: {
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   helper: {
-    fontSize: 12,
+    fontSize: inputMetrics.helperFontSize,
     marginTop: 6,
     marginLeft: 4,
   },

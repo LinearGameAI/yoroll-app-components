@@ -1,10 +1,27 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { createRoot } from 'react-dom/client';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { IconCheck, IconClose, IconCopy, IconSearch, IconTextLogo } from '@yoroll/rn-icon';
-import { YorollThemeProvider, darkTokens, lightTokens, type ThemeMode } from '../src';
+import { IconClose, IconSearch, IconTextLogo } from '@yoroll/rn-icon';
+import { YorollThemeProvider, darkTokens, lightTokens, useTheme, type ThemeMode } from '../src';
 import { categories, demos, type ComponentDemo } from './demos';
+import { CopyButton, SourceLink } from './controls';
+import { FoundationsPage } from './foundations';
+import { MotionPage } from './motion';
+import { AssetsPage } from './assets';
+import { AppInventoryPage, type InventoryView } from './appInventory';
 import './styles.css';
+import './directory.css';
+
+declare const __APP_INVENTORY__: boolean;
+
+const directoryLinks = [
+  { hash: '#', label: '组件' },
+  { hash: '#tokens', label: '设计 Token' },
+  { hash: '#motion', label: '动效' },
+  { hash: '#assets', label: '图素' },
+  ...(__APP_INVENTORY__ ? [{ hash: '#app', label: 'App 索引' }] : []),
+];
+const appViews: Readonly<Record<string, InventoryView>> = { '#app': 'source', '#app-assets': 'assets', '#app-motion': 'motion' };
 
 const repositoryUrl = 'https://github.com/LinearGameAI/yoroll-app-components';
 const initialMetrics = {
@@ -21,32 +38,8 @@ function readTheme(): ThemeMode {
   }
 }
 
-function CopyButton({ code }: { code: string }) {
-  const [status, setStatus] = useState<'idle' | 'copied' | 'failed'>('idle');
-  const reset = useRef<number | undefined>(undefined);
-  useEffect(() => () => window.clearTimeout(reset.current), []);
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(code);
-      setStatus('copied');
-    } catch {
-      setStatus('failed');
-    }
-    window.clearTimeout(reset.current);
-    reset.current = window.setTimeout(() => setStatus('idle'), 2400);
-  };
-
-  const Icon = status === 'copied' ? IconCheck : IconCopy;
-  return (
-    <button className="copy-button" type="button" onClick={copy} aria-live="polite">
-      <Icon size={14} color="currentColor" />
-      {status === 'copied' ? '已复制' : status === 'failed' ? '复制失败，可手动选择' : '复制代码'}
-    </button>
-  );
-}
-
 function ComponentDetails({ demo }: { demo: ComponentDemo }) {
+  const { tokens } = useTheme();
   return (
     <>
       <div className="detail-heading">
@@ -57,7 +50,15 @@ function ComponentDetails({ demo }: { demo: ComponentDemo }) {
         </div>
         <h1 id="page-title" tabIndex={-1}>{demo.name}</h1>
         <p>{demo.description}</p>
-        <a className="source-link" href={`${repositoryUrl}/blob/main/src/components/${demo.name}.tsx`}>查看组件源码</a>
+        <div className="detail-links">
+          <a className="source-link" href={`${repositoryUrl}/blob/main/src/components/${demo.name}.tsx`}>组件库实现</a>
+          <SourceLink path={demo.appPath ?? `src/components/primitives/${demo.name}.tsx`} />
+        </div>
+        {demo.colors && <div className="detail-tokens" aria-label="相关 Token">
+          {demo.colors.map((key) => <a href={`#tokens/${key}`} key={key} title={tokens[key]}>
+            <span aria-hidden="true" style={{ backgroundColor: tokens[key] }} /><code>{key}</code>
+          </a>)}
+        </div>}
       </div>
       <div className="example-list">
         {demo.examples.map(({ title, code, Preview }) => {
@@ -101,7 +102,7 @@ function Overview({ matches, filtering, clearSearch }: {
       {!filtering && (
         <header className="intro">
           <h1 id="page-title" tabIndex={-1}>Yoroll App 组件库</h1>
-          <p>预览基础组件与常用状态，查看参数并复制 React Native 示例。</p>
+          <p>使用 App 的组件、设计 Token、动效与图素。</p>
         </header>
       )}
       <div className="grid-heading">
@@ -137,6 +138,10 @@ function App() {
   const [route, setRoute] = useState(window.location.hash);
   const [query, setQuery] = useState('');
   const searchRef = useRef<HTMLInputElement>(null);
+  const appView = __APP_INVENTORY__ ? appViews[route] : undefined;
+  const tokenName = route.startsWith('#tokens/') ? route.slice('#tokens/'.length) : '';
+  const currentDirectory = appView ? '#app' : tokenName ? '#tokens' : ['#tokens', '#motion', '#assets'].includes(route) ? route : '#';
+  const activeDirectory = directoryLinks.find((item) => item.hash === currentDirectory);
   const detail = demos.find((demo) => routeFor(demo.name) === route);
   const tokens = mode === 'light' ? lightTokens : darkTokens;
   const search = query.trim().toLowerCase();
@@ -164,9 +169,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.title = detail ? `${detail.name} | Yoroll App 组件库` : 'Yoroll App 组件库';
+    const title = detail?.name ?? (currentDirectory === '#' ? undefined : activeDirectory?.label);
+    document.title = title ? `${title} | Yoroll App 组件库` : 'Yoroll App 组件库';
     window.scrollTo(0, 0);
-  }, [detail]);
+  }, [route, detail, currentDirectory, activeDirectory]);
 
   const changeMode = (next: ThemeMode) => {
     setMode(next);
@@ -184,7 +190,7 @@ function App() {
           <a className="skip-link" href="#page-title" onClick={(event) => {
             event.preventDefault();
             document.getElementById('page-title')?.focus();
-          }}>跳到组件内容</a>
+          }}>跳到正文</a>
           <header className="topbar">
             <div className="topbar-inner">
               <a className="brand" href="#" aria-label="Yoroll App 组件库首页" onClick={() => setQuery('')}>
@@ -202,7 +208,12 @@ function App() {
           </header>
           <div className="layout">
             <aside className="sidebar">
-              <div className="search-box">
+              <nav className="section-nav" aria-label="组件库栏目">
+                {directoryLinks.map(({ hash, label }) => (
+                  <a key={hash} href={hash} aria-current={currentDirectory === hash ? 'page' : undefined} onClick={() => setQuery('')}>{label}</a>
+                ))}
+              </nav>
+              {currentDirectory === '#' && <div className="search-box">
                 <span className="search-icon" aria-hidden="true"><IconSearch size={17} color="currentColor" /></span>
                 <input
                   ref={searchRef}
@@ -217,8 +228,8 @@ function App() {
                     <IconClose size={14} color="currentColor" />
                   </button>
                 )}
-              </div>
-              <nav className="catalog-nav" aria-label="组件导航">
+              </div>}
+              {currentDirectory === '#' && <nav className="catalog-nav" aria-label="组件导航">
                 <a className="overview-link" href="#" aria-current={!detail && !search ? 'page' : undefined} onClick={() => setQuery('')}>全部组件</a>
                 {categories.map(({ id, label }) => {
                   const members = matches.filter((demo) => demo.category === id);
@@ -239,12 +250,16 @@ function App() {
                     </div>
                   );
                 })}
-              </nav>
+              </nav>}
             </aside>
             <main>
-              {detail && !search
+              {currentDirectory === '#tokens' && <FoundationsPage key={tokenName} tokenName={tokenName} />}
+              {currentDirectory === '#motion' && <MotionPage />}
+              {currentDirectory === '#assets' && <AssetsPage showAppInventory={__APP_INVENTORY__} />}
+              {__APP_INVENTORY__ && appView && <AppInventoryPage view={appView} />}
+              {currentDirectory === '#' && (detail && !search
                 ? <ComponentDetails key={detail.name} demo={detail} />
-                : <Overview matches={matches} filtering={!!search} clearSearch={() => { setQuery(''); searchRef.current?.focus(); }} />}
+                : <Overview matches={matches} filtering={!!search} clearSearch={() => { setQuery(''); searchRef.current?.focus(); }} />)}
             </main>
           </div>
         </div>

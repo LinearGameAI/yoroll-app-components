@@ -2,8 +2,10 @@ import { useRef, useState, type ComponentType } from 'react';
 import { Animated } from 'react-native';
 import { IconAdd, IconMoreHorizontal } from '@yoroll/rn-icon';
 import {
+  CarouselIndicatorDot,
   NavigationBarMaterial,
   SkeletonBlock,
+  TreatText,
   YAvatar,
   YButton,
   YPlayPill,
@@ -11,6 +13,7 @@ import {
   YTextInput,
   YTopBar,
   useTheme,
+  type ThemeTokens,
   type YTabVariant,
 } from '../src';
 
@@ -33,6 +36,8 @@ export type ComponentDemo = {
   label: string;
   category: typeof categories[number]['id'];
   description: string;
+  appPath?: string;
+  colors?: (keyof ThemeTokens)[];
   examples: [Example, ...Example[]];
   props: Prop[];
 };
@@ -154,9 +159,24 @@ function PlayButtons() {
   );
 }
 
+function CarouselPreview() {
+  const [active, setActive] = useState(0);
+  return (
+    <div className="carousel-preview" role="group" aria-label="轮播指示点">
+      {[0, 1, 2].map((index) => (
+        <button key={index} type="button" aria-label={`预览第 ${index + 1} 页`}
+          aria-pressed={active === index} onClick={() => setActive(index)}>
+          <CarouselIndicatorDot active={active === index} />
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export const demos: ComponentDemo[] = [
   {
     name: 'YButton',
+    colors: ['primary', 'bgCard', 'dark', 'textSecondary', 'cardStroke', 'bgPicked', 'orange4', 'orange'],
     label: '按钮',
     category: 'controls',
     description: '带常用外观、尺寸、渐变和加载态的操作按钮。',
@@ -191,6 +211,7 @@ export const demos: ComponentDemo[] = [
   },
   {
     name: 'YTextInput',
+    colors: ['textPrimary', 'textSecondary', 'textTertiary', 'textWrong'],
     label: '输入框',
     category: 'controls',
     description: '提供焦点、密码显隐、辅助提示和字段错误反馈。',
@@ -231,6 +252,7 @@ export const demos: ComponentDemo[] = [
   },
   {
     name: 'YPlayPill',
+    colors: ['dark'],
     label: '播放按钮',
     category: 'controls',
     description: '胶囊形播放入口，包含继续观看和即将上线状态。',
@@ -255,6 +277,7 @@ export const demos: ComponentDemo[] = [
   },
   {
     name: 'YTab',
+    colors: ['bgPrimary', 'bgSecondary', 'bgTertiary', 'cardStroke', 'textPrimary', 'textTertiary'],
     label: '页签',
     category: 'navigation',
     description: '由调用方管理选中项，支持分段、下划线及文字样式。',
@@ -284,6 +307,7 @@ export const demos: ComponentDemo[] = [
   },
   {
     name: 'YTopBar',
+    colors: ['bgPrimary', 'textPrimary'],
     label: '顶部导航栏',
     category: 'navigation',
     description: '包含安全区、居中标题、返回按钮和可定制的两侧操作。',
@@ -302,6 +326,7 @@ export const demos: ComponentDemo[] = [
   },
   {
     name: 'NavigationBarMaterial',
+    colors: ['bgPrimary'],
     label: '导航栏底色',
     category: 'navigation',
     description: '把滚动位置映射为主题底色的透明度，适用于吸顶导航。',
@@ -319,6 +344,7 @@ export const demos: ComponentDemo[] = [
   },
   {
     name: 'YAvatar',
+    colors: ['orange', 'orange7', 'dark'],
     label: '头像',
     category: 'display',
     description: '图片与首字母头像，支持不同尺寸、渐变和描边。',
@@ -344,6 +370,8 @@ export const demos: ComponentDemo[] = [
   },
   {
     name: 'SkeletonBlock',
+    appPath: 'src/components/SkeletonBlock.tsx',
+    colors: ['bgSecondary'],
     label: '骨架占位',
     category: 'display',
     description: '可组合的加载占位块，多块占位共享同一呼吸动画。',
@@ -365,6 +393,33 @@ export const demos: ComponentDemo[] = [
     props: [
       ['style', 'StyleProp<ViewStyle>', '设置占位的尺寸和圆角。'],
       ['color', 'string', '覆盖主题默认的底色。'],
+    ],
+  },
+  {
+    name: 'CarouselIndicatorDot',
+    appPath: 'src/components/CarouselIndicatorDot.tsx',
+    label: '轮播指示点',
+    category: 'navigation',
+    description: '轮播页选中时过渡点宽度和透明度。',
+    examples: [{ title: '切换选中项', code: '<CarouselIndicatorDot active={index === selectedIndex} />', Preview: CarouselPreview }],
+    props: [['active', 'boolean', '指示点的选中状态。']],
+  },
+  {
+    name: 'TreatText',
+    appPath: 'src/components/TreatText.tsx',
+    colors: ['orange7', 'orange'],
+    label: 'Treats 渐变金额',
+    category: 'display',
+    description: '统一粉橙渐变方向，原生使用文字测量与遮罩。',
+    examples: [{
+      title: '金额样式',
+      code: '<TreatText style={{ fontSize: 28, fontWeight: "700" }}>1,280 Treats</TreatText>',
+      Preview: () => <TreatText style={{ fontSize: 28, fontWeight: '700' }}>1,280 Treats</TreatText>,
+    }],
+    props: [
+      ['children', 'ReactNode', '要显示的金额或文本。'],
+      ['gradientColors', 'LinearGradientProps["colors"]', '默认使用导出的 TREAT_TEXT_GRADIENT。'],
+      ['androidRenderingMode', 'software | hardware', '原生 Android 遮罩渲染模式，默认 software。'],
     ],
   },
 ];

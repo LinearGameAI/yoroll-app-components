@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { GradientLabel } from './GradientLabel';
+import { buttonMetrics } from '../foundations';
 import { useTheme } from '../theme';
 
 export type YButtonVariant =
@@ -64,13 +65,7 @@ interface SizeSpec {
   width?: number;
 }
 
-const SIZES: Record<YButtonSize, SizeSpec> = {
-  sm: { paddingH: 14, paddingV: 10, fontSize: 13, minHeight: 40 },
-  md: { paddingH: 16, paddingV: 12, fontSize: 14, minHeight: 44 },
-  lg: { paddingH: 18, paddingV: 14, fontSize: 15, minHeight: 48 },
-  xl: { paddingH: 22, paddingV: 16, fontSize: 16, minHeight: 56 },
-  icon: { paddingH: 0, paddingV: 0, fontSize: 14, minHeight: 40, width: 40 },
-};
+const SIZES: Record<YButtonSize, SizeSpec> = buttonMetrics.sizes;
 
 export function YButton({
   testID,
@@ -228,7 +223,7 @@ export function YButton({
 
 const styles = StyleSheet.create({
   base: {
-    borderRadius: 8,
+    borderRadius: buttonMetrics.borderRadius,
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
