@@ -5,6 +5,22 @@ const appRevision = '0983ce7b25d25b69c151a07459af961b0900fc61';
 export const appSourceUrl = (path: string, line?: number, revision = appRevision) =>
   `https://github.com/LinearGameAI/YorollApp/blob/${revision}/${path.split('/').map(encodeURIComponent).join('/')}${line ? `#L${line}` : ''}`;
 
+function copySelection(text: string) {
+  const active = document.activeElement;
+  const field = document.createElement('textarea');
+  field.value = text;
+  field.readOnly = true;
+  field.className = 'copy-buffer';
+  document.body.append(field);
+  try {
+    field.select();
+    return document.execCommand('copy');
+  } finally {
+    field.remove();
+    if (active instanceof HTMLElement) active.focus({ preventScroll: true });
+  }
+}
+
 export function CopyButton({ code, label = '复制代码' }: { code: string; label?: string }) {
   const [status, setStatus] = useState<'idle' | 'copied' | 'failed'>('idle');
   const reset = useRef<number | undefined>(undefined);
@@ -12,8 +28,12 @@ export function CopyButton({ code, label = '复制代码' }: { code: string; lab
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(code);
-      setStatus('copied');
+      if (window.location.protocol === 'file:' || !navigator.clipboard) {
+        setStatus(copySelection(code) ? 'copied' : 'failed');
+      } else {
+        await navigator.clipboard.writeText(code);
+        setStatus('copied');
+      }
     } catch {
       setStatus('failed');
     }

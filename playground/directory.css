@@ -185,6 +185,7 @@
 .type-display { margin-top: 12px; }
 .type-range { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 12px 0; color: var(--subtle); font-size: .875rem; }
 .type-range input { width: min(45%, 200px); }
+.copy-buffer { position: fixed; inset: 0 auto auto 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 @media (max-width: 680px) {
   .section-nav { display: flex; overflow-x: auto; gap: 6px; padding: 0 1px 10px; }
   .section-nav a { flex: 0 0 auto; white-space: nowrap; padding: 8px; font-size: .8125rem; }
