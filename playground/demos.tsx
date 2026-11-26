@@ -1,21 +1,6 @@
-import { useRef, useState, type ComponentType } from 'react';
-import { Animated } from 'react-native';
-import { IconAdd, IconMoreHorizontal } from '@yoroll/rn-icon';
-import {
-  CarouselIndicatorDot,
-  NavigationBarMaterial,
-  SkeletonBlock,
-  TreatText,
-  YAvatar,
-  YButton,
-  YPlayPill,
-  YTab,
-  YTextInput,
-  YTopBar,
-  useTheme,
-  type ThemeTokens,
-  type YTabVariant,
-} from '../src';
+import type { ComponentType } from 'react';
+import { examples } from 'catalog-examples';
+import type { ThemeTokens } from '../src';
 
 export const categories = [
   { id: 'controls', label: '操作与输入' },
@@ -42,135 +27,14 @@ export type ComponentDemo = {
   props: Prop[];
 };
 
-function ButtonVariants() {
-  const [action, setAction] = useState('');
-  const { tokens } = useTheme();
-  return (
-    <div className="sample-stack">
-      <div className="sample-row">
-        <YButton label="确认" onPress={() => setAction('确认')} />
-        <YButton label="取消" variant="outline" onPress={() => setAction('取消')} />
-        <YButton
-          label="添加"
-          variant="brand"
-          leftIcon={<IconAdd color={tokens.orange4} size={14} />}
-          onPress={() => setAction('添加')}
-        />
-      </div>
-      <output className="sample-status">{action && `已点击${action}`}</output>
-    </div>
-  );
+export function catalogExample(path: string) {
+  const result = examples[path];
+  if (!result) throw new Error('Missing catalog example ' + path);
+  return result;
 }
 
-function ButtonGradient() {
-  const { tokens } = useTheme();
-  const direction = { start: { x: 0, y: 0.5 }, end: { x: 1, y: 0.5 } };
-  const colors = [tokens.orange7, tokens.orange] as const;
-  return (
-    <div className="sample-row">
-      <YButton label="渐变背景" backgroundGradient={{ colors, ...direction }} textStyle={{ color: tokens.dark }} />
-      <YButton label="渐变文字" variant="outline" labelGradient={{ colors, ...direction }} />
-    </div>
-  );
-}
-
-function Tabs({ variant }: { variant: YTabVariant }) {
-  const [active, setActive] = useState('feature');
-  return (
-    <div className="sample-field">
-      <YTab
-        variant={variant}
-        items={[
-          { key: 'feature', label: '推荐' },
-          { key: 'following', label: '关注' },
-          { key: 'saved', label: '收藏' },
-        ]}
-        active={active}
-        onChange={setActive}
-      />
-    </div>
-  );
-}
-
-function TopBarPreview() {
-  const [action, setAction] = useState('');
-  const { tokens } = useTheme();
-  return (
-    <div className="sample-stack sample-field">
-      <div className="sample-topbar">
-        <YTopBar
-          title="个人资料"
-          backLabel="返回"
-          onBack={() => setAction('返回')}
-          rightSlot={
-            <YButton
-              variant="ghost"
-              size="icon"
-              accessibilityLabel="更多选项"
-              icon={<IconMoreHorizontal color={tokens.textPrimary} size={20} />}
-              onPress={() => setAction('更多选项')}
-            />
-          }
-        />
-      </div>
-      <output className="sample-status">{action && `已点击${action}`}</output>
-    </div>
-  );
-}
-
-function MaterialPreview() {
-  const scrollY = useRef(new Animated.Value(64)).current;
-  const [offset, setOffset] = useState(64);
-  return (
-    <div className="sample-stack sample-field">
-      <div className="material-sample">
-        <NavigationBarMaterial testID="navigation-material" scrollY={scrollY} />
-        <span>导航栏</span>
-      </div>
-      <label className="slider">
-        <span>滚动距离</span>
-        <input
-          type="range"
-          min={0}
-          max={100}
-          value={offset}
-          onChange={(event) => {
-            const value = event.currentTarget.valueAsNumber;
-            setOffset(value);
-            scrollY.setValue(value);
-          }}
-        />
-        <output>{offset} pt</output>
-      </label>
-    </div>
-  );
-}
-
-function PlayButtons() {
-  const [action, setAction] = useState('');
-  return (
-    <div className="sample-stack">
-      <div className="sample-row">
-        <YPlayPill label="播放" onPress={() => setAction('播放')} />
-        <YPlayPill label="继续观看" mode="continue" variant="brand" onPress={() => setAction('继续观看')} />
-      </div>
-      <output className="sample-status">{action && `已点击${action}`}</output>
-    </div>
-  );
-}
-
-function CarouselPreview() {
-  const [active, setActive] = useState(0);
-  return (
-    <div className="carousel-preview" role="group" aria-label="轮播指示点">
-      {[0, 1, 2].map((index) => (
-        <button key={index} type="button" aria-label={`预览第 ${index + 1} 页`}
-          aria-pressed={active === index} onClick={() => setActive(index)}>
-          <CarouselIndicatorDot active={active === index} />
-        </button>
-      ))}
-    </div>
-  );
+function example(title: string, id: string): Example {
+  return { title, ...catalogExample('components/' + id) };
 }
 
 export const demos: ComponentDemo[] = [
@@ -181,26 +45,9 @@ export const demos: ComponentDemo[] = [
     category: 'controls',
     description: '带常用外观、尺寸、渐变和加载态的操作按钮。',
     examples: [
-      {
-        title: '常用样式',
-        code: '<YButton label="确认" onPress={onConfirm} />\n<YButton label="取消" variant="outline" onPress={onCancel} />\n<YButton label="添加" variant="brand" onPress={onAdd} />',
-        Preview: ButtonVariants,
-      },
-      {
-        title: '禁用与加载',
-        code: '<YButton label="无法继续" disabled />\n<YButton label="保存中" loading />',
-        Preview: () => (
-          <div className="sample-row">
-            <YButton label="无法继续" disabled />
-            <YButton label="保存中" accessibilityLabel="保存中" loading />
-          </div>
-        ),
-      },
-      {
-        title: '渐变',
-        code: '<YButton\n  label="渐变背景"\n  backgroundGradient={{\n    colors: ["#FF9CD5", "#FF8652"],\n    start: { x: 0, y: 0.5 },\n    end: { x: 1, y: 0.5 },\n  }}\n  textStyle={{ color: "#1C1E22" }}\n  onPress={onConfirm}\n/>',
-        Preview: ButtonGradient,
-      },
+      example('常用样式', 'button-variants'),
+      example('禁用与加载', 'button-states'),
+      example('渐变', 'button-gradient'),
     ],
     props: [
       ['variant', 'primary | secondary | outline | ghost | danger | brand | orange', '按钮外观，默认 primary。'],
@@ -216,32 +63,8 @@ export const demos: ComponentDemo[] = [
     category: 'controls',
     description: '提供焦点、密码显隐、辅助提示和字段错误反馈。',
     examples: [
-      {
-        title: '基础输入',
-        code: '<YTextInput\n  accessibilityLabel="邮箱"\n  placeholder="输入邮箱"\n  autoCapitalize="none"\n  keyboardType="email-address"\n  hint="用于接收通知"\n/>',
-        Preview: () => (
-          <div className="sample-field">
-            <YTextInput accessibilityLabel="邮箱" placeholder="输入邮箱" autoCapitalize="none" keyboardType="email-address" hint="用于接收通知" />
-          </div>
-        ),
-      },
-      {
-        title: '密码与错误提示',
-        code: '<YTextInput\n  accessibilityLabel="密码"\n  placeholder="输入密码"\n  password\n  showPasswordLabel="显示密码"\n  hidePasswordLabel="隐藏密码"\n  error="请输入至少 8 个字符"\n/>',
-        Preview: () => (
-          <div className="sample-field">
-            <YTextInput
-              accessibilityLabel="密码"
-              placeholder="输入密码"
-              defaultValue="yoroll"
-              password
-              showPasswordLabel="显示密码"
-              hidePasswordLabel="隐藏密码"
-              error="请输入至少 8 个字符"
-            />
-          </div>
-        ),
-      },
+      example('基础输入', 'text-input'),
+      example('密码与错误提示', 'password-input'),
     ],
     props: [
       ['password', 'boolean', '显示密码显隐按钮。'],
@@ -257,16 +80,8 @@ export const demos: ComponentDemo[] = [
     category: 'controls',
     description: '胶囊形播放入口，包含继续观看和即将上线状态。',
     examples: [
-      {
-        title: '播放与继续',
-        code: '<YPlayPill label="播放" onPress={onPlay} />\n<YPlayPill label="继续观看" mode="continue" variant="brand" onPress={onResume} />',
-        Preview: PlayButtons,
-      },
-      {
-        title: '即将上线',
-        code: '<YPlayPill comingSoon comingSoonLabel="即将上线" />',
-        Preview: () => <YPlayPill comingSoon comingSoonLabel="即将上线" />,
-      },
+      example('播放与继续', 'play-pill'),
+      example('即将上线', 'play-pill-soon'),
     ],
     props: [
       ['variant', 'light | brand', '白色外观或随主题变化的外观。'],
@@ -282,21 +97,9 @@ export const demos: ComponentDemo[] = [
     category: 'navigation',
     description: '由调用方管理选中项，支持分段、下划线及文字样式。',
     examples: [
-      {
-        title: '分段',
-        code: 'const [active, setActive] = useState("feature");\nconst items = [{ key: "feature", label: "推荐" }, { key: "saved", label: "收藏" }];\n\n<YTab variant="segment" items={items} active={active} onChange={setActive} />',
-        Preview: () => <Tabs variant="segment" />,
-      },
-      {
-        title: '下划线',
-        code: '<YTab variant="underline" items={items} active={active} onChange={setActive} />',
-        Preview: () => <Tabs variant="underline" />,
-      },
-      {
-        title: '文字',
-        code: '<YTab variant="text" items={items} active={active} onChange={setActive} />',
-        Preview: () => <Tabs variant="text" />,
-      },
+      example('分段', 'tabs-segment'),
+      example('下划线', 'tabs-underline'),
+      example('文字', 'tabs-text'),
     ],
     props: [
       ['items', 'YTabItem[]', '每个选项需要稳定的 key 和展示 label。'],
@@ -312,11 +115,7 @@ export const demos: ComponentDemo[] = [
     category: 'navigation',
     description: '包含安全区、居中标题、返回按钮和可定制的两侧操作。',
     examples: [
-      {
-        title: '标题与操作',
-        code: '<YTopBar\n  title="个人资料"\n  backLabel="返回"\n  onBack={onBack}\n  rightSlot={<YButton label="编辑" variant="ghost" onPress={onEdit} />}\n/>',
-        Preview: TopBarPreview,
-      },
+      example('标题与操作', 'top-bar'),
     ],
     props: [
       ['title / titleSlot', 'string / ReactNode', '标题文本或自定义标题内容。'],
@@ -331,11 +130,7 @@ export const demos: ComponentDemo[] = [
     category: 'navigation',
     description: '把滚动位置映射为主题底色的透明度，适用于吸顶导航。',
     examples: [
-      {
-        title: '滚动淡入',
-        code: 'const scrollY = useRef(new Animated.Value(0)).current;\n\n<NavigationBarMaterial testID="top-bar-material" scrollY={scrollY} />',
-        Preview: MaterialPreview,
-      },
+      example('滚动淡入', 'navigation-material'),
     ],
     props: [
       ['scrollY', 'Animated.Value', '0 到 100 pt 映射到透明和完全不透明。'],
@@ -349,17 +144,7 @@ export const demos: ComponentDemo[] = [
     category: 'display',
     description: '图片与首字母头像，支持不同尺寸、渐变和描边。',
     examples: [
-      {
-        title: '尺寸与外观',
-        code: '<YAvatar name="Yoroll" size={36} />\n<YAvatar name="Amy" size={48} color="#6551B5" />\n<YAvatar name="Remi" size={56} ring="#FF9CD5" gradientColors={["#BE9AFF", "#6551B5"]} />',
-        Preview: () => (
-          <div className="sample-row">
-            <YAvatar name="Yoroll" size={36} />
-            <YAvatar name="Amy" size={48} color="#6551B5" />
-            <YAvatar name="Remi" size={56} ring="#FF9CD5" gradientColors={['#BE9AFF', '#6551B5']} />
-          </div>
-        ),
-      },
+      example('尺寸与外观', 'avatars'),
     ],
     props: [
       ['src / name', 'string', '图片地址，或无图时提取首字母的名称。'],
@@ -376,19 +161,7 @@ export const demos: ComponentDemo[] = [
     category: 'display',
     description: '可组合的加载占位块，多块占位共享同一呼吸动画。',
     examples: [
-      {
-        title: '列表占位',
-        code: '<SkeletonBlock style={{ width: 48, height: 48, borderRadius: 24 }} />\n<SkeletonBlock style={{ width: 128, height: 10, borderRadius: 5 }} />',
-        Preview: () => (
-          <div className="sample-row skeleton-sample">
-            <SkeletonBlock style={{ width: 48, height: 48, borderRadius: 24 }} />
-            <div className="sample-stack">
-              <SkeletonBlock style={{ width: 128, height: 10, borderRadius: 5 }} />
-              <SkeletonBlock style={{ width: 80, height: 8, borderRadius: 4 }} />
-            </div>
-          </div>
-        ),
-      },
+      example('列表占位', 'skeleton'),
     ],
     props: [
       ['style', 'StyleProp<ViewStyle>', '设置占位的尺寸和圆角。'],
@@ -401,7 +174,9 @@ export const demos: ComponentDemo[] = [
     label: '轮播指示点',
     category: 'navigation',
     description: '轮播页选中时过渡点宽度和透明度。',
-    examples: [{ title: '切换选中项', code: '<CarouselIndicatorDot active={index === selectedIndex} />', Preview: CarouselPreview }],
+    examples: [
+      example('切换选中项', 'carousel'),
+    ],
     props: [['active', 'boolean', '指示点的选中状态。']],
   },
   {
@@ -411,11 +186,9 @@ export const demos: ComponentDemo[] = [
     label: 'Treats 渐变金额',
     category: 'display',
     description: '统一粉橙渐变方向，原生使用文字测量与遮罩。',
-    examples: [{
-      title: '金额样式',
-      code: '<TreatText style={{ fontSize: 28, fontWeight: "700" }}>1,280 Treats</TreatText>',
-      Preview: () => <TreatText style={{ fontSize: 28, fontWeight: '700' }}>1,280 Treats</TreatText>,
-    }],
+    examples: [
+      example('金额样式', 'treat-text'),
+    ],
     props: [
       ['children', 'ReactNode', '要显示的金额或文本。'],
       ['gradientColors', 'LinearGradientProps["colors"]', '默认使用导出的 TREAT_TEXT_GRADIENT。'],

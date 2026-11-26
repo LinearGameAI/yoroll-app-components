@@ -2,6 +2,7 @@ import { rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
+import { loadCatalog } from './catalog.mjs';
 
 const repository = fileURLToPath(new URL('../', import.meta.url));
 const args = process.argv.slice(2);
@@ -11,6 +12,7 @@ if (args.length && (!appPath || args.length !== 2)) {
 }
 const outdir = appPath ? 'dist-app' : 'dist';
 await rm(join(repository, outdir), { recursive: true, force: true });
+const catalog = await loadCatalog(repository);
 let localData = '';
 if (appPath) {
   const { buildAppInventory } = await import('./app-inventory.mjs');
@@ -30,6 +32,7 @@ const result = await build({
   bundle: true,
   minify: true,
   metafile: true,
+  plugins: [catalog.plugin],
   target: 'es2022',
   platform: 'browser',
   jsx: 'automatic',
@@ -47,6 +50,8 @@ const result = await build({
 
 const [script, { cssBundle }] = Object.entries(result.metafile.outputs)
   .find(([, details]) => details.entryPoint === 'playground/main.tsx');
+
+await catalog.writeRegistry(join(repository, outdir));
 
 await writeFile(join(repository, outdir, 'index.html'), `<!doctype html>
 <html lang="zh-CN">

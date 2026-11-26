@@ -2,33 +2,54 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { createRoot } from 'react-dom/client';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { IconClose, IconSearch, IconTextLogo } from '@yoroll/rn-icon';
-import { YorollThemeProvider, darkTokens, lightTokens, useTheme, type ThemeMode } from '../src';
+import { YorollThemeProvider, darkTokens, lightTokens, type ThemeMode, type ThemeTokens } from '../src';
 import { categories, demos, type ComponentDemo } from './demos';
-import { CopyButton, SourceLink } from './controls';
+import { DirectoryHeading } from './controls';
 import { FoundationsPage } from './foundations';
 import { MotionPage } from './motion';
 import { AssetsPage } from './assets';
 import { AppInventoryPage, type InventoryView } from './appInventory';
+import {
+  BlockDetails, BlocksPage, ComponentDetails, DocsHome, GettingStartedPage, blocks, repositoryUrl, routeFor,
+} from './docs';
+import { CatalogSearch, type SearchEntry } from './search';
 import './styles.css';
 import './directory.css';
+import './docs.css';
 
 declare const __APP_INVENTORY__: boolean;
 
 const directoryLinks = [
-  { hash: '#', label: '组件' },
+  { hash: '#', label: '概览' },
+  { hash: '#start', label: '接入指南' },
+  { hash: '#components', label: '组件' },
+  { hash: '#blocks', label: '组合示例' },
   { hash: '#tokens', label: '设计 Token' },
   { hash: '#motion', label: '动效' },
   { hash: '#assets', label: '图素' },
   ...(__APP_INVENTORY__ ? [{ hash: '#app', label: 'App 索引' }] : []),
 ];
-const appViews: Readonly<Record<string, InventoryView>> = { '#app': 'source', '#app-assets': 'assets', '#app-motion': 'motion' };
 
-const repositoryUrl = 'https://github.com/LinearGameAI/yoroll-app-components';
-const initialMetrics = {
-  frame: { x: 0, y: 0, width: 0, height: 0 },
-  insets: { top: 0, right: 0, bottom: 0, left: 0 },
+const appViews: Readonly<Record<string, InventoryView>> = {
+  '#app': 'source', '#app-assets': 'assets', '#app-motion': 'motion',
 };
-const routeFor = (name: string) => `#${name.toLowerCase()}`;
+
+const searchEntries: SearchEntry[] = [
+  { title: '接入指南', href: '#start', section: '指南', keywords: '安装 使用 React Native Expo 安全区 registry 源码' },
+  { title: '组件', href: '#components', section: '目录', keywords: 'components' },
+  { title: '组合示例', href: '#blocks', section: '目录', keywords: 'blocks' },
+  { title: '设计 Token', href: '#tokens', section: '规范', keywords: '颜色 字体 布局 尺寸 阴影 渐变' },
+  { title: '动效', href: '#motion', section: '规范', keywords: '缓动 运动 时长 动画' },
+  { title: '图素', href: '#assets', section: '资源', keywords: '图标 icon 依赖' },
+  ...(__APP_INVENTORY__ ? [{ title: 'App 完整索引', href: '#app', section: '资源', keywords: 'App 原图 字体 源码 样式' }] : []),
+  ...demos.map((demo) => ({ title: demo.name, href: routeFor(demo.name), section: '组件', keywords: demo.label + ' ' + demo.description })),
+  ...blocks.map((block) => ({ title: block.title, href: '#blocks/' + block.id, section: '组合示例', keywords: block.description })),
+  ...(Object.keys(darkTokens) as (keyof ThemeTokens)[]).map((key) => ({
+    title: key, href: '#tokens/' + key, section: 'Token', keywords: darkTokens[key] + ' ' + lightTokens[key],
+  })),
+];
+
+const initialMetrics = { frame: { x: 0, y: 0, width: 0, height: 0 }, insets: { top: 0, right: 0, bottom: 0, left: 0 } };
 
 function readTheme(): ThemeMode {
   try {
@@ -38,93 +59,54 @@ function readTheme(): ThemeMode {
   }
 }
 
-function ComponentDetails({ demo }: { demo: ComponentDemo }) {
-  const { tokens } = useTheme();
+function ComponentNavigation({ matches, detail, query, setQuery }: {
+  matches: ComponentDemo[]; detail?: ComponentDemo; query: string; setQuery: (value: string) => void;
+}) {
+  const input = useRef<HTMLInputElement>(null);
   return (
     <>
-      <div className="detail-heading">
-        <div className="breadcrumb">
-          <a href="#">全部组件</a>
-          <span aria-hidden="true">/</span>
-          <span>{categories.find((category) => category.id === demo.category)?.label}</span>
-        </div>
-        <h1 id="page-title" tabIndex={-1}>{demo.name}</h1>
-        <p>{demo.description}</p>
-        <div className="detail-links">
-          <a className="source-link" href={`${repositoryUrl}/blob/main/src/components/${demo.name}.tsx`}>组件库实现</a>
-          <SourceLink path={demo.appPath ?? `src/components/primitives/${demo.name}.tsx`} />
-        </div>
-        {demo.colors && <div className="detail-tokens" aria-label="相关 Token">
-          {demo.colors.map((key) => <a href={`#tokens/${key}`} key={key} title={tokens[key]}>
-            <span aria-hidden="true" style={{ backgroundColor: tokens[key] }} /><code>{key}</code>
-          </a>)}
-        </div>}
+      <div className="search-box">
+        <span className="search-icon" aria-hidden="true"><IconSearch size={17} color="currentColor" /></span>
+        <input ref={input} type="search" aria-label="搜索组件" placeholder="筛选组件" value={query} onChange={(event) => setQuery(event.currentTarget.value)} />
+        {query && <button type="button" aria-label="清空筛选" onClick={() => { setQuery(''); input.current?.focus(); }}>
+          <IconClose size={14} color="currentColor" />
+        </button>}
       </div>
-      <div className="example-list">
-        {demo.examples.map(({ title, code, Preview }) => {
-          const snippet = `import { ${demo.name} } from '@yoroll/app-components';\n\n${code}`;
-          return (
-            <section className="example" key={title}>
-              <h2>{title}</h2>
-              <div className="example-content">
-                <div className="showcase"><Preview /></div>
-                <div className="code-panel">
-                  <div className="code-toolbar"><span>TSX</span><CopyButton code={snippet} /></div>
-                  <pre tabIndex={0}><code>{snippet}</code></pre>
-                </div>
-              </div>
-            </section>
+      <nav className="catalog-nav" aria-label="组件导航">
+        {categories.map(({ id, label }) => {
+          const members = matches.filter((demo) => demo.category === id);
+          return members.length > 0 && (
+            <div className="nav-group" key={id}>
+              <p>{label}</p>
+              <ul>{members.map((demo) => (
+                <li key={demo.name}><a href={routeFor(demo.name)}
+                  aria-current={detail === demo && !query ? 'page' : undefined} onClick={() => setQuery('')}>{demo.name}</a></li>
+              ))}</ul>
+            </div>
           );
         })}
-      </div>
-      <h2 className="props-title">常用参数</h2>
-      <div className="props-scroll">
-        <table>
-          <thead><tr><th scope="col">参数</th><th scope="col">类型</th><th scope="col">说明</th></tr></thead>
-          <tbody>
-            {demo.props.map(([name, type, description]) => (
-              <tr key={name}><th scope="row"><code>{name}</code></th><td><code>{type}</code></td><td>{description}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      </nav>
     </>
   );
 }
 
-function Overview({ matches, filtering, clearSearch }: {
-  matches: ComponentDemo[];
-  filtering: boolean;
-  clearSearch: () => void;
-}) {
+function ComponentsPage({ matches, query, clearSearch }: { matches: ComponentDemo[]; query: string; clearSearch: () => void }) {
   return (
     <>
-      {!filtering && (
-        <header className="intro">
-          <h1 id="page-title" tabIndex={-1}>Yoroll App 组件库</h1>
-          <p>使用 App 的组件、设计 Token、动效与图素。</p>
-        </header>
-      )}
-      <div className="grid-heading">
-        {filtering ? <h1 id="page-title" tabIndex={-1}>搜索结果</h1> : <h2>全部组件</h2>}
-        <span aria-live="polite">{matches.length} 个组件</span>
-      </div>
-      {!matches.length && (
-        <div className="empty">
-          <p>没有匹配的组件。可以试试组件名或用途。</p>
-          <button type="button" onClick={clearSearch}>清空搜索</button>
-        </div>
-      )}
+      <DirectoryHeading title={query ? '组件搜索结果' : '组件'} action={<span className="directory-count" aria-live="polite">{matches.length} 个组件</span>}>
+        {query ? <>匹配 <code>{query}</code> 的组件。</> : '预览状态与变体，查看安装、用法、参数和相关 Token。'}
+      </DirectoryHeading>
+      {!matches.length && <div className="empty">
+        <p>没有匹配的组件。可以试试组件名或用途。</p>
+        <button type="button" onClick={clearSearch}>清空筛选</button>
+      </div>}
       <ul className="component-grid">
         {matches.map((demo) => {
           const { Preview } = demo.examples[0];
           return (
             <li className="tile" key={demo.name}>
               <div className="showcase"><Preview /></div>
-              <a className="tile-link" href={routeFor(demo.name)}>
-                <strong>{demo.name}</strong>
-                <span>{demo.label}</span>
-              </a>
+              <a className="tile-link" href={routeFor(demo.name)}><strong>{demo.name}</strong><span>{demo.label}</span></a>
             </li>
           );
         })}
@@ -137,49 +119,43 @@ function App() {
   const [mode, setMode] = useState(readTheme);
   const [route, setRoute] = useState(window.location.hash);
   const [query, setQuery] = useState('');
-  const searchRef = useRef<HTMLInputElement>(null);
+  const [group, name, blockSection] = route.split('/');
+  const detail = demos.find((demo) => routeFor(demo.name) === group);
+  const block = group === '#blocks' ? blocks.find((item) => item.id === name) : undefined;
   const appView = __APP_INVENTORY__ ? appViews[route] : undefined;
-  const tokenName = route.startsWith('#tokens/') ? route.slice('#tokens/'.length) : '';
-  const currentDirectory = appView ? '#app' : tokenName ? '#tokens' : ['#tokens', '#motion', '#assets'].includes(route) ? route : '#';
-  const activeDirectory = directoryLinks.find((item) => item.hash === currentDirectory);
-  const detail = demos.find((demo) => routeFor(demo.name) === route);
+  const directory = appView ? '#app' : detail ? '#components'
+    : ['#components', '#start', '#blocks', '#tokens', '#motion', '#assets'].includes(group) ? group : '#';
+  const activeDirectory = directoryLinks.find((item) => item.hash === directory);
+  const tokenName = directory === '#tokens' ? name ?? '' : '';
+  const section = block ? blockSection : detail || directory === '#start' ? name : undefined;
   const tokens = mode === 'light' ? lightTokens : darkTokens;
   const search = query.trim().toLowerCase();
-  const matches = demos.filter((demo) => [demo.name, demo.label, demo.description].some((text) =>
-    text.toLowerCase().includes(search)
-  ));
+  const matches = demos.filter((demo) => [demo.name, demo.label, demo.description].some((text) => text.toLowerCase().includes(search)));
   const colors = {
-    '--bg': tokens.bgPrimary,
-    '--card': tokens.bgCard,
-    '--surface': tokens.bgSecondary,
-    '--text': tokens.textPrimary,
-    '--subtle': tokens.textSecondary,
-    '--line': tokens.cardStroke,
-    '--peach': tokens.orange,
-    '--pink': tokens.orange7,
+    '--bg': tokens.bgPrimary, '--card': tokens.bgCard, '--surface': tokens.bgSecondary,
+    '--text': tokens.textPrimary, '--subtle': tokens.textSecondary, '--line': tokens.cardStroke,
+    '--peach': tokens.orange, '--pink': tokens.orange7,
   } as CSSProperties;
 
   useEffect(() => {
-    const handleRoute = () => {
-      setRoute(window.location.hash);
-      setQuery('');
-    };
+    const handleRoute = () => { setRoute(window.location.hash); setQuery(''); };
     window.addEventListener('hashchange', handleRoute);
     return () => window.removeEventListener('hashchange', handleRoute);
   }, []);
 
   useEffect(() => {
-    const title = detail?.name ?? (currentDirectory === '#' ? undefined : activeDirectory?.label);
+    const title = detail?.name ?? block?.title ?? (directory === '#' ? undefined : activeDirectory?.label);
     document.title = title ? `${title} | Yoroll App 组件库` : 'Yoroll App 组件库';
-    window.scrollTo(0, 0);
-  }, [route, detail, currentDirectory, activeDirectory]);
+    if (section) document.getElementById(section)?.scrollIntoView({ block: 'start' });
+    else window.scrollTo(0, 0);
+  }, [route, section, detail, block, directory, activeDirectory]);
 
   const changeMode = (next: ThemeMode) => {
     setMode(next);
     try {
       localStorage.setItem('yoroll-component-theme', next);
     } catch {
-      // The selected theme still applies when storage is unavailable.
+      // The selection still applies when browser storage is unavailable.
     }
   };
 
@@ -208,58 +184,25 @@ function App() {
           </header>
           <div className="layout">
             <aside className="sidebar">
+              <CatalogSearch entries={searchEntries} />
               <nav className="section-nav" aria-label="组件库栏目">
                 {directoryLinks.map(({ hash, label }) => (
-                  <a key={hash} href={hash} aria-current={currentDirectory === hash ? 'page' : undefined} onClick={() => setQuery('')}>{label}</a>
+                  <a key={hash} href={hash} aria-current={directory === hash ? 'page' : undefined} onClick={() => setQuery('')}>{label}</a>
                 ))}
               </nav>
-              {currentDirectory === '#' && <div className="search-box">
-                <span className="search-icon" aria-hidden="true"><IconSearch size={17} color="currentColor" /></span>
-                <input
-                  ref={searchRef}
-                  type="search"
-                  aria-label="搜索组件"
-                  placeholder="搜索组件"
-                  value={query}
-                  onChange={(event) => setQuery(event.currentTarget.value)}
-                />
-                {query && (
-                  <button type="button" aria-label="清空搜索" onClick={() => { setQuery(''); searchRef.current?.focus(); }}>
-                    <IconClose size={14} color="currentColor" />
-                  </button>
-                )}
-              </div>}
-              {currentDirectory === '#' && <nav className="catalog-nav" aria-label="组件导航">
-                <a className="overview-link" href="#" aria-current={!detail && !search ? 'page' : undefined} onClick={() => setQuery('')}>全部组件</a>
-                {categories.map(({ id, label }) => {
-                  const members = matches.filter((demo) => demo.category === id);
-                  return members.length > 0 && (
-                    <div className="nav-group" key={id}>
-                      <p>{label}</p>
-                      <ul>
-                        {members.map((demo) => (
-                          <li key={demo.name}>
-                            <a
-                              href={routeFor(demo.name)}
-                              aria-current={detail === demo && !search ? 'page' : undefined}
-                              onClick={() => setQuery('')}
-                            >{demo.name}</a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  );
-                })}
-              </nav>}
+              {directory === '#components' && <ComponentNavigation matches={matches} detail={detail} query={query} setQuery={setQuery} />}
             </aside>
             <main>
-              {currentDirectory === '#tokens' && <FoundationsPage key={tokenName} tokenName={tokenName} />}
-              {currentDirectory === '#motion' && <MotionPage />}
-              {currentDirectory === '#assets' && <AssetsPage showAppInventory={__APP_INVENTORY__} />}
-              {__APP_INVENTORY__ && appView && <AppInventoryPage view={appView} />}
-              {currentDirectory === '#' && (detail && !search
+              {directory === '#' && <DocsHome />}
+              {directory === '#start' && <GettingStartedPage />}
+              {directory === '#components' && (detail && !search
                 ? <ComponentDetails key={detail.name} demo={detail} />
-                : <Overview matches={matches} filtering={!!search} clearSearch={() => { setQuery(''); searchRef.current?.focus(); }} />)}
+                : <ComponentsPage matches={matches} query={query.trim()} clearSearch={() => setQuery('')} />)}
+              {directory === '#blocks' && (block ? <BlockDetails key={block.id} block={block} /> : <BlocksPage />)}
+              {directory === '#tokens' && <FoundationsPage key={tokenName} tokenName={tokenName} />}
+              {directory === '#motion' && <MotionPage />}
+              {directory === '#assets' && <AssetsPage showAppInventory={__APP_INVENTORY__} />}
+              {__APP_INVENTORY__ && appView && <AppInventoryPage view={appView} />}
             </main>
           </div>
         </div>
