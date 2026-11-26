@@ -33,8 +33,9 @@ export function buttonLabelTypography(
   return { fontSize, lineHeight: Math.round(fontSize * 1.4), fontWeight: buttonWeights[variant] };
 }
 
-export function tabLabelTypography(variant: 'underline' | 'segment' | 'text', active: boolean) {
+export function tabLabelTypography(variant: 'underline' | 'segment' | 'text' | 'pill', active: boolean) {
   const fontWeight = active ? '600' as const : '500' as const;
+  if (variant === 'pill') return { fontSize: 12, lineHeight: 18, fontWeight: active ? '700' as const : '400' as const };
   return variant === 'text' ? { fontSize: 16, lineHeight: 22, fontWeight } : { fontSize: 13, fontWeight };
 }
 
@@ -62,3 +63,31 @@ export function chatMessageTypography(size: number = chatFontSize.default) {
     heading4: text(16, 23), heading5: text(13, 23), heading6: text(11, 23),
   };
 }
+
+/** Role-level text styles shared by the extracted screen components. */
+export const componentText = {
+  rowLabel: { fontSize: 14 },
+  rowMeta: { fontSize: 11 },
+  inboxTitle: { fontSize: 15, fontWeight: '600' },
+  inboxPreview: { fontSize: 13 },
+  mediaTitle: { fontSize: 15, lineHeight: 17, fontWeight: '600', letterSpacing: 0.2 },
+  mediaMeta: { fontSize: 10, letterSpacing: 0.3 },
+  channelTitle: { fontSize: 16, lineHeight: 22, fontWeight: '600' },
+  channelMeta: { fontSize: 11, lineHeight: 16 },
+  coverTitle: { fontSize: 16, lineHeight: 20, fontWeight: '700' },
+  coverSmallTitle: { fontSize: 14, lineHeight: 18, fontWeight: '700' },
+  coverTag: { fontSize: 10, lineHeight: 14, fontWeight: '500' },
+  profileName: { fontSize: 18, fontWeight: '700' },
+  profileCaption: { fontSize: 12, fontWeight: '400' },
+  planTitle: { fontSize: 16, lineHeight: 22, fontWeight: '600' },
+  planPrice: { fontSize: 24, lineHeight: 32, fontWeight: '700' },
+  modelTitle: { fontSize: 16, lineHeight: 22, fontWeight: '700' },
+  modelBody: { fontSize: 12, lineHeight: 18 },
+  modelPrice: { fontSize: 14, lineHeight: 20, fontWeight: '600' },
+  taskTitle: { fontSize: 14, lineHeight: 20, fontWeight: '600' },
+  taskDescription: { fontSize: 12, lineHeight: 18 },
+  taskAction: { fontSize: 13, lineHeight: 18, fontWeight: '700' },
+  callTitle: { fontSize: 28, lineHeight: 36, fontWeight: '700' },
+  callStatus: { fontSize: 16, lineHeight: 24 },
+  feedback: { fontSize: 14, lineHeight: 20 },
+} as const;

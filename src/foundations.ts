@@ -111,3 +111,25 @@ export const shadowPresets = {
     web: '0 0 10px rgba(154,154,151,0.2)',
   },
 } as const;
+
+export const controlMetrics = {
+  iconButton: { target: layout.tapTarget, icon: 20 },
+  bottomNav: { defaultHeight: 56, androidHeight: 60, defaultTop: 8, androidInset: 6, icon: 24 },
+  composer: { control: 44, maxInputHeight: 120, lineHeight: 20, verticalPadding: 12 },
+  settingsRow: { minHeight: 52, groupRadius: 12 },
+  inboxRow: { avatar: 52, rowGap: 12, avatarMargin: 14, unreadDot: 8 },
+  creatorChip: { radius: 22, paddingHorizontal: 14, paddingVertical: 9 },
+  upload: { width: 75, height: 95, radius: 12 },
+} as const;
+
+export const cardMetrics = {
+  game: { radius: 16, heights: { sm: 140, md: 180, lg: 240 } },
+  channel: { radius: 8, width: 128, height: 72 },
+  cover: { radius: 8, discoverAspect: 3 / 5, characterAspect: 202 / 316, chatAspect: 9 / 16, profileAspect: 3 / 4 },
+  persona: { detailMinHeight: 112, actionMinHeight: 52 },
+  plan: { radius: 16, padding: 16 },
+  pack: { radius: 12, minHeight: 144, padding: 12, badgeHeight: 20 },
+  balance: { radius: 16, paddingH: 20, paddingV: 16, valueMinHeight: 48 },
+  model: { radius: 16, paddingH: 21, paddingV: 15 },
+  task: { radius: 18, buttonMinHeight: 36, dayMinHeight: 99 },
+} as const;

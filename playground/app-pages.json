@@ -1,0 +1,959 @@
+{
+  "revision": "0983ce7b25d25b69c151a07459af961b0900fc61",
+  "groups": [
+    {"id": "home", "label": "首页与游戏"},
+    {"id": "discovery", "label": "发现与陪聊"},
+    {"id": "social", "label": "精选与消息"},
+    {"id": "create", "label": "创作者与人设"},
+    {"id": "account", "label": "账号与设置"},
+    {"id": "purchase", "label": "会员与任务"},
+    {"id": "media", "label": "短剧与内容容器"},
+    {"id": "shell", "label": "全局入口与调试"}
+  ],
+  "entries": [
+    {
+      "id": "home",
+      "title": "首页",
+      "group": "home",
+      "kind": "screen",
+      "route": "app/(tabs)/index.tsx",
+      "source": ["src/screens/HomeScreen.tsx"],
+      "shell": "tab",
+      "parts": [
+        {"part": {"kind": "section", "label": "发现新的互动内容"}, "source": ["src/screens/HomeScreen.tsx", 1624], "related": ["NavigationBarMaterial"]},
+        {"part": {"kind": "tabs", "label": "频道胶囊", "items": ["全部", "短剧", "互动游戏"], "variant": "pill"}, "source": ["src/screens/HomeScreen.tsx", 1973]},
+        {"part": {"kind": "search", "label": "搜索内容", "variant": "entry"}, "source": ["src/screens/HomeScreen.tsx", 1720]},
+        {"part": {"kind": "media", "label": "焦点轮播", "items": ["雾岛来信", "星砂纪事", "森林来客"], "detail": "焦点推荐 · 互动剧情"}, "source": ["src/screens/HomeScreen.tsx", 1806]},
+        {"part": {"kind": "cards", "label": "游戏与短剧卡", "items": ["雾岛来信", "星砂纪事"], "variant": "game", "detail": "互动内容"}, "source": ["src/screens/HomeScreen.tsx", 1619]}
+      ],
+      "states": ["首屏骨架", "焦点图切换", "频道选中", "继续播放", "列表分页"]
+    },
+    {
+      "id": "game-detail",
+      "title": "游戏详情",
+      "group": "home",
+      "kind": "screen",
+      "route": "app/game/[id].tsx",
+      "source": ["src/screens/GameDetailScreen.tsx"],
+      "shell": "detail",
+      "footer": "开始游玩",
+      "note": "App 的封面素材、游戏可玩状态与评论数据由各自宿主管理。",
+      "parts": [
+        {"part": {"kind": "detail", "label": "互动游戏", "items": ["雾岛来信", "月光旅人 · 互动故事"], "detail": "沿着灯塔的光，找到寄给你的信。"}, "source": ["src/screens/GameDetailScreen.tsx", 352], "related": ["YPlayPill", "NavigationBarMaterial"]},
+        {"part": {"kind": "share", "label": "分享游戏"}, "source": ["src/screens/GameDetailScreen.tsx", 339]},
+        {"part": {"kind": "identity", "label": "游戏作者", "items": ["月光旅人", "互动内容创作者"], "variant": "author"}, "source": ["src/screens/GameDetailScreen.tsx", 442]},
+        {"part": {"kind": "cards", "label": "同频道推荐", "items": ["星砂纪事", "雾岛来信"], "variant": "channel", "detail": "同频道可玩"}, "source": ["src/components/GameChannelCard.tsx", 28]},
+        {"part": {"kind": "comments", "label": "评论区"}, "source": ["src/screens/GameDetailScreen.tsx", 607]},
+        {"part": {"kind": "cards", "label": "相关游戏", "items": ["森林来客", "沿海日记"], "variant": "game"}, "source": ["src/screens/GameDetailScreen.tsx", 619]}
+      ],
+      "states": ["详情骨架", "收藏", "简介展开", "作者", "评论", "开始游戏"]
+    },
+    {
+      "id": "play",
+      "title": "游戏播放宿主",
+      "group": "home",
+      "kind": "screen",
+      "route": "app/play/[id].tsx",
+      "source": ["src/screens/PlayScreen.tsx"],
+      "shell": "full",
+      "note": "Unity 与 WebGL 内容在 App 中运行。此预览演示外层控件和面板。",
+      "parts": [
+        {"part": {"kind": "host", "label": "游戏内容容器", "variant": "capsule", "detail": "内嵌网页体验的覆盖层与退出控制。"}, "source": ["src/screens/PlayScreen.tsx", 776]},
+        {"part": {"kind": "sheet", "label": "游戏操作", "items": ["分享游戏", "返回详情"]}, "source": ["src/components/WebGameCapsule.tsx", 26]},
+        {"part": {"kind": "share", "label": "分享当前游戏"}, "source": ["src/screens/PlayScreen.tsx", 962]}
+      ],
+      "states": ["加载", "游戏运行", "H5 全屏", "关闭", "返回宿主"]
+    },
+    {
+      "id": "sud-list",
+      "title": "小游戏列表",
+      "group": "home",
+      "kind": "screen",
+      "route": "app/sud/index.tsx",
+      "source": ["src/screens/SudGameListScreen.tsx"],
+      "note": "游戏目录和入房由小游戏 SDK 提供。",
+      "parts": [
+        {"part": {"kind": "section", "label": "选择小游戏"}, "source": ["src/screens/SudGameListScreen.tsx", 110]},
+        {"part": {"kind": "cards", "label": "小游戏入口", "items": ["多人房间", "休闲小游戏"], "variant": "channel", "detail": "小游戏"}, "source": ["src/screens/SudGameListScreen.tsx", 127]}
+      ],
+      "states": ["列表加载", "小游戏选择", "进入宿主"]
+    },
+    {
+      "id": "sud-play",
+      "title": "小游戏房间",
+      "group": "home",
+      "kind": "screen",
+      "route": "app/sud/[gameId].tsx",
+      "source": ["src/screens/SudGameScreen.tsx"],
+      "shell": "full",
+      "note": "真实小游戏渲染和退出由 App 中的 SUD SDK 完成。",
+      "parts": [
+        {"part": {"kind": "host", "label": "小游戏房间", "detail": "进入小游戏房间时的外层容器。"}, "source": ["src/screens/SudGameScreen.tsx", 74]},
+        {"part": {"kind": "confirm", "label": "离开房间", "items": ["离开", "继续游戏"]}, "source": ["src/screens/SudGameScreen.tsx", 64]}
+      ],
+      "states": ["等待加载", "游戏运行", "关闭", "宿主异常"]
+    },
+    {
+      "id": "discover",
+      "title": "发现",
+      "group": "discovery",
+      "kind": "screen",
+      "route": "app/(tabs)/discover.tsx",
+      "source": ["src/screens/chat/DiscoverScreen.tsx"],
+      "shell": "tab",
+      "parts": [
+        {"part": {"kind": "search", "label": "搜索角色", "variant": "entry"}, "source": ["src/screens/chat/DiscoverScreen.tsx", 634]},
+        {"part": {"kind": "tabs", "label": "发现排序", "items": ["推荐", "探索", "新角色"], "variant": "text"}, "source": ["src/screens/chat/DiscoverScreen.tsx", 137]},
+        {"part": {"kind": "banner", "label": "探索互动活动", "items": ["查看活动"], "detail": "有新的故事与互动活动。"}, "source": ["src/screens/chat/DiscoverScreen.tsx", 148]},
+        {"part": {"kind": "cards", "label": "发现角色卡", "items": ["月光旅人", "海岸来客"], "variant": "discover", "detail": "互动角色"}, "source": ["src/screens/chat/DiscoverScreen.tsx", 487]},
+        {"part": {"kind": "sheet", "label": "筛选角色", "items": ["全部类型", "幻想", "解谜", "浪漫"]}, "source": ["src/screens/chat/DiscoverScreen.tsx", 798]},
+        {"part": {"kind": "sheet", "label": "创作入口", "items": ["创建角色", "创建群聊角色"]}, "source": ["src/screens/chat/DiscoverScreen.tsx", 793]}
+      ],
+      "states": ["头部折叠", "活动轮播", "双列角色", "筛选", "搜索覆盖层", "创作菜单", "空态", "加载更多"]
+    },
+    {
+      "id": "search",
+      "title": "全局搜索",
+      "group": "discovery",
+      "kind": "screen",
+      "route": "app/search.tsx",
+      "source": ["src/screens/SearchScreen.tsx"],
+      "note": "预览的搜索在示例结果内实时筛选。",
+      "parts": [
+        {"part": {"kind": "search", "label": "搜索游戏和角色", "items": ["雾岛来信", "星砂纪事", "月光旅人"], "detail": "游戏与角色结果"}, "source": ["src/screens/SearchScreen.tsx", 371]}
+      ],
+      "states": ["输入焦点", "结果骨架", "搜索结果", "无匹配", "分页"]
+    },
+    {
+      "id": "character",
+      "title": "角色详情",
+      "group": "discovery",
+      "kind": "screen",
+      "route": "app/companion/[companionId].tsx",
+      "source": ["src/screens/chat/CompanionDetailScreen.tsx"],
+      "shell": "detail",
+      "footer": "开始聊天",
+      "parts": [
+        {"part": {"kind": "detail", "label": "角色详情", "items": ["月光旅人", "海岸守望者"], "variant": "poster", "detail": "循着灯塔找到寄给你的那封信。"}, "source": ["src/screens/chat/CompanionDetailScreen.tsx", 224]},
+        {"part": {"kind": "identity", "label": "创作者信息", "items": ["海风", "角色作者"], "variant": "author"}, "source": ["src/screens/chat/CompanionDetailScreen.tsx", 252]},
+        {"part": {"kind": "sheet", "label": "角色操作", "items": ["举报角色"]}, "source": ["src/screens/chat/CompanionDetailScreen.tsx", 233]},
+        {"part": {"kind": "comments", "label": "角色评论"}, "source": ["src/screens/chat/CompanionDetailScreen.tsx", 242]},
+        {"part": {"kind": "share", "label": "分享角色"}, "source": ["src/screens/chat/CompanionDetailScreen.tsx", 244]}
+      ],
+      "states": ["加载", "详情", "作者", "收藏", "评论弹层", "分享", "开始聊天"]
+    },
+    {
+      "id": "chat",
+      "title": "聊天会话",
+      "group": "discovery",
+      "kind": "screen",
+      "route": "app/chat/[companionId].tsx",
+      "source": ["src/screens/chat/ChatScreen.tsx"],
+      "parts": [
+        {"part": {"kind": "model", "label": "聊天模型"}, "source": ["src/screens/chat/ChatScreen.tsx", 2290]},
+        {"part": {"kind": "banner", "label": "模型限时优惠", "variant": "reward", "detail": "对应模型卡的价格、优惠和倒计时。"}, "source": ["src/screens/chat/modelOffers/ModelOfferNotice.tsx"]},
+        {"part": {"kind": "messages", "label": "聊天消息、等待与输入", "items": ["你也在等那班船吗？"], "detail": "海风吹动了码头的灯。"}, "source": ["src/screens/chat/ChatScreen.tsx", 1638], "related": ["YTopBar", "YSlider"]},
+        {"part": {"kind": "sheet", "label": "会话管理", "items": ["历史记录", "新建聊天", "举报会话"], "variant": "model"}, "source": ["src/screens/chat/ChatSessionActions.tsx"]},
+        {"part": {"kind": "slider", "label": "聊天字号"}, "source": ["src/screens/chat/ChatBasicSettingsSheet.tsx", 37]},
+        {"part": {"kind": "sheet", "label": "聊天设置", "items": ["默认气泡", "背景图上使用半透明气泡"], "variant": "model"}, "source": ["src/screens/chat/ChatScreen.tsx", 2217]},
+        {"part": {"kind": "sheet", "label": "添加内容或发起通话", "items": ["生成图片", "语音通话", "更换人设"]}, "source": ["src/screens/chat/ChatScreen.tsx", 2231]},
+        {"part": {"kind": "sheet", "label": "消息反馈", "items": ["回复不符合预期", "有重复内容", "其他反馈"]}, "source": ["src/screens/chat/ChatScreen.tsx", 2240]},
+        {"part": {"kind": "sheet", "label": "Treats 与生成确认", "items": ["查看余额", "确认消耗", "前往充值"], "variant": "model"}, "source": ["src/screens/chat/ChatScreen.tsx", 2252], "related": ["YCreditPackCard", "YPlanCard"]},
+        {"part": {"kind": "sheet", "label": "语音通话确认", "items": ["确认发起语音通话", "稍后再说"], "variant": "model"}, "source": ["src/screens/chat/ChatCallConfirmSheet.tsx"]},
+        {"part": {"kind": "share", "label": "分享聊天内容"}, "source": ["src/screens/chat/ChatScreen.tsx", 2239]},
+        {"part": {"kind": "banner", "label": "Treats 余额不足", "items": ["查看余额"], "variant": "warning", "detail": "余额将影响需要 Treats 的操作。"}, "source": ["src/screens/chat/ChatScreen.tsx", 1880]}
+      ],
+      "states": ["加载历史", "角色与用户气泡", "旁白与心理", "等待回复", "流式回复", "语音录入", "模型与新会话", "设置与发送", "发送失败", "反馈与分享", "余额与生成确认"]
+    },
+    {
+      "id": "live-call",
+      "title": "语音通话",
+      "group": "discovery",
+      "kind": "screen",
+      "route": "app/chat/live-call.tsx",
+      "source": ["src/screens/chat/LiveCallView.tsx"],
+      "shell": "full",
+      "note": "通话画面可交互预览。实时音频与余额检查由 App 的通话宿主管理。",
+      "parts": [
+        {"part": {"kind": "call", "label": "实时语音通话", "items": ["月光旅人"]}, "source": ["src/screens/chat/LiveCallView.tsx", 137]},
+        {"part": {"kind": "sheet", "label": "通话余额提示", "items": ["继续通话", "查看 Treats 余额"], "variant": "model"}, "source": ["src/screens/chat/ChatCreditsSheet.tsx", 6]}
+      ],
+      "states": ["连接中", "通话中", "麦克风关闭", "扬声器开启", "挂断", "失败"]
+    },
+    {
+      "id": "chat-report",
+      "title": "举报聊天",
+      "group": "discovery",
+      "kind": "screen",
+      "route": "app/chat/report.tsx",
+      "source": ["src/screens/chat/ChatReportScreen.tsx"],
+      "footer": "提交举报",
+      "parts": [
+        {"part": {"kind": "selection", "label": "举报原因", "items": ["不当内容", "骚扰", "其他问题"]}, "source": ["src/screens/chat/ChatReportScreen.tsx", 169]},
+        {"part": {"kind": "fields", "label": "补充说明", "items": ["举报理由"]}, "source": ["src/screens/chat/ChatReportScreen.tsx", 176]},
+        {"part": {"kind": "uploads", "label": "证据附件"}, "source": ["src/screens/chat/ChatReportScreen.tsx", 191]}
+      ],
+      "states": ["原因选择", "输入校验", "附件预览与移除", "提交中", "失败"]
+    },
+    {
+      "id": "featured",
+      "title": "精选短剧流",
+      "group": "social",
+      "kind": "screen",
+      "route": "app/(tabs)/featured.tsx",
+      "source": ["src/screens/FeedScreen.tsx"],
+      "shell": "tab",
+      "parts": [
+        {"part": {"kind": "media", "label": "竖版精选内容", "items": ["星砂纪事", "雾岛来信"], "variant": "drama", "detail": "精选互动短剧"}, "source": ["src/screens/FeedScreen.tsx", 856]},
+        {"part": {"kind": "share", "label": "分享精选内容"}, "source": ["src/screens/FeedScreen.tsx", 634]},
+        {"part": {"kind": "comments", "label": "剧情讨论"}, "source": ["src/screens/FeedScreen.tsx", 618]}
+      ],
+      "states": ["首屏加载", "竖滑切换", "视频播放", "继续观看", "分享", "末尾分页"]
+    },
+    {
+      "id": "feed-link",
+      "title": "作品深链加载页",
+      "group": "social",
+      "kind": "screen",
+      "route": "app/feed/[id].tsx",
+      "source": ["app/feed/[id].tsx"],
+      "shell": "full",
+      "note": "这是入口过渡页。App 根据内容类型解析到真正的播放页。",
+      "parts": [
+        {"part": {"kind": "host", "label": "正在打开作品", "variant": "debug", "detail": "解析后连接短剧、游戏详情或游戏宿主。"}, "source": ["app/feed/[id].tsx", 94]}
+      ],
+      "states": ["链接解析中", "跳向短剧", "跳向游戏", "内容不可用时回发现"]
+    },
+    {
+      "id": "messages",
+      "title": "消息",
+      "group": "social",
+      "kind": "screen",
+      "route": "app/(tabs)/messages.tsx",
+      "source": ["src/screens/chat/MessagesScreen.tsx"],
+      "shell": "tab",
+      "parts": [
+        {"part": {"kind": "tabs", "label": "聊天与通知", "items": ["聊天", "通知"], "variant": "segment"}, "source": ["src/screens/chat/MessagesScreen.tsx", 298]},
+        {"part": {"kind": "inbox", "label": "会话与通知列表", "items": ["月光旅人", "海风"], "variant": "mixed"}, "source": ["src/screens/chat/MessagesScreen.tsx", 219]},
+        {"part": {"kind": "dialog", "label": "带图通知弹窗", "items": ["查看通知"], "detail": "新的互动活动已开放。"}, "source": ["src/screens/chat/MessagesScreen.tsx", 325]}
+      ],
+      "states": ["聊天与通知页签", "未读", "时间", "空态", "骨架", "通知弹窗", "滑动管理"]
+    },
+    {
+      "id": "notifications",
+      "title": "系统消息",
+      "group": "social",
+      "kind": "screen",
+      "route": "app/notification-system.tsx",
+      "source": ["src/features/notifications/NotificationScreens.tsx", 18],
+      "parts": [
+        {"part": {"kind": "inbox", "label": "系统消息列表", "variant": "system"}, "source": ["src/features/notifications/NotificationScreens.tsx", 32]},
+        {"part": {"kind": "confirm", "label": "删除通知", "items": ["删除", "取消"], "variant": "danger"}, "source": ["src/features/notifications/NotificationSwipeableRow.tsx", 10]}
+      ],
+      "states": ["列表加载", "已读和未读", "错误重试", "空列表", "滑动删除"]
+    },
+    {
+      "id": "notification-detail",
+      "title": "通知详情",
+      "group": "social",
+      "kind": "screen",
+      "route": "app/notification-detail.tsx",
+      "source": ["src/features/notifications/NotificationScreens.tsx", 37],
+      "parts": [
+        {"part": {"kind": "detail", "label": "系统通知", "items": ["发现新的互动故事", "活动通知"], "detail": "新的故事已经上线。"}, "source": ["src/features/notifications/NotificationScreens.tsx", 76]},
+        {"part": {"kind": "banner", "label": "通知操作反馈", "detail": "操作失败时显示反馈与重试。"}, "source": ["src/features/notifications/NotificationScreens.tsx", 79]},
+        {"part": {"kind": "actions", "label": "通知操作", "items": ["查看详情"]}, "source": ["src/features/notifications/NotificationScreens.tsx", 80]}
+      ],
+      "states": ["通知加载", "内容", "行动入口", "打开失败"]
+    },
+    {
+      "id": "following",
+      "title": "关注列表",
+      "group": "social",
+      "kind": "screen",
+      "route": "app/following.tsx",
+      "source": ["src/screens/FollowingScreen.tsx"],
+      "parts": [
+        {"part": {"kind": "rows", "label": "正在关注", "items": ["月光旅人", "海风", "森林信使"], "variant": "follow", "detail": "互动内容创作者"}, "source": ["src/screens/FollowingScreen.tsx", 38]}
+      ],
+      "states": ["头像列表", "关注与取消", "空态"]
+    },
+    {
+      "id": "author",
+      "title": "公开作者主页",
+      "group": "create",
+      "kind": "screen",
+      "route": "app/creator/author/[userId].tsx",
+      "source": ["src/screens/chat/creator/AuthorProfileScreen.tsx"],
+      "parts": [
+        {"part": {"kind": "identity", "label": "公开作者", "items": ["海风", "作者资料"], "variant": "author", "detail": "给互动剧情写封信。"}, "source": ["src/screens/chat/creator/AuthorProfileScreen.tsx", 86]},
+        {"part": {"kind": "cards", "label": "作者的角色", "items": ["月光旅人", "星砂使者"], "variant": "character", "detail": "已公开"}, "source": ["src/screens/chat/creator/AuthorProfileScreen.tsx", 110]},
+        {"part": {"kind": "sheet", "label": "作者更多操作", "items": ["举报作者"]}, "source": ["src/screens/chat/creator/AuthorProfileScreen.tsx", 82]}
+      ],
+      "states": ["资料背景", "头像与身份", "关注", "角色列表", "骨架和空态"]
+    },
+    {
+      "id": "creator",
+      "title": "游戏创作者主页",
+      "group": "create",
+      "kind": "screen",
+      "route": "app/creator/[id].tsx",
+      "source": ["src/screens/CreatorScreen.tsx"],
+      "parts": [
+        {"part": {"kind": "identity", "label": "游戏创作者", "items": ["月光旅人", "发布者"], "variant": "author", "detail": "互动小故事与冒险游戏。"}, "source": ["src/screens/CreatorScreen.tsx", 65]},
+        {"part": {"kind": "cards", "label": "已发布游戏", "items": ["雾岛来信", "星砂纪事"], "variant": "game", "detail": "可游玩"}, "source": ["src/screens/CreatorScreen.tsx", 145]},
+        {"part": {"kind": "sheet", "label": "作者操作", "items": ["查看公开资料", "分享作者"]}, "source": ["src/screens/CreatorScreen.tsx", 58]}
+      ],
+      "states": ["资料", "统计", "关注", "封面列表", "更多操作"]
+    },
+    {
+      "id": "owned-character",
+      "title": "我的角色详情",
+      "group": "create",
+      "kind": "screen",
+      "route": "app/creator/character/[id].tsx",
+      "source": ["src/screens/chat/creator/OwnedCharacterDetailScreen.tsx"],
+      "shell": "detail",
+      "footer": "编辑角色",
+      "parts": [
+        {"part": {"kind": "detail", "label": "角色内容预览", "items": ["月光旅人", "角色详情"], "variant": "poster"}, "source": ["src/screens/chat/creator/OwnedCharacterDetailScreen.tsx", 54]},
+        {"part": {"kind": "notice", "label": "作品状态", "detail": "可展示草稿、审核与已发布状态。"}, "source": ["src/screens/chat/creator/OwnedCharacterDetailScreen.tsx", 66]},
+        {"part": {"kind": "identity", "label": "作者资料", "items": ["我", "角色作者"]}, "source": ["src/screens/chat/creator/OwnedCharacterDetailScreen.tsx", 68]}
+      ],
+      "states": ["内容加载", "无权限或空态", "审核状态", "编辑入口"]
+    },
+    {
+      "id": "creator-edit",
+      "title": "角色创作与编辑",
+      "group": "create",
+      "kind": "screen",
+      "route": "app/creator/edit.tsx",
+      "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx"],
+      "footer": "继续",
+      "secondary": "保存草稿",
+      "parts": [
+        {"part": {"kind": "fields", "label": "角色名称", "items": ["角色名称"], "variant": "required", "step": 0}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 874]},
+        {"part": {"kind": "selection", "label": "单人或多人角色", "items": ["单人角色", "多人角色"], "step": 0}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 876]},
+        {"part": {"kind": "selection", "label": "角色基本选项", "items": ["女性", "男性", "非二元", "不指定"], "step": 1}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 879]},
+        {"part": {"kind": "fields", "label": "角色年龄", "items": ["年龄"], "step": 1}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 881]},
+        {"part": {"kind": "selection", "label": "内容语言", "items": ["简体中文", "English"], "step": 1}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 893]},
+        {"part": {"kind": "uploads", "label": "角色封面", "detail": "横版或竖版封面，裁剪后预览。", "step": 2}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 899]},
+        {"part": {"kind": "uploads", "label": "角色头像", "step": 2}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 899]},
+        {"part": {"kind": "uploads", "label": "开场图与图库", "step": 2}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 899]},
+        {"part": {"kind": "fields", "label": "角色介绍", "items": ["角色简介"], "variant": "required", "step": 3}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 902]},
+        {"part": {"kind": "tags", "label": "角色标签", "items": ["奇幻", "剧情", "冒险"], "step": 3}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 908]},
+        {"part": {"kind": "fields", "label": "故事设定", "items": ["人设描述", "回复风格描述", "示例对话"], "step": 4}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 924]},
+        {"part": {"kind": "fields", "label": "开场与分支", "items": ["开场描述", "可选剧情分支"], "step": 5}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 928]},
+        {"part": {"kind": "voices", "label": "单人角色声音", "items": ["清朗", "低沉"], "detail": "选择与试听各有独立操作。", "step": 6}, "source": ["src/screens/chat/creator/CharacterVoiceCard.tsx", 11]},
+        {"part": {"kind": "tags", "label": "多人角色成员", "items": ["月光旅人", "海岸来客"], "step": 6}, "source": ["src/screens/chat/creator/CharacterMemberCard.tsx"]},
+        {"part": {"kind": "detail", "label": "封面与设定预览", "items": ["月光旅人", "预览角色展示"], "step": 7}, "source": ["src/screens/chat/creator/CharacterEditorReview.tsx"]},
+        {"part": {"kind": "notice", "label": "创作审核状态", "detail": "核对封面、角色成员、开场文案和权限。", "step": 7}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 969]},
+        {"part": {"kind": "confirm", "label": "保存草稿并离开", "items": ["保存草稿", "继续编辑"]}, "source": ["src/screens/chat/creator/CharacterEditorScreen.tsx", 859]}
+      ],
+      "states": ["创作步骤", "表单校验", "素材上传裁剪", "成员", "声音选择", "Markdown 开场", "审核", "保存", "返回"],
+      "steps": ["角色身份", "基本信息", "图素", "角色介绍", "角色设定", "开场内容", "声音或成员", "检查与提交"],
+      "completeLabel": "提交审核"
+    },
+    {
+      "id": "creator-report",
+      "title": "举报作者或角色",
+      "group": "create",
+      "kind": "screen",
+      "route": "app/creator/report.tsx",
+      "source": ["src/screens/chat/creator/CreatorReportScreen.tsx"],
+      "footer": "提交",
+      "parts": [
+        {"part": {"kind": "selection", "label": "举报原因", "items": ["不当内容", "侵犯权益", "其他"]}, "source": ["src/screens/chat/creator/CreatorReportScreen.tsx", 65]},
+        {"part": {"kind": "fields", "label": "举报说明", "items": ["补充理由"]}, "source": ["src/screens/chat/creator/CreatorReportScreen.tsx", 68]}
+      ],
+      "states": ["选择原因", "说明", "提交状态与错误"]
+    },
+    {
+      "id": "personas",
+      "title": "我的人设",
+      "group": "create",
+      "kind": "screen",
+      "route": "app/user-personas.tsx",
+      "source": ["src/features/userPersonas/PersonaFlow.tsx"],
+      "footer": "新建人设",
+      "parts": [
+        {"part": {"kind": "personas", "label": "我的人设卡", "items": ["月光旅人", "海岸来客"], "detail": "把沿途见到的故事写进信里。"}, "source": ["src/features/userPersonas/PersonaFlow.tsx", 248]},
+        {"part": {"kind": "fullscreen", "label": "新增或编辑人设", "items": ["旅行者", "守望者", "故事讲述者"]}, "source": ["src/features/userPersonas/PersonaFlow.tsx", 275]},
+        {"part": {"kind": "fields", "label": "人设字段", "items": ["名称", "身份", "职业", "人设描述"]}, "source": ["src/features/userPersonas/PersonaEditor.tsx", 183]},
+        {"part": {"kind": "uploads", "label": "人设头像"}, "source": ["src/features/userPersonas/PersonaEditor.tsx", 59]},
+        {"part": {"kind": "confirm", "label": "保存人设修改", "items": ["保存", "放弃修改"]}, "source": ["src/features/userPersonas/PersonaUnsavedDialog.tsx", 11]},
+        {"part": {"kind": "sheet", "label": "切换聊天人设", "items": ["默认人设", "月光旅人", "海岸来客"]}, "source": ["src/features/userPersonas/PersonaFlow.tsx", 356]}
+      ],
+      "states": ["列表加载", "空态", "默认人设", "预览", "编辑", "裁剪", "未保存确认", "聊天选择", "会员上限"]
+    },
+    {
+      "id": "login",
+      "title": "登录方式",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/(auth)/login.tsx",
+      "source": ["app/(auth)/login.tsx"],
+      "shell": "full",
+      "note": "社交账号与平台授权由 App 管理。",
+      "parts": [
+        {"part": {"kind": "media", "label": "登录封面氛围", "items": ["Yoroll"], "variant": "login", "detail": "发现和体验互动故事。"}, "source": ["app/(auth)/login.tsx", 148]},
+        {"part": {"kind": "actions", "label": "登录方式", "items": ["使用邮箱", "使用 Apple 登录", "使用 Google 登录"]}, "source": ["app/(auth)/login.tsx", 180]},
+        {"part": {"kind": "section", "label": "服务条款与隐私政策", "detail": "登录页的可访问入口。"}, "source": ["app/(auth)/login.tsx"]}
+      ],
+      "states": ["封面背景", "邮箱与第三方入口", "授权中", "失败"]
+    },
+    {
+      "id": "login-email",
+      "title": "邮箱登录",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/(auth)/login-email.tsx",
+      "source": ["app/(auth)/login-email.tsx"],
+      "footer": "登录",
+      "parts": [
+        {"part": {"kind": "fields", "label": "登录信息", "items": ["邮箱", "密码"], "variant": "required"}, "source": ["app/(auth)/login-email.tsx"]},
+        {"part": {"kind": "actions", "label": "找回入口", "items": ["忘记密码", "创建账号"]}, "source": ["app/(auth)/login-email.tsx"]}
+      ],
+      "states": ["输入", "密码显隐", "校验", "提交加载", "登录失败"]
+    },
+    {
+      "id": "register",
+      "title": "创建账号",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/(auth)/register.tsx",
+      "source": ["app/(auth)/register.tsx"],
+      "footer": "创建账号",
+      "parts": [
+        {"part": {"kind": "fields", "label": "注册资料", "items": ["邮箱", "验证码", "密码"], "variant": "required"}, "source": ["app/(auth)/register.tsx", 167]},
+        {"part": {"kind": "actions", "label": "验证码操作", "items": ["发送验证码"]}, "source": ["app/(auth)/register.tsx"]},
+        {"part": {"kind": "section", "label": "条款与隐私", "detail": "创建账号前可查看条款和隐私政策。"}, "source": ["app/(auth)/register.tsx"]}
+      ],
+      "states": ["邮箱校验", "填写验证码", "发送倒计时", "显示密码", "提交与错误"]
+    },
+    {
+      "id": "forgot-password",
+      "title": "找回密码",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/(auth)/forgot-password.tsx",
+      "source": ["app/(auth)/forgot-password.tsx"],
+      "footer": "继续",
+      "parts": [
+        {"part": {"kind": "fields", "label": "邮箱验证", "items": ["邮箱", "验证码"], "variant": "required", "step": 0}, "source": ["app/(auth)/forgot-password.tsx"]},
+        {"part": {"kind": "actions", "label": "验证码操作", "items": ["发送验证码"], "step": 0}, "source": ["app/(auth)/forgot-password.tsx", 192]},
+        {"part": {"kind": "fields", "label": "重设密码", "items": ["新密码"], "variant": "required", "step": 1}, "source": ["app/(auth)/forgot-password.tsx"]}
+      ],
+      "states": ["验证邮箱", "发送与验证验证码", "重设密码", "结果", "错误"],
+      "steps": ["验证邮箱", "重设密码"],
+      "completeLabel": "重设密码"
+    },
+    {
+      "id": "me",
+      "title": "我的",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/(tabs)/me.tsx",
+      "source": ["src/screens/MeScreen.tsx"],
+      "shell": "tab",
+      "parts": [
+        {"part": {"kind": "identity", "label": "资料与身份", "items": ["月光旅人", "个人资料与关注"], "detail": "互动故事创作者。"}, "source": ["src/screens/MeScreen.tsx", 137]},
+        {"part": {"kind": "plans", "label": "会员入口", "items": ["会员权益", "升级入口"]}, "source": ["src/screens/MeScreen.tsx", 166]},
+        {"part": {"kind": "balance", "label": "Treats", "items": ["1,280"], "detail": "进入任务中心或会员权益。"}, "source": ["src/screens/MeScreen.tsx", 226]},
+        {"part": {"kind": "rows", "label": "个人入口", "items": ["设置", "邀请好友", "兑换码", "任务中心"]}, "source": ["src/screens/MeScreen.tsx", 241]},
+        {"part": {"kind": "tabs", "label": "内容分类", "items": ["最近玩过", "收藏", "创作"], "variant": "segment"}, "source": ["src/components/ProfileContentTabs.tsx", 39], "related": ["YFilterChip"]},
+        {"part": {"kind": "cards", "label": "最近游玩", "items": ["雾岛来信", "星砂纪事"], "variant": "profile", "detail": "最近游玩"}, "source": ["src/screens/MeScreen.tsx", 284]},
+        {"part": {"kind": "personas", "label": "我的创作", "items": ["海岸来客", "月光旅人"], "variant": "owned"}, "source": ["src/components/MyCharacterCard.tsx", 12]},
+        {"part": {"kind": "uploads", "label": "修改资料背景", "detail": "选择图片并交由 App 的裁剪工具。"}, "source": ["src/screens/MeScreen.tsx", 290]}
+      ],
+      "states": ["资料头", "会员与 Treats", "最近玩过", "收藏", "创作和状态筛选", "背景裁剪", "登录态"]
+    },
+    {
+      "id": "edit-profile",
+      "title": "编辑资料",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/edit-profile.tsx",
+      "source": ["app/edit-profile.tsx"],
+      "footer": "保存修改",
+      "parts": [
+        {"part": {"kind": "identity", "label": "当前头像与资料", "items": ["月光旅人", "个人资料"]}, "source": ["src/screens/chat/creator/CreatorProfileFields.tsx", 109]},
+        {"part": {"kind": "uploads", "label": "更换头像或背景", "detail": "图片预览与移除。"}, "source": ["src/screens/chat/creator/CreatorProfileFields.tsx", 106]},
+        {"part": {"kind": "fields", "label": "基本资料", "items": ["昵称", "个人简介", "邮箱"]}, "source": ["app/edit-profile.tsx", 194]},
+        {"part": {"kind": "fullscreen", "label": "编辑资料偏好", "items": ["互动故事", "角色对话", "轻松小游戏"]}, "source": ["app/edit-profile.tsx", 218]}
+      ],
+      "states": ["头像预览", "字段说明", "偏好编辑", "加载", "输入校验", "保存"]
+    },
+    {
+      "id": "settings",
+      "title": "设置",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/settings.tsx",
+      "source": ["src/screens/SettingsScreen.tsx"],
+      "parts": [
+        {"part": {"kind": "rows", "label": "账户与偏好", "items": ["编辑资料", "修改密码", "语言", "反馈", "条款与隐私"]}, "source": ["src/screens/SettingsScreen.tsx", 139]},
+        {"part": {"kind": "sheet", "label": "兑换码与邀请", "items": ["兑换码", "邀请记录"]}, "source": ["src/screens/SettingsScreen.tsx", 160]},
+        {"part": {"kind": "confirm", "label": "退出登录", "items": ["退出", "取消"]}, "source": ["src/screens/SettingsScreen.tsx", 217]},
+        {"part": {"kind": "rows", "label": "账户操作", "items": ["注销账号"]}, "source": ["src/screens/SettingsScreen.tsx", 246]}
+      ],
+      "states": ["分组列表", "尾部状态与前往", "兑换入口", "退出确认", "注销入口"]
+    },
+    {
+      "id": "change-password",
+      "title": "修改密码",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/change-password.tsx",
+      "source": ["app/change-password.tsx"],
+      "footer": "保存密码",
+      "parts": [
+        {"part": {"kind": "fields", "label": "修改密码", "items": ["当前密码", "新密码", "确认密码"], "variant": "required"}, "source": ["app/change-password.tsx"]}
+      ],
+      "states": ["密码显隐", "校验", "提交中", "成功和错误"]
+    },
+    {
+      "id": "delete-account",
+      "title": "注销账号",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/delete-account.tsx",
+      "source": ["app/delete-account.tsx"],
+      "parts": [
+        {"part": {"kind": "banner", "label": "注销影响", "variant": "warning", "detail": "查看注销影响，再进入身份验证。", "step": 0}, "source": ["app/delete-account.tsx"]},
+        {"part": {"kind": "selection", "label": "验证方式", "items": ["当前密码", "邮箱验证码", "平台账号验证"], "step": 1}, "source": ["app/delete-account.tsx"]},
+        {"part": {"kind": "fields", "label": "身份确认", "items": ["密码或验证码"], "step": 1}, "source": ["app/delete-account.tsx"]},
+        {"part": {"kind": "confirm", "label": "确认注销", "items": ["注销账号", "取消"], "variant": "danger", "detail": "确认后继续账号注销流程。", "step": 1}, "source": ["app/delete-account.tsx"]}
+      ],
+      "states": ["注销影响", "验证方式", "验证码或密码", "危险确认", "处理中"],
+      "steps": ["注销影响", "身份确认"],
+      "footer": "继续验证",
+      "completeLabel": "核对身份"
+    },
+    {
+      "id": "language",
+      "title": "语言",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/language.tsx",
+      "source": ["src/screens/LanguageScreen.tsx"],
+      "parts": [
+        {"part": {"kind": "selection", "label": "显示语言", "items": ["跟随系统", "简体中文", "English", "日本語"]}, "source": ["src/screens/LanguageScreen.tsx", 75]}
+      ],
+      "states": ["语言列表", "当前选中", "切换后更新"]
+    },
+    {
+      "id": "feedback",
+      "title": "反馈",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/feedback.tsx",
+      "source": ["src/screens/feedback/FeedbackScreen.tsx"],
+      "footer": "提交反馈",
+      "parts": [
+        {"part": {"kind": "selection", "label": "反馈类别", "items": ["体验建议", "功能问题", "其他"]}, "source": ["src/screens/feedback/FeedbackScreen.tsx", 206]},
+        {"part": {"kind": "fields", "label": "反馈描述", "items": ["问题描述"]}, "source": ["src/screens/feedback/FeedbackScreen.tsx", 210]},
+        {"part": {"kind": "uploads", "label": "补充截图或视频"}, "source": ["src/screens/feedback/FeedbackScreen.tsx", 227]}
+      ],
+      "states": ["选择类别", "描述", "附件新增移除", "视频预览", "提交及反馈"]
+    },
+    {
+      "id": "legal",
+      "title": "条款与隐私",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/legal.tsx",
+      "source": ["app/legal.tsx"],
+      "note": "协议正文由 App 根据地区和语言提供。",
+      "parts": [
+        {"part": {"kind": "host", "label": "条款正文", "detail": "网页文档容器与加载状态。"}, "source": ["app/legal.tsx"]}
+      ],
+      "states": ["标题", "页面加载", "滚动阅读", "返回"]
+    },
+    {
+      "id": "recovery",
+      "title": "会话恢复",
+      "group": "account",
+      "kind": "screen",
+      "route": "app/session-recovery.tsx",
+      "source": ["app/session-recovery.tsx"],
+      "shell": "full",
+      "parts": [
+        {"part": {"kind": "section", "label": "需要重新登录", "detail": "当前会话已失效。登录后可继续使用。"}, "source": ["app/session-recovery.tsx", 29]},
+        {"part": {"kind": "actions", "label": "返回登录", "items": ["重新登录"]}, "source": ["app/session-recovery.tsx"]}
+      ],
+      "states": ["会话过期提示", "品牌装饰", "重新登录"]
+    },
+    {
+      "id": "membership",
+      "title": "会员权益",
+      "group": "purchase",
+      "kind": "screen",
+      "route": "app/membership.tsx",
+      "source": ["src/screens/MembershipScreen.tsx"],
+      "footer": "继续订阅",
+      "parts": [
+        {"part": {"kind": "plans", "label": "Plus / Pro 权益对比", "items": ["Plus", "Pro"]}, "source": ["src/screens/membership/MembershipOffers.tsx", 127]},
+        {"part": {"kind": "plans", "label": "选择订阅周期", "items": ["按年订阅", "按月订阅"], "variant": "cycle"}, "source": ["src/screens/membership/MembershipOffers.tsx", 225]},
+        {"part": {"kind": "banner", "label": "会员升级", "items": ["查看权益"], "variant": "reward", "detail": "会员档位与可领取的权益。"}, "source": ["src/screens/membership/MembershipUpgradeBanner.tsx", 28]},
+        {"part": {"kind": "sheet", "label": "购买确认与恢复", "items": ["继续订阅", "恢复购买"]}, "source": ["src/screens/MembershipScreen.tsx", 759]}
+      ],
+      "states": ["会员视觉", "权益对比", "档位", "月付与年付", "折扣价格", "价格加载", "当前已订阅", "购买状态"]
+    },
+    {
+      "id": "treat-packs",
+      "title": "Treats 商城",
+      "group": "purchase",
+      "kind": "screen",
+      "route": "app/treat-packs.tsx",
+      "source": ["src/screens/MembershipScreen.tsx", 111],
+      "note": "价格与金额是示例。正式购买与恢复由 App 接入 IAP。",
+      "parts": [
+        {"part": {"kind": "balance", "label": "Treats 余额", "items": ["1,280"], "detail": "可用于聊天、模型与互动剧情。"}, "source": ["src/screens/membership/TreatBalanceCard.tsx", 17]},
+        {"part": {"kind": "packs", "label": "充值与加赠", "items": ["320", "1,000", "2,600", "6,500"]}, "source": ["src/screens/membership/CreditPackRow.tsx", 43]},
+        {"part": {"kind": "banner", "label": "新用户加赠", "variant": "reward", "detail": "图素、金额、角标和促销价格。"}, "source": ["src/screens/membership/CreditPackRow.tsx", 49]},
+        {"part": {"kind": "rows", "label": "账户记录", "items": ["Treats 流水"]}, "source": ["src/screens/MembershipScreen.tsx", 826]}
+      ],
+      "states": ["余额加载", "价格占位", "正常档位", "首充加赠", "推荐", "价格失败重试", "购买结果"]
+    },
+    {
+      "id": "credit-history",
+      "title": "Treats 流水",
+      "group": "purchase",
+      "kind": "screen",
+      "route": "app/credit-transactions.tsx",
+      "source": ["src/screens/credits/CreditTransactionsScreen.tsx"],
+      "parts": [
+        {"part": {"kind": "tabs", "label": "积分筛选", "items": ["全部", "收入", "支出"], "variant": "segment"}, "source": ["src/screens/credits/CreditTransactionsScreen.tsx", 85]},
+        {"part": {"kind": "rows", "label": "流水明细", "items": ["任务奖励", "聊天消耗"], "variant": "history", "detail": "示例记录"}, "source": ["src/screens/credits/CreditTransactionsScreen.tsx", 60]}
+      ],
+      "states": ["全部与分类", "加减金额", "加载更多", "空态", "错误重试"]
+    },
+    {
+      "id": "tasks",
+      "title": "任务中心",
+      "group": "purchase",
+      "kind": "screen",
+      "route": "app/tasks.tsx",
+      "source": ["src/screens/tasks/TaskCenterScreen.tsx"],
+      "parts": [
+        {"part": {"kind": "balance", "label": "Treats 余额", "items": ["1,280"]}, "source": ["src/screens/tasks/TaskCenterScreen.tsx", 170]},
+        {"part": {"kind": "checkin", "label": "每日签到", "items": ["+10", "+20", "+30", "+40", "+50", "+60", "+70"], "detail": "今日可领取，次日刷新。"}, "source": ["src/screens/tasks/TaskCenterScreen.tsx", 193]},
+        {"part": {"kind": "tasks", "label": "每日任务", "items": ["完成三次对话", "体验互动短剧"], "detail": "完成后可领 Treats"}, "source": ["src/screens/tasks/TaskCenterScreen.tsx", 219]},
+        {"part": {"kind": "tasks", "label": "新手与社交任务", "items": ["选择兴趣偏好", "邀请一位好友"]}, "source": ["src/screens/tasks/TaskCenterScreen.tsx", 224]},
+        {"part": {"kind": "sheet", "label": "输入兑换码", "items": ["输入兑换码", "查看邀请规则"]}, "source": ["src/referrals/RedemptionSheet.tsx"]},
+        {"part": {"kind": "toggles", "label": "提醒", "items": ["提醒我签到"]}, "source": ["src/components/DailyCheckinDialog.tsx"]}
+      ],
+      "states": ["加载", "已领取与待领取", "今日签到", "邀请", "兑换", "刷新", "错误与为空"]
+    },
+    {
+      "id": "drama",
+      "title": "短剧播放",
+      "group": "media",
+      "kind": "screen",
+      "route": "app/short-drama.tsx",
+      "source": ["src/screens/ShortDramaScreen.tsx"],
+      "shell": "full",
+      "note": "互动预览还原操作层。视频流和剧情引擎由 App 实现。",
+      "parts": [
+        {"part": {"kind": "player", "label": "互动短剧播放器", "variant": "drama"}, "source": ["src/screens/ShortDramaScreen.tsx", 3278]},
+        {"part": {"kind": "choices", "label": "限时剧情选择", "items": ["去车站", "留在海边", "向前走"]}, "source": ["src/screens/ShortDramaScreen.tsx", 2964]},
+        {"part": {"kind": "episodes", "label": "选集与分支", "items": ["01", "02", "03", "04"]}, "source": ["src/screens/ShortDramaScreen.tsx", 1225]},
+        {"part": {"kind": "sheet", "label": "播放速度", "items": ["0.75 倍", "1.0 倍", "1.5 倍", "2.0 倍"], "variant": "drama"}, "source": ["src/screens/ShortDramaScreen.tsx", 1273]},
+        {"part": {"kind": "sheet", "label": "字幕语言", "items": ["自动", "简体中文", "English", "关闭字幕"], "variant": "drama"}, "source": ["src/screens/ShortDramaScreen.tsx", 1283]},
+        {"part": {"kind": "sheet", "label": "短剧信息", "items": ["剧集简介", "人物与创作者"], "variant": "drama"}, "source": ["src/screens/ShortDramaScreen.tsx", 1263]},
+        {"part": {"kind": "sheet", "label": "选择剧情走向", "items": ["走进车站", "留在海边"], "variant": "drama"}, "source": ["src/screens/ShortDramaScreen.tsx", 3342]},
+        {"part": {"kind": "banner", "label": "剧情反馈", "detail": "选择完成、限时引导和操作反馈。"}, "source": ["src/screens/ShortDramaScreen.tsx", 3169]},
+        {"part": {"kind": "dialog", "label": "会员解锁", "items": ["查看会员权益"], "variant": "paywall", "detail": "解锁后可以继续观看。"}, "source": ["src/screens/ShortDramaScreen.tsx", 1246]},
+        {"part": {"kind": "ending", "label": "结局覆盖层", "detail": "查看本集结束、故事结束和失败结局。"}, "source": ["src/screens/ShortDramaEndingOverlay.tsx", 43], "related": ["YEpisodeGrid"]},
+        {"part": {"kind": "share", "label": "分享短剧"}, "source": ["src/screens/ShortDramaScreen.tsx", 3302]}
+      ],
+      "states": ["播放暂停", "字幕倍速", "播放进度", "横屏", "选集", "分支", "QTE", "会员解锁", "完结推荐"]
+    },
+    {
+      "id": "drama-detail",
+      "title": "短剧详情",
+      "group": "media",
+      "kind": "screen",
+      "route": "app/short-drama-detail.tsx",
+      "source": ["src/screens/ShortDramaDetailScreen.tsx"],
+      "shell": "detail",
+      "footer": "继续观看",
+      "parts": [
+        {"part": {"kind": "detail", "label": "互动短剧", "items": ["星砂纪事", "故事创作者"], "variant": "poster", "detail": "跟随故事做选择，探索不同的结局。"}, "source": ["src/screens/ShortDramaDetailScreen.tsx", 554]},
+        {"part": {"kind": "episodes", "label": "剧集列表", "items": ["第 1 集", "第 2 集", "第 3 集", "第 4 集"]}, "source": ["src/screens/ShortDramaDetailScreen.tsx", 685]},
+        {"part": {"kind": "identity", "label": "短剧人物与作者", "items": ["海风", "创作资料"]}, "source": ["src/screens/ShortDramaDetailScreen.tsx", 644]},
+        {"part": {"kind": "share", "label": "分享短剧详情"}, "source": ["src/screens/ShortDramaDetailScreen.tsx", 784]},
+        {"part": {"kind": "dialog", "label": "会员观看提示", "items": ["查看会员权益"], "variant": "paywall"}, "source": ["src/screens/ShortDramaDetailScreen.tsx", 790]}
+      ],
+      "states": ["详情骨架", "收藏", "分享", "观看进度", "已锁和当前剧集", "会员提示"]
+    },
+    {
+      "id": "webview",
+      "title": "网页内容容器",
+      "group": "media",
+      "kind": "screen",
+      "route": "app/webview.tsx",
+      "source": ["app/webview.tsx"],
+      "note": "正式网页地址与本地桥接在 App 内处理。",
+      "parts": [
+        {"part": {"kind": "host", "label": "网页内容", "detail": "常规顶栏、返回与加载。"}, "source": ["app/webview.tsx"]}
+      ],
+      "states": ["网页加载", "返回", "失败或重试"]
+    },
+    {
+      "id": "activity",
+      "title": "活动内容",
+      "group": "media",
+      "kind": "screen",
+      "route": "app/activity.tsx",
+      "source": ["src/screens/ActivityWebScreen.tsx"],
+      "note": "活动内容由 App 载入。",
+      "parts": [
+        {"part": {"kind": "host", "label": "活动网页", "variant": "capsule", "detail": "站内活动外层容器。"}, "source": ["src/screens/ActivityWebScreen.tsx", 729]},
+        {"part": {"kind": "share", "label": "分享活动"}, "source": ["src/screens/ActivityWebScreen.tsx", 723]}
+      ],
+      "states": ["活动加载", "内容容器", "全屏胶囊", "返回和分享"]
+    },
+    {
+      "id": "global",
+      "title": "全局覆盖层",
+      "group": "shell",
+      "kind": "layout",
+      "route": "app/_layout.tsx",
+      "source": ["app/_layout.tsx"],
+      "parts": [
+        {"part": {"kind": "host", "label": "启动状态", "variant": "debug"}, "source": ["app/_layout.tsx", 315]},
+        {"part": {"kind": "confirm", "label": "地区合规确认", "items": ["同意", "退出"]}, "source": ["src/components/CnConsentScreen.tsx"]},
+        {"part": {"kind": "fullscreen", "label": "首次使用引导", "items": ["互动短剧", "小游戏", "角色对话"], "detail": "偏好设置"}, "source": ["src/onboarding/OnboardingDialog.tsx", 151]},
+        {"part": {"kind": "dialog", "label": "注册奖励", "items": ["领取", "+100"], "variant": "reward", "detail": "首次注册完成后显示奖励确认。"}, "source": ["src/overlays/RegistrationRewardDialog.tsx"]},
+        {"part": {"kind": "banner", "label": "每日签到", "items": ["签到"], "variant": "reward", "detail": "签到入口和奖励状态。"}, "source": ["src/components/DailyCheckinDialog.tsx", 56]},
+        {"part": {"kind": "dialog", "label": "签到奖励确认", "items": ["立即签到", "+30"], "variant": "reward", "detail": "预览签到奖励。"}, "source": ["src/components/DailyCheckinDialog.tsx", 56]},
+        {"part": {"kind": "share", "label": "全局分享菜单"}, "source": ["src/overlays/ShareSheet.tsx"]}
+      ],
+      "states": ["启动", "合规", "全屏引导", "注册奖励", "签到", "分享覆盖层"]
+    },
+    {
+      "id": "call-preview",
+      "title": "通话调试页",
+      "group": "shell",
+      "kind": "debug",
+      "route": "app/dev-call-preview.tsx",
+      "source": ["src/screens/chat/DevelopmentLiveCallPreview.tsx"],
+      "note": "App 开发预览路由。",
+      "parts": [
+        {"part": {"kind": "call", "label": "通话状态预览", "items": ["月光旅人"], "variant": "debug"}, "source": ["src/screens/chat/DevelopmentLiveCallPreview.tsx", 67]},
+        {"part": {"kind": "sheet", "label": "通话余额提示", "items": ["查看余额", "取消"], "variant": "model"}, "source": ["src/screens/chat/DevelopmentLiveCallPreview.tsx", 132]}
+      ],
+      "states": ["连接中", "通话中", "结束", "余额预览"]
+    },
+    {
+      "id": "persona-preview",
+      "title": "人设调试页",
+      "group": "shell",
+      "kind": "debug",
+      "route": "app/persona-dev.tsx",
+      "source": ["src/features/userPersonas/PersonaDevScreen.tsx"],
+      "note": "App 开发预览路由。",
+      "parts": [
+        {"part": {"kind": "personas", "label": "调试人设卡", "items": ["月光旅人", "森林来客"]}, "source": ["src/features/userPersonas/PersonaDevScreen.tsx", 83]},
+        {"part": {"kind": "fullscreen", "label": "预览人设表单", "items": ["旅行者", "故事创作者"]}, "source": ["src/features/userPersonas/PersonaDevScreen.tsx", 43]}
+      ],
+      "states": ["人设卡", "表单", "加载"]
+    },
+    {
+      "id": "unity-preview",
+      "title": "Unity 调试入口",
+      "group": "shell",
+      "kind": "debug",
+      "route": "app/game/index.tsx",
+      "source": ["app/game/index.tsx"],
+      "note": "这是仓库中的宿主调试路由。原生 Unity 在 App 内实际启动。",
+      "parts": [
+        {"part": {"kind": "host", "label": "Unity 状态", "variant": "debug", "detail": "等待宿主就绪，或显示启动失败。"}, "source": ["app/game/index.tsx", 39]},
+        {"part": {"kind": "actions", "label": "Unity 启动操作", "items": ["预览启动按钮"]}, "source": ["app/game/index.tsx", 42]}
+      ],
+      "states": ["等待 Unity", "就绪", "启动", "异常"]
+    },
+    {
+      "id": "auth-stack",
+      "title": "登录注册导航栈",
+      "group": "shell",
+      "kind": "layout",
+      "route": "app/(auth)/_layout.tsx",
+      "source": ["app/(auth)/_layout.tsx"],
+      "children": ["login", "login-email", "register", "forgot-password"],
+      "note": "邮箱子页、注册和找回密码使用从右侧进入的原生导航。"
+    },
+    {
+      "id": "tabs-stack",
+      "title": "底部标签导航",
+      "group": "shell",
+      "kind": "layout",
+      "route": "app/(tabs)/_layout.tsx",
+      "source": ["app/(tabs)/_layout.tsx"],
+      "children": ["home", "discover", "featured", "messages", "me"],
+      "note": "首页、发现、精选、消息和我的共用底部导航。",
+      "parts": [
+        {"part": {"kind": "tabs", "label": "五个一级入口"}, "source": ["app/(tabs)/_layout.tsx", 147], "related": ["YBottomNav"]}
+      ]
+    },
+    {
+      "id": "companion-stack",
+      "title": "伴聊导航栈",
+      "group": "shell",
+      "kind": "layout",
+      "route": "app/companion/_layout.tsx",
+      "source": ["app/companion/_layout.tsx"],
+      "children": ["character", "chat", "author", "creator-edit", "membership", "tasks", "personas", "drama", "drama-detail", "play"],
+      "note": "伴聊详情、独立权益与短剧页共用一套返回栈。"
+    },
+    {
+      "id": "native-intent",
+      "title": "深链入口解析",
+      "group": "shell",
+      "kind": "hook",
+      "route": "app/+native-intent.tsx",
+      "source": ["app/+native-intent.tsx"],
+      "children": ["feed-link", "home"],
+      "note": "入口解析由 Expo Router 调用。"
+    },
+    {
+      "id": "not-found",
+      "title": "未匹配路由",
+      "group": "shell",
+      "kind": "redirect",
+      "route": "app/+not-found.tsx",
+      "source": ["app/+not-found.tsx"],
+      "target": "home",
+      "note": "回到 App 首页。"
+    },
+    {
+      "id": "create-entry",
+      "title": "创作统一入口",
+      "group": "create",
+      "kind": "redirect",
+      "route": "app/creator/index.tsx",
+      "source": ["app/creator/index.tsx"],
+      "target": "creator-edit",
+      "note": "将来源传给角色编辑页。"
+    },
+    {
+      "id": "localized-feed",
+      "title": "带语言的作品深链",
+      "group": "social",
+      "kind": "alias",
+      "route": "app/[locale]/feed/[id].tsx",
+      "source": ["app/[locale]/feed/[id].tsx"],
+      "target": "feed-link"
+    },
+    {
+      "id": "companion-author",
+      "title": "伴聊作者入口",
+      "group": "create",
+      "kind": "alias",
+      "route": "app/companion/author/[userId].tsx",
+      "source": ["app/companion/author/[userId].tsx"],
+      "target": "author"
+    },
+    {
+      "id": "companion-chat",
+      "title": "伴聊会话入口",
+      "group": "discovery",
+      "kind": "alias",
+      "route": "app/companion/chat/[companionId].tsx",
+      "source": ["app/companion/chat/[companionId].tsx"],
+      "target": "chat"
+    },
+    {
+      "id": "companion-create",
+      "title": "伴聊角色编辑入口",
+      "group": "create",
+      "kind": "alias",
+      "route": "app/companion/creator-edit.tsx",
+      "source": ["app/companion/creator-edit.tsx"],
+      "target": "creator-edit"
+    },
+    {
+      "id": "companion-credit",
+      "title": "伴聊 Treats 流水入口",
+      "group": "purchase",
+      "kind": "alias",
+      "route": "app/companion/credit-transactions.tsx",
+      "source": ["app/companion/credit-transactions.tsx"],
+      "target": "credit-history"
+    },
+    {
+      "id": "companion-profile",
+      "title": "伴聊资料编辑入口",
+      "group": "account",
+      "kind": "alias",
+      "route": "app/companion/edit-profile.tsx",
+      "source": ["app/companion/edit-profile.tsx"],
+      "target": "edit-profile"
+    },
+    {
+      "id": "companion-membership",
+      "title": "伴聊会员入口",
+      "group": "purchase",
+      "kind": "alias",
+      "route": "app/companion/membership.tsx",
+      "source": ["app/companion/membership.tsx"],
+      "target": "membership"
+    },
+    {
+      "id": "companion-play",
+      "title": "伴聊游戏播放入口",
+      "group": "home",
+      "kind": "alias",
+      "route": "app/companion/play/[id].tsx",
+      "source": ["app/companion/play/[id].tsx"],
+      "target": "play"
+    },
+    {
+      "id": "companion-drama-detail",
+      "title": "伴聊短剧详情入口",
+      "group": "media",
+      "kind": "alias",
+      "route": "app/companion/short-drama-detail.tsx",
+      "source": ["app/companion/short-drama-detail.tsx"],
+      "target": "drama-detail"
+    },
+    {
+      "id": "companion-drama",
+      "title": "伴聊短剧播放入口",
+      "group": "media",
+      "kind": "alias",
+      "route": "app/companion/short-drama.tsx",
+      "source": ["app/companion/short-drama.tsx"],
+      "target": "drama"
+    },
+    {
+      "id": "companion-tasks",
+      "title": "伴聊任务中心入口",
+      "group": "purchase",
+      "kind": "alias",
+      "route": "app/companion/tasks.tsx",
+      "source": ["app/companion/tasks.tsx"],
+      "target": "tasks"
+    },
+    {
+      "id": "companion-packs",
+      "title": "伴聊 Treats 商城入口",
+      "group": "purchase",
+      "kind": "alias",
+      "route": "app/companion/treat-packs.tsx",
+      "source": ["app/companion/treat-packs.tsx"],
+      "target": "treat-packs"
+    },
+    {
+      "id": "companion-personas",
+      "title": "伴聊人设入口",
+      "group": "create",
+      "kind": "alias",
+      "route": "app/companion/user-personas.tsx",
+      "source": ["app/companion/user-personas.tsx"],
+      "target": "personas"
+    }
+  ]
+}

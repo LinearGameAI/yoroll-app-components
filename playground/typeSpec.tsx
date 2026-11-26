@@ -1,7 +1,7 @@
 import { useEffect, useId, useState } from 'react';
 import {
   avatarInitialTypography, buttonLabelTypography, buttonMetrics, chatFontSize, chatMessageTypography,
-  customFontNames, playPillLabelTypography, systemFonts, tabLabelTypography, typography, type ThemeTokens,
+  componentText, customFontNames, playPillLabelTypography, systemFonts, tabLabelTypography, typography, type ThemeTokens,
 } from '../src';
 import { CopyButton, SourceLink } from './controls';
 import type { Inventory } from './inventoryData';
@@ -55,6 +55,40 @@ const displayRoles = [
   role('chatGiftDiscountCompact', '礼物折扣 · 紧凑', 'fonts.bebas / fonts.sans', [giftPath, 497], undefined, '中文按可用宽度缩放，字号上限 28 pt。'),
 ];
 
+const extractedTypeSpecs = {
+  rowLabel: ['设置行标题', 'src/screens/SettingsScreen.tsx'],
+  rowMeta: ['列表时间与辅助文案', 'src/components/messageListRowStyles.ts'],
+  inboxTitle: ['会话名称', 'src/components/messageListRowStyles.ts'],
+  inboxPreview: ['会话摘要', 'src/components/messageListRowStyles.ts'],
+  mediaTitle: ['游戏卡标题', 'src/components/primitives/YCard.tsx'],
+  mediaMeta: ['游戏卡元信息', 'src/components/primitives/YCard.tsx'],
+  channelTitle: ['频道卡标题', 'src/components/GameChannelCard.tsx'],
+  channelMeta: ['频道卡说明', 'src/components/GameChannelCard.tsx'],
+  coverTitle: ['角色卡标题', 'src/screens/chat/CompanionCard.tsx'],
+  coverSmallTitle: ['发现角色卡标题', 'src/screens/chat/CompanionCard.tsx'],
+  coverTag: ['封面标签', 'src/screens/chat/CompanionCard.tsx'],
+  profileName: ['个人资料昵称', 'src/components/ProfileIdentity.tsx'],
+  profileCaption: ['个人资料辅助文字', 'src/components/ProfileIdentity.tsx'],
+  planTitle: ['会员权益名称', 'src/screens/membership/PlanCard.tsx'],
+  planPrice: ['权益卡金额', 'src/screens/membership/PlanCard.tsx'],
+  modelTitle: ['模型名称', 'src/screens/chat/ModelPicker.tsx'],
+  modelBody: ['模型说明', 'src/screens/chat/ModelPicker.tsx'],
+  modelPrice: ['模型价格', 'src/screens/chat/ModelPicker.tsx'],
+  taskTitle: ['任务名称', 'src/screens/tasks/TaskCenterScreen.tsx'],
+  taskDescription: ['任务说明', 'src/screens/tasks/TaskCenterScreen.tsx'],
+  taskAction: ['任务按钮', 'src/screens/tasks/TaskCenterScreen.tsx'],
+  callTitle: ['通话角色名称', 'src/screens/chat/LiveCallView.tsx'],
+  callStatus: ['通话状态', 'src/screens/chat/LiveCallView.tsx'],
+  feedback: ['空态反馈', 'src/components/MessageEmptyState.tsx'],
+} satisfies Record<keyof typeof componentText, [string, string]>;
+
+function componentRoles(...keys: (keyof typeof componentText)[]): TypeRow[] {
+  return keys.map((key) => {
+    const [label, path] = extractedTypeSpecs[key];
+    return { label, reference: 'componentText.' + key, metrics: componentText[key], font: system, source: [path] };
+  });
+}
+
 const componentTypes: Partial<Record<string, TypeRow[]>> = {
   YAvatar: [{
     label: '首字母 · 默认 40 pt 头像', reference: 'avatarInitialTypography(size)', font: mediumDisplay,
@@ -66,15 +100,28 @@ const componentTypes: Partial<Record<string, TypeRow[]>> = {
     label: size, reference: `buttonLabelTypography('${size}', variant)`, metrics: buttonLabelTypography(size),
     font: 'fontWeights.sansMedium',
   })),
-  YTab: (['text', 'underline', 'segment'] as const).map((variant) => ({
+  YTab: (['text', 'underline', 'segment', 'pill'] as const).map((variant) => ({
     label: variant, reference: `tabLabelTypography('${variant}', active)`,
     metrics: tabLabelTypography(variant, true), font: variant === 'underline' ? 'fontWeights.sansBold / fontWeights.sansMedium' : system,
-    colors: ['textPrimary', 'textTertiary'], detail: '未选中字重 500。',
+    colors: ['textPrimary', 'textTertiary'], detail: variant === 'pill' ? '未选中字重 400。' : '未选中字重 500。',
   })),
   YPlayPill: (['sm', 'md', 'lg'] as const).map((size) => ({
     label: size, reference: `playPillLabelTypography('${size}')`, metrics: playPillLabelTypography(size),
     font: 'fontWeights.sansBold',
   })),
+  YField: [staticRoles[3], inputHelper],
+  YDialog: staticRoles.filter(({ reference }) => reference.startsWith('typography.notice')),
+  YMediaCard: componentRoles('mediaTitle', 'mediaMeta', 'channelTitle', 'channelMeta', 'coverTitle', 'coverSmallTitle', 'coverTag'),
+  YBadge: componentRoles('coverTag'),
+  YProfileHeader: componentRoles('profileName', 'profileCaption'),
+  YPlanCard: [...componentRoles('planTitle', 'planPrice'), staticRoles[11]],
+  YBalanceCard: [displayRoles[0]],
+  YModelCard: componentRoles('modelTitle', 'modelBody', 'modelPrice'),
+  YListRow: componentRoles('rowLabel', 'rowMeta'),
+  YInboxRow: componentRoles('inboxTitle', 'inboxPreview', 'rowMeta'),
+  YTaskRow: componentRoles('taskTitle', 'taskDescription', 'taskAction'),
+  YCallPanel: componentRoles('callTitle', 'callStatus'),
+  YState: componentRoles('feedback'),
   TreatText: [{
     label: 'Treats 金额', reference: 'TREAT_TEXT_GRADIENT',
     detail: '字号、行高和字族由调用方的 style 设置。',
@@ -183,6 +230,8 @@ export function TypographySection({ inventory }: { inventory: Inventory | null }
         <h2>字级与 Token</h2>
         <p>数值使用 React Native 逻辑点。复制 Token 后，可把排版样式传给 <code>Text</code>，再用主题字族和颜色组合。</p>
         <TypeTable rows={staticRoles} samples />
+        <h2>页面提取字级</h2>
+        <TypeTable rows={componentRoles(...Object.keys(extractedTypeSpecs) as (keyof typeof componentText)[])} samples />
       </section>
       <section className="reference-section">
         <h2>组件字级</h2>

@@ -2,6 +2,7 @@ import { useState, type ComponentType, type ReactNode } from 'react';
 import { useTheme } from '../src';
 import { CopyButton, DirectoryHeading, Segmented, SourceLink } from './controls';
 import { catalogExample, categories, type ComponentDemo } from './demos';
+import { pageHref, pagesForComponent } from './pageData';
 import { ComponentTypography, hasComponentTypography } from './typeSpec';
 
 export const repositoryUrl = 'https://github.com/LinearGameAI/yoroll-app-components';
@@ -22,7 +23,7 @@ export const blocks = [
     title: '修改确认框',
     description: '复用 App 居中确认框的宽度、圆角和间距，展示保存、放弃与关闭三种反馈。',
     path: 'src/features/userPersonas/PersonaUnsavedDialog.tsx',
-    components: ['YButton'],
+    components: ['YDialog', 'YButton'],
   },
   {
     id: 'loading-list',
@@ -94,11 +95,13 @@ function Installation({ id }: { id: string }) {
 export function ComponentDetails({ demo }: { demo: ComponentDemo }) {
   const { tokens } = useTheme();
   const id = demo.name.toLowerCase();
+  const usedIn = pagesForComponent(demo.name);
   const sections: DocSection[] = [
     { id: 'previews', label: '预览与代码' }, { id: 'installation', label: '安装' },
     { id: 'usage', label: '用法' }, { id: 'props', label: '参数' },
     ...(hasComponentTypography(demo.name) ? [{ id: 'typography', label: '字体与字号' }] : []),
     ...(demo.colors?.length ? [{ id: 'tokens', label: '相关 Token' }] : []),
+    ...(usedIn.length ? [{ id: 'pages', label: '相关页面' }] : []),
   ];
   return (
     <>
@@ -139,12 +142,18 @@ export function ComponentDetails({ demo }: { demo: ComponentDemo }) {
           </div>
         </section>
         <ComponentTypography name={demo.name} />
-        {demo.colors && <section id="tokens" className="doc-section">
+        {!!demo.colors?.length && <section id="tokens" className="doc-section">
           <h2>相关 Token</h2>
           <div className="detail-tokens">
             {demo.colors.map((key) => <a href={`#tokens/${key}`} key={key} title={tokens[key]}>
               <span aria-hidden="true" style={{ backgroundColor: tokens[key] }} /><code>{key}</code>
             </a>)}
+          </div>
+        </section>}
+        {!!usedIn.length && <section id="pages" className="doc-section">
+          <h2>相关页面</h2>
+          <div className="page-component-links">
+            {usedIn.map((page) => <a key={page.id} href={pageHref(page.id)}>{page.title}</a>)}
           </div>
         </section>}
       </DocLayout>

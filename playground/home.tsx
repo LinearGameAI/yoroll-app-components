@@ -133,7 +133,7 @@ export function DocsHome({ inventory }: { inventory: Inventory | null }) {
         <p className="home-lede">组件、设计 Token、动效与图素。</p>
         <div className="home-actions">
           <a className="home-action home-action-primary" href="#components">浏览组件 <LinkArrow /></a>
-          <a className="home-action" href="#start">接入指南</a>
+          <a className="home-action" href="#pages">按 App 页面查找</a>
           {inventory && <a className="home-action" href="#app">App 索引</a>}
         </div>
       </header>

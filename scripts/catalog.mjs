@@ -1,6 +1,7 @@
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { join, posix } from 'node:path';
 import ts from 'typescript';
+import { loadAppPages } from './app-pages.mjs';
 
 const variants = ['.tsx', '.ts', '.native.tsx', '.native.ts', '.ios.tsx', '.ios.ts', '.android.tsx', '.android.ts', '.web.tsx', '.web.ts'];
 const installCommand = 'npm install git+https://github.com/LinearGameAI/yoroll-app-components.git';
@@ -31,16 +32,27 @@ export async function loadCatalog(root) {
     if (match) components.set(match[1], 'src/components/' + match[1] + '.tsx');
   }
 
+  const { screens } = await loadAppPages(root, components.keys());
+  for (const { code, path } of screens.values()) {
+    if (examples.has(path)) throw new Error('Duplicate screen recipe ' + path);
+    examples.set(path, code + '\n');
+  }
+
   return {
     plugin: {
       name: 'catalog-examples',
       setup(build) {
+        build.onResolve({ filter: /^app-page-recipes$/ }, () => ({ path: 'app-page-recipes', namespace: 'page-recipes' }));
+        build.onLoad({ filter: /.*/, namespace: 'page-recipes' }, () => ({
+          contents: 'export const screenExamples = ' + JSON.stringify(Object.fromEntries([...screens].map(([id, { recipe, code }]) => [id, { recipe, code }]))),
+          loader: 'js',
+        }));
         build.onResolve({ filter: /^catalog-examples$/ }, () => ({ path: 'catalog-examples', namespace: 'catalog' }));
         build.onLoad({ filter: /.*/, namespace: 'catalog' }, () => {
           const imports = [];
           const entries = [];
           for (const [path, code] of examples) {
-            if (!path.endsWith('.tsx')) continue;
+            if (!/^playground\/examples\/(components|blocks)\/.+\.tsx$/.test(path)) continue;
             const id = path.slice('playground/examples/'.length, -'.tsx'.length);
             const name = 'Example' + imports.length;
             imports.push('import ' + name + ' from ' + JSON.stringify('./' + path.slice('playground/'.length)) + ';');
@@ -106,6 +118,9 @@ export async function loadCatalog(root) {
         if (!entry.startsWith('playground/examples/blocks/') || !entry.endsWith('.tsx')) continue;
         const id = posix.basename(entry, '.tsx');
         await add({ id, name: id, type: 'block', entry, paths: [entry], docs: './#blocks/' + id });
+      }
+      for (const [id, { path }] of screens) {
+        await add({ id: 'page-' + id, name: id, type: 'page', entry: path, paths: [path], docs: './#pages/' + id });
       }
       await writeFile(join(outdir, 'registry.json'), JSON.stringify({
         formatVersion: 1, name: manifest.name, installCommand, items,

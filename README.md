@@ -1,12 +1,13 @@
 # Yoroll App 组件库
 
-YorollApp 的 React Native 组件、组合示例和设计规范。示例的预览与 TSX 使用同一份文件。组件页提供安装、用法、参数、Token 和源码入口。
+YorollApp 的 React Native 组件、页面组合和设计规范。组件页提供交互预览、可复制 TSX、参数、尺寸与排版 Token，以及 App 源码入口。
 
-[打开组件库](https://lineargameai.github.io/yoroll-app-components/) · [接入指南](https://lineargameai.github.io/yoroll-app-components/#start) · [组件](https://lineargameai.github.io/yoroll-app-components/#components) · [组合](https://lineargameai.github.io/yoroll-app-components/#blocks) · [字体与字号](https://lineargameai.github.io/yoroll-app-components/#tokens/typography) · [图素](https://lineargameai.github.io/yoroll-app-components/#assets)
+[打开组件库](https://lineargameai.github.io/yoroll-app-components/) · [接入指南](https://lineargameai.github.io/yoroll-app-components/#start) · [组件](https://lineargameai.github.io/yoroll-app-components/#components) · [App 页面索引](https://lineargameai.github.io/yoroll-app-components/#pages) · [组合](https://lineargameai.github.io/yoroll-app-components/#blocks) · [字体与字号](https://lineargameai.github.io/yoroll-app-components/#tokens/typography) · [图素](https://lineargameai.github.io/yoroll-app-components/#assets)
 
 | 栏目 | 内容 |
 | --- | --- |
-| 组件 | 按钮、输入框、播放入口、页签、顶部导航、导航底色、头像、骨架、轮播点、Treats 金额 |
+| 组件 | 52 个 React Native 组件，涵盖操作、字段、导航、弹层、卡片、列表、聊天、播放与反馈 |
+| App 页面索引 | 67 个路由文件，覆盖 44 个产品页面、3 个调试页、全局覆盖层及各导航和复用入口 |
 | 组合示例 | 资料编辑表单、修改确认框、列表加载与空态 |
 | 设计 Token | App 的深浅语义色、字族与字级、间距、控件尺寸、弹层、渐变和阴影 |
 | 动效 | 时长、缓动、生命周期、系统减少动态效果和网页播放示意 |
@@ -16,7 +17,7 @@ YorollApp 的 React Native 组件、组合示例和设计规范。示例的预�
 
 ## 在代码里使用
 
-组件入口面向 Expo SDK 54 / React Native 0.81。通过 Git 安装时，在团队项目里将依赖固定到所选提交。使用 `YorollThemeProvider` 切换组件主题，渲染 `YTopBar` 时由宿主提供 `SafeAreaProvider`。
+组件入口面向 Expo SDK 54 / React Native 0.81。通过 Git 安装时，在团队项目里将依赖固定到所选提交。使用 `YorollThemeProvider` 切换组件主题，页面容器、导航栏和弹层从宿主的 `SafeAreaProvider` 读取安全区。
 
 ```sh
 npm install git+https://github.com/LinearGameAI/yoroll-app-components.git
@@ -47,8 +48,8 @@ export function Example({ onConfirm }: { onConfirm: () => void }) {
 | 复用内容 | 导出 |
 | --- | --- |
 | 主题色 | `darkTokens`、`lightTokens`、`useTheme().tokens` |
-| 布局、控件和弹层 | `layout`、`buttonMetrics`、`inputMetrics`、`tabMetrics`、`sheetMetrics`、`dialogMetrics`、`bottomSheetBottomPadding` |
-| 字体与字号 | `typography`、`systemFonts`、`customFontNames`、`useTheme().fonts`、`useTheme().fontWeights` |
+| 布局、控件、卡片和弹层 | `controlMetrics`、`cardMetrics`、`layout`、`buttonMetrics`、`inputMetrics`、`tabMetrics`、`sheetMetrics`、`dialogMetrics`、`bottomSheetBottomPadding` |
+| 字体与字号 | `typography`、`componentText`、`systemFonts`、`customFontNames`、`useTheme().fonts`、`useTheme().fontWeights` |
 | 组件与聊天字级 | `avatarInitialTypography`、`buttonLabelTypography`、`tabLabelTypography`、`playPillLabelTypography`、`chatFontSize`、`chatMessageTypography` |
 | 阴影和渐变 | `shadowPresets`、`TREAT_GRADIENT`、`TREAT_TEXT_GRADIENT` |
 | 动效参数 | `motionTokens`，按 App 具体场景命名 |
@@ -73,9 +74,21 @@ function SectionTitle({ children }: { children: string }) {
 
 ## 获取源码
 
-[注册表 JSON](https://lineargameai.github.io/yoroll-app-components/registry.json) 提供组件和组合的文档入口。每项的 `entry` 指向入口，`files` 包含文件相对路径与原文，`dependencies` 列出源码导入的包，`peerDependencies` 列出 React Native 宿主要求。拷贝单项的实现时按清单保留相对路径。组合示例通过 `@yoroll/app-components` 引用基础组件。
+[注册表 JSON](https://lineargameai.github.io/yoroll-app-components/registry.json) 提供组件、组合示例和页面组合的文档入口。每项的 `entry` 指向入口，`files` 包含文件相对路径与原文，`dependencies` 列出源码导入的包，`peerDependencies` 列出 React Native 宿主要求。拷贝单项的实现时按清单保留相对路径。组合示例通过 `@yoroll/app-components` 引用基础组件。
 
 [YButton 源码清单](https://lineargameai.github.io/yoroll-app-components/r/ybutton.json) · [资料表单的 TSX 和依赖](https://lineargameai.github.io/yoroll-app-components/r/profile-form.json)
+
+## 按 App 页面复用
+
+从页面索引可以按业务、路由和组件名称查找。页面详情提供可操作的组合预览、各界面区域的组件映射、App 状态及源码位置。组件详情也可返回相关页面。
+
+页面 TSX 清单包含入口和共享组合文件。把下载的文件按相对路径放入 React Native 工程，并在根节点配置 `SafeAreaProvider` 与 `YorollThemeProvider`。示例使用演示数据。Unity、WebView、语音通话、授权和购买由接入方的 App 宿主提供。
+
+基线版本的页面目录保存在 `playground/app-pages.json`，共享示例保存在 `playground/examples/screens/`。可以在同一 App 版本校验路由覆盖、源码文件和行号。
+
+```sh
+npm run check:app-pages -- /absolute/path/to/YorollApp
+```
 
 ## App 完整索引
 
@@ -117,4 +130,4 @@ npm run build
 python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 ```
 
-入口代码在 `src/index.ts`，主题色在 `src/tokens.ts`，排版样式在 `src/typography.ts`，尺寸与视觉参数在 `src/foundations.ts`，动效参数在 `src/motion.ts`。组件示例写在 `playground/examples/components/`，在 `playground/demos.tsx` 配置名称、参数与 App 源码路径。组合示例在 `playground/examples/blocks/`，素材风格定义在 `playground/artStyles.ts`。GitHub Actions 从 `main` 发布公开构建和注册表到 GitHub Pages。
+入口代码在 `src/index.ts`，主题色在 `src/tokens.ts`，排版样式在 `src/typography.ts`，尺寸与视觉参数在 `src/foundations.ts`，动效参数在 `src/motion.ts`。组件示例写在 `playground/examples/components/`，在 `playground/demos.tsx` 和 `playground/appDemos.ts` 配置名称、参数与 App 源码路径。组合示例在 `playground/examples/blocks/`，素材风格定义在 `playground/artStyles.ts`。GitHub Actions 从 `main` 发布公开构建和注册表到 GitHub Pages。

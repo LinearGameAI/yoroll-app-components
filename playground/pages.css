@@ -1,0 +1,45 @@
+.page-filter { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 22px 0 26px; }
+.page-filter .page-search { flex: 1 1 236px; max-width: 370px; }
+.page-filter select { color: var(--text); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 9px; padding: 9px 12px; min-height: 39px; font: inherit; }
+.page-group { margin: 28px 0; }
+.page-group > h2, .page-preview > h2, .page-reference h2 { font-size: 17px; font-weight: 650; margin: 0 0 13px; }
+.page-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.page-tile { background: var(--card); position: relative; display: grid; gap: 6px; padding: 15px 31px 14px 15px;
+  min-height: 104px; min-width: 0; border: 1px solid var(--line); border-radius: 12px; color: var(--text); text-decoration: none; }
+.page-tile:hover { background: var(--surface); border-color: var(--subtle); }
+.page-tile-label { font-size: 11px; line-height: 16px; color: var(--subtle); }
+.page-tile strong { font-size: 15px; line-height: 20px; }
+.page-tile code, .page-route-meta code, .linked-pages code { font-size: 11px; overflow-wrap: anywhere; color: var(--subtle); line-height: 1.5; }
+.page-tile-arrow { position: absolute; top: 16px; right: 12px; color: var(--subtle); }
+.page-route-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 12px 0 18px; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
+.page-detail-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); gap: 28px; align-items: start; }
+.page-preview, .page-reference { min-width: 0; }
+.page-reference { display: grid; gap: 24px; align-content: start; margin-bottom: 22px; }
+.page-preview .preview-panel { overflow: clip; }
+.page-preview .preview-toolbar, .page-state-controls { flex-wrap: wrap; }
+.page-state-controls { display: flex; justify-content: center; padding: 8px; border-bottom: 1px solid var(--line); }
+.page-stage { display: grid; justify-items: center; padding: 18px 12px; isolation: isolate; background:
+  radial-gradient(ellipse at top, color-mix(in srgb, var(--peach) 11%, transparent), transparent 66%), var(--surface); }
+.page-phone { width: min(100%, 390px); height: clamp(465px, 72svh, 680px); overflow: hidden;
+  border: 1px solid var(--line); border-radius: 22px; display: flex; flex-direction: column; box-shadow: 0 18px 48px rgba(0,0,0,.18); }
+.page-preview .doc-links { margin-top: 12px; }
+.page-preview-code { padding: 12px; }
+.page-preview-code p { font-size: 13px; color: var(--subtle); }
+.page-state-list { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; gap: 6px; }
+.page-state-list li { border: 1px solid var(--line); border-radius: 20px; padding: 4px 9px; color: var(--subtle); font-size: 11px; }
+.page-surfaces ol { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+.page-surfaces li { padding: 11px 0; border-bottom: 1px solid var(--line); }
+.page-surface-title { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 5px; margin-bottom: 7px; }
+.page-surface-title h3 { margin: 0; font-size: 13px; font-weight: 650; }
+.page-surface-title a { white-space: nowrap; }
+.page-component-links { display: flex; flex-wrap: wrap; gap: 5px; }
+.page-component-links a { display: inline-flex; max-width: 100%; overflow-wrap: anywhere; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 6px; padding: 4px 6px; font-size: 11px; color: var(--subtle); text-decoration: none; }
+.page-component-links a:hover { color: var(--text); }
+.linked-pages { display: grid; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.linked-pages li { display: grid; gap: 4px; border-radius: 8px; border: 1px solid var(--line); padding: 9px 10px; }
+.linked-pages a { color: var(--text); font-size: 13px; text-underline-offset: 3px; }
+@media (max-width: 1180px) { .page-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1030px) { .page-detail-grid { grid-template-columns: 1fr; } }
+@media (max-width: 550px) { .page-grid { grid-template-columns: 1fr; } .page-tile { min-height: 88px; } .page-stage { padding: 8px; } }

@@ -7,6 +7,8 @@ import { categories, demos, type ComponentDemo } from './demos';
 import { DirectoryHeading } from './controls';
 import { FoundationsPage } from './foundations';
 import { MotionPage } from './motion';
+import { PageDetails, PagesDirectory } from './pages';
+import { findPage, pageEntries, pageHref, pageKinds } from './pageData';
 import { AssetsPage } from './assets';
 import { artStyles } from './artStyles';
 import { AppInventoryPage, type InventoryView } from './appInventory';
@@ -27,6 +29,7 @@ const directoryLinks = [
   { hash: '#', label: '概览' },
   { hash: '#start', label: '接入指南' },
   { hash: '#components', label: '组件' },
+  { hash: '#pages', label: '页面索引' },
   { hash: '#blocks', label: '组合示例' },
   { hash: '#tokens', label: '设计 Token' },
   { hash: '#motion', label: '动效' },
@@ -38,10 +41,15 @@ const appViews: Readonly<Record<string, InventoryView>> = {
   '#app': 'source', '#app-assets': 'assets', '#app-typography': 'typography', '#app-motion': 'motion',
 };
 
-const homeLinks = directoryLinks.filter(({ hash }) => ['#components', '#blocks', '#tokens', '#assets'].includes(hash));
+const homeLinks = directoryLinks.filter(({ hash }) => ['#components', '#pages', '#blocks', '#tokens', '#assets'].includes(hash));
 
 const searchEntries: SearchEntry[] = [
   { title: '接入指南', href: '#start', section: '指南', keywords: '安装 使用 React Native Expo 安全区 registry 源码' },
+  { title: 'App 页面索引', href: '#pages', section: '目录', keywords: '页面 路由 页面组件 screens' },
+  ...pageEntries.map((page) => ({
+    title: page.title, href: pageHref(page.id), section: pageKinds[page.kind],
+    keywords: [page.route, ...(page.states ?? []), ...(page.parts?.map(({ part }) => part.label) ?? [])].join(' '),
+  })),
   { title: '组件', href: '#components', section: '目录', keywords: 'components' },
   { title: '组合示例', href: '#blocks', section: '目录', keywords: 'blocks' },
   { title: '设计 Token', href: '#tokens', section: '规范', keywords: '颜色 字体 布局 尺寸 阴影 渐变' },
@@ -116,17 +124,21 @@ function ComponentsPage({ matches, query, clearSearch }: { matches: ComponentDem
         <p>没有匹配的组件。可以试试组件名或用途。</p>
         <button type="button" onClick={clearSearch}>清空筛选</button>
       </div>}
-      <ul className="component-grid">
-        {matches.map((demo) => {
-          const { Preview } = demo.examples[0];
-          return (
-            <li className="tile" key={demo.name}>
-              <div className="showcase"><Preview /></div>
-              <a className="tile-link" href={routeFor(demo.name)}><strong>{demo.name}</strong><span>{demo.label}</span></a>
-            </li>
-          );
-        })}
-      </ul>
+      {categories.map(({ id, label }) => {
+        const members = matches.filter((demo) => demo.category === id);
+        return members.length > 0 && <section className="page-group" key={id}>
+          <h2>{label}</h2>
+          <ul className="component-grid">
+            {members.map((demo) => {
+              const { Preview } = demo.examples[0];
+              return <li className="tile" key={demo.name}>
+                <div className="showcase"><Preview /></div>
+                <a className="tile-link" href={routeFor(demo.name)}><strong>{demo.name}</strong><span>{demo.label}</span></a>
+              </li>;
+            })}
+          </ul>
+        </section>;
+      })}
     </>
   );
 }
@@ -138,10 +150,11 @@ function App() {
   const [inventory] = useState(() => __APP_INVENTORY__ ? readAppInventory() : null);
   const [group, name, blockSection] = route.split('/');
   const detail = demos.find((demo) => routeFor(demo.name) === group);
+  const page = group === '#pages' ? findPage(name) : undefined;
   const block = group === '#blocks' ? blocks.find((item) => item.id === name) : undefined;
   const appView = __APP_INVENTORY__ ? appViews[group] : undefined;
   const directory = appView ? '#app' : detail ? '#components'
-    : ['#components', '#start', '#blocks', '#tokens', '#motion', '#assets'].includes(group) ? group : '#';
+    : ['#components', '#start', '#blocks', '#pages', '#tokens', '#motion', '#assets'].includes(group) ? group : '#';
   const activeDirectory = directoryLinks.find((item) => item.hash === directory);
   const isHome = directory === '#';
   const tokenName = directory === '#tokens' ? name ?? '' : '';
@@ -162,11 +175,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const title = detail?.name ?? block?.title ?? (directory === '#' ? undefined : activeDirectory?.label);
+    const title = detail?.name ?? page?.title ?? block?.title ?? (directory === '#' ? undefined : activeDirectory?.label);
     document.title = title ? `${title} | Yoroll App 组件库` : 'Yoroll App 组件库';
     if (section) document.getElementById(section)?.scrollIntoView({ block: 'start' });
     else window.scrollTo(0, 0);
-  }, [route, section, detail, block, directory, activeDirectory]);
+  }, [route, section, detail, page, block, directory, activeDirectory]);
 
   const changeMode = (next: ThemeMode) => {
     setMode(next);
@@ -220,6 +233,7 @@ function App() {
               {directory === '#components' && (detail && !search
                 ? <ComponentDetails key={detail.name} demo={detail} />
                 : <ComponentsPage matches={matches} query={query.trim()} clearSearch={() => setQuery('')} />)}
+              {directory === '#pages' && (page ? <PageDetails key={page.id} entry={page} /> : <PagesDirectory />)}
               {directory === '#blocks' && (block ? <BlockDetails key={block.id} block={block} /> : <BlocksPage />)}
               {directory === '#tokens' && <FoundationsPage key={tokenName} tokenName={tokenName} inventory={inventory} />}
               {directory === '#motion' && <MotionPage />}

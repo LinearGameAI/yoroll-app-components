@@ -1,11 +1,17 @@
 import type { ComponentType } from 'react';
 import { examples } from 'catalog-examples';
 import type { ThemeTokens } from '../src';
+import { appDemos } from './appDemos';
 
 export const categories = [
   { id: 'controls', label: '操作与输入' },
   { id: 'navigation', label: '导航' },
-  { id: 'display', label: '展示与反馈' },
+  { id: 'overlays', label: '弹窗与弹层' },
+  { id: 'cards', label: '卡片与资料' },
+  { id: 'lists', label: '列表与任务' },
+  { id: 'communication', label: '对话与播放' },
+  { id: 'feedback', label: '状态与反馈' },
+  { id: 'display', label: '基础展示' },
 ] as const;
 
 type Example = {
@@ -37,13 +43,17 @@ function example(title: string, id: string): Example {
   return { title, ...catalogExample('components/' + id) };
 }
 
+const extracted: ComponentDemo[] = appDemos.map(({ example: id, exampleTitle, ...demo }) => ({
+  ...demo, examples: [example(exampleTitle, id)],
+}));
+
 export const demos: ComponentDemo[] = [
   {
     name: 'YButton',
     colors: ['primary', 'bgCard', 'dark', 'textSecondary', 'cardStroke', 'bgPicked', 'orange4', 'orange'],
     label: '按钮',
     category: 'controls',
-    description: '带常用外观、尺寸、渐变和加载态的操作按钮。',
+    description: '主操作、次操作、描边、文字、危险与品牌操作，包含五档尺寸以及加载、禁用状态。',
     examples: [
       example('常用样式', 'button-variants'),
       example('禁用与加载', 'button-states'),
@@ -95,16 +105,17 @@ export const demos: ComponentDemo[] = [
     colors: ['bgPrimary', 'bgSecondary', 'bgTertiary', 'cardStroke', 'textPrimary', 'textTertiary'],
     label: '页签',
     category: 'navigation',
-    description: '由调用方管理选中项，支持分段、下划线及文字样式。',
+    description: '支持列表分段、内容下划线、文字导航和首页频道胶囊，由调用方管理选中项。',
     examples: [
       example('分段', 'tabs-segment'),
       example('下划线', 'tabs-underline'),
       example('文字', 'tabs-text'),
+      example('首页频道', 'tabs-pill'),
     ],
     props: [
       ['items', 'YTabItem[]', '每个选项需要稳定的 key 和展示 label。'],
       ['active / onChange', 'string / (key: string) => void', '当前选中 key 与切换回调。'],
-      ['variant', 'underline | segment | text', '外观样式，默认 underline。'],
+      ['variant', 'underline | segment | text | pill', '外观样式，默认 underline。'],
       ['textLayout', 'equal | content', '文字样式的等分或内容宽度布局。'],
     ],
   },
@@ -195,4 +206,5 @@ export const demos: ComponentDemo[] = [
       ['androidRenderingMode', 'software | hardware', '原生 Android 遮罩渲染模式，默认 software。'],
     ],
   },
+  ...extracted,
 ];

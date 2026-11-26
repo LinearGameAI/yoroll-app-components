@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   darkTokens, lightTokens, layout, sheetMetrics, dialogMetrics, buttonMetrics, inputMetrics, tabMetrics,
-  shadowPresets, TREAT_GRADIENT, TREAT_TEXT_GRADIENT, useTheme, type ThemeTokens,
+  cardMetrics, controlMetrics, shadowPresets, TREAT_GRADIENT, TREAT_TEXT_GRADIENT, useTheme, type ThemeTokens,
 } from '../src';
 import { CopyButton, DirectoryHeading, SourceLink } from './controls';
 import { TypographySection } from './typeSpec';
@@ -88,6 +88,19 @@ const metricGroups = [
   { title: '底部弹层', prefix: 'sheetMetrics', path: 'src/components/ChatBottomSheet.tsx', values: sheetMetrics },
   { title: '居中确认框', prefix: 'dialogMetrics.centered', path: 'src/components/primitives/centeredDialogStyles.ts', values: dialogMetrics.centered },
   { title: '通知与奖励弹窗', prefix: 'dialogMetrics.notice', path: 'src/components/primitives/noticeDialogStyles.ts', values: dialogMetrics.notice },
+  { title: '图标按钮', prefix: 'controlMetrics.iconButton', path: 'src/components/ChatBottomSheet.tsx', values: controlMetrics.iconButton },
+  { title: '底部导航', prefix: 'controlMetrics.bottomNav', path: 'app/(tabs)/_layout.tsx', values: controlMetrics.bottomNav },
+  { title: '聊天输入栏', prefix: 'controlMetrics.composer', path: 'src/screens/chat/ChatScreen.tsx', values: controlMetrics.composer },
+  { title: '会话与通知行', prefix: 'controlMetrics.inboxRow', path: 'src/components/messageListRowStyles.ts', values: controlMetrics.inboxRow },
+  { title: '图素与附件尺寸', prefix: 'controlMetrics.upload', path: 'src/screens/chat/creator/CreatorUI.tsx', values: controlMetrics.upload },
+  { title: '游戏封面高度', prefix: 'cardMetrics.game.heights', path: 'src/components/primitives/YCard.tsx', values: cardMetrics.game.heights },
+  { title: '横排频道卡', prefix: 'cardMetrics.channel', path: 'src/components/GameChannelCard.tsx', values: cardMetrics.channel },
+  { title: '角色与个人内容封面', prefix: 'cardMetrics.cover', path: 'src/screens/chat/CompanionCard.tsx', values: cardMetrics.cover },
+  { title: '会员权益卡', prefix: 'cardMetrics.plan', path: 'src/screens/membership/SubscriptionRow.tsx', values: cardMetrics.plan },
+  { title: 'Treats 余额', prefix: 'cardMetrics.balance', path: 'src/screens/membership/TreatBalanceCard.tsx', values: cardMetrics.balance },
+  { title: 'Treats 档位', prefix: 'cardMetrics.pack', path: 'src/screens/membership/CreditPackRow.tsx', values: cardMetrics.pack },
+  { title: '模型选项', prefix: 'cardMetrics.model', path: 'src/screens/chat/ModelPicker.tsx', values: cardMetrics.model },
+  { title: '签到卡', prefix: 'cardMetrics.task', path: 'src/screens/tasks/TaskCenterScreen.tsx', values: cardMetrics.task },
 ];
 
 function LayoutSection() {
@@ -113,7 +126,7 @@ function LayoutSection() {
           <div className="spec-list">
             {Object.entries(values).map(([name, value]) => (
               <div key={name}><code>{prefix}.{name}</code>
-                <span>{typeof value === 'number' ? `${value} pt` : Array.isArray(value) ? value.join(' → ') : value}</span>
+                <span>{typeof value === 'number' && name.endsWith('Aspect') ? value.toFixed(3) : typeof value === 'number' ? `${value} pt` : Array.isArray(value) ? value.join(' → ') : value}</span>
               </div>
             ))}
           </div>
