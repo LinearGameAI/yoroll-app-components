@@ -72,6 +72,7 @@ const [script, { cssBundle }] = Object.entries(result.metafile.outputs)
   .find(([, details]) => details.entryPoint === 'playground/main.tsx');
 
 await catalog.writeRegistry(output);
+await cp(join(repository, 'playground/homepage'), join(output, 'homepage'), { recursive: true });
 await writeFile(join(output, appPath ? 'app-inventory.json' : 'artwork/catalog.json'),
   appPath ? JSON.stringify(data) : JSON.stringify(data, null, 2) + '\n');
 
