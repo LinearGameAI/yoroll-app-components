@@ -10,6 +10,7 @@
   "files": ["src"],
   "scripts": {
     "check": "tsc --noEmit",
+    "sync:artwork": "node scripts/sync-artwork.mjs",
     "build:app": "node scripts/build.mjs --app-root",
     "build": "node scripts/build.mjs"
   },

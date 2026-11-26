@@ -1,4 +1,3 @@
-import { readFile } from 'node:fs/promises';
 import { posix } from 'node:path';
 
 const promptFile = /(?:\.prompt|\/generation-prompts?)\.json$/;
@@ -60,14 +59,14 @@ function referencedImages(file, record, assets) {
   });
 }
 
-export async function readArtworkPrompts(root, files, assets, openTracked) {
+export async function readArtworkPrompts(files, assets, readManifest) {
   const prompts = new Map();
   for (const file of files.filter((path) => path.startsWith('assets/') && promptFile.test(path))) {
-    const original = await openTracked(root, file);
-    if (!original) continue;
     let manifest;
     try {
-      manifest = JSON.parse(await readFile(original, 'utf8'));
+      const raw = await readManifest(file);
+      if (raw === null) continue;
+      manifest = JSON.parse(raw);
     } catch {
       console.warn('Unable to read artwork prompt manifest: ' + file);
       continue;

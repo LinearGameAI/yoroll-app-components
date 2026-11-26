@@ -4,7 +4,7 @@ import { dirname, extname, isAbsolute, join, posix, relative } from 'node:path';
 import ts from 'typescript';
 import { readArtworkPrompts } from './artwork.mjs';
 
-const scopes = ['src', 'app', 'assets', 'ios/Yoroll', 'android/app/src/main/res', 'android/app/src/main/java'];
+export const appInventoryScopes = ['src', 'app', 'assets', 'ios/Yoroll', 'android/app/src/main/res', 'android/app/src/main/java'];
 const mediaExtensions = {
   '.avif': 'image', '.gif': 'image', '.ico': 'image', '.jpeg': 'image', '.jpg': 'image',
   '.png': 'image', '.svg': 'image', '.webp': 'image',
@@ -20,7 +20,7 @@ const nameOf = (node) => ts.isIdentifier(node) || ts.isStringLiteral(node) ? nod
 const textOf = (node, source) => node.getText(source).replace(/\s+/g, ' ').slice(0, 220);
 const lineOf = (node, source) => source.getLineAndCharacterOfPosition(node.getStart(source)).line + 1;
 
-function assetKind(file) {
+export function assetKind(file) {
   const extension = extname(file).toLowerCase();
   if (file.startsWith('assets/')) {
     if (mediaExtensions[extension]) return mediaExtensions[extension];
@@ -288,8 +288,8 @@ export async function buildAppInventory(appPath, outdir) {
     throw new Error('Pass the root of a YorollApp checkout to npm run build:app.');
   }
   const revision = git(root, ['rev-parse', 'HEAD']).trim();
-  const changed = !!git(root, ['status', '--short', '--untracked-files=no', '--', ...scopes]).trim();
-  const files = [...new Set(git(root, ['ls-files', '-z', '--', ...scopes]).split('\0').filter(Boolean))].sort();
+  const changed = !!git(root, ['status', '--short', '--untracked-files=no', '--', ...appInventoryScopes]).trim();
+  const files = [...new Set(git(root, ['ls-files', '-z', '--', ...appInventoryScopes]).split('\0').filter(Boolean))].sort();
   const assetKinds = new Map(files.flatMap((file) => {
     const kind = assetKind(file);
     return kind ? [[file, kind]] : [];
@@ -319,7 +319,10 @@ export async function buildAppInventory(appPath, outdir) {
       usedBy.get(asset).push(file);
     }
   }
-  const artworkPrompts = await readArtworkPrompts(root, files, assetKinds, openTracked);
+  const artworkPrompts = await readArtworkPrompts(files, assetKinds, async (file) => {
+    const original = await openTracked(root, file);
+    return original ? readFile(original, 'utf8') : null;
+  });
   const assets = [];
   for (const [file, kind] of assetKinds) {
     const asset = await prepareAsset(root, outdir, file, kind, usedBy);

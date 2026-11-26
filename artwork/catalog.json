@@ -1,0 +1,1685 @@
+{
+  "revision": "0983ce7b25d25b69c151a07459af961b0900fc61",
+  "assets": [
+    {
+      "path": "android/app/src/main/res/drawable-hdpi/splashscreen_logo.png",
+      "bytes": 1358
+    },
+    {
+      "path": "android/app/src/main/res/drawable-mdpi/splashscreen_logo.png",
+      "bytes": 773
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xhdpi/splashscreen_logo.png",
+      "bytes": 2174
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxhdpi/splashscreen_logo.png",
+      "bytes": 4186
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxxhdpi/splashscreen_logo.png",
+      "bytes": 6994
+    },
+    {
+      "path": "android/app/src/main/res/drawable/daily_task_token.png",
+      "bytes": 216170
+    },
+    {
+      "path": "assets/brand/invite-yoroll.png",
+      "bytes": 8892
+    },
+    {
+      "path": "assets/brand/login-logo-color.webp",
+      "bytes": 12558
+    },
+    {
+      "path": "assets/brand/login-logo-gradient.webp",
+      "bytes": 102016
+    },
+    {
+      "path": "assets/brand/login-logo.png",
+      "bytes": 9075
+    },
+    {
+      "path": "assets/brand/logo-beta.webp",
+      "bytes": 23098
+    },
+    {
+      "path": "assets/brand/logo-long.png",
+      "bytes": 78496
+    },
+    {
+      "path": "assets/brand/me-empty-state.webp",
+      "bytes": 1768
+    },
+    {
+      "path": "assets/brand/placeholder.webp",
+      "bytes": 498938
+    },
+    {
+      "path": "assets/chat-models/dolphin-v1.webp",
+      "bytes": 13786,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: One friendly DOLPHIN head and compact curved upper body, smooth silver-blue satin surface with soft aqua highlights, pale ivory underside, unmistakable long rounded dolphin snout, gentle mouth curve, bright kind eyes, one small side flipper visible at the base. No water or scenery. Compact portrait-like composition readable as a dolphin at tiny size. Model mood: thoughtful, fluid, creative conversations."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/dove-v1.webp",
+      "bytes": 11140,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A peaceful white DOVE head and compact upper breast, round small head, short pale pink beak, soft pearl-grey wings at base, tiny warm dark eyes. Make it clearly a dove, not a swan: no long neck. Model mood: reliable, gentle everyday companion."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/eagle-v1.webp",
+      "bytes": 16820,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A majestic EAGLE head and compact brown upper breast, bold white-ivory head, broad powerful curved golden beak, kind alert amber eyes under clear feather brows, large simple feather planes. A bald eagle identity, broad and noble, distinct from a slim falcon. Model mood: vivid expansive storytelling."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/falcon-v1.webp",
+      "bytes": 14856,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: An alert FALCON head and compact upper breast, slate-blue grey crown and back, pale ivory face and chest, two bold dark teardrop-like malar cheek stripes, small dark hooked beak with a subtle golden base, warm attentive dark eyes. Slim compact bird-of-prey head, clearly different from a broad white-headed eagle. Model mood: quick replies and broad knowledge."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/fox-v1.webp",
+      "bytes": 16082,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A copper-orange FOX head and compact upper breast, very large upright triangular ears with dark tips, slender pointed cream muzzle, small black nose, sly but warm amber eyes, bold orange forehead and pale cheek patches. Clearly red fox, distinct from a grey wolf. Model mood: witty conversations and imaginative storytelling."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/image-hd-v1.webp",
+      "bytes": 15970,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original media-model identity illustration for a mobile AI chat model picker, in a coherent premium miniature 3D satin-clay collection. Generate exactly ONE isolated centered object on a genuinely transparent background, square canvas. Compact chunky clean silhouette, front view at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. A restrained warm coral, blush pink, ivory and muted plum palette with a little cool glass for contrast. Sophisticated and playful. High contrast edges readable after downscaling to 24 logical pixels. Object occupies about 88% of canvas, all parts inside frame with small clear margins. No text, letters, numbers, provider logo, extra badges, frame, square background tile, scenery, pedestal, ground plane, ground cast shadow, or extra objects. This is an original model identity illustration, not a corporate logo or flat UI line icon.\nSubject: One premium large APERTURE CAMERA LENS, shown alone nearly front-facing, with a softly faceted blush-and-ivory chunky outer ring and deep cool blue-violet glass center. The glass contains a subtle clean aperture shape made of broad overlapping planes. Polished high-resolution photography identity, no camera body, no writing, no letters. Distinct circular lens silhouette."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/image-standard-v1.webp",
+      "bytes": 13768,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original media-model identity illustration for a mobile AI chat model picker, in a coherent premium miniature 3D satin-clay collection. Generate exactly ONE isolated centered object on a genuinely transparent background, square canvas. Compact chunky clean silhouette, front view at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. A restrained warm coral, blush pink, ivory and muted plum palette with a little cool glass for contrast. Sophisticated and playful. High contrast edges readable after downscaling to 24 logical pixels. Object occupies about 88% of canvas, all parts inside frame with small clear margins. No text, letters, numbers, provider logo, extra badges, frame, square background tile, scenery, pedestal, ground plane, ground cast shadow, or extra objects. This is an original model identity illustration, not a corporate logo or flat UI line icon.\nSubject: One compact coral-pink still-photo CAMERA with a large rounded ivory-rimmed glass lens in the center, tiny simple viewfinder block and one small shutter button. Bold camera silhouette, no strap, no loose parts. The lens is soft blue glass with a simple broad highlight. Friendly balanced everyday image-creation identity."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/leopard-v1.webp",
+      "bytes": 18114,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A golden LEOPARD head and compact upper neck, small rounded ears, golden-tan satin coat, a few LARGE bold dark rosette markings on forehead and cheeks, cream muzzle, warm hazel eyes. Slim rounded feline face, not a tiger or lynx. Model mood: balanced, capable, composed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/lion-v1.webp",
+      "bytes": 17844,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: One friendly original toy LION portrait, head and upper chest only. Round golden-tan face surrounded by a simple circular brown mane made of large smooth sculpted locks. Small round ears, cream muzzle, tiny dark nose, relaxed amber eyes. Neutral calm expression. A harmless stylized animal sculpture with no connection to any existing character, franchise, or brand. Keep the entire mane inside the canvas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/lynx-v1.webp",
+      "bytes": 15686,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A silver-tawny LYNX head and compact neck, unmistakable tall triangular ears with prominent black ear tufts, broad flared cream cheek ruff, short feline muzzle, a few soft freckles, thoughtful amber eyes. Clearly lynx, distinct from wolf and leopard. Model mood: thoughtful, attentive, detailed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/magpie-v1.webp",
+      "bytes": 13044,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A lively MAGPIE head and compact upper breast, black head with subtle iridescent teal-blue sheen, white upper chest and bold black-and-white shoulder patches, slim straight black beak, friendly alert dark eyes with clear catchlights. A distinctive black-and-white magpie, not a crow or penguin. Model mood: lively social scenes and quick playful conversations."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/otter-v1.webp",
+      "bytes": 14670,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A warm chocolate-brown OTTER head and compact upper breast, tiny round ears, broad creamy muzzle, rounded dark nose, subtle whisker dots, kind lively eyes. Clearly an otter, not a bear or seal. Model mood: playful imagination and vivid storytelling."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/owl-v1.webp",
+      "bytes": 16868,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A wise friendly OWL head and compact upper breast, large round cream facial discs, coffee-brown satin head, small ear tufts, wide warm amber eyes, tiny central dark beak, broad simple feather planes. Rounded unmistakable owl silhouette, attentive calm expression. Model mood: natural dialogue and thoughtful character conversations."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/panther-v1.webp",
+      "bytes": 14584,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A BLACK PANTHER head and compact upper neck, smooth charcoal-plum satin surface, rounded feline ears, broad elegant cheek structure and tiny subtle whisker dots, luminous soft golden eyes. Use readable soft lavender and peach edge highlights so the black silhouette remains clear on a dark app. No rosette spots, no stripes, not a domestic cat. Model mood: immersive, mysterious, calm."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/swan-v1.webp",
+      "bytes": 12192,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: An elegant white SWAN head and upper breast with a clearly visible long curved S-shaped neck, smooth pearl-white satin feathers, orange beak with a small bold black base mask, gentle dark eyes. Make the distinctive swan neck and orange beak readable in a small icon; clearly different from a short-necked dove. Model mood: poised intelligence and thoughtful reasoning."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/tiger-v1.webp",
+      "bytes": 19276,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A warm orange TIGER head and compact upper neck, rounded ears, bold simplified black forehead and cheek stripes, ivory muzzle and cheek tufts, warm kind golden eyes. Clear orange tiger silhouette and large graphic stripe pattern, friendly natural feline expression. Model mood: warm, emotionally attentive, expressive."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/video-pro-v1.webp",
+      "bytes": 17060,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original media-model identity illustration for a mobile AI chat model picker, in a coherent premium miniature 3D satin-clay collection. Generate exactly ONE isolated centered object on a genuinely transparent background, square canvas. Compact chunky clean silhouette, front view at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. A restrained warm coral, blush pink, ivory and muted plum palette with a little cool glass for contrast. Sophisticated and playful. High contrast edges readable after downscaling to 24 logical pixels. Object occupies about 88% of canvas, all parts inside frame with small clear margins. No text, letters, numbers, provider logo, extra badges, frame, square background tile, scenery, pedestal, ground plane, ground cast shadow, or extra objects. This is an original model identity illustration, not a corporate logo or flat UI line icon.\nSubject: One premium miniature CINEMA CAMERA in muted plum, blush pink and ivory satin clay, two large rounded film reels attached at the top and one bold coral lens projecting from the front-right side, compact rounded body. No tripod, no loose pieces, no text. Strong two-reel movie-camera silhouette, sophisticated professional video-creation identity."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/video-standard-v1.webp",
+      "bytes": 13424,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original media-model identity illustration for a mobile AI chat model picker, in a coherent premium miniature 3D satin-clay collection. Generate exactly ONE isolated centered object on a genuinely transparent background, square canvas. Compact chunky clean silhouette, front view at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. A restrained warm coral, blush pink, ivory and muted plum palette with a little cool glass for contrast. Sophisticated and playful. High contrast edges readable after downscaling to 24 logical pixels. Object occupies about 88% of canvas, all parts inside frame with small clear margins. No text, letters, numbers, provider logo, extra badges, frame, square background tile, scenery, pedestal, ground plane, ground cast shadow, or extra objects. This is an original model identity illustration, not a corporate logo or flat UI line icon.\nSubject: One compact FILM CLAPPERBOARD in soft coral-pink and ivory satin clay, a single gently open top clap stick with broad alternating ivory and coral stripes, rounded rectangular lower board. One simple raised ivory play triangle centered on its otherwise blank lower board. No text or numbers. Chunky playful fast video-creation identity."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-models/wolf-v1.webp",
+      "bytes": 15576,
+      "prompts": [
+        {
+          "source": "assets/chat-models/generation-prompts.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept. Asset: a single original model avatar illustration for a mobile AI chat model picker, a coherent premium miniature 3D satin-clay mascot collection. Generate exactly ONE isolated subject on a genuinely transparent background, square canvas. Head-and-shoulders icon with an oversized, instantly recognizable head, compact clean silhouette, facing the viewer at a subtle three-quarter angle. Smooth matte/satin material, broad sculpted shapes, tiny gentle specular highlights, soft peach studio key light and subtle pink-orange rim light. Natural species colors, friendly calm expression, sophisticated and cute rather than babyish. High contrast edges, readable after downscaling to 24 logical pixels. Center subject, occupy about 88% of canvas, keep all ears, beak and whiskers inside frame with a small clear margin. No text, letters, symbols, badges, border, square tile, pedestal, scenery, cast shadow on a ground plane, or extra objects. No photoreal fur, no busy microdetail, no jewelry. This is an original animal identity image, not a provider logo.\nSubject: A silver-grey WOLF head and compact neck ruff, two pointed upright ears, grey forehead with creamy muzzle and cheek fur, small charcoal nose, amber eyes. Clear wolf silhouette, calm intelligent expression, not snarling and not a fox. Model mood: fast, confident everyday companion."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/chat-offers/limited-offer-v1.webp",
+      "bytes": 13772,
+      "prompts": [
+        {
+          "source": "assets/chat-offers/generation-prompt.json",
+          "method": "built-in image_gen",
+          "created": "2026-11-11",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: a single premium miniature 3D satin-clay offer illustration for a mobile AI chat limited-time-offer notice, displayed at 24 logical pixels.\nPrimary request: exactly ONE isolated DISCOUNT COUPON TICKET with a broad raised ivory percentage sign, instantly conveying a special offer instead of a model or character identity.\nScene/backdrop: genuinely transparent background, square canvas, no background tile or ground plane.\nSubject/composition: one chunky rounded coupon, gently tilted about 12 degrees counterclockwise and viewed almost front-on with a very slight three-quarter perspective so its thick soft edge is visible. Clear semicircular notch cut into the middle of both short sides. Center the whole ticket, occupy about 88% of the square while keeping every edge inside the canvas with a clean transparent margin. The silhouette must remain bold and readable at 24px.\nStyle/materials: polished original 3D satin-clay illustration, broad smooth sculpted forms, soft matte/satin surfaces, subtle bevels and restrained highlights, matching a refined collection of small friendly 3D model-avatar illustrations. Warm soft studio key light, gentle ambient occlusion confined to the object. Not a flat line icon.\nColor palette: blush pink #FF9CD5 flowing softly into warm coral/apricot orange #FF8652, creamy ivory raised percentage symbol. Pink on the left, orange on the right. No purple, violet, blue or metallic gold.\nGraphic mark: one large simple ivory percent mark centered on the ticket face, made from two thick circular dots and one thick rounded diagonal bar. It should be the only symbol. No discount amount, no numerals, no letters, no writing, no price, no logo, no watermark.\nAvoid: animals, faces, mascots, candy, gift boxes, extra tickets, extra badges, ribbons, sparkles, floating debris, busy perforation microdetails, scenery, border, opaque square or oval behind the object, floor shadow, glow halo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/checkin/checkin-claimed.png",
+      "bytes": 7287
+    },
+    {
+      "path": "assets/checkin/checkin-hero-cutout.png",
+      "bytes": 523077
+    },
+    {
+      "path": "assets/checkin/checkin-hero-frontal.png",
+      "bytes": 148145
+    },
+    {
+      "path": "assets/checkin/checkin-hero-v2-black-key-soft2.png",
+      "bytes": 1044399
+    },
+    {
+      "path": "assets/checkin/streak-bonus.png",
+      "bytes": 620032
+    },
+    {
+      "path": "assets/checkin/treat-pile-v2.webp",
+      "bytes": 93312
+    },
+    {
+      "path": "assets/checkin/treat-pile-v3.webp",
+      "bytes": 78040
+    },
+    {
+      "path": "assets/checkin/treat-pile-v4-reflection.webp",
+      "bytes": 123620
+    },
+    {
+      "path": "assets/checkin/treat-pile-v5-satin.webp",
+      "bytes": 117934
+    },
+    {
+      "path": "assets/login-covers/cn/cover-06.jpg",
+      "bytes": 26738
+    },
+    {
+      "path": "assets/login-covers/cn/cover-07.jpg",
+      "bytes": 34258
+    },
+    {
+      "path": "assets/login-covers/cn/cover-08.jpg",
+      "bytes": 28724
+    },
+    {
+      "path": "assets/login-covers/cn/cover-09.jpg",
+      "bytes": 32424
+    },
+    {
+      "path": "assets/login-covers/cn/cover-10.jpg",
+      "bytes": 46120
+    },
+    {
+      "path": "assets/login-covers/cover-01.jpg",
+      "bytes": 36257
+    },
+    {
+      "path": "assets/login-covers/cover-02.jpg",
+      "bytes": 21162
+    },
+    {
+      "path": "assets/login-covers/cover-03.jpg",
+      "bytes": 38545
+    },
+    {
+      "path": "assets/login-covers/cover-04.jpg",
+      "bytes": 28056
+    },
+    {
+      "path": "assets/login-covers/cover-05.jpg",
+      "bytes": 29957
+    },
+    {
+      "path": "assets/login-covers/cover-06.jpg",
+      "bytes": 111108
+    },
+    {
+      "path": "assets/login-covers/cover-07.jpg",
+      "bytes": 107813
+    },
+    {
+      "path": "assets/login-covers/cover-08.jpg",
+      "bytes": 101723
+    },
+    {
+      "path": "assets/login-covers/cover-09.jpg",
+      "bytes": 157317
+    },
+    {
+      "path": "assets/login-covers/cover-10.jpg",
+      "bytes": 142904
+    },
+    {
+      "path": "assets/login-covers/cover-11.jpg",
+      "bytes": 30848
+    },
+    {
+      "path": "assets/login-covers/cover-12.jpg",
+      "bytes": 39321
+    },
+    {
+      "path": "assets/login-covers/cover-13.jpg",
+      "bytes": 37581
+    },
+    {
+      "path": "assets/login-covers/cover-14.jpg",
+      "bytes": 35577
+    },
+    {
+      "path": "assets/login-covers/cover-15.jpg",
+      "bytes": 27725
+    },
+    {
+      "path": "assets/login-covers/overseas/ansel-veilcroft.jpg",
+      "bytes": 81770
+    },
+    {
+      "path": "assets/login-covers/overseas/beckett-hale-v9.jpg",
+      "bytes": 185742
+    },
+    {
+      "path": "assets/login-covers/overseas/beckett-hale.jpg",
+      "bytes": 104407
+    },
+    {
+      "path": "assets/login-covers/overseas/caio-barreto.jpg",
+      "bytes": 108808
+    },
+    {
+      "path": "assets/login-covers/overseas/caio-nunes.jpg",
+      "bytes": 169833
+    },
+    {
+      "path": "assets/login-covers/overseas/camillo-cortese.jpg",
+      "bytes": 194344
+    },
+    {
+      "path": "assets/login-covers/overseas/celeste-aubert.jpg",
+      "bytes": 204140
+    },
+    {
+      "path": "assets/login-covers/overseas/corbin-rennick.jpg",
+      "bytes": 98830
+    },
+    {
+      "path": "assets/login-covers/overseas/dane-whitlock.jpg",
+      "bytes": 106149
+    },
+    {
+      "path": "assets/login-covers/overseas/desmond-pryce.jpg",
+      "bytes": 117695
+    },
+    {
+      "path": "assets/login-covers/overseas/elion-sarrance.jpg",
+      "bytes": 71560
+    },
+    {
+      "path": "assets/login-covers/overseas/ellis-kaminski.jpg",
+      "bytes": 187170
+    },
+    {
+      "path": "assets/login-covers/overseas/elspeth-vane.jpg",
+      "bytes": 250156
+    },
+    {
+      "path": "assets/login-covers/overseas/emeric-dane.jpg",
+      "bytes": 160100
+    },
+    {
+      "path": "assets/login-covers/overseas/ewan-aldsworth.jpg",
+      "bytes": 43411
+    },
+    {
+      "path": "assets/login-covers/overseas/fergus-macrae.jpg",
+      "bytes": 183243
+    },
+    {
+      "path": "assets/login-covers/overseas/ghislain-desrosiers.jpg",
+      "bytes": 406690
+    },
+    {
+      "path": "assets/login-covers/overseas/maxime-caron.jpg",
+      "bytes": 97984
+    },
+    {
+      "path": "assets/login-covers/overseas/nico-ferraro.jpg",
+      "bytes": 111126
+    },
+    {
+      "path": "assets/login-covers/overseas/ottoline-reyes.jpg",
+      "bytes": 162405
+    },
+    {
+      "path": "assets/login-covers/overseas/ruari-mulvaney.jpg",
+      "bytes": 356544
+    },
+    {
+      "path": "assets/login-covers/overseas/silas-vandermeer.jpg",
+      "bytes": 129303
+    },
+    {
+      "path": "assets/login-covers/overseas/tilda-lowndes.jpg",
+      "bytes": 234940
+    },
+    {
+      "path": "assets/login-covers/overseas/valko.jpg",
+      "bytes": 93163
+    },
+    {
+      "path": "assets/login-covers/overseas/wystan-grimwade.jpg",
+      "bytes": 250166
+    },
+    {
+      "path": "assets/membership/backgrounds/basic-romance-v1.jpg",
+      "bytes": 249284,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-v1.prompt.json",
+          "method": "Built-in image_gen",
+          "created": "2026-11-17",
+          "references": [
+            "assets/login-covers/overseas/valko.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: production mobile membership-page background art, a single tall portrait image, approximately 9:20 aspect ratio (1080 x 2400 if possible), fully opaque, no UI.\nInput image 1 is a MOOD AND COMPOSITION reference screenshot only: use its tender nearly-kissing adult couple, luminous violet romantic atmosphere and elegant refracted light. Do not reproduce any UI, lettering, crowns used as UI icons, prices, buttons, status bars or watermarks from that screenshot.\nInput image 2 is the MALE CHARACTER visual reference: preserve his recognizable hairstyle, hair color and facial character while creating a NEW close romantic scene.\nPrimary request: a premium female-audience romance-game illustration, emotionally intimate and captivating, understated sensual chemistry through affectionate eye contact, closeness and tender expressions. Two clearly adult people around 28 years old, fully clothed. The attractive adult man is the main visual lead, leaning slightly toward an adult woman shown in elegant partial profile, their faces very close and lips about to meet but not touching, reciprocal affection. No sexual activity.\nStyle/medium: beautifully rendered cinematic semi-realistic 3D otome-game key art, natural delicate skin texture, handsome refined facial anatomy, soft wavy hair, exquisite restrained finish, dreamy depth of field. Avoid flat anime line art or plastic doll skin.\nCritical mobile layout: the finished image is a long vertical background, not a poster or UI mockup. BOTH faces, eyes, noses and the almost-kiss gesture must fit inside the CENTRAL 70 percent of image width and between 15 and 34 percent of image height, because the app header covers the top 15 percent and the membership cards cover the bottom 65 percent. Leave the top 10 percent as quiet darker atmospheric space, allow hair in the 10–18 percent band. Keep both faces large enough to read in that upper romantic window, with their heads turned in natural profiles. Below 38 percent of height, softly dissolve shoulders and clothing into a smooth low-detail deep aubergine/lavender atmosphere. The bottom 40 percent is a quiet dark violet field for actual app overlays, not a second illustration or a flat visible rectangle.\nLighting/mood: luminous lilac and mauve rim light, soft rosy skin highlights, brighter readable faces in the upper third, a few elegant amethyst refractions and defocused crystal glints near the outer edges inspired by image 1; gentle soft shadows and cinematic atmosphere, no glaring white light.\nColor palette: lavender, smoky violet, muted rose and deep plum, with natural warm skin.\nConstraints: single seamless image; no text, lettering, logos, numbers, borders, UI or watermark; anatomically natural faces and necks, no extra fingers or extra people. Fully opaque background. No explicit imagery, no adolescent appearance.\nCharacter direction: the man from image 2 has textured muted wine-red hair, refined sharp features, a dark tailored jacket and softly loosened white collar. Replace his distant stern expression with affectionate focus on the adult woman he is close to. She has softly swept dark hair and wears an elegant dark dress. Delicate mauve and rosy lavender illumination. Do not copy the old low-angle camera, rope, hands pose or staircase; use a tender eye-level close portrait."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/basic-romance-v2.jpg",
+      "bytes": 286710,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-v2.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-17",
+          "references": [
+            "assets/membership/backgrounds/basic-romance-v1.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: lighting-weather / style-transfer.\nAsset type: revised BASIC membership background.\nInput image 1 is the EDIT TARGET. Preserve BOTH adult characters exactly as recognizable individuals, including the man's textured wine-red hair and dark tailored jacket/white collar, the woman's dark updo, their close face-to-face profiles, affectionate eye contact, nearly-kissing expressions, all facial proportions, pose, camera crop, image composition, and position of both faces. Change only the color grade and luminous atmosphere.\nRegrade the picture to harmonize with the BASIC membership card: deep rose-plum shadows #462337 and #361E2E, luminous soft blush #FFC5E4 and muted warm peach #FFB187 highlights. Reduce the old uniform electric-purple tint. Keep a restrained lavender undertone linking the family of backgrounds, natural warm skin and subtle rosy rim light. The faces should read brightly in the upper third, while the lower area remains a smooth deep rose-plum-to-#0B0A0D fade.\nAdd a clearly visible, elegant shimmering atmosphere: fine luminous particles, scattered tiny sharp optical pinpricks, a few delicate four-point lens diffraction glints and pearlescent crystal refractions, mixed with soft out-of-focus bokeh. Use varied scale and depth, with brighter glints in the upper half around the hair silhouettes and the outer sides. Keep the eyes and facial features clean and readable. Let glints fade gradually below the middle into the dark bottom. The effect is realistic light scattering in a premium cinematic romance illustration, not flat star stickers or cartoon shapes. The bright glints are pearl-white, pale blush and the tiniest champagne-peach accents.\nMaintain a single seamless long portrait background, approximately 9:20 like the input, with the romantic interaction in the UPPER THIRD and low-detail space for app cards over the lower two thirds. Both people are clearly adult around 30 and fully clothed. Keep natural skin texture, anatomically natural faces and the polished semi-realistic 3D romance-game rendering. The bottom fades smoothly toward the page background #0B0A0D. No UI, text, lettering, logos, buttons, borders, watermark, added people or added props."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/basic-romance-v3.jpg",
+      "bytes": 293711,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-v3.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-17",
+          "references": [
+            "assets/membership/backgrounds/plus-romance-v2.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: precise-object-edit / style-transfer.\nEdit the ONE provided image directly. It is the locked master scene for a set of matching app backgrounds.\nABSOLUTE INVARIANTS: Keep the exact original 841 x 1870 portrait canvas and aspect ratio. Keep the exact original crop, framing, camera angle, body placement, shoulder placement, head sizes, head rotations, head positions, gaze and face-to-face distance. In particular both eye centers, both nose tips, lips, chins and ears must stay in their ORIGINAL pixel positions. Keep the hair volume's overall silhouette and height within the original bounds. Do not move, scale, rotate, reframe or zoom either person. Preserve the entire original composition, including the upper-third romantic scene and the long quiet lower gradient.\nOnly change the character STYLING, clothing surfaces and color grade as specified below. Preserve the underlying pose and facial geometry of this master so that a cross-dissolve between the original and the edited result aligns closely without spatial jumps.\nKeep the dark-haired woman at her exact original location and scale; retain the same close affectionate profile moment and refined semi-realistic cinematic 3D art. Both people are clearly mature adults around 30 and fully clothed.\nKeep the crystal edges, pearl particles, four-point optical sparkle glints and bokeh in their original positions and at the same general brightness; re-tint them to the variant palette. Keep the bottom smoothly fading toward #0B0A0D. Do not add or remove people, create extra props or change the scene composition.\nNo text, lettering, logo, border, UI or watermark. Return exactly one full tall portrait background.\nBASIC styling only: change the man's blond hair to textured muted wine-red hair WITH THE SAME overall hair bounding shape and volume, slightly darker eyebrows, warm brown eyes and a clean-shaven refined face. Replace the fantasy gold-embroidered garment surface with a dark tailored jacket and relaxed white collar, while retaining the exact neck/body pose. Keep the woman's dark updo and small elegant drop earring. Color grade the scene to soft blush, rose-plum and restrained peach highlights (#462337, #361E2E, #FFC5E4, #FFB187), with warm natural skin and pale blush/pearl sparkles. Do not alter the master's face positions or sizes when making these styling edits."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/basic-romance-v4.jpg",
+      "bytes": 228499,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-outpaint.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-20",
+          "references": [
+            "assets/membership/backgrounds/basic-romance-v3.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: identity-preserve outpainting with matching artwork for two app tiers. Image 1 is the newly expanded locked composition master. Image 2 is the original PLUS subject and palette reference. Edit image 1 directly into the PLUS companion wallpaper, with the exact same tall 9:20 canvas, wide framing, relative figure scale, head and shoulder silhouettes, landmarks, near-touching noses, crop, and placement. Carry over the identities and attire from image 2 in those exact positions: the adult man on the left has auburn waves, a dark tailored suit and open white collar; the adult woman on the right has the same dark updo and earring. Keep their expressions and softly realistic faces. Replace the cool purple scene lighting with the warm rose, muted wine, pink and a little peach rim light of image 2. Retain the generous star-filled space created in the master on all four sides; keep the same restrained edge prisms, fine pinprick sparks, soft haze, and quiet dark space under the faces. The subtle glints are warm pink, pale rose and peach. Keep the composition registered with image 1, especially the noses and eyes, so a crossfade between tiers feels stable. The lower half gradually becomes dark near-black plum for UI. One continuous image without text, logos, borders, collage seams, extra characters, or large flares over faces."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/free-romance-v1.jpg",
+      "bytes": 216163,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-v1.prompt.json",
+          "method": "Built-in image_gen",
+          "created": "2026-11-17",
+          "references": [
+            "assets/login-covers/overseas/maxime-caron.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: a fully opaque tall 9:20 portrait background for a female-audience romance app membership page, no UI and no text.\nInput image 1 is a visual mood reference only: borrow the soft lavender crystal lighting and premium romance-game rendering; ignore all screen interface elements. Input image 2 is a male face/hair reference only, not a pose or clothing reference.\nCreate a new tender fully clothed adult couple portrait in elegant semi-realistic 3D cinematic illustration style. The man and woman are both clearly mature adults around 30. The man has tousled dark brown-black hair, subtle stubble and a small black stud earring, with a softly affectionate expression. Dress him in a CLOSED dark charcoal shirt covering his chest. The woman has softly swept dark hair and a fully clothed dark tailored outfit. They lean their heads gently toward one another with warm reciprocal eye contact and small soft smiles, faces close but a little apart, an affectionate quiet moment. Portrait crop, no hands needed.\nThe critical composition is a long vertical background with the entire couple interaction placed HIGH in the image: hair begins at 8% of image height, eyes around 21%, both complete faces finish above 31%. Both faces fit within central 70% of canvas width. Leave just the top 8% as quiet atmospheric space. From 36% downward, shoulders and fabric dissolve into a rich smooth low-detail deep-plum atmospheric gradient extending seamlessly to the bottom, so actual app cards can overlay the lower two thirds. Do not center the faces vertically on the whole canvas.\nUse softly luminous silver-lilac rim light, delicate warm skin highlights and amethyst refractions at the distant outer edges. Keep faces naturally lit and readable, with detailed natural skin, refined proportions, flowing hair and cinematic shallow depth of field. Premium understated affectionate romance, tasteful and elegant.\nNo lettering, text, logos, numbers, interface, buttons, watermark or borders. No extra people or extra limbs. No bare torso. Output one seamless tall portrait image."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/free-romance-v2.jpg",
+      "bytes": 249281,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-v2.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-17",
+          "references": [
+            "assets/membership/backgrounds/free-romance-v1.jpg",
+            "assets/membership/backgrounds/basic-romance-v1.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: identity-preserve / compositing.\nAsset type: revised FREE membership background.\nInput image 1 is the EDIT TARGET and identity reference for BOTH adult characters: the tousled dark-haired man with subtle stubble and a small black stud earring, and the dark-haired woman. Input image 2 is a COMPOSITION reference only; do not copy its wine-red-haired man's identity.\nChange the target couple's pose and composition to MATCH image 2: the adult man is on the LEFT in three-quarter profile facing right and leaning gently down; the adult woman is on the RIGHT in profile facing up and left. Their faces are very close with a small gap between their noses, focused reciprocal eye contact, a tender moment just before a kiss. Match the same face scale, camera distance and vertical placement as image 2. Both complete faces and the interaction fit in the upper third, the eye line around 25–29 percent of the full image height, nose and lips within about 31–36 percent. Preserve the two target characters' recognizable faces, hair and fully clothed dark outfits; his shirt remains CLOSED and covers his chest. No hands needed. This replaces the current side-by-side forehead-leaning composition.\nColor grade to complement the FREE tier's dark graphite and silver palette: #26282E, #303238, pearl #D4D8E2 and #FAFBFF, with a very subtle lavender undertone in the shadows so it belongs to the same app as the other two images. Reduce the old heavy magenta cast, keep natural warm skin, add silver-lilac rim light rather than blue lighting.\nAdd a clearly visible, elegant shimmering atmosphere: fine luminous particles, scattered tiny sharp optical pinpricks, a few delicate four-point lens diffraction glints and pearlescent crystal refractions, mixed with soft out-of-focus bokeh. Use varied scale and depth, with brighter glints in the upper half around the hair silhouettes and the outer sides. Keep the eyes and facial features clean and readable. Let glints fade gradually below the middle into the dark bottom. The effect is realistic light scattering in a premium cinematic romance illustration, not flat star stickers or cartoon shapes.\nMaintain a single seamless long portrait background, approximately 9:20 like the input, with the romantic interaction in the UPPER THIRD and low-detail space for app cards over the lower two thirds. Both people are clearly adult around 30 and fully clothed. Keep natural skin texture, anatomically natural faces and the polished semi-realistic 3D romance-game rendering. The bottom fades smoothly toward the page background #0B0A0D. No UI, text, lettering, logos, buttons, borders, watermark, added people or added props."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/free-romance-v3.jpg",
+      "bytes": 283164,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-v3.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-17",
+          "references": [
+            "assets/membership/backgrounds/plus-romance-v2.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: precise-object-edit / style-transfer.\nEdit the ONE provided image directly. It is the locked master scene for a set of matching app backgrounds.\nABSOLUTE INVARIANTS: Keep the exact original 841 x 1870 portrait canvas and aspect ratio. Keep the exact original crop, framing, camera angle, body placement, shoulder placement, head sizes, head rotations, head positions, gaze and face-to-face distance. In particular both eye centers, both nose tips, lips, chins and ears must stay in their ORIGINAL pixel positions. Keep the hair volume's overall silhouette and height within the original bounds. Do not move, scale, rotate, reframe or zoom either person. Preserve the entire original composition, including the upper-third romantic scene and the long quiet lower gradient.\nOnly change the character STYLING, clothing surfaces and color grade as specified below. Preserve the underlying pose and facial geometry of this master so that a cross-dissolve between the original and the edited result aligns closely without spatial jumps.\nKeep the dark-haired woman at her exact original location and scale; retain the same close affectionate profile moment and refined semi-realistic cinematic 3D art. Both people are clearly mature adults around 30 and fully clothed.\nKeep the crystal edges, pearl particles, four-point optical sparkle glints and bokeh in their original positions and at the same general brightness; re-tint them to the variant palette. Keep the bottom smoothly fading toward #0B0A0D. Do not add or remove people, create extra props or change the scene composition.\nNo text, lettering, logo, border, UI or watermark. Return exactly one full tall portrait background.\nFREE styling only: change the man's blond hair to tousled dark brown-black hair WITH THE SAME overall hair bounding shape, add subtle natural dark stubble and a small black stud earring, and make his eyes warm brown. His skin is a slightly warmer natural olive tone. Replace the fantasy gold-embroidered garment surface with a plain closed graphite shirt and collar covering his chest, while retaining the exact neck/body pose. The woman retains her dark hair, with small delicate pearl-silver stud earrings. Color grade the scene to cool dark graphite, pearl-silver highlights and very restrained lavender undertones (#26282E, #303238, #D4D8E2, #FAFBFF), preserving natural warm skin. Do not alter the master's face positions or sizes when making these styling edits."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/plus-romance-v1.jpg",
+      "bytes": 252110,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-v1.prompt.json",
+          "method": "Built-in image_gen",
+          "created": "2026-11-17",
+          "references": [
+            "assets/login-covers/overseas/elion-sarrance.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: production mobile membership-page background art, a single tall portrait image, approximately 9:20 aspect ratio (1080 x 2400 if possible), fully opaque, no UI.\nInput image 1 is a MOOD AND COMPOSITION reference screenshot only: use its tender nearly-kissing adult couple, luminous violet romantic atmosphere and elegant refracted light. Do not reproduce any UI, lettering, crowns used as UI icons, prices, buttons, status bars or watermarks from that screenshot.\nInput image 2 is the MALE CHARACTER visual reference: preserve his recognizable hairstyle, hair color and facial character while creating a NEW close romantic scene.\nPrimary request: a premium female-audience romance-game illustration, emotionally intimate and captivating, understated sensual chemistry through affectionate eye contact, closeness and tender expressions. Two clearly adult people around 28 years old, fully clothed. The attractive adult man is the main visual lead, leaning slightly toward an adult woman shown in elegant partial profile, their faces very close and lips about to meet but not touching, reciprocal affection. No sexual activity.\nStyle/medium: beautifully rendered cinematic semi-realistic 3D otome-game key art, natural delicate skin texture, handsome refined facial anatomy, soft wavy hair, exquisite restrained finish, dreamy depth of field. Avoid flat anime line art or plastic doll skin.\nCritical mobile layout: the finished image is a long vertical background, not a poster or UI mockup. BOTH faces, eyes, noses and the almost-kiss gesture must fit inside the CENTRAL 70 percent of image width and between 15 and 34 percent of image height, because the app header covers the top 15 percent and the membership cards cover the bottom 65 percent. Leave the top 10 percent as quiet darker atmospheric space, allow hair in the 10–18 percent band. Keep both faces large enough to read in that upper romantic window, with their heads turned in natural profiles. Below 38 percent of height, softly dissolve shoulders and clothing into a smooth low-detail deep aubergine/lavender atmosphere. The bottom 40 percent is a quiet dark violet field for actual app overlays, not a second illustration or a flat visible rectangle.\nLighting/mood: luminous lilac and mauve rim light, soft rosy skin highlights, brighter readable faces in the upper third, a few elegant amethyst refractions and defocused crystal glints near the outer edges inspired by image 1; gentle soft shadows and cinematic atmosphere, no glaring white light.\nColor palette: lavender, smoky violet, muted rose and deep plum, with natural warm skin.\nConstraints: single seamless image; no text, lettering, logos, numbers, borders, UI or watermark; anatomically natural faces and necks, no extra fingers or extra people. Fully opaque background. No explicit imagery, no adolescent appearance.\nCharacter direction: the man from image 2 has softly tousled golden-blond hair, elegant facial features, light eyes and a refined dark garment with a restrained touch of gold detail. Give him an intimate affectionate gaze at the adult dark-haired woman nearby, with a delicate almost-kiss moment. Ethereal amethyst and lavender light, soft warm gold light on his hair. No large crown, throne, giant ornaments or extravagant objects; the faces and romantic chemistry are the focus."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/plus-romance-v2.jpg",
+      "bytes": 291180,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-v2.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-17",
+          "references": [
+            "assets/membership/backgrounds/plus-romance-v1.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: lighting-weather / style-transfer.\nAsset type: revised PLUS membership background.\nInput image 1 is the EDIT TARGET. Preserve BOTH adult characters exactly as recognizable individuals, including the softly tousled blond man, his refined dark garment with restrained gold detail, the dark-haired woman, their close face-to-face profiles, affectionate eye contact, nearly-kissing expressions, all facial proportions, pose, camera crop, image composition, and position of both faces. Change only the color grade and luminous atmosphere.\nRegrade the picture to match the PLUS membership card: deep violet #3A2356 and #291C3B shadows, soft lavender #BE9AFF and milky lilac #E2CFFF luminous highlights. Reduce the overly reddish-magenta cast and use refined cool lavender and pearl light, while keeping natural warm skin and the man's natural golden-blond hair. Make the upper-third faces luminous and dimensional, with an elegant amethyst glow rather than a saturated neon-purple wash.\nAdd a clearly visible, elegant shimmering atmosphere: fine luminous particles, scattered tiny sharp optical pinpricks, a few delicate four-point lens diffraction glints and pearlescent crystal refractions, mixed with soft out-of-focus bokeh. Use varied scale and depth, with brighter glints in the upper half around the hair silhouettes and the outer sides. Keep the eyes and facial features clean and readable. Let glints fade gradually below the middle into the dark bottom. The effect is realistic light scattering in a premium cinematic romance illustration, not flat star stickers or cartoon shapes. The bright glints are pearl-white, silver-lilac and light lavender, like light reflecting off fine crystals.\nMaintain a single seamless long portrait background, approximately 9:20 like the input, with the romantic interaction in the UPPER THIRD and low-detail space for app cards over the lower two thirds. Both people are clearly adult around 30 and fully clothed. Keep natural skin texture, anatomically natural faces and the polished semi-realistic 3D romance-game rendering. The bottom fades smoothly toward the page background #0B0A0D. No UI, text, lettering, logos, buttons, borders, watermark, added people or added props."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/plus-romance-v3.jpg",
+      "bytes": 233856,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/romance-backgrounds-outpaint.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-20",
+          "references": [
+            "assets/membership/backgrounds/plus-romance-v2.jpg"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: identity-preserve outpainting. Expand the single supplied ULTRA membership background into a more spacious, taller mobile wallpaper of approximately 9:20 (width to height 0.45, same aspect as the input). Keep the same two adult characters, face likenesses, gaze, nose-to-nose pose, blond waves on the left, dark updo and earring on the right, ornate dark clothes, and violet cinematic light. Reframe by scaling the original couple to about 65–70% of the original on-canvas size and extending the artwork on all four sides. The two faces are comfortably visible together near the upper quarter, with the near-touching noses about 22–23% down the full portrait and toward the horizontal center; keep both chins above 30%. Their shoulders softly blend into the middle of the image. Build the extra surroundings seamlessly from the existing indigo and violet environment, with plentiful delicate pinprick stars, a few sharp little lavender glints, fine floating sparkling dust, and restrained translucent prism light around the outer edges. Give the glints room above and along both sides of the couple, with a quieter dark top-center area for a navigation title. Reduce contrast and sparkle toward the bottom half so white UI remains legible, fading smoothly into deep nearly black violet at the bottom. A single cohesive image, no panels, frame, hard compositing seams, extra people, text or logos, and no large starbursts over the faces."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/backgrounds/treat-packs-starlight-v1.jpg",
+      "bytes": 145735,
+      "prompts": [
+        {
+          "source": "assets/membership/backgrounds/treat-packs-starlight-v1.prompt.json",
+          "method": "built-in image_gen generation",
+          "created": "2026-11-20",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Create one original full-bleed portrait background texture for the Treat Packs page of a refined dark mobile app. Tall 9:20 aspect ratio around 840 by 1870, edge-to-edge only, designed to sit beneath real UI with title and a balance card over the top-center, and product cards below. It is a softly luminous studio atmosphere: a thin luminous veil of peach and antique rose sweeping in from the upper left, muted mauve/pink into desaturated periwinkle and smoky violet to the upper right, with finely scattered microscopic star points and some subtly iridescent glints at the top and along both sides. A few tiny sharply focused four-point highlights with restrained bloom; a sense of layered diffusion and depth with no identifiable scene. The edge glow on the upper third should read clearly even around an overlaid balance card. Let the top-center behind the white header label stay velvety and medium dark. Leave the central area between the glows quiet. Let the lower half taper gradually and seamlessly down to almost uniform neutral charcoal #0B0B0D, especially at the bottom. Delicate, refined, visually clear, subtle saturation, gentle highlights, soft bokeh and fine sparkle on a dark ground. No neon, no harsh contrast, no large stars, no obvious rings or sweeping rays, no horizon, no planets or moons, no recognizable objects or candy, no people, no faces, no figures or silhouettes, no lettering, no logos, no interface or frames. Deliver just the finished abstract atmospheric wallpaper."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/image-download-v1.png",
+      "bytes": 56250,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v1.prompt.json",
+          "method": "Built-in image_gen",
+          "created": "2026-11-17",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: one small raster illustration for a premium mobile membership benefits card.\nStyle/medium: polished soft 3D product illustration, tactile satin pearl resin, rounded sculpted volumes, subtle lilac iridescence, gentle realistic highlights. Clearly dimensional bitmap artwork, not a flat vector or line icon.\nComposition: one isolated centered object or tight object cluster on a genuinely transparent alpha background, square canvas, three-quarter view slightly from above, complete silhouette occupying about 78 percent of the canvas with even clear margins. Keep broad simple readable forms for display at 40–48 dp.\nColor palette: lavender and soft violet, milky pearl white, small blush-pink accents; all surfaces harmonize with dark purple membership cards.\nLighting: soft studio light from upper left, mild rim highlights, no black outline, no heavy cast shadow or ground plane.\nConstraints: no text, letters, numerals, logos, labels, watermark, UI card, border, solid background or checkerboard. Produce only this one asset.\nSubject: A softly rounded upright lavender picture frame containing a simple sculpted pearl mountain silhouette and a blush-pink sun orb. A small dimensional lavender downward arrow with a rounded stem rests in front of the lower right corner, clearly indicating downloading a picture."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/image-download-v2.webp",
+      "bytes": 31586,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v2.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-20",
+          "references": [
+            "assets/membership/benefits/image-download-v1.png"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Edit the attached transparent illustration for a mobile membership UI. This is a color and material revision of the exact supplied raster artwork. Keep its subject, number of parts, original shape, pose, relief details, orientation, framing, center and silhouette from the reference, with the same amount of clear padding on all sides. Use a polished soft 3D satin-resin finish on broad, simple shapes. Replace the large cool milky-white patches with saturated but restrained colored midtones. Palette of orchid and iris violet, warm rose-pink and peach-coral, with subtle gradients on the surfaces and darker tinted creases. Lighting comes softly from the upper left. Restrict very light highlights to small tinted specular accents, so the colors still read at 24 pt over a dark plum background. Keep the midtones luminous and clearly colored without neon or blown-out highlights. Keep the square canvas and genuinely transparent alpha background with clean antialiasing. No backdrop, glow outside the silhouette, ground plane, cast shadow, frame, text, added objects or watermark.\n\nGive the picture frame plum-lilac-to-dusty-rose volume. Color the mountain shapes sunset coral and orchid, let the small existing sun carry a warm golden-apricot glint, and give the existing down arrow a rose-to-peach finish."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/monthly-treats-v1.png",
+      "bytes": 80207,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v1.prompt.json",
+          "method": "Built-in image_gen",
+          "created": "2026-11-17",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: one small raster illustration for a premium mobile membership benefits card.\nStyle/medium: polished soft 3D product illustration, tactile satin pearl resin, rounded sculpted volumes, subtle lilac iridescence, gentle realistic highlights. Clearly dimensional bitmap artwork, not a flat vector or line icon.\nComposition: one isolated centered object or tight object cluster on a genuinely transparent alpha background, square canvas, three-quarter view slightly from above, complete silhouette occupying about 78 percent of the canvas with even clear margins. Keep broad simple readable forms for display at 40–48 dp.\nColor palette: lavender and soft violet, milky pearl white, small blush-pink accents; all surfaces harmonize with dark purple membership cards.\nLighting: soft studio light from upper left, mild rim highlights, no black outline, no heavy cast shadow or ground plane.\nConstraints: no text, letters, numerals, logos, labels, watermark, UI card, border, solid background or checkerboard. Produce only this one asset.\nSubject: A small cluster of three individually wrapped premium candies, rounded rectangular centers and gently twisted pearlescent wrappers. Lavender satin candy wrappers with pearl highlights and tiny blush reflections. Make these recognizably wrapped sweets, not coins or gemstones."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/monthly-treats-v2.webp",
+      "bytes": 42158,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v2.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-20",
+          "references": [
+            "assets/membership/benefits/monthly-treats-v1.png"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Edit the attached transparent illustration for a mobile membership UI. This is a color and material revision of the exact supplied raster artwork. Keep its subject, number of parts, original shape, pose, relief details, orientation, framing, center and silhouette from the reference, with the same amount of clear padding on all sides. Use a polished soft 3D satin-resin finish on broad, simple shapes. Replace the large cool milky-white patches with saturated but restrained colored midtones. Palette of orchid and iris violet, warm rose-pink and peach-coral, with subtle gradients on the surfaces and darker tinted creases. Lighting comes softly from the upper left. Restrict very light highlights to small tinted specular accents, so the colors still read at 24 pt over a dark plum background. Keep the midtones luminous and clearly colored without neon or blown-out highlights. Keep the square canvas and genuinely transparent alpha background with clean antialiasing. No backdrop, glow outside the silhouette, ground plane, cast shadow, frame, text, added objects or watermark.\n\nGive the three wrapped candies different colors within the same brand palette. Make the centers rose-pink, warm apricot and pink-purple. Give the twisted wrappers a peach-to-lilac tint. Leave small apricot glints along the folds."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/persona-card-v1.png",
+      "bytes": 59395,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v1.prompt.json",
+          "method": "Built-in image_gen",
+          "created": "2026-11-17",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: one small raster illustration for a premium mobile membership benefits card.\nStyle/medium: polished soft 3D product illustration, tactile satin pearl resin, rounded sculpted volumes, subtle lilac iridescence, gentle realistic highlights. Clearly dimensional bitmap artwork, not a flat vector or line icon.\nComposition: one isolated centered object or tight object cluster on a genuinely transparent alpha background, square canvas, three-quarter view slightly from above, complete silhouette occupying about 78 percent of the canvas with even clear margins. Keep broad simple readable forms for display at 40–48 dp.\nColor palette: lavender and soft violet, milky pearl white, small blush-pink accents; all surfaces harmonize with dark purple membership cards.\nLighting: soft studio light from upper left, mild rim highlights, no black outline, no heavy cast shadow or ground plane.\nConstraints: no text, letters, numerals, logos, labels, watermark, UI card, border, solid background or checkerboard. Produce only this one asset.\nSubject: One softly rounded lavender personal profile card with a simple raised pearl-white generic head-and-shoulders portrait relief and two small rounded relief strips on its right. A second thin blush-pearl card peeks from behind. The portrait is a smooth anonymous bust, not a real person. No lettering."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/persona-card-v2.webp",
+      "bytes": 32390,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v2.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-20",
+          "references": [
+            "assets/membership/benefits/persona-card-v1.png"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Edit the attached transparent illustration for a mobile membership UI. This is a color and material revision of the exact supplied raster artwork. Keep its subject, number of parts, original shape, pose, relief details, orientation, framing, center and silhouette from the reference, with the same amount of clear padding on all sides. Use a polished soft 3D satin-resin finish on broad, simple shapes. Replace the large cool milky-white patches with saturated but restrained colored midtones. Palette of orchid and iris violet, warm rose-pink and peach-coral, with subtle gradients on the surfaces and darker tinted creases. Lighting comes softly from the upper left. Restrict very light highlights to small tinted specular accents, so the colors still read at 24 pt over a dark plum background. Keep the midtones luminous and clearly colored without neon or blown-out highlights. Keep the square canvas and genuinely transparent alpha background with clean antialiasing. No backdrop, glow outside the silhouette, ground plane, cast shadow, frame, text, added objects or watermark.\n\nGive the front card a lavender violet gradient with a deep iris lower rim, and color the anonymous bust and relief bars a warm muted peach-pink. Give the thin rear card a satin orchid-to-petal-pink gradient. Keep the bust and lines legible as simple, bright raised shapes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/suggested-replies-v1.png",
+      "bytes": 51621,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v1.prompt.json",
+          "method": "Built-in image_gen",
+          "created": "2026-11-17",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: one small raster illustration for a premium mobile membership benefits card.\nStyle/medium: polished soft 3D product illustration, tactile satin pearl resin, rounded sculpted volumes, subtle lilac iridescence, gentle realistic highlights. Clearly dimensional bitmap artwork, not a flat vector or line icon.\nComposition: one isolated centered object or tight object cluster on a genuinely transparent alpha background, square canvas, three-quarter view slightly from above, complete silhouette occupying about 78 percent of the canvas with even clear margins. Keep broad simple readable forms for display at 40–48 dp.\nColor palette: lavender and soft violet, milky pearl white, small blush-pink accents; all surfaces harmonize with dark purple membership cards.\nLighting: soft studio light from upper left, mild rim highlights, no black outline, no heavy cast shadow or ground plane.\nConstraints: no text, letters, numerals, logos, labels, watermark, UI card, border, solid background or checkerboard. Produce only this one asset.\nSubject: One puffy lavender speech bubble with a small softly raised pearl-white three-dot typing motif, and a second smaller blush-pearl chat bubble tucked behind it. Friendly conversational suggestion imagery, smooth soft 3D volumes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/suggested-replies-v2.webp",
+      "bytes": 28594,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v2.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-20",
+          "references": [
+            "assets/membership/benefits/suggested-replies-v1.png"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Edit the attached transparent illustration for a mobile membership UI. This is a color and material revision of the exact supplied raster artwork. Keep its subject, number of parts, original shape, pose, relief details, orientation, framing, center and silhouette from the reference, with the same amount of clear padding on all sides. Use a polished soft 3D satin-resin finish on broad, simple shapes. Replace the large cool milky-white patches with saturated but restrained colored midtones. Palette of orchid and iris violet, warm rose-pink and peach-coral, with subtle gradients on the surfaces and darker tinted creases. Lighting comes softly from the upper left. Restrict very light highlights to small tinted specular accents, so the colors still read at 24 pt over a dark plum background. Keep the midtones luminous and clearly colored without neon or blown-out highlights. Keep the square canvas and genuinely transparent alpha background with clean antialiasing. No backdrop, glow outside the silhouette, ground plane, cast shadow, frame, text, added objects or watermark.\n\nGive the larger front message bubble a dusky orchid-to-rose gradient with a deeper violet underside. Color the three typing dots pale apricot. Give the smaller rear bubble a muted coral and apricot gradient."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/video-download-v1.png",
+      "bytes": 68686,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v1.prompt.json",
+          "method": "Built-in image_gen",
+          "created": "2026-11-17",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: one small raster illustration for a premium mobile membership benefits card.\nStyle/medium: polished soft 3D product illustration, tactile satin pearl resin, rounded sculpted volumes, subtle lilac iridescence, gentle realistic highlights. Clearly dimensional bitmap artwork, not a flat vector or line icon.\nComposition: one isolated centered object or tight object cluster on a genuinely transparent alpha background, square canvas, three-quarter view slightly from above, complete silhouette occupying about 78 percent of the canvas with even clear margins. Keep broad simple readable forms for display at 40–48 dp.\nColor palette: lavender and soft violet, milky pearl white, small blush-pink accents; all surfaces harmonize with dark purple membership cards.\nLighting: soft studio light from upper left, mild rim highlights, no black outline, no heavy cast shadow or ground plane.\nConstraints: no text, letters, numerals, logos, labels, watermark, UI card, border, solid background or checkerboard. Produce only this one asset.\nSubject: One compact rounded lavender film clapperboard, with a slightly open striped pearl-and-lilac hinged top and a raised pearl play triangle in the middle. A small dimensional blush-lilac downward arrow sits at its lower right, clearly indicating downloading a video."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/video-download-v2.webp",
+      "bytes": 40580,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v2.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-20",
+          "references": [
+            "assets/membership/benefits/video-download-v1.png"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Edit the attached transparent illustration for a mobile membership UI. This is a color and material revision of the exact supplied raster artwork. Keep its subject, number of parts, original shape, pose, relief details, orientation, framing, center and silhouette from the reference, with the same amount of clear padding on all sides. Use a polished soft 3D satin-resin finish on broad, simple shapes. Replace the large cool milky-white patches with saturated but restrained colored midtones. Palette of orchid and iris violet, warm rose-pink and peach-coral, with subtle gradients on the surfaces and darker tinted creases. Lighting comes softly from the upper left. Restrict very light highlights to small tinted specular accents, so the colors still read at 24 pt over a dark plum background. Keep the midtones luminous and clearly colored without neon or blown-out highlights. Keep the square canvas and genuinely transparent alpha background with clean antialiasing. No backdrop, glow outside the silhouette, ground plane, cast shadow, frame, text, added objects or watermark.\n\nGive the clapperboard body a rich iris-to-orchid violet gradient. Make the alternate hinge stripes pink-peach against violet, the raised play triangle light apricot, and the existing downward arrow warm coral-pink. Keep the bright forms readable at tiny sizes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/voice-call-v1.png",
+      "bytes": 71692,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v1.prompt.json",
+          "method": "Built-in image_gen",
+          "created": "2026-11-17",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: one small raster illustration for a premium mobile membership benefits card.\nStyle/medium: polished soft 3D product illustration, tactile satin pearl resin, rounded sculpted volumes, subtle lilac iridescence, gentle realistic highlights. Clearly dimensional bitmap artwork, not a flat vector or line icon.\nComposition: one isolated centered object or tight object cluster on a genuinely transparent alpha background, square canvas, three-quarter view slightly from above, complete silhouette occupying about 78 percent of the canvas with even clear margins. Keep broad simple readable forms for display at 40–48 dp.\nColor palette: lavender and soft violet, milky pearl white, small blush-pink accents; all surfaces harmonize with dark purple membership cards.\nLighting: soft studio light from upper left, mild rim highlights, no black outline, no heavy cast shadow or ground plane.\nConstraints: no text, letters, numerals, logos, labels, watermark, UI card, border, solid background or checkerboard. Produce only this one asset.\nSubject: One plush-looking premium over-ear headset made of satin lavender and milky pearl resin, with rounded ear cups, a soft curved headband, and a short blush-lilac microphone boom. Friendly, simple, high quality voice conversation imagery, no wires trailing away."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/benefits/voice-call-v2.webp",
+      "bytes": 39332,
+      "prompts": [
+        {
+          "source": "assets/membership/benefits/benefit-artworks-v2.prompt.json",
+          "method": "Built-in image_gen edit",
+          "created": "2026-11-20",
+          "references": [
+            "assets/membership/benefits/voice-call-v1.png"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Edit the attached transparent illustration for a mobile membership UI. This is a color and material revision of the exact supplied raster artwork. Keep its subject, number of parts, original shape, pose, relief details, orientation, framing, center and silhouette from the reference, with the same amount of clear padding on all sides. Use a polished soft 3D satin-resin finish on broad, simple shapes. Replace the large cool milky-white patches with saturated but restrained colored midtones. Palette of orchid and iris violet, warm rose-pink and peach-coral, with subtle gradients on the surfaces and darker tinted creases. Lighting comes softly from the upper left. Restrict very light highlights to small tinted specular accents, so the colors still read at 24 pt over a dark plum background. Keep the midtones luminous and clearly colored without neon or blown-out highlights. Keep the square canvas and genuinely transparent alpha background with clean antialiasing. No backdrop, glow outside the silhouette, ground plane, cast shadow, frame, text, added objects or watermark.\n\nGive the broad exterior headband and earpiece shells a richly colored lilac-to-pink gradient. Tinge the cushions muted rose with deeper purple recessed shadows, and tint the mic tip warm peach. Keep the recognizable complete curved band and short mic boom."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/chat-annual-gift-motion.webp",
+      "bytes": 234080
+    },
+    {
+      "path": "assets/membership/chat-annual-gift-poster.webp",
+      "bytes": 15046
+    },
+    {
+      "path": "assets/membership/credit-pack-mark.webp",
+      "bytes": 30256
+    },
+    {
+      "path": "assets/membership/crown-3d.png",
+      "bytes": 41963
+    },
+    {
+      "path": "assets/membership/pro-hero.webp",
+      "bytes": 1141062
+    },
+    {
+      "path": "assets/membership/retention-bonus-artwork-v1.webp",
+      "bytes": 589778
+    },
+    {
+      "path": "assets/membership/treat-balance-atmosphere-v3.png",
+      "bytes": 2116119,
+      "prompts": [
+        {
+          "source": "assets/membership/treat-balance-atmosphere-v3.prompt.json",
+          "method": "built-in image_gen edit",
+          "created": "2026-11-07",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: background-extraction / precise-object-edit. Edit this existing transparent Yoroll candy decoration only to CLEAN THE CUTOUT. Keep the TWO existing rounded rectangular wrapped candies exactly the same: the same candy shape, proportions, pink and peach satin materials, broad face, camera angle, positions and sizes. Preserve all highlights ON the candies. REMOVE the entire hazy cream/pink cloud, external bloom, fog, colored aura, speckled edge residue and stray translucent background outside the actual objects. All empty space between and around the two candies must have exactly zero alpha. Use precise smooth antialiased boundaries immediately around each candy and its wrapper; allow only a very narrow natural antialias edge, never a wide glowing halo. The smaller candy may retain gentle depth-of-field blur inside its silhouette, but no fog surrounding it. Keep the original square transparent canvas and composition. No replacement background, no backdrop tile, no drop shadow, no floor, no text, no new objects, no checkerboard pattern. Output a genuinely clean transparent PNG ready to place over a flat pink-orange UI card with NO visible matte or fringe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/treat-packs/treat-large-pile-v1.webp",
+      "bytes": 44892,
+      "prompts": [
+        {
+          "source": "assets/membership/treat-packs/artwork-v1.prompt.json",
+          "method": "built-in imagegen",
+          "references": [
+            "assets/profile/treat-trio-v1.webp"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: transparent artwork for the largest Yoroll Treat Pack.\nImage 1 is the app's approved trio of candies, for candy construction, color, lighting, and material. Match the identical rounded rectangular wrapped hard candy with plump broad satin faces, short scalloped fan-shaped wrapper ends with two broad molded folds, and a soft warm-apricot highlight from the upper left grading to blush pink and coral on the right. Keep the frosted translucent resin, gentle rounded bevel and near-front three-quarter camera of the reference. This needs to read as part of exactly the same 3D icon family when shown at 48 to 64 points. Use soft clear shapes, a genuine square transparent RGBA canvas, quiet object shading, and clean alpha around the whole silhouette. The image contains only the specified wrapped candies, without lettering, floor, cast shadow, floating accents, container, or background.\nBuild one generous large loose heap of about fourteen individually wrapped candies. Make a broad bottom layer and several lively, visibly stepped layers of partially overlapping candies, with a rounded, taller central crest. Keep several clear rounded faces and recognizable molded twist ends at the front. This fourth quantity tier should look substantially fuller and taller than a little six or seven candy mound at the same display size. Center the full heap, fully in frame, about 86 to 89 percent of the square's width and 75 to 80 percent of its height. Keep every candy in the connected pile."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/treat-packs/treat-pile-v1.webp",
+      "bytes": 33020,
+      "prompts": [
+        {
+          "source": "assets/membership/treat-packs/artwork-v1.prompt.json",
+          "method": "built-in imagegen",
+          "references": [
+            "assets/profile/treat-trio-v1.webp"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: transparent artwork for the medium Yoroll Treat Pack.\nImage 1 is the app's approved trio of candies, for candy construction, color, lighting, and material. Match the identical rounded rectangular wrapped hard candy with plump broad satin faces, short scalloped fan-shaped wrapper ends with two broad molded folds, and a soft warm-apricot highlight from the upper left grading to blush pink and coral on the right. Keep the frosted translucent resin, gentle rounded bevel and near-front three-quarter camera of the reference. This needs to read as part of exactly the same 3D icon family when shown at 48 to 64 points. Use soft clear shapes, a genuine square transparent RGBA canvas, quiet object shading, and clean alpha around the whole silhouette. The image contains only the specified wrapped candies, without lettering, floor, cast shadow, floating accents, container, or background.\nBuild one small pile of about seven individually wrapped candies. Arrange them in two to three overlapping layers in a single compact and relatively low mound, a few readable rounded faces and softly twisted ends in the front and more wrappers visible behind. Vary each piece's angle subtly while keeping every candy part of the same pile. Let the individual pieces be clearly smaller and more numerous than the three in the reference. Center the group on the canvas with an overall width of about 82 to 85 percent and a height of about 62 to 68 percent."
+            },
+            {
+              "label": "细化",
+              "field": "refinementPrompt",
+              "text": "Use case: precise-object-edit.\nAsset type: the medium quantity tier artwork for Yoroll Treat Pack cards.\nImage 1 is the current seven-piece candy pile to recompose. Image 2 is the approved three-candy artwork whose exact construction and satin finish are the material reference. Keep about seven wrapped rounded rectangular candies in the same pink–apricot palette and frosted resin finish. Rearrange Image 1 into a single visibly stepped, slightly taller heap with three clearly overlapping levels: a broad low group of three along the front, three partially overlapped pieces behind them, and one tilted candy distinct at the top. Bring the very far left and right candies slightly inward. Give the group more volume than the trio while keeping it clearly a modest seven-candy pile. All the wrapped candies should be the same scale with natural perspective and subtle variation in angle. The mound is centered, roughly 87 percent of the square's width by 70 percent of its height, with clear space all around. Preserve broad simple faces, short gently scalloped twist ends, the upper-left golden peach light and the rosy satin on the right. This will be displayed at just 48 to 64 points. Use genuine transparent RGBA, a single connected silhouette, and no loose elements, paper debris, labels, context, background, or shadows outside the artwork."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/treat-packs/treat-single-v1.webp",
+      "bytes": 17980,
+      "prompts": [
+        {
+          "source": "assets/membership/treat-packs/artwork-v1.prompt.json",
+          "method": "built-in imagegen",
+          "references": [
+            "assets/profile/treat-trio-v1.webp"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept.\nAsset type: transparent artwork for the smallest Yoroll Treat Pack.\nImage 1 is the app's approved trio of candies, for candy construction, color, lighting, and material. Match the identical rounded rectangular wrapped hard candy with plump broad satin faces, short scalloped fan-shaped wrapper ends with two broad molded folds, and a soft warm-apricot highlight from the upper left grading to blush pink and coral on the right. Keep the frosted translucent resin, gentle rounded bevel and near-front three-quarter camera of the reference. This needs to read as part of exactly the same 3D icon family when shown at 48 to 64 points. Use soft clear shapes, a genuine square transparent RGBA canvas, quiet object shading, and clean alpha around the whole silhouette. The image contains only the specified wrapped candies, without lettering, floor, cast shadow, floating accents, container, or background.\nRender exactly one wrapped candy. Base it closely on the finish, proportion and complete two wrapper ends of the foreground piece in Image 1. Show the broad rectangular face at a modest angle rising toward the right. Center the entire object with its wing tips visible and clear space on every side. Its silhouette spans about 70 to 73 percent of the canvas width. Use one clear cohesive object."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/membership/treat-single-v2.webp",
+      "bytes": 42778
+    },
+    {
+      "path": "assets/membership/treat-single-v3.webp",
+      "bytes": 32680
+    },
+    {
+      "path": "assets/membership/treat-single-v5-satin.webp",
+      "bytes": 27496
+    },
+    {
+      "path": "assets/membership/treat-trio-v1-satin.webp",
+      "bytes": 28994
+    },
+    {
+      "path": "assets/membership/treat-trio-v2-satin.webp",
+      "bytes": 34234
+    },
+    {
+      "path": "assets/membership/treat-trio-v3-satin.webp",
+      "bytes": 29768
+    },
+    {
+      "path": "assets/membership/yoroll-wordmark.png",
+      "bytes": 42221
+    },
+    {
+      "path": "assets/notifications/app-migration-v2.png",
+      "bytes": 74403
+    },
+    {
+      "path": "assets/notifications/app-migration-v7.webp",
+      "bytes": 35236,
+      "prompts": [
+        {
+          "source": "assets/notifications/artwork-v7.prompt.json",
+          "method": "built-in image_gen; edit",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: lighting-weather.\nEdit target: the supplied Yoroll notification illustration.\nChange ONLY the background base value: it currently blends into the app's nearly black page (#0B0B0D). Make the entire background slightly LIGHTER, a neutral graphite charcoal around #2A2A2C (the app's dark grey surface), so the circular 52px avatar has a gentle visible distinction from the page.\nKeep graphite #2A2A2C even at the outer edges and corners; do not fade the border back to black. Retain only the existing tiny, very faint peach/blush ambient light immediately behind the icon. Keep this glow compact, unchanged in size; no broad halo, coloured cloud, vignette or new corner lights.\nPreserve the exact foreground symbol, dimensions, position, front-facing pose, softened dim highlights, muted transparent satin/pearl material and small pink accents. Do NOT brighten or redesign the icon, do not widen the glow. This is a small background brightness adjustment only.\nBackground must remain fully opaque, square, neutral dark grey; no extra frame, border, badge, text, watermark or object.\nImage 1 is the EDIT TARGET; preserve its existing icon. Image 2 is ONLY the SLIGHTLY LIGHTER GRAPHITE BACKGROUND reference. Match its background tone and compact very faint light; do not copy its check shape."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/notifications/character-updated-v2.png",
+      "bytes": 75118
+    },
+    {
+      "path": "assets/notifications/character-updated-v7.webp",
+      "bytes": 35870,
+      "prompts": [
+        {
+          "source": "assets/notifications/artwork-v7.prompt.json",
+          "method": "built-in image_gen; edit",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: lighting-weather.\nEdit target: the supplied Yoroll notification illustration.\nChange ONLY the background base value: it currently blends into the app's nearly black page (#0B0B0D). Make the entire background slightly LIGHTER, a neutral graphite charcoal around #2A2A2C (the app's dark grey surface), so the circular 52px avatar has a gentle visible distinction from the page.\nKeep graphite #2A2A2C even at the outer edges and corners; do not fade the border back to black. Retain only the existing tiny, very faint peach/blush ambient light immediately behind the icon. Keep this glow compact, unchanged in size; no broad halo, coloured cloud, vignette or new corner lights.\nPreserve the exact foreground symbol, dimensions, position, front-facing pose, softened dim highlights, muted transparent satin/pearl material and small pink accents. Do NOT brighten or redesign the icon, do not widen the glow. This is a small background brightness adjustment only.\nBackground must remain fully opaque, square, neutral dark grey; no extra frame, border, badge, text, watermark or object.\nImage 1 is the EDIT TARGET; preserve its existing icon. Image 2 is ONLY the SLIGHTLY LIGHTER GRAPHITE BACKGROUND reference. Match its background tone and compact very faint light; do not copy its check shape."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/notifications/event-persona-customization-v2.png",
+      "bytes": 74109
+    },
+    {
+      "path": "assets/notifications/event-persona-customization-v7.webp",
+      "bytes": 35670,
+      "prompts": [
+        {
+          "source": "assets/notifications/artwork-v7.prompt.json",
+          "method": "built-in image_gen; edit",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: lighting-weather.\nEdit target: the supplied Yoroll notification illustration.\nChange ONLY the background base value: it currently blends into the app's nearly black page (#0B0B0D). Make the entire background slightly LIGHTER, a neutral graphite charcoal around #2A2A2C (the app's dark grey surface), so the circular 52px avatar has a gentle visible distinction from the page.\nKeep graphite #2A2A2C even at the outer edges and corners; do not fade the border back to black. Retain only the existing tiny, very faint peach/blush ambient light immediately behind the icon. Keep this glow compact, unchanged in size; no broad halo, coloured cloud, vignette or new corner lights.\nPreserve the exact foreground symbol, dimensions, position, front-facing pose, softened dim highlights, muted transparent satin/pearl material and small pink accents. Do NOT brighten or redesign the icon, do not widen the glow. This is a small background brightness adjustment only.\nBackground must remain fully opaque, square, neutral dark grey; no extra frame, border, badge, text, watermark or object.\nImage 1 is the EDIT TARGET; preserve its existing icon. Image 2 is ONLY the SLIGHTLY LIGHTER GRAPHITE BACKGROUND reference. Match its background tone and compact very faint light; do not copy its check shape."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/notifications/event-story-discovery-v2.png",
+      "bytes": 81076
+    },
+    {
+      "path": "assets/notifications/event-story-discovery-v7.webp",
+      "bytes": 38740,
+      "prompts": [
+        {
+          "source": "assets/notifications/artwork-v7.prompt.json",
+          "method": "built-in image_gen; edit",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: lighting-weather.\nEdit target: the supplied Yoroll notification illustration.\nChange ONLY the background base value: it currently blends into the app's nearly black page (#0B0B0D). Make the entire background slightly LIGHTER, a neutral graphite charcoal around #2A2A2C (the app's dark grey surface), so the circular 52px avatar has a gentle visible distinction from the page.\nKeep graphite #2A2A2C even at the outer edges and corners; do not fade the border back to black. Retain only the existing tiny, very faint peach/blush ambient light immediately behind the icon. Keep this glow compact, unchanged in size; no broad halo, coloured cloud, vignette or new corner lights.\nPreserve the exact foreground symbol, dimensions, position, front-facing pose, softened dim highlights, muted transparent satin/pearl material and small pink accents. Do NOT brighten or redesign the icon, do not widen the glow. This is a small background brightness adjustment only.\nBackground must remain fully opaque, square, neutral dark grey; no extra frame, border, badge, text, watermark or object.\nImage 1 is the EDIT TARGET; preserve its existing icon. Image 2 is ONLY the SLIGHTLY LIGHTER GRAPHITE BACKGROUND reference. Match its background tone and compact very faint light; do not copy its check shape."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/notifications/inbox-welcome-v2.png",
+      "bytes": 73895
+    },
+    {
+      "path": "assets/notifications/inbox-welcome-v7.webp",
+      "bytes": 37114,
+      "prompts": [
+        {
+          "source": "assets/notifications/artwork-v7.prompt.json",
+          "method": "built-in image_gen; edit",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: lighting-weather.\nEdit target: the supplied Yoroll notification illustration.\nChange ONLY the background base value: it currently blends into the app's nearly black page (#0B0B0D). Make the entire background slightly LIGHTER, a neutral graphite charcoal around #2A2A2C (the app's dark grey surface), so the circular 52px avatar has a gentle visible distinction from the page.\nKeep graphite #2A2A2C even at the outer edges and corners; do not fade the border back to black. Retain only the existing tiny, very faint peach/blush ambient light immediately behind the icon. Keep this glow compact, unchanged in size; no broad halo, coloured cloud, vignette or new corner lights.\nPreserve the exact foreground symbol, dimensions, position, front-facing pose, softened dim highlights, muted transparent satin/pearl material and small pink accents. Do NOT brighten or redesign the icon, do not widen the glow. This is a small background brightness adjustment only.\nBackground must remain fully opaque, square, neutral dark grey; no extra frame, border, badge, text, watermark or object.\nImage 1 is the EDIT TARGET; preserve its existing icon. Image 2 is ONLY the SLIGHTLY LIGHTER GRAPHITE BACKGROUND reference. Match its background tone and compact very faint light; do not copy its check shape."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/notifications/review-approved-v2.png",
+      "bytes": 71663
+    },
+    {
+      "path": "assets/notifications/review-approved-v7.webp",
+      "bytes": 35404,
+      "prompts": [
+        {
+          "source": "assets/notifications/artwork-v7.prompt.json",
+          "method": "built-in image_gen; edit",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: lighting-weather.\nEdit target: the supplied Yoroll notification illustration.\nChange ONLY the background base value: it currently blends into the app's nearly black page (#0B0B0D). Make the entire background slightly LIGHTER, a neutral graphite charcoal around #2A2A2C (the app's dark grey surface), so the circular 52px avatar has a gentle visible distinction from the page.\nKeep graphite #2A2A2C even at the outer edges and corners; do not fade the border back to black. Retain only the existing tiny, very faint peach/blush ambient light immediately behind the icon. Keep this glow compact, unchanged in size; no broad halo, coloured cloud, vignette or new corner lights.\nPreserve the exact foreground symbol, dimensions, position, front-facing pose, softened dim highlights, muted transparent satin/pearl material and small pink accents. Do NOT brighten or redesign the icon, do not widen the glow. This is a small background brightness adjustment only.\nBackground must remain fully opaque, square, neutral dark grey; no extra frame, border, badge, text, watermark or object.\nKeep the single approved check-mark icon exactly as shown; only make the background's charcoal base slightly lighter."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/notifications/review-pending-v2.png",
+      "bytes": 71566
+    },
+    {
+      "path": "assets/notifications/review-pending-v7.webp",
+      "bytes": 37588,
+      "prompts": [
+        {
+          "source": "assets/notifications/artwork-v7.prompt.json",
+          "method": "built-in image_gen; edit",
+          "references": [],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: lighting-weather.\nEdit target: the supplied Yoroll notification illustration.\nChange ONLY the background base value: it currently blends into the app's nearly black page (#0B0B0D). Make the entire background slightly LIGHTER, a neutral graphite charcoal around #2A2A2C (the app's dark grey surface), so the circular 52px avatar has a gentle visible distinction from the page.\nKeep graphite #2A2A2C even at the outer edges and corners; do not fade the border back to black. Retain only the existing tiny, very faint peach/blush ambient light immediately behind the icon. Keep this glow compact, unchanged in size; no broad halo, coloured cloud, vignette or new corner lights.\nPreserve the exact foreground symbol, dimensions, position, front-facing pose, softened dim highlights, muted transparent satin/pearl material and small pink accents. Do NOT brighten or redesign the icon, do not widen the glow. This is a small background brightness adjustment only.\nBackground must remain fully opaque, square, neutral dark grey; no extra frame, border, badge, text, watermark or object.\nImage 1 is the EDIT TARGET; preserve its existing icon. Image 2 is ONLY the SLIGHTLY LIGHTER GRAPHITE BACKGROUND reference. Match its background tone and compact very faint light; do not copy its check shape."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/onboarding/gender-female-satin.webp",
+      "bytes": 14142
+    },
+    {
+      "path": "assets/onboarding/gender-male-satin.webp",
+      "bytes": 15072
+    },
+    {
+      "path": "assets/onboarding/gender-non-binary-satin.webp",
+      "bytes": 14374
+    },
+    {
+      "path": "assets/profile/membership-crown-ultra.webp",
+      "bytes": 24702,
+      "prompts": [
+        {
+          "source": "assets/profile/profile-card-artwork-v1.prompt.json",
+          "method": "built-in imagegen",
+          "references": [
+            "assets/tasks/checkin-v1.webp",
+            "assets/profile/membership-crown-v2.webp"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: precise-object-edit\nAsset type: a single transparent 3D crown artwork for the Yoroll profile membership card, rendered at 52 pt.\nThe supplied image is the exact edit target. Recolor the existing crown's material, including the bevel and highlight, and preserve its lighting structure. Keep the same recognizable three rounded points, camera angle, smooth satin-resin volume, outer silhouette and single genuinely see-through centered diamond cutout with its current geometry. Hold the reference's proportions, placement, apparent size, near-front perspective, and centered square framing. Preserve true RGBA transparency outside the object and through the hole. No added gems, text, radiance outside the silhouette, shadows, props, ground, extra reflections, borders, or background.\nColor variant for the ULTRA tier: a dimensional premium lilac-purple body (#AE8CED), deep velvet-violet shading (#6945B1) and light lavender highlights (#DEC5FF). Use a gentle translucent lilac bevel and soft violet reflections within the crown. Replace the source's warm pink, orange and gold with this lavender-purple family. Preserve the original satin resin rather than metallic chrome."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/profile/membership-crown-unsubscribed.webp",
+      "bytes": 24212,
+      "prompts": [
+        {
+          "source": "assets/profile/profile-card-artwork-v1.prompt.json",
+          "method": "built-in imagegen",
+          "references": [
+            "assets/tasks/checkin-v1.webp",
+            "assets/profile/membership-crown-v2.webp"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: precise-object-edit\nAsset type: a single transparent 3D crown artwork for the Yoroll profile membership card, rendered at 52 pt.\nThe supplied image is the exact edit target. Recolor the existing crown's material, including the bevel and highlight, and preserve its lighting structure. Keep the same recognizable three rounded points, camera angle, smooth satin-resin volume, outer silhouette and single genuinely see-through centered diamond cutout with its current geometry. Hold the reference's proportions, placement, apparent size, near-front perspective, and centered square framing. Preserve true RGBA transparency outside the object and through the hole. No added gems, text, radiance outside the silhouette, shadows, props, ground, extra reflections, borders, or background.\nColor variant for the unsubscribed tier: a softly luminous medium pearl silver-gray body (#9FA3AF), subdued gray shading (#686D7D), and soft mist-silver accents (#CFD1DB). The neutrals are low-saturation, with material depth and a restrained satin shine. Replace the warm pink, orange and gold throughout with this muted neutral family. Keep the soft broad shading and avoid bright white chrome."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/profile/membership-crown-v1.webp",
+      "bytes": 27150,
+      "prompts": [
+        {
+          "source": "assets/profile/profile-card-artwork-v1.prompt.json",
+          "method": "built-in imagegen",
+          "references": [
+            "assets/tasks/checkin-v1.webp",
+            "assets/membership/crown-3d.png"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: style-transfer\nAsset type: a single transparent 3D artwork for the right edge of the Yoroll profile Membership card, viewed at 52 pt.\nInputs: Image 1 is the membership crown to restyle. Keep its recognizable three round points, higher middle point, open crown shape and the single four-point sparkle cutout in the center. Image 2 is the approved task card artwork, for material, lighting, scale and polish only.\nRestyle the crown into the same family as the task calendar. Give the main face the calendar's broad pale blush pink satin surface with warm peach translucency, gently rounded volume and a small softly lit gold-orange bevel. A restrained hot peach highlight at the upper left and rosy pink on the shaded right should follow the task asset. Near-front three-quarter view with very little perspective, with broad clear shapes that read at 52 pt. Keep the central sparkle as a simple clean opening. Avoid saturated purple, dark bronze, mirrored metal, hard white outlines, neon glow, floating particles and extra decorations.\nRender one optically centered object on a square canvas with all edges visible. Use approximately the task image's centered three-quarter canvas coverage and generous clear margins. Genuine transparent background and clean alpha outside the object, including the sparkle opening. No text, panel, pedestal, floor shadow or watermark."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/profile/membership-crown-v2.webp",
+      "bytes": 25164,
+      "prompts": [
+        {
+          "source": "assets/profile/profile-card-artwork-v1.prompt.json",
+          "method": "built-in imagegen",
+          "references": [
+            "assets/tasks/checkin-v1.webp",
+            "assets/profile/membership-crown-v1.webp"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: localized raster edit.\nAsset type: transparent 3D crown illustration for the Yoroll profile Membership card, viewed at 52 pt.\nImage 1 is the artwork to edit. Image 2 is the project's IconModelMemberFilled SVG glyph, supplied for the shape of the opening only. Replace the star-shaped cutout in the middle of Image 1 with a single see-through diamond cutout that matches Image 2: four straight diagonal sides, pointed left and right vertices, and short horizontal flats at the top and bottom tips. Keep the opening centered where the current opening is and about one quarter of the crown's width. Make the opening's long diagonal edges visibly straight, with a subtle highlight and shallow bevel consistent with the existing peach-pink satin resin.\nRestrict this change to the opening and its immediate bevel. Match the exact crown body, three rounded points, camera, lighting, colors, 3D material, object position, overall size, square crop, and clear margins from Image 1. The resulting artwork is a single 3D object on a genuine transparent RGBA canvas, with clean transparency both through the central diamond and around the outer silhouette. Keep the asset free of speckles, detached reflections, extra gemstones, lettering, floor shadows, or background elements."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/profile/treat-trio-v1.webp",
+      "bytes": 27338,
+      "prompts": [
+        {
+          "source": "assets/profile/profile-card-artwork-v1.prompt.json",
+          "method": "built-in imagegen",
+          "references": [
+            "assets/tasks/checkin-v1.webp",
+            "assets/membership/treat-trio-v3-satin.webp"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: style-transfer\nAsset type: a single transparent 3D artwork for the right edge of the Yoroll profile Treats card, viewed at 48 pt.\nInputs: Image 1 is the existing group of three wrapped Treats. Keep three recognizable soft rectangular hard candies, their rounded cases and short twisted wrapper ends. Image 2 is the approved task calendar, for material, lighting, scale and polish only.\nCreate a compact triangular group, one clear candy in front and two readable candies peeking behind, with a nearly square silhouette and modest overlap. Make the plastic folds broad and simple. Match the calendar's bright, frosted satin resin with broad pale blush faces, coral pink shading and warm apricot-gold lighting on the left bevel. The contrast should stay soft and luminous, with the same slight front three-quarter perspective and carefully rounded edges. Avoid dark bronze, strong metallic reflections, neon edges, purple, long wrapper tails and floating decorations.\nRender only this centered three-candy group on a square canvas, with the task artwork's visual weight and similar top, bottom and side clear margins. Genuine transparent background, clean alpha around the object and through the gaps. No text, panel, pedestal, floor shadow or watermark."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/referrals/invitation-gift-v1.webp",
+      "bytes": 28502
+    },
+    {
+      "path": "assets/referrals/invitation-gift-v2.webp",
+      "bytes": 28464,
+      "prompts": [
+        {
+          "source": "assets/referrals/invitation-gift-v2.prompt.json",
+          "method": "built-in image_gen",
+          "references": [
+            "assets/referrals/invitation-gift-v1.webp",
+            "assets/tasks/checkin-v1.webp",
+            "assets/membership/treat-packs/treat-single-v1.webp"
+          ],
+          "stages": [
+            {
+              "label": "生成／编辑",
+              "field": "prompt",
+              "text": "Use case: stylized-concept\nRedesign the transparent invitation-reward hero illustration for Yoroll's mobile invite-code sheet. Image 1 is the previous illustration and establishes the invitation gift meaning and the wide footprint. Images 2 and 3 are the current in-app material and palette references. Follow their soft rounded 3D forms, frosted satin finish, warm peach-to-blush gradients, and restrained enamel highlights.\n\nMake one compact, cohesive three-quarter-view arrangement. A chunky open blush-peach gift box with rounded edges holds a softly rounded ivory-pink invitation envelope peeking up from the opening, with a little warm apricot circular seal. Include two small wrapped pink-orange candies of the kind in Image 3 resting together by the box. Keep the envelope recognizable with folded flap geometry and zero text. Use broad soft studio highlights, milky translucency, and carefully shaded contact between the objects. The box is the main shape and the envelope reads clearly at the actual 280 × 188 pt display size. Make the finish feel like the current task-calendar asset.\n\nTransparent alpha background with clean antialiased edges. Use a landscape 3:2 composition, centered with the complete silhouette visible and a comfortable clear margin. The artwork will be laid over a separately rendered warm glow in the app, so omit all backdrop light, glow aura, floor or cast shadow outside the object, particles, rays, plumes, and lens flare. Avoid long floating ribbons, busy small details, glossy chrome, outline strokes, text, logos, and watermarks."
+            },
+            {
+              "label": "细化",
+              "field": "refinementPrompt",
+              "text": "Use case: background-extraction\nPrepare this invitation reward illustration as a precise transparent UI sprite. Keep the same peach satin gift box, pink bow, invitation envelope with the yellow seal, and both wrapped candies, with their existing positions and proportions. The subject itself can retain normal soft surface shading and contact shading between its parts.\n\nMake a clean optical cutout at the physical silhouette of the objects. Remove all hazy translucent pixels outside those exact hard silhouettes, including the pink and gold bloom around the bow, sides, base, candy wrappers, and the open negative spaces between the objects. Every exterior pixel must have zero alpha except the one-pixel antialiasing at the contour. Object surfaces should appear solid and well-edged, with clean pastel satin material and no emitting light. Keep clear transparent margins on all four sides and a 3:2 landscape canvas. No backdrop or falloff, no floor shadow, no ambient lighting outside the object, no border, no text. The app draws its own soft light behind this asset."
+            },
+            {
+              "label": "材质细化",
+              "field": "materialRefinementPrompt",
+              "text": "Use case: precise-object-edit\nMaterial refinement for the selected Yoroll invitation-reward artwork. Keep the exact 3:2 composition, camera angle, full silhouette, open box shape, elevated pink bow, invitation envelope with the circular golden seal, and the exact two wrapped candies at the lower right. Preserve object spacing, framing and the peach-pink color family.\n\nGive the lid and the box walls a restrained semi-transparent frosted-glass finish. Use softly refracted peach and rose color at the thicker rims, some believable light passing through the walls, a very thin clear edge on the rounded corners, and a diffuse satin interior. Let the candies catch subtle glass-like highlights and retain their wrapped shapes. Preserve the ribbon's soft pink satin and the cream envelope's readable matte shape. The glass should feel tactile and warm, with small broad highlights, softly shaded internal surfaces, and smooth edges.\n\nMaintain the genuine transparent alpha around the entire silhouette and between parts. Artwork only. Do not add exterior halo, mist, glow rays, floor shadow, sparkles, lettering, logos, extra packaging, or background. The edit must work as a clean isolated app sprite on a dark graphite surface."
+            },
+            {
+              "label": "地面光效",
+              "field": "groundLightingPrompt",
+              "text": "Use case: lighting-weather\nEdit this exact isolated glass gift illustration for the Yoroll invitation sheet. Preserve the open peach-pink glass box, high pink satin bow, envelope with a circular gold seal, the two wrapped candies, their relationships, camera angle, and gentle materials. Reserve a narrow strip below the group for a grounded reflection, keeping the full silhouette and a landscape 3:2 canvas.\n\nIntegrate physically plausible contact shadows immediately under the actual footprint of the box and the two candies, shaped separately and matching their positions. Add one short, subdued, softly blurred reflection of the nearest glass box edge and candy beneath them, as on a satin polished surface. A little rose-peach bounce light follows the glass base. Make the reflected detail strongest right at contact and fade it downward into transparent alpha within the lower 10–12 percent of the canvas. The shadows and reflection are visible at mobile icon size and belong to the transparent sprite, with fractional alpha. Render the gift, its contact shadows, and its reflection only. Keep the surrounding canvas, including all corners and the space above the gift, fully transparent. No visible floor plane perimeter, slab, flat background color, mist, exterior halo, extra objects, text, logo, or cropped bow."
+            },
+            {
+              "label": "深色环境光效",
+              "field": "darkModeLightingPrompt",
+              "text": "Use case: lighting-weather\nLower the light intensity of this exact transparent Yoroll invitation illustration for a graphite dark-mode sheet. Keep the same framing, object shapes, pink satin bow, frosted glass gift box, cream envelope with the round gold seal, two wrapped candies, and the integrated contact shadows and reflection. Keep the 3:2 canvas and the existing arrangement.\n\nDim and soften the brightest highlights on the glass rims, ribbon, envelope, and candy wrappers so the gift has a subdued, warm evening studio feel. Bring the nearly white envelope and rim glints down to a soft muted ivory-peach, around 10–15 percent below the input's highlights, with the rose-peach materials and golden seal still recognizable. Keep the glass translucency and readable material boundaries. Make the short reflection under the box and candies substantially fainter, around half its previous apparent strength, with a gentle feathered fade into zero alpha. Preserve separate soft contact shadows so the objects feel grounded. Keep all negative space genuinely transparent, including the corners and above and around the composition. No dark overlay plate, no decorative light outside the object, no solid floor, text, logo, crop, or new objects."
+            },
+            {
+              "label": "接触阴影",
+              "field": "contactShadowPrompt",
+              "text": "Use case: precise-object-edit\nRetouch only the ground contact of this existing transparent dark-mode gift artwork. Preserve its already muted exposure, exact framing, cream envelope, round gold seal, tall pink bow, glass gift box and two wrapped candies. Keep the upper part of the input unchanged.\n\nRemove the broad pinkish-white floor reflection beneath the objects. Under the box and the two candies there should be short dark contact shadows on a very dark graphite surface, with a small soft taper to the lower right from an upper-left light. The apparent composite underfoot must be darker than a #1C1C1E sheet, never a luminous patch. Use dark graphite RGB and softly fading fractional alpha only where the shadows are. Keep a faint copper-pink glint on the actual bottom glass edge itself, as though reflected inside the material. The shadow belongs to the asset and must fade before the edge of the frame.\n\n3:2 transparent PNG sprite, preserve all true alpha around the object and leave the corners transparent. No gray or colored floor pixels, glowing ground pool, mirror image, underlighting, halo, halo outline, extra object, text, or crop."
+            },
+            {
+              "label": "透明边缘清理",
+              "field": "alphaCleanupPrompt",
+              "text": "Use case: background-extraction\nPerform an alpha cleanup of this exact 3:2 transparent invitation artwork. Preserve the present box, bow, gold-sealed envelope and both candies exactly, including their current color and dark-mode exposure. Keep the short dark contact shadow directly under their feet and the tiny glass-edge copper glint. Those belong to the object composite.\n\nRemove all light-gray haze and every background pixel from above, beside and between the shapes. In particular the strip above the pink bow, the surrounding region to its left and right, and all four canvas corners must have zero alpha. Only the narrow antialiased object contour and the one short dark ground shadow under the objects can be partially transparent. Keep the previous crop, the whole physical object silhouette and the dark shadow, with no colored or gray haze, ambient aura, bright floor, solid backdrop, new object, or text. Deliver only a clean alpha cutout."
+            },
+            {
+              "label": "投影调整",
+              "field": "visibleCastShadowPrompt",
+              "text": "Use case: lighting-weather\nEdit this existing transparent dark-mode illustration. Preserve the peach glass gift box, tall pink bow, invitation letter with the gold round seal, and two wrapped candies. Keep the original muted peach and rose materials, their proportions and arrangement. Fit the entire group, slightly smaller and a little higher in a landscape 3:2 canvas, with a clear band under the objects for the shadow.\n\nGive the gift a clearly visible physical grounding shadow cast by a large light source above-left. At each base start with a solid dark contact occlusion and carry a coal-plum cast shadow visibly down-right underneath the box and candy, softly tapering over the next 10–12 percent of the image height. The shadow must occupy the lower ground as a real shape, widening and fading outward, and be perceptibly darker than a muted dark gray-brown backing like #373033. Keep a tiny subdued warm reflection on the glass base. Avoid luminous floor pools or a mirror duplicate.\n\nKeep the shadow itself in the alpha channel as a continuous semitransparent part of the sprite, with a visible dark core and soft edges. Everything above and around the subject and shadow is transparent. Leave transparent margins on all four sides, with the full projected shadow in frame. No floor slab, haze, white halo, background plate, text, logo, or new objects."
+            },
+            {
+              "label": "环境阴影",
+              "field": "lightMatchedShadowPrompt",
+              "text": "Use case: precise-object-edit\nImage 1 is the actual transparent gift artwork to edit. Image 2 is the actual muted plum lighting and dark graphite canvas behind this artwork in the Yoroll app, for color and contrast reference only. Do not include Image 2 in the output.\n\nRetouch only the ground contact under the exact gift box and two candies in Image 1. Keep their current scale, framing, exposure, glass, pink bow, cream letter, gold seal and position. Give the box and each candy a close soft occlusion where it touches the ground. Let those soft shadows merge into a short down-right cast shadow in dark warm plum, between #21151E and #32212D, so that the shadow picks up the same hue as the dark UI. Soften it progressively from the contact points outward. There is a very narrow muted rose glint along the real glass bottom edge only. Remove any cool gray fog or floor-like pale patch around the base. Avoid a heavy black contour or a blanket mirror effect.\n\nKeep the shadow part of the transparent 3:2 RGBA art, with a translucent dark core and feathered edges. Fade to zero alpha around the edges, including completely clear space above the bow. Preserve the entire subject, and deliver just the object and its hue-matched shadow. No change to the artwork shape, no background, ground slab, opaque shadow island, diffuse exterior halo, text, or extra objects."
+            },
+            {
+              "label": "阴影透明边缘清理",
+              "field": "shadowMatteCleanupPrompt",
+              "text": "Use case: background-extraction\nClean the transparent matte of this exact invitation icon. Preserve its exact gift box, bow, beige letter and round gold seal, two candies, current color exposure, all positions, the 3:2 frame and the short soft muted-plum shadow attached to their bases. Keep that dark semi-transparent shadow as part of the object sprite.\n\nRemove the stray pale grey haze above the pink bow and all other pixels outside the object contour in the upper and middle parts of the image. The entire top edge, corners and gaps around the ribbon must be at zero alpha. Only the object contour and the small ground shadow may have visible pixels. Preserve smooth antialiasing and full silhouettes. Do not add shine, produce a background, brighten the objects, change the shadow, crop, or add any elements. The result is a clean transparent cutout."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/short-drama/membership-paywall-pro.webp",
+      "bytes": 687766
+    },
+    {
+      "path": "assets/short-drama/qte-glow.webp",
+      "bytes": 13880
+    },
+    {
+      "path": "assets/short-drama/qte-swipe-guide.webp",
+      "bytes": 7854
+    },
+    {
+      "path": "assets/tasks/checkin-v1.webp",
+      "bytes": 32610
+    },
+    {
+      "path": "assets/tasks/comment-v1.webp",
+      "bytes": 31318
+    },
+    {
+      "path": "assets/tasks/create-character-v1.webp",
+      "bytes": 27240
+    },
+    {
+      "path": "assets/tasks/discord-v1.webp",
+      "bytes": 27716
+    },
+    {
+      "path": "assets/tasks/facebook-v1.webp",
+      "bytes": 19962
+    },
+    {
+      "path": "assets/tasks/instagram-v1.webp",
+      "bytes": 32452
+    },
+    {
+      "path": "assets/tasks/invite-friends-v1.webp",
+      "bytes": 32936
+    },
+    {
+      "path": "assets/tasks/persona-v1.webp",
+      "bytes": 25068
+    },
+    {
+      "path": "assets/tasks/redeem-code-v1.webp",
+      "bytes": 27372
+    },
+    {
+      "path": "assets/tasks/tiktok-v1.webp",
+      "bytes": 19000
+    },
+    {
+      "path": "assets/tasks/x-v1.webp",
+      "bytes": 25994
+    },
+    {
+      "path": "assets/tasks/youtube-v1.webp",
+      "bytes": 22742
+    },
+    {
+      "path": "assets/yoroll-launch-icon.webp",
+      "bytes": 47846
+    },
+    {
+      "path": "ios/Yoroll/Images.xcassets/DailyTaskToken.imageset/daily-task-token.png",
+      "bytes": 216170
+    },
+    {
+      "path": "ios/Yoroll/Images.xcassets/SplashScreenLegacy.imageset/image.png",
+      "bytes": 70
+    },
+    {
+      "path": "ios/Yoroll/Images.xcassets/SplashScreenLegacy.imageset/image@2x.png",
+      "bytes": 70
+    },
+    {
+      "path": "ios/Yoroll/Images.xcassets/SplashScreenLegacy.imageset/image@3x.png",
+      "bytes": 70
+    }
+  ]
+}

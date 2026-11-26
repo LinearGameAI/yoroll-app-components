@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { darkTokens, lightTokens, useTheme } from '../src';
-import { ArtworkInventory } from './assets';
+import { ArtworkInventory, inventoryArtwork } from './assets';
 import { CopyButton, DirectoryHeading, Segmented, SourceLink } from './controls';
 import type { Inventory } from './inventoryData';
 
@@ -183,7 +183,7 @@ export function AppInventoryPage({ view, inventory, assetFamily }: { view: Inven
   return (
     <>
       <DirectoryHeading title={view === 'assets' ? 'App 素材图库' : 'App 完整索引'} action={view === 'assets'
-        ? <a className="inline-source" href="#assets">视觉风格与延展提示词</a> : undefined}>
+        ? <a className="inline-source" href="#assets/styles">视觉风格与延展提示词</a> : undefined}>
         {inventory ? <>当前 checkout <code>{inventory.revision.slice(0, 8)}</code>{inventory.changed ? ' · 含工作区修改' : ''}。{view === 'assets'
           ? '素材原图、使用位置和已归档的生成提示词。'
           : '浏览组件源码、排版、样式、图素和动效调用。'}</> : '从当前 App checkout 读取目录。'}
@@ -198,7 +198,7 @@ export function AppInventoryPage({ view, inventory, assetFamily }: { view: Inven
           {!!tokenDrift?.length && <p className="directory-note">当前 checkout 与组件库的 Token 差异 · {tokenDrift.join('、')}</p>}
           {view === 'source' && <SourceView inventory={inventory} />}
           {view === 'typography' && <TypographyView inventory={inventory} />}
-          {view === 'assets' && <ArtworkInventory key={assetFamily ?? 'all'} inventory={inventory} initialFamily={assetFamily} />}
+          {view === 'assets' && <ArtworkInventory assets={inventoryArtwork(inventory)} route="#app-assets" family={assetFamily} revision={inventory.revision} />}
           {view === 'motion' && <MotionView inventory={inventory} />}
         </>
       )}

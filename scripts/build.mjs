@@ -1,4 +1,4 @@
-import { rm, writeFile } from 'node:fs/promises';
+import { cp, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
@@ -13,16 +13,23 @@ if (args.length && (!appPath || args.length !== 2)) {
 const outdir = appPath ? 'dist-app' : 'dist';
 await rm(join(repository, outdir), { recursive: true, force: true });
 const catalog = await loadCatalog(repository);
-let localData = '';
+let dataId;
+let data;
 if (appPath) {
   const { buildAppInventory } = await import('./app-inventory.mjs');
   const inventory = await buildAppInventory(appPath, join(repository, outdir));
   const { sources, assets } = inventory;
   const motionCount = sources.reduce((count, source) => count + source.motions.length, 0);
   console.log(`Indexed ${sources.length} App UI source files, ${assets.length} assets and ${motionCount} motion calls.`);
-  const data = JSON.stringify(inventory).replaceAll('<', '\\u003c');
-  localData = `\n    <script id="app-inventory-data" type="application/json">${data}</script>`;
+  dataId = 'app-inventory-data';
+  data = inventory;
+} else {
+  const artwork = join(repository, 'artwork');
+  dataId = 'artwork-data';
+  data = JSON.parse(await readFile(join(artwork, 'catalog.json'), 'utf8'));
+  await cp(artwork, join(repository, outdir, 'artwork'), { recursive: true });
 }
+const pageData = JSON.stringify(data).replaceAll('<', '\\u003c');
 
 const result = await build({
   absWorkingDir: repository,
@@ -64,7 +71,8 @@ await writeFile(join(repository, outdir, 'index.html'), `<!doctype html>
     <script defer src="./${script.slice(outdir.length + 1)}"></script>
   </head>
   <body>
-    <div id="root"></div>${localData}
+    <div id="root"></div>
+    <script id="${dataId}" type="application/json">${pageData}</script>
     <noscript>请启用 JavaScript 查看组件预览。</noscript>
   </body>
 </html>

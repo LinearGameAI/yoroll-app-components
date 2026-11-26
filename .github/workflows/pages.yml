@@ -28,7 +28,7 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
-      - run: test ! -e dist/app-inventory.json && test ! -e dist/app-assets && ! grep -q 'id="app-inventory-data"' dist/index.html
+      - run: test -f dist/artwork/catalog.json && test ! -e dist/app-inventory.json && test ! -e dist/app-assets && ! grep -q 'id="app-inventory-data"' dist/index.html
       - if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v4
         with:

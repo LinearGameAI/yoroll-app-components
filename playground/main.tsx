@@ -8,6 +8,7 @@ import { DirectoryHeading } from './controls';
 import { FoundationsPage } from './foundations';
 import { MotionPage } from './motion';
 import { AssetsPage } from './assets';
+import { artStyles } from './artStyles';
 import { AppInventoryPage, type InventoryView } from './appInventory';
 import { readAppInventory } from './inventoryData';
 import {
@@ -43,6 +44,8 @@ const searchEntries: SearchEntry[] = [
   { title: '字体与字号', href: '#tokens/typography', section: '规范', keywords: '排版 字族 行高 字重 字距 font typography lineHeight' },
   { title: '动效', href: '#motion', section: '规范', keywords: '缓动 运动 时长 动画' },
   { title: '图素', href: '#assets', section: '资源', keywords: '素材 插画 风格 色板 提示词 生图 artwork prompt' },
+  { title: '图素风格指南', href: '#assets/styles', section: '资源', keywords: '参考素材 色板 材质 延展提示词' },
+  ...artStyles.map(({ id, name, direction }) => ({ title: name, href: '#assets/' + id, section: '图素', keywords: direction })),
   ...(__APP_INVENTORY__ ? [
     { title: 'App 完整索引', href: '#app', section: '资源', keywords: '源码 样式' },
     { title: 'App 素材图库', href: '#app-assets', section: '资源', keywords: '原图 插画 原始提示词' },
@@ -211,7 +214,7 @@ function App() {
               {directory === '#blocks' && (block ? <BlockDetails key={block.id} block={block} /> : <BlocksPage />)}
               {directory === '#tokens' && <FoundationsPage key={tokenName} tokenName={tokenName} inventory={inventory} />}
               {directory === '#motion' && <MotionPage />}
-              {directory === '#assets' && <AssetsPage inventory={inventory} />}
+              {directory === '#assets' && <AssetsPage inventory={inventory} view={name} />}
               {__APP_INVENTORY__ && appView && <AppInventoryPage view={appView} inventory={inventory} assetFamily={name} />}
             </main>
           </div>

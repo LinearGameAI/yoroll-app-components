@@ -10,7 +10,7 @@ YorollApp 的 React Native 组件、组合示例和设计规范。示例的预�
 | 组合示例 | 资料编辑表单、修改确认框、列表加载与空态 |
 | 设计 Token | App 的深浅语义色、字族与字级、间距、控件尺寸、弹层、渐变和阴影 |
 | 动效 | 时长、缓动、生命周期、系统减少动态效果和网页播放示意 |
-| 图素 | 素材的风格、参考色板和可复制的延展提示词。本机版可查看原图和已归档的生成记录 |
+| 图素 | App 原图下载、按风格筛选、逐图生成提示词、参考色板和可复制的延展提示词 |
 
 设计基线取自 YorollApp `0983ce7b2`。组件与规则的 App 实现链接使用该源码版本，持有 App 仓库权限的成员可以打开。App 默认使用深色，浅色保留为预览选项。
 
@@ -86,11 +86,23 @@ npm ci
 npm run build:app -- /absolute/path/to/YorollApp
 ```
 
-用浏览器打开本机的 `dist-app/index.html`。在 **图素** 查看同一风格的代表素材和延展提示词。在 **App 索引 → 素材图库** 按名称、风格、代码引用或原始提示词查找所有素材图。卡片可打开原图、查找使用位置并复制 `*.prompt.json` 与 `generation-prompt*.json` 中的原始提示词，包括已保存的后续编辑步骤。
+用浏览器打开本机的 `dist-app/index.html`。在 **App 索引 → 素材图库** 按名称、风格、代码引用或原始提示词查找素材，卡片会列出 App 源文件和静态引用位置。
 
 **设计 Token → 字体与字号** 提供已核对的字体、字号、行高、字重、字距和对应 Token，本机版也能预览 App 字体文件。**App 索引 → 字体与字号** 可搜索 App 源码中的实际排版属性和表达式。索引来自静态扫描，运行时取值以对应实现为准。
 
-公开 GitHub Pages 提供排版规范、素材风格和延展提示词。App 原图、字体文件、原始提示词和源码索引保存在本机生成的 `dist-app/`。
+App 字体文件和完整源码索引保存在本机生成的 `dist-app/`。
+
+## 公开素材图库
+
+[图素页](https://lineargameai.github.io/yoroll-app-components/#assets) 收录 App 原图、来自 `*.prompt.json` 和 `generation-prompt*.json` 的生成提示词，以及按风格整理的延展提示词。卡片可以下载原图、逐段复制已归档的提示词或复制全部生成步骤。
+
+图库快照在 `artwork/`。`originals/` 保留 App 文件路径和原始字节，`catalog.json` 记录源提交、图像路径和对应提示词。可从 YorollApp 的指定提交更新快照。
+
+```sh
+npm run sync:artwork -- /absolute/path/to/YorollApp 0983ce7b2
+```
+
+提交更新后的 `artwork/` 即可随 GitHub Pages 构建发布。
 
 ## 开发与发布
 
