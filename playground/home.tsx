@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import { IconBackward } from '@yoroll/rn-icon';
 import { useTheme } from '../src';
 import { publicOriginal } from './assets';
 import { BlockCard, blocks } from './docs';
+import { catalogExample } from './demos';
 import type { Inventory } from './inventoryData';
 
 const heroArtwork = 'assets/membership/credit-pack-mark.webp';
@@ -11,6 +12,10 @@ const guideArtwork = [
   'assets/membership/treat-packs/treat-pile-v1.webp',
   'assets/chat-models/fox-v1.webp',
 ];
+const ButtonPreview = catalogExample('components/button-variants').Preview;
+const TabsPreview = catalogExample('components/tabs-segment').Preview;
+const PlayPreview = catalogExample('components/play-pill').Preview;
+const ProfilePreview = blocks[0].Preview;
 
 function LinkArrow() {
   return <span className="home-arrow" aria-hidden="true"><IconBackward size={15} color="currentColor" /></span>;
@@ -112,37 +117,56 @@ function HeroLight() {
   return <canvas ref={canvas} className="home-hero-light" aria-hidden="true" />;
 }
 
+function HomePreview({ kind, label, href, children }: { kind: string; label: string; href: string; children: ReactNode }) {
+  return (
+    <article className={`home-preview home-preview-${kind}`}>
+      <a className="home-preview-link" href={href}>{label} <LinkArrow /></a>
+      <div className="home-preview-content">{children}</div>
+    </article>
+  );
+}
+
 function HomeHero({ inventory }: { inventory: Inventory | null }) {
   const { tokens } = useTheme();
   const image = artworkUrl(heroArtwork, inventory);
   return (
-    <header className="home-hero">
-      <div className="home-hero-copy">
-        <p className="home-platform">React Native · Expo</p>
-        <h1 id="page-title" tabIndex={-1}><span>Yoroll App</span>{' '}<span>组件库</span></h1>
-        <p className="home-lede">复用 App 的界面组件、设计 Token、动效和品牌素材。</p>
+    <section className="home-hero" aria-labelledby="page-title">
+      <div className="home-hero-art" aria-hidden="true">
+        <div className="home-hero-glow" />
+        <HeroLight />
+      </div>
+      <header className="home-hero-copy">
+        <div>
+          <p className="home-platform">React Native · Expo</p>
+          <h1 id="page-title" tabIndex={-1}>Yoroll App <span>组件库</span></h1>
+          <p className="home-lede">试用 App 组件，查阅设计 Token 与图素。</p>
+        </div>
         <div className="home-actions">
           <a className="home-action home-action-primary" href="#components">浏览组件 <LinkArrow /></a>
           <a className="home-action" href="#start">接入指南</a>
           {inventory && <a className="home-action" href="#app">App 索引</a>}
         </div>
-      </div>
-      <div className="home-hero-art">
-        <div className="home-hero-glow" aria-hidden="true" />
-        <HeroLight />
-        {image && <a className="home-hero-image" href="#assets/rewards" aria-label="浏览糖果、任务与奖励图素">
-          <img src={image} alt="" width={512} height={512} fetchPriority="high" />
-        </a>}
-        <div className="home-hero-palette" aria-label="品牌色 Token">
-          {(['orange', 'orange7'] as const).map((token) => (
-            <a href={`#tokens/${token}`} key={token}>
-              <span aria-hidden="true" style={{ background: tokens[token] }} />
-              <code>{token}</code>
-            </a>
-          ))}
+      </header>
+      <div className="home-hero-previews" role="group" aria-label="交互预览">
+        <HomePreview kind="buttons" label="按钮" href="#ybutton"><ButtonPreview /></HomePreview>
+        <HomePreview kind="tabs" label="页签" href="#ytab"><TabsPreview /></HomePreview>
+        <HomePreview kind="profile" label="资料表单" href="#blocks/profile-form"><ProfilePreview /></HomePreview>
+        <HomePreview kind="play" label="播放按钮" href="#yplaypill"><PlayPreview /></HomePreview>
+        <div className="home-preview-accent">
+          {image && <a className="home-hero-image" href="#assets/rewards" aria-label="浏览糖果、任务与奖励图素">
+            <img src={image} alt="" width={512} height={512} />
+          </a>}
+          <div className="home-hero-palette" aria-label="品牌色 Token">
+            {(['orange', 'orange7'] as const).map((token) => (
+              <a href={`#tokens/${token}`} key={token}>
+                <span aria-hidden="true" style={{ background: tokens[token] }} />
+                <code>{token}</code>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-    </header>
+    </section>
   );
 }
 
@@ -190,7 +214,7 @@ export function DocsHome({ inventory }: { inventory: Inventory | null }) {
           <h2 id="home-examples">组合示例</h2>
           <a className="home-section-link" href="#blocks">查看全部组合 <LinkArrow /></a>
         </div>
-        <div className="block-grid home-block-grid">{blocks.map((block) => <BlockCard block={block} key={block.id} />)}</div>
+        <div className="block-grid home-block-grid">{blocks.slice(1).map((block) => <BlockCard block={block} key={block.id} />)}</div>
       </section>
       <DesignGuides inventory={inventory} />
     </>
