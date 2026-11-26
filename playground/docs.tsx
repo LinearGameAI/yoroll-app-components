@@ -213,7 +213,7 @@ export function GettingStartedPage() {
   );
 }
 
-function BlockCard({ block }: { block: Block }) {
+export function BlockCard({ block }: { block: Block }) {
   return (
     <article className="reference-card block-card">
       <div className="showcase block-card-stage"><block.Preview /></div>
@@ -254,41 +254,6 @@ export function BlockDetails({ block }: { block: Block }) {
           <div className="detail-tokens">{block.components.map((name) => <a href={routeFor(name)} key={name}><code>{name}</code></a>)}</div>
         </section>
       </DocLayout>
-    </>
-  );
-}
-
-export function DocsHome() {
-  const profile = blocks[0];
-  return (
-    <>
-      <header className="docs-hero">
-        <div className="docs-hero-copy">
-          <p className="docs-platform">React Native · Expo</p>
-          <h1 id="page-title" tabIndex={-1}><span>Yoroll App</span>{' '}组件库</h1>
-          <p className="docs-lede">用现有组件、组合示例和设计 Token 搭建 App 界面。</p>
-          <div className="home-actions">
-            <a className="doc-action doc-action-primary" href="#start">接入指南</a>
-            <a className="doc-action" href="#components">浏览组件</a>
-          </div>
-        </div>
-        <div className="docs-hero-sample">
-          <profile.Preview />
-          <a href={`#blocks/${profile.id}`} className="inline-source">查看表单示例</a>
-        </div>
-      </header>
-      <section className="home-section">
-        <div className="home-section-title"><h2>组合示例</h2><a className="inline-source" href="#blocks">查看全部组合</a></div>
-        <div className="block-grid">{blocks.slice(1).map((block) => <BlockCard block={block} key={block.id} />)}</div>
-      </section>
-      <section className="home-section">
-        <div className="home-section-title"><h2>设计规范</h2></div>
-        <div className="guide-grid">
-          <a href="#tokens"><strong>设计 Token</strong><span>语义色、字级与字族、尺寸、渐变与阴影</span></a>
-          <a href="#motion"><strong>动效</strong><span>时长、缓动与可播放示意</span></a>
-          <a href="#assets"><strong>图素</strong><span>素材图库、视觉风格和生成提示词</span></a>
-        </div>
-      </section>
     </>
   );
 }

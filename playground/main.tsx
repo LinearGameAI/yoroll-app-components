@@ -12,12 +12,14 @@ import { artStyles } from './artStyles';
 import { AppInventoryPage, type InventoryView } from './appInventory';
 import { readAppInventory } from './inventoryData';
 import {
-  BlockDetails, BlocksPage, ComponentDetails, DocsHome, GettingStartedPage, blocks, repositoryUrl, routeFor,
+  BlockDetails, BlocksPage, ComponentDetails, GettingStartedPage, blocks, repositoryUrl, routeFor,
 } from './docs';
+import { DocsHome } from './home';
 import { CatalogSearch, type SearchEntry } from './search';
 import './styles.css';
 import './directory.css';
 import './docs.css';
+import './home.css';
 
 declare const __APP_INVENTORY__: boolean;
 
@@ -35,6 +37,8 @@ const directoryLinks = [
 const appViews: Readonly<Record<string, InventoryView>> = {
   '#app': 'source', '#app-assets': 'assets', '#app-typography': 'typography', '#app-motion': 'motion',
 };
+
+const homeLinks = directoryLinks.filter(({ hash }) => ['#components', '#blocks', '#tokens', '#assets'].includes(hash));
 
 const searchEntries: SearchEntry[] = [
   { title: '接入指南', href: '#start', section: '指南', keywords: '安装 使用 React Native Expo 安全区 registry 源码' },
@@ -139,6 +143,7 @@ function App() {
   const directory = appView ? '#app' : detail ? '#components'
     : ['#components', '#start', '#blocks', '#tokens', '#motion', '#assets'].includes(group) ? group : '#';
   const activeDirectory = directoryLinks.find((item) => item.hash === directory);
+  const isHome = directory === '#';
   const tokenName = directory === '#tokens' ? name ?? '' : '';
   const section = block ? blockSection : detail || directory === '#start' ? name : undefined;
   const tokens = mode === 'light' ? lightTokens : darkTokens;
@@ -175,7 +180,7 @@ function App() {
   return (
     <SafeAreaProvider initialMetrics={initialMetrics}>
       <YorollThemeProvider mode={mode}>
-        <div className="app" data-theme={mode} style={colors}>
+        <div className="app" data-theme={mode} data-page={isHome ? 'home' : undefined} style={colors}>
           <a className="skip-link" href="#page-title" onClick={(event) => {
             event.preventDefault();
             document.getElementById('page-title')?.focus();
@@ -186,7 +191,11 @@ function App() {
                 <IconTextLogo width={82} height={24} color={tokens.textPrimary} />
                 <span>App 组件库</span>
               </a>
+              {isHome && <nav className="home-navigation" aria-label="组件库栏目">
+                {homeLinks.map(({ hash, label }) => <a href={hash} key={hash}>{label}</a>)}
+              </nav>}
               <div className="topbar-tools">
+                {isHome && <CatalogSearch entries={searchEntries} />}
                 <div className="theme-switch" role="group" aria-label="预览主题">
                   <button type="button" aria-pressed={mode === 'dark'} onClick={() => changeMode('dark')}>深色</button>
                   <button type="button" aria-pressed={mode === 'light'} onClick={() => changeMode('light')}>浅色</button>
@@ -195,8 +204,8 @@ function App() {
               </div>
             </div>
           </header>
-          <div className="layout">
-            <aside className="sidebar">
+          <div className={isHome ? 'home-layout' : 'layout'}>
+            {!isHome && <aside className="sidebar">
               <CatalogSearch entries={searchEntries} />
               <nav className="section-nav" aria-label="组件库栏目">
                 {directoryLinks.map(({ hash, label }) => (
@@ -204,9 +213,9 @@ function App() {
                 ))}
               </nav>
               {directory === '#components' && <ComponentNavigation matches={matches} detail={detail} query={query} setQuery={setQuery} />}
-            </aside>
+            </aside>}
             <main>
-              {directory === '#' && <DocsHome />}
+              {isHome && <DocsHome inventory={inventory} />}
               {directory === '#start' && <GettingStartedPage />}
               {directory === '#components' && (detail && !search
                 ? <ComponentDetails key={detail.name} demo={detail} />

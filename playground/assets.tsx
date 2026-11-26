@@ -17,7 +17,7 @@ const families = new Map([
 const formatSize = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 1 });
 const familyHref = (route: GalleryRoute, family: string) => family === 'all' ? route : route + '/' + family;
 const filename = (path: string) => path.split('/').at(-1) ?? path;
-const publicOriginal = (path: string) => './artwork/originals/' + path.split('/').map(encodeURIComponent).join('/');
+export const publicOriginal = (path: string) => './artwork/originals/' + path.split('/').map(encodeURIComponent).join('/');
 
 export function inventoryArtwork(inventory: Inventory) {
   return inventory.assets.filter((asset) => asset.kind === 'image' && isArtwork(asset.path));

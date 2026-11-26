@@ -32,7 +32,7 @@ export function CatalogSearch({ entries }: { entries: SearchEntry[] }) {
 
   return (
     <>
-      <button type="button" className="catalog-search-trigger" onClick={open}>
+      <button type="button" className="catalog-search-trigger" onClick={open} aria-label="搜索组件库">
         <IconSearch size={16} color="currentColor" />
         <span>搜索组件库</span>
         <kbd>{navigator.platform.startsWith('Mac') ? '⌘ K' : 'Ctrl K'}</kbd>
