@@ -1,28 +1,13 @@
-import { useEffect, useId, useState } from 'react';
+import { useState } from 'react';
 import { darkTokens, lightTokens, useTheme } from '../src';
+import { ArtworkInventory } from './assets';
 import { CopyButton, DirectoryHeading, Segmented, SourceLink } from './controls';
-
-type Pair = { name: string; value: string };
-type Motion = { api: string; line: number; settings: Pair[] };
-type Source = {
-  path: string; group: 'shared' | 'route' | 'feature' | 'native';
-  components: { name: string; line: number }[];
-  tokens: string[]; icons: string[]; assets: string[];
-  styles: { name: string; line: number; values: Pair[] }[];
-  motions: Motion[];
-};
-type Asset = {
-  path: string; kind: 'image' | 'font' | 'video' | 'animation' | 'spec'; bytes: number; usedBy: string[];
-  previewUrl?: string; availability: 'metadata' | 'missing' | 'lfs' | 'preview';
-};
-type Inventory = {
-  revision: string; changed: boolean; sources: Source[]; assets: Asset[]; missing: string[];
-  themeColors: { dark: Record<string, string>; light: Record<string, string> };
-};
+import type { Inventory } from './inventoryData';
 
 const sections = [
   { key: 'source', label: '组件与样式', href: '#app' },
-  { key: 'assets', label: '图素与字体', href: '#app-assets' },
+  { key: 'typography', label: '字体与字号', href: '#app-typography' },
+  { key: 'assets', label: '素材图库', href: '#app-assets' },
   { key: 'motion', label: '动效调用', href: '#app-motion' },
 ] as const;
 export type InventoryView = typeof sections[number]['key'];
@@ -30,10 +15,7 @@ const sourceGroups = [
   { key: 'all', label: '全部' }, { key: 'shared', label: '共享组件' },
   { key: 'route', label: '路由' }, { key: 'feature', label: '业务 UI' }, { key: 'native', label: '原生' },
 ] as const;
-const assetKinds = [
-  { key: 'all', label: '全部' }, { key: 'image', label: '图片' }, { key: 'font', label: '字体' },
-  { key: 'video', label: '视频' }, { key: 'animation', label: '动画' }, { key: 'spec', label: '资源配置' },
-] as const;
+const typographyProps = new Set(['fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'letterSpacing']);
 const initialLimit = 36;
 
 function matchesQuery(query: string, values: string[]) {
@@ -128,67 +110,34 @@ function SourceView({ inventory }: { inventory: Inventory }) {
   );
 }
 
-function FontSample({ src }: { src: string }) {
-  const id = useId().replace(/[^\w-]/g, '');
-  const family = 'AppFont' + id;
-  const [ready, setReady] = useState(false);
-  useEffect(() => {
-    const font = new FontFace(family, `url("${src}")`);
-    let active = true;
-    font.load().then(() => {
-      if (active) {
-        document.fonts.add(font);
-        setReady(true);
-      }
-    }, () => {});
-    return () => { active = false; document.fonts.delete(font); };
-  }, [family, src]);
-  return <div className="font-sample" style={{ fontFamily: ready ? family : undefined }}>Yoroll 0123 折优惠</div>;
-}
-
-function AssetView({ inventory }: { inventory: Inventory }) {
+function TypographyView({ inventory }: { inventory: Inventory }) {
   const [query, setQuery] = useState('');
-  const [kind, setKind] = useState<typeof assetKinds[number]['key']>('all');
   const [limit, setLimit] = useState(initialLimit);
-  const shown = inventory.assets.filter((asset) => (kind === 'all' || asset.kind === kind) &&
-    matchesQuery(query, [asset.path, ...asset.usedBy]));
-  const format = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 1 });
+  const shown = inventory.sources.flatMap(({ path, styles }) => styles.flatMap((style) => {
+    const values = style.values.filter(({ name }) => typographyProps.has(name));
+    return values.length && matchesQuery(query, [path, style.name, ...values.map(({ name, value }) => name + ' ' + value)])
+      ? [{ path, name: style.name, line: style.line, values }] : [];
+  }));
   return (
     <>
       <div className="directory-toolbar">
-        <input type="search" aria-label="搜索 App 图素" placeholder="搜索图素、目录或引用文件" value={query} onChange={(e) => { setQuery(e.currentTarget.value); setLimit(initialLimit); }} />
-        <Segmented items={assetKinds} value={kind} onChange={(value) => { setKind(value); setLimit(initialLimit); }} label="App 图素格式" />
+        <input type="search" aria-label="搜索 App 排版" placeholder="搜索文件、字族、字号或行高" value={query} onChange={(event) => {
+          setQuery(event.currentTarget.value);
+          setLimit(initialLimit);
+        }} />
+        <a className="inline-source" href="#tokens/typography">查看字级与 Token 映射</a>
       </div>
-      <p className="directory-count" aria-live="polite">{shown.length} 个资源</p>
-      <div className="asset-grid">
-        {shown.slice(0, limit).map((asset) => {
-          const title = asset.path.split('/').at(-1) ?? asset.path;
-          return (
-            <article className="reference-card asset-card" key={asset.path}>
-              <div className="asset-field">
-                {asset.previewUrl && asset.kind === 'image' && (
-                  <a href={asset.previewUrl} target="_blank" rel="noreferrer"><img src={asset.previewUrl} alt={title} loading="lazy" decoding="async" /></a>
-                )}
-                {asset.previewUrl && asset.kind === 'video' && <video src={asset.previewUrl} controls preload="metadata" aria-label={title} />}
-                {asset.previewUrl && asset.kind === 'font' && <FontSample src={asset.previewUrl} />}
-                {!asset.previewUrl && <small>{asset.availability === 'lfs' ? 'Git LFS 指针' : asset.availability === 'missing' ? '当前 checkout 缺少文件' : '资源定义'}</small>}
-              </div>
-              <div className="reference-body">
-                <strong>{title}</strong>
-                <code>{asset.path}</code>
-                <small>{format.format(asset.bytes / 1024)} KB · {asset.usedBy.length} 处静态引用</small>
-                <div className="reference-title">
-                  <SourceLink path={asset.path} revision={inventory.revision}>打开文件</SourceLink>
-                  <CopyButton code={asset.path} label="复制路径" />
-                </div>
-                {asset.usedBy.length > 0 && <details className="asset-usage">
-                  <summary>引用位置</summary>
-                  <ul className="source-files">{asset.usedBy.map((path) => <li key={path}><SourceLink path={path} revision={inventory.revision}>{path}</SourceLink></li>)}</ul>
-                </details>}
-              </div>
-            </article>
-          );
-        })}
+      <p className="directory-count" aria-live="polite">{shown.length} 处排版样式</p>
+      <div className="index-list">
+        {shown.slice(0, limit).map(({ path, name, line, values }, index) => (
+          <article className="index-entry index-content" key={path + line + index}>
+            <div className="reference-title"><code>{name}</code><SourceLink path={path} line={line} revision={inventory.revision}>L{line}</SourceLink></div>
+            <code className="source-path">{path}</code>
+            <div className="index-chips">
+              {values.map(({ name, value }, index) => <code key={name + index}>{name}: {value}</code>)}
+            </div>
+          </article>
+        ))}
       </div>
       <MoreResults count={shown.length} limit={limit} onMore={() => setLimit(limit + initialLimit)} />
     </>
@@ -224,15 +173,7 @@ function MotionView({ inventory }: { inventory: Inventory }) {
   );
 }
 
-export function AppInventoryPage({ view }: { view: InventoryView }) {
-  const [inventory] = useState<Inventory | null>(() => {
-    const data = document.getElementById('app-inventory-data')?.textContent;
-    try {
-      return data ? JSON.parse(data) as Inventory : null;
-    } catch {
-      return null;
-    }
-  });
+export function AppInventoryPage({ view, inventory, assetFamily }: { view: InventoryView; inventory: Inventory | null; assetFamily?: string }) {
   const tokenDrift = inventory && (['dark', 'light'] as const).flatMap((mode) => {
     const library: Record<string, string> = mode === 'dark' ? darkTokens : lightTokens;
     return [...new Set([...Object.keys(library), ...Object.keys(inventory.themeColors[mode])])]
@@ -241,8 +182,11 @@ export function AppInventoryPage({ view }: { view: InventoryView }) {
   });
   return (
     <>
-      <DirectoryHeading title="App 完整索引">
-        {inventory ? <>当前 checkout <code>{inventory.revision.slice(0, 8)}</code>{inventory.changed ? ' · 含工作区修改' : ''}。浏览组件源码、样式、图素和动效调用。</> : '从当前 App checkout 读取目录。'}
+      <DirectoryHeading title={view === 'assets' ? 'App 素材图库' : 'App 完整索引'} action={view === 'assets'
+        ? <a className="inline-source" href="#assets">视觉风格与延展提示词</a> : undefined}>
+        {inventory ? <>当前 checkout <code>{inventory.revision.slice(0, 8)}</code>{inventory.changed ? ' · 含工作区修改' : ''}。{view === 'assets'
+          ? '素材原图、使用位置和已归档的生成提示词。'
+          : '浏览组件源码、排版、样式、图素和动效调用。'}</> : '从当前 App checkout 读取目录。'}
       </DirectoryHeading>
       <nav className="directory-tabs" aria-label="App 索引内容">
         {sections.map((section) => <a key={section.key} href={section.href} aria-current={view === section.key ? 'page' : undefined}>{section.label}</a>)}
@@ -253,7 +197,8 @@ export function AppInventoryPage({ view }: { view: InventoryView }) {
           {(inventory.missing.length > 0) && <p className="directory-note">{inventory.missing.length} 个源码文件在当前 checkout 缺失。</p>}
           {!!tokenDrift?.length && <p className="directory-note">当前 checkout 与组件库的 Token 差异 · {tokenDrift.join('、')}</p>}
           {view === 'source' && <SourceView inventory={inventory} />}
-          {view === 'assets' && <AssetView inventory={inventory} />}
+          {view === 'typography' && <TypographyView inventory={inventory} />}
+          {view === 'assets' && <ArtworkInventory key={assetFamily ?? 'all'} inventory={inventory} initialFamily={assetFamily} />}
           {view === 'motion' && <MotionView inventory={inventory} />}
         </>
       )}

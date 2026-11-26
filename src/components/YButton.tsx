@@ -13,6 +13,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { GradientLabel } from './GradientLabel';
 import { buttonMetrics } from '../foundations';
+import { buttonLabelTypography } from '../typography';
 import { useTheme } from '../theme';
 
 export type YButtonVariant =
@@ -60,7 +61,6 @@ export interface YButtonProps {
 interface SizeSpec {
   paddingH: number;
   paddingV: number;
-  fontSize: number;
   minHeight: number;
   width?: number;
 }
@@ -91,45 +91,40 @@ export function YButton({
 
   const variants: Record<
     YButtonVariant,
-    { background: string; color: string; borderColor: string; borderWidth: number; fontWeight: TextStyle['fontWeight'] }
+    { background: string; color: string; borderColor: string; borderWidth: number }
   > = {
     primary: {
       background: tokens.primary,
       color: mode === 'dark' ? tokens.dark : '#fff',
       borderColor: 'transparent',
       borderWidth: 1,
-      fontWeight: '500',
     },
     secondary: {
       background: tokens.bgCard,
       color: tokens.textSecondary,
       borderColor: tokens.cardStroke,
       borderWidth: 1,
-      fontWeight: '500',
     },
     outline: {
       background: 'transparent',
       color: tokens.textSecondary,
       borderColor: tokens.cardStroke,
       borderWidth: 1,
-      fontWeight: '500',
     },
     ghost: {
       background: 'transparent',
       color: tokens.textSecondary,
       borderColor: 'transparent',
       borderWidth: 1,
-      fontWeight: '500',
     },
-    danger: { background: '#DC2626', color: '#fff', borderColor: 'transparent', borderWidth: 1, fontWeight: '500' },
+    danger: { background: '#DC2626', color: '#fff', borderColor: 'transparent', borderWidth: 1 },
     brand: {
       background: tokens.bgPicked,
       color: tokens.orange4,
       borderColor: 'transparent',
       borderWidth: 1,
-      fontWeight: '700',
     },
-    orange: { background: tokens.orange, color: '#fff', borderColor: 'transparent', borderWidth: 1, fontWeight: '600' },
+    orange: { background: tokens.orange, color: '#fff', borderColor: 'transparent', borderWidth: 1 },
   };
 
   const v = variants[variant];
@@ -139,10 +134,8 @@ export function YButton({
   const content = children ?? label;
   const baseTextStyle: TextStyle = {
     color: v.color,
-    fontSize: s.fontSize,
-    lineHeight: Math.round(s.fontSize * 1.4),
+    ...buttonLabelTypography(size, variant),
     fontFamily: fontWeights.sansMedium,
-    fontWeight: v.fontWeight,
     flexShrink: 0,
     includeFontPadding: false,
     textAlignVertical: 'center',

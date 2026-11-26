@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { copyFile, mkdir, readFile, realpath, stat, writeFile } from 'node:fs/promises';
 import { dirname, extname, isAbsolute, join, posix, relative } from 'node:path';
 import ts from 'typescript';
+import { readArtworkPrompts } from './artwork.mjs';
 
 const scopes = ['src', 'app', 'assets', 'ios/Yoroll', 'android/app/src/main/res', 'android/app/src/main/java'];
 const mediaExtensions = {
@@ -318,8 +319,13 @@ export async function buildAppInventory(appPath, outdir) {
       usedBy.get(asset).push(file);
     }
   }
+  const artworkPrompts = await readArtworkPrompts(root, files, assetKinds, openTracked);
   const assets = [];
-  for (const [file, kind] of assetKinds) assets.push(await prepareAsset(root, outdir, file, kind, usedBy));
+  for (const [file, kind] of assetKinds) {
+    const asset = await prepareAsset(root, outdir, file, kind, usedBy);
+    const prompts = artworkPrompts.get(file);
+    assets.push(prompts ? { ...asset, prompts } : asset);
+  }
   const inventory = { revision, changed, themeColors, sources, assets, missing };
   await mkdir(outdir, { recursive: true });
   await writeFile(join(outdir, 'app-inventory.json'), JSON.stringify(inventory));

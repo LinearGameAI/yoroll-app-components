@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import {
   darkTokens, lightTokens, layout, sheetMetrics, dialogMetrics, buttonMetrics, inputMetrics, tabMetrics,
-  systemFonts, customFontNames, shadowPresets, TREAT_GRADIENT, TREAT_TEXT_GRADIENT, useTheme, type ThemeTokens,
+  shadowPresets, TREAT_GRADIENT, TREAT_TEXT_GRADIENT, useTheme, type ThemeTokens,
 } from '../src';
-import { CopyButton, DirectoryHeading, Segmented, SourceLink } from './controls';
+import { CopyButton, DirectoryHeading, SourceLink } from './controls';
+import { TypographySection } from './typeSpec';
+import type { Inventory } from './inventoryData';
 
 const sections = [
-  { key: 'color', label: '主题色' }, { key: 'type', label: '字体' },
+  { key: 'color', label: '主题色' }, { key: 'typography', label: '字体与字号' },
   { key: 'layout', label: '布局与尺寸' }, { key: 'surface', label: '渐变与阴影' },
 ] as const;
-type Section = typeof sections[number]['key'];
 type ColorToken = keyof ThemeTokens;
 
 const colorGroups: { title: string; keys: ColorToken[] }[] = [
@@ -77,36 +78,6 @@ function ColorSection({ tokenName }: { tokenName: string }) {
         </section>
       ))}
     </>
-  );
-}
-
-function FontSection() {
-  return (
-    <div className="section-stack">
-      <section className="reference-section">
-        <h2>系统字族</h2>
-        <p>常规文字使用系统字族。字重由 <code>fontWeight</code> 决定，Android 中等字重另有字族别名。</p>
-        <div className="props-scroll">
-          <table>
-            <thead><tr><th scope="col">用途</th><th scope="col">iOS</th><th scope="col">Android</th><th scope="col">网页</th></tr></thead>
-            <tbody>{(['sans', 'medium', 'mono'] as const).map((key) => (
-              <tr key={key}><th scope="row"><code>{key}</code></th>
-                {(['ios', 'android', 'web'] as const).map((platform) => <td key={platform}><code>{systemFonts[platform][key]}</code></td>)}
-              </tr>
-            ))}</tbody>
-          </table>
-        </div>
-        <SourceLink path="src/theme/fonts.ts" />
-      </section>
-      <section className="reference-section">
-        <h2>应用内注册字族</h2>
-        <div className="spec-list">
-          <div><code>{customFontNames.bebas}</code><span>短剧会员标签等展示文字</span></div>
-          <div><code>{customFontNames.geologicaSemibold}</code><span>首页标识后缀与重点数字</span></div>
-        </div>
-        <SourceLink path="app/_layout.tsx" line={439}>查看字体注册</SourceLink>
-      </section>
-    </div>
   );
 }
 
@@ -188,16 +159,20 @@ function SurfaceSection() {
   );
 }
 
-export function FoundationsPage({ tokenName }: { tokenName: string }) {
-  const [section, setSection] = useState<Section>('color');
+export function FoundationsPage({ tokenName, inventory }: { tokenName: string; inventory: Inventory | null }) {
+  const section = sections.find(({ key }) => key === tokenName)?.key ?? 'color';
   return (
     <>
       <DirectoryHeading title="设计 Token" action={<SourceLink path="src/theme/tokens.ts" />}>
-        从 App 样式提取的语义色、字族和尺寸。深色是当前 App 默认主题，浅色用于对照。
+        从 App 样式提取的语义色、字族、字号和布局尺寸。深色是 App 默认主题，浅色用于对照。
       </DirectoryHeading>
-      <Segmented items={sections} value={section} onChange={setSection} label="Token 类型" />
-      {section === 'color' && <ColorSection tokenName={tokenName} />}
-      {section === 'type' && <FontSection />}
+      <nav className="directory-tabs" aria-label="Token 类型">
+        {sections.map(({ key, label }) => (
+          <a key={key} href={key === 'color' ? '#tokens' : '#tokens/' + key} aria-current={section === key ? 'page' : undefined}>{label}</a>
+        ))}
+      </nav>
+      {section === 'color' && <ColorSection tokenName={tokenName === 'color' ? '' : tokenName} />}
+      {section === 'typography' && <TypographySection inventory={inventory} />}
       {section === 'layout' && <LayoutSection />}
       {section === 'surface' && <SurfaceSection />}
     </>

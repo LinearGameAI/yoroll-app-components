@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Pressable, StyleSheet, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { IconBackward } from '@yoroll/rn-icon';
+import { typography } from '../typography';
 import { useTheme } from '../theme';
 
 export interface YTopBarProps {
@@ -94,9 +95,7 @@ const styles = StyleSheet.create({
   title: {
     flex: 1,
     textAlign: 'center',
-    fontSize: 17,
-    fontWeight: '600',
-    letterSpacing: 0.1,
+    ...typography.navigationTitle,
   },
   titleSlot: { flex: 1, minWidth: 0 },
 });

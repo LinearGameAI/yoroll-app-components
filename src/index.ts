@@ -23,3 +23,7 @@ export {
   systemFonts, customFontNames, TREAT_GRADIENT, TREAT_TEXT_GRADIENT, shadowPresets, bottomSheetBottomPadding,
 } from './foundations';
 export { motionTokens } from './motion';
+export {
+  typography, avatarInitialTypography, buttonLabelTypography, tabLabelTypography, playPillLabelTypography,
+  chatFontSize, chatMessageTypography,
+} from './typography';

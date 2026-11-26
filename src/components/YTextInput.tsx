@@ -9,6 +9,7 @@ import {
   type StyleProp,
   type ViewStyle,
 } from 'react-native';
+import { typography } from '../typography';
 import { useTheme } from '../theme';
 import { inputMetrics } from '../foundations';
 import { IconReview, IconHide } from '@yoroll/rn-icon';
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: inputMetrics.fontSize,
+    ...typography.inputText,
     paddingVertical: inputMetrics.paddingVertical,
     includeFontPadding: false,
   },
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   helper: {
-    fontSize: inputMetrics.helperFontSize,
+    ...typography.inputHelper,
     marginTop: 6,
     marginLeft: 4,
   },

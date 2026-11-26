@@ -2,13 +2,14 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { createRoot } from 'react-dom/client';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { IconClose, IconSearch, IconTextLogo } from '@yoroll/rn-icon';
-import { YorollThemeProvider, darkTokens, lightTokens, type ThemeMode, type ThemeTokens } from '../src';
+import { YorollThemeProvider, darkTokens, lightTokens, typography, type ThemeMode, type ThemeTokens } from '../src';
 import { categories, demos, type ComponentDemo } from './demos';
 import { DirectoryHeading } from './controls';
 import { FoundationsPage } from './foundations';
 import { MotionPage } from './motion';
 import { AssetsPage } from './assets';
 import { AppInventoryPage, type InventoryView } from './appInventory';
+import { readAppInventory } from './inventoryData';
 import {
   BlockDetails, BlocksPage, ComponentDetails, DocsHome, GettingStartedPage, blocks, repositoryUrl, routeFor,
 } from './docs';
@@ -31,7 +32,7 @@ const directoryLinks = [
 ];
 
 const appViews: Readonly<Record<string, InventoryView>> = {
-  '#app': 'source', '#app-assets': 'assets', '#app-motion': 'motion',
+  '#app': 'source', '#app-assets': 'assets', '#app-typography': 'typography', '#app-motion': 'motion',
 };
 
 const searchEntries: SearchEntry[] = [
@@ -39,9 +40,17 @@ const searchEntries: SearchEntry[] = [
   { title: '组件', href: '#components', section: '目录', keywords: 'components' },
   { title: '组合示例', href: '#blocks', section: '目录', keywords: 'blocks' },
   { title: '设计 Token', href: '#tokens', section: '规范', keywords: '颜色 字体 布局 尺寸 阴影 渐变' },
+  { title: '字体与字号', href: '#tokens/typography', section: '规范', keywords: '排版 字族 行高 字重 字距 font typography lineHeight' },
   { title: '动效', href: '#motion', section: '规范', keywords: '缓动 运动 时长 动画' },
-  { title: '图素', href: '#assets', section: '资源', keywords: '图标 icon 依赖' },
-  ...(__APP_INVENTORY__ ? [{ title: 'App 完整索引', href: '#app', section: '资源', keywords: 'App 原图 字体 源码 样式' }] : []),
+  { title: '图素', href: '#assets', section: '资源', keywords: '素材 插画 风格 色板 提示词 生图 artwork prompt' },
+  ...(__APP_INVENTORY__ ? [
+    { title: 'App 完整索引', href: '#app', section: '资源', keywords: '源码 样式' },
+    { title: 'App 素材图库', href: '#app-assets', section: '资源', keywords: '原图 插画 原始提示词' },
+    { title: 'App 排版索引', href: '#app-typography', section: '资源', keywords: '字族 字号 字重 行高 源码' },
+  ] : []),
+  ...Object.keys(typography).map((key) => ({
+    title: 'typography.' + key, href: '#tokens/typography', section: '排版 Token', keywords: '字号 字重 行高',
+  })),
   ...demos.map((demo) => ({ title: demo.name, href: routeFor(demo.name), section: '组件', keywords: demo.label + ' ' + demo.description })),
   ...blocks.map((block) => ({ title: block.title, href: '#blocks/' + block.id, section: '组合示例', keywords: block.description })),
   ...(Object.keys(darkTokens) as (keyof ThemeTokens)[]).map((key) => ({
@@ -119,10 +128,11 @@ function App() {
   const [mode, setMode] = useState(readTheme);
   const [route, setRoute] = useState(window.location.hash);
   const [query, setQuery] = useState('');
+  const [inventory] = useState(() => __APP_INVENTORY__ ? readAppInventory() : null);
   const [group, name, blockSection] = route.split('/');
   const detail = demos.find((demo) => routeFor(demo.name) === group);
   const block = group === '#blocks' ? blocks.find((item) => item.id === name) : undefined;
-  const appView = __APP_INVENTORY__ ? appViews[route] : undefined;
+  const appView = __APP_INVENTORY__ ? appViews[group] : undefined;
   const directory = appView ? '#app' : detail ? '#components'
     : ['#components', '#start', '#blocks', '#tokens', '#motion', '#assets'].includes(group) ? group : '#';
   const activeDirectory = directoryLinks.find((item) => item.hash === directory);
@@ -199,10 +209,10 @@ function App() {
                 ? <ComponentDetails key={detail.name} demo={detail} />
                 : <ComponentsPage matches={matches} query={query.trim()} clearSearch={() => setQuery('')} />)}
               {directory === '#blocks' && (block ? <BlockDetails key={block.id} block={block} /> : <BlocksPage />)}
-              {directory === '#tokens' && <FoundationsPage key={tokenName} tokenName={tokenName} />}
+              {directory === '#tokens' && <FoundationsPage key={tokenName} tokenName={tokenName} inventory={inventory} />}
               {directory === '#motion' && <MotionPage />}
-              {directory === '#assets' && <AssetsPage showAppInventory={__APP_INVENTORY__} />}
-              {__APP_INVENTORY__ && appView && <AppInventoryPage view={appView} />}
+              {directory === '#assets' && <AssetsPage inventory={inventory} />}
+              {__APP_INVENTORY__ && appView && <AppInventoryPage view={appView} inventory={inventory} assetFamily={name} />}
             </main>
           </div>
         </div>

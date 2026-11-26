@@ -2,6 +2,7 @@ import { useState, type ComponentType, type ReactNode } from 'react';
 import { useTheme } from '../src';
 import { CopyButton, DirectoryHeading, Segmented, SourceLink } from './controls';
 import { catalogExample, categories, type ComponentDemo } from './demos';
+import { ComponentTypography, hasComponentTypography } from './typeSpec';
 
 export const repositoryUrl = 'https://github.com/LinearGameAI/yoroll-app-components';
 const installCommand = 'npm install git+https://github.com/LinearGameAI/yoroll-app-components.git';
@@ -96,6 +97,7 @@ export function ComponentDetails({ demo }: { demo: ComponentDemo }) {
   const sections: DocSection[] = [
     { id: 'previews', label: '预览与代码' }, { id: 'installation', label: '安装' },
     { id: 'usage', label: '用法' }, { id: 'props', label: '参数' },
+    ...(hasComponentTypography(demo.name) ? [{ id: 'typography', label: '字体与字号' }] : []),
     ...(demo.colors?.length ? [{ id: 'tokens', label: '相关 Token' }] : []),
   ];
   return (
@@ -136,6 +138,7 @@ export function ComponentDetails({ demo }: { demo: ComponentDemo }) {
             </table>
           </div>
         </section>
+        <ComponentTypography name={demo.name} />
         {demo.colors && <section id="tokens" className="doc-section">
           <h2>相关 Token</h2>
           <div className="detail-tokens">
@@ -281,9 +284,9 @@ export function DocsHome() {
       <section className="home-section">
         <div className="home-section-title"><h2>设计规范</h2></div>
         <div className="guide-grid">
-          <a href="#tokens"><strong>设计 Token</strong><span>语义色、字体、尺寸、渐变与阴影</span></a>
+          <a href="#tokens"><strong>设计 Token</strong><span>语义色、字级与字族、尺寸、渐变与阴影</span></a>
           <a href="#motion"><strong>动效</strong><span>时长、缓动与可播放示意</span></a>
-          <a href="#assets"><strong>图素</strong><span>可预览、可复制用法的 App 图标</span></a>
+          <a href="#assets"><strong>图素</strong><span>素材图库、视觉风格和生成提示词</span></a>
         </div>
       </section>
     </>

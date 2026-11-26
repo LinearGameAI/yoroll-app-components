@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
 import { Image, type ImageProps } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
+import { avatarInitialTypography } from '../typography';
 import { useTheme } from '../theme';
 
 export interface YAvatarProps {
@@ -72,8 +73,7 @@ export function YAvatar({ size = 40, src, name = 'A', color, gradientColors, rin
           style={{
             color: '#fff',
             fontFamily: fontWeights.dispMedium,
-            fontWeight: '600',
-            fontSize: size * 0.42,
+            ...avatarInitialTypography(size),
           }}
         >
           {initial}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
+import { tabLabelTypography } from '../typography';
 import { useTheme } from '../theme';
 import { tabMetrics } from '../foundations';
 
@@ -89,9 +90,7 @@ export function YTab({ items, active, onChange, variant = 'underline', textLayou
               minimumFontScale={isText ? 0.8 : undefined}
               style={{
                 fontFamily: isSeg || isText ? fonts.sans : isActive ? fontWeights.sansBold : fontWeights.sansMedium,
-                fontSize: isText ? 16 : 13,
-                ...(isText ? { lineHeight: 22 } : {}),
-                fontWeight: isActive ? '600' : '500',
+                ...tabLabelTypography(variant, isActive),
                 color: isActive ? tokens.textPrimary : tokens.textTertiary,
               }}
             >

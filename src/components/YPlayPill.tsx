@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pressable, Text, View, StyleSheet, Platform, type ViewStyle, type StyleProp } from 'react-native';
+import { playPillLabelTypography } from '../typography';
 import { useTheme } from '../theme';
 import { IconPlayFilled } from '@yoroll/rn-icon';
 
@@ -28,15 +29,14 @@ export interface YPlayPillProps {
 interface SizeSpec {
   padY: number;
   padX: number;
-  font: number;
   icon: number;
   gap: number;
 }
 
 const SIZES: Record<YPlayPillSize, SizeSpec> = {
-  sm: { padY: 6, padX: 12, font: 12, icon: 11, gap: 6 },
-  md: { padY: 9, padX: 16, font: 13, icon: 13, gap: 6 },
-  lg: { padY: 16, padX: 20, font: 17, icon: 18, gap: 10 },
+  sm: { padY: 6, padX: 12, icon: 11, gap: 6 },
+  md: { padY: 9, padX: 16, icon: 13, gap: 6 },
+  lg: { padY: 16, padX: 20, icon: 18, gap: 10 },
 };
 
 export function YPlayPill({
@@ -91,8 +91,7 @@ export function YPlayPill({
       style={{
         color: v.color,
         fontFamily: fontWeights.sansBold,
-        fontWeight: '700',
-        fontSize: s.font,
+        ...playPillLabelTypography(size),
       }}
     >
       {displayLabel}
