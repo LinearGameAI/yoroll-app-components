@@ -10,6 +10,7 @@ export type Asset = {
   path: string; kind: 'image' | 'font' | 'video' | 'animation' | 'spec'; bytes: number; usedBy: string[];
   previewUrl?: string; availability: 'metadata' | 'missing' | 'lfs' | 'preview';
   prompts?: AssetPrompt[];
+  referencePrompt?: string;
 };
 
 export type Pair = { name: string; value: string };

@@ -1,0 +1,450 @@
+{
+  "android/app/src/main/res/drawable-hdpi/splashscreen_logo.png": {
+    "sha256": "91d4b632ab1ff22c336c9f1c190c4f68af241f89e5044de923532c90ef685f5d",
+    "text": "制作 Android hdpi 启动页占位底图，432 × 432 像素。近黑色 #0B0B0D 平涂到画布四边，整张图色值一致，完全不透明，保留纯平的屏幕背景质感。"
+  },
+  "android/app/src/main/res/drawable-mdpi/splashscreen_logo.png": {
+    "sha256": "bb0c8371c11ff0d296f6492fd64848d9354edd76f25c2fd626fffcd29e930903",
+    "text": "制作 288 × 288 像素的 Android mdpi 启动底板，整幅铺满 #0B0B0D。用完全不透明的均匀纯色表现冷调近黑，全幅保持同一亮度和色值。"
+  },
+  "android/app/src/main/res/drawable-xhdpi/splashscreen_logo.png": {
+    "sha256": "c59c2525f56cb8dc2fad474fe6ba84914156ff052054068942147174bb4e79a2",
+    "text": "输出 576 × 576 像素的 Android xhdpi 启动占位图。方形全幅覆盖近黑 #0B0B0D，Alpha 为 255，四边与中心保持一致的纯平色面。"
+  },
+  "android/app/src/main/res/drawable-xxhdpi/splashscreen_logo.png": {
+    "sha256": "0aecc6ad561212b043306ec4aad6339dccca2d2f95092c446ff0b57558da4aa3",
+    "text": "生成 Android xxhdpi 启动底图，画布为 864 × 864 像素。以不透明的 #0B0B0D 从边缘到边缘铺成匀净平涂，保持低明度、微偏冷的近黑。"
+  },
+  "android/app/src/main/res/drawable-xxxhdpi/splashscreen_logo.png": {
+    "sha256": "6325c8294b6884a512a836b5921cc488f7efacc245f1973da519dc2df1d3e181",
+    "text": "生成 1152 × 1152 像素的 Android xxxhdpi 启动背景。采用全幅单一 #0B0B0D、不透明平涂，让各像素保持同一种微冷的黑色和一致明度。"
+  },
+  "android/app/src/main/res/drawable/daily_task_token.png": {
+    "sha256": "d986c4d88eaa49d51b5d334aa0b6eae7ee411af65fa8a36c781a7e52200829d1",
+    "text": "制作方形透明底的任务代币贴图。一枚环形芯带右上双尖尾，沿左下至右上斜置，圆孔和 V 形缺口完整可辨。使用透明树脂和圆滑抛光倒角，左缘琥珀橙亮起，右缘过渡到玫粉与珊瑚红。"
+  },
+  "assets/brand/invite-yoroll.png": {
+    "sha256": "95862ce6ad1219004ef4583bf9ae8c3eae0874cfadad192c345e0ceb50642f2c",
+    "text": "生成横向的 Yoroll 邀请字标。几何无衬线字沿单行排开，首字母 Y 大写，字形厚实、圆形开口清楚。字面上部接近墨蓝，下缘用电光青蓝提亮，带精细的内侧发光和透明外底。"
+  },
+  "assets/brand/login-logo-color.webp": {
+    "sha256": "49368e30d224f001c34c3efd2cb7f36570e5f4d33383b5357b54393123e19d65",
+    "text": "制作横向 Yoroll 登录品牌组合图。左侧放圆头、右下有拖尾的白色幽灵，留出两枚深色椭圆眼孔，以深描边和细橙外线收边。右侧并排粗体珊瑚橙小写 yoroll，保持平涂矢量质感，背景透明。"
+  },
+  "assets/brand/login-logo-gradient.webp": {
+    "sha256": "3547bf5807a314a78814f086696cd6b795c184403cea766bc33dab471ff8aed0",
+    "text": "制作宽幅登录标识。左侧用圆润幽灵轮廓和两枚黑色眼孔，主体珍珠白，顶部边缘晕染杏橙与柔粉，足部过渡到浅水蓝和淡紫。右侧排单行白色粗体小写 yoroll，保留清晰字形和干净透明底。"
+  },
+  "assets/brand/login-logo.png": {
+    "sha256": "473b1061b7cc0bb15aaae23d643de397ead746509b144cf0134c8144949aba0c",
+    "text": "生成横向单色登录锁定组合。左边是纯白圆头幽灵，双眼使用深色镂空，右下的拖尾收成一个圆角钩。右边是等基线的小写 yoroll，使用实心白色几何粗体和利落的平面轮廓，整体透明底。"
+  },
+  "assets/brand/logo-beta.webp": {
+    "sha256": "ac020d29fa6ae76a7595ca18dadbbd8011aa87619c9dacace22e2dfe5c530b0b",
+    "text": "设计纵向 Beta 品牌章。在上部以明亮珊瑚橙圆盘承托白色幽灵，给幽灵保留粗煤黑描边和两个黑色椭圆眼睛。圆盘下方居中放深棕圆角小牌，牌面用橙色写 Beta。采用清爽平涂，图形外围透明。"
+  },
+  "assets/brand/logo-long.png": {
+    "sha256": "9431d8b1c2fd67642fe1ac5d0dd090dc3c59eb776e1b4f812aea441a06438554",
+    "text": "制作超宽横向品牌条。左端是带黑描边和细橙外环的白幽灵，中段为明珊瑚橙粗体 yoroll，右端是深棕圆角胶囊内的橙色 Beta。三段垂直居中、间距紧凑，保持平面边缘和透明背景。"
+  },
+  "assets/brand/me-empty-state.webp": {
+    "sha256": "03979baabc12e5322036687226d5fa7805bb47d2f54b010bf5d963e96048f528",
+    "text": "设计方形的个人页空态图。用粗圆角线条在中心勾出面向正面的幽灵，下沿形成两个圆润足部，左眼为圆点，右眼为轻弯的眨眼。线条和眼部统一使用低对比度深橄榄炭灰 #30302E，其余区域透明，保持平面质感。"
+  },
+  "assets/brand/placeholder.webp": {
+    "sha256": "10bb104e3559b558b3e5bf328beb1b0831c1107f3e509541dab796a9db5f37bc",
+    "text": "制作横向 4:3 的柔光占位动图。让奶油白成为整幅底色，淡杏、奶桃与浅粉色的大块虚焦光晕在画面间缓慢漂移。使用边界极软的散射光与均匀细腻的颜色过渡，整幅呈干净的浅色云雾面并可平顺循环。"
+  },
+  "assets/checkin/checkin-claimed.png": {
+    "sha256": "f1e96f20eca10b5f1da5304b52ab32023b4eabcf97f405294dc5c3f4cf8c76fb",
+    "text": "在方形透明画布中央放一枚圆形签到完成徽章，深色宽勾由左下抬向右上。圆盘采用半透果冻树脂与窄抛光边，左边偏蜜橙、右边偏莓粉，粉金高光沿轮廓和勾边勾出清晰体积。"
+  },
+  "assets/checkin/checkin-hero-cutout.png": {
+    "sha256": "7da6d9ed615a2376449a42d6cb0452b9f39a8085ea03d3e9a0d7e7a2ecba0aed",
+    "text": "制作横向签到奖励的透明截取图。画面左中主体是略斜的台历，上边两枚金属装订环，橙色顶条下接奶白纸面和凸起橙勾。右下挨着小橙礼盒，四周安排稀疏金色四角星和细长光丝，底部收成暖琥珀接触光。"
+  },
+  "assets/checkin/checkin-hero-frontal.png": {
+    "sha256": "3f17d320f71e19688d96900e161552623119fa7bc2e399de4c5e2b3dd78f38b5",
+    "text": "制作正视、居中的独立签到台历。保留略圆的矩形比例，顶部是亮橙条和两枚圆管金属环，下部大块象牙白纸面，中间压一枚宽橙色立体勾。纸面偏哑光，橙色凸起边缘带细高光，四周透明。"
+  },
+  "assets/checkin/checkin-hero-v2-black-key-soft2.png": {
+    "sha256": "2d745220d3f001b6a0b12f730b0670e0c97edca6f38bb3857fa98bd7f9b0f6f4",
+    "text": "设计方形签到活动主图，主体集中在中下方，四周留出宽阔透明暗区。奶油白台历带橙色顶部与突出的橙勾，右下搭一只系缎带的小礼盒。低处铺一条窄金橙光弧，周围少量星点和竖向光芒以柔边融入背景。"
+  },
+  "assets/checkin/streak-bonus.png": {
+    "sha256": "894f5137af769621f8380a023564ae343df32a73018f465ffc7550872f5b6940",
+    "text": "画一堆带镂空圆心和双尖尾的 Treats 代币。主体以三角堆叠组织，前侧几枚斜靠，底层平躺并在暗底压出一点模糊倒影。代币为抛光透明树脂，琥珀橙边与亮莓粉轮廓交织，保留暖橙触地光。"
+  },
+  "assets/checkin/treat-pile-v2.webp": {
+    "sha256": "8308a4e5a852f0f25b1f4fa54b62e60a7fd6621614854927b4376db4c5f32944",
+    "text": "制作一堆透明底的立体硬糖插画。用数颗椭圆枕形糖交错叠成紧凑小山，糖纸两头扭成宽短的扇形褶。用透亮的橙金折射边包住柔粉至珊瑚的糖心，在最上层和前排突出圆润高光。"
+  },
+  "assets/checkin/treat-pile-v3.webp": {
+    "sha256": "0d217670727523c2e0444b627cd93006ecd3a67a099f7fbeb89f739a4f44564e",
+    "text": "绘制横幅透明底的方枕软糖堆。让一块糖立在上层，前排几块以不同角度相互遮挡，玻璃般的透明糖纸在两端形成扇状褶。糖面为光洁的珍珠奶白到藕粉，边缘折射浅琥珀与玫瑰色。"
+  },
+  "assets/checkin/treat-pile-v4-reflection.webp": {
+    "sha256": "9299fed18d83cc700b232b42c786ea792515eedaf112a61090d1d9d0c77a39a5",
+    "text": "制作低机位的方枕糖堆静物。顶部一颗直立，前排斜置，透明扭结包装在两头张开。用乳白和淡粉高光塑造抛光玻璃糖体，暖橙与玫红藏在底缘，在脚下留一条窄而柔的金粉倒影，外围透明。"
+  },
+  "assets/checkin/treat-pile-v5-satin.webp": {
+    "sha256": "ea690ae795f69d1158248a52943ea30b281dc9b5b9a9d09b271c6c0dcb8658e5",
+    "text": "保持一组圆角方枕糖的三角堆叠，让前排偏暖杏橙，顶层呈奶桃，右侧压到柔玫粉。糖面使用细腻磨砂缎感，把反射收在边缘和透明包装的褶皱里。底部接触区只留一带低亮度的暖色反光。"
+  },
+  "assets/login-covers/cn/cover-06.jpg": {
+    "sha256": "02f384f32a51196ec913e1fe8e066ad624d147ac8ce34797cfb157d9e2c9855b",
+    "text": "制作竖幅游戏封面。以舱室圆拱肋骨围住画面，中央放一只穿蓝绿花衫的小企鹅，绳索绕过胸前，脚站在低处木箱上。制服柔软、木纹粗糙、冷钢舱壁用青蓝窄灯切出层次。顶部摆放结霜的米金色粗立体字 PENGUIN ESCAPE。"
+  },
+  "assets/login-covers/cn/cover-07.jpg": {
+    "sha256": "61b648dcd2bc26330b22d025a69dd3911fc5bb1b86ddd97608ab019916647fc2",
+    "text": "制作正面胸像式竖版封面。让一只黑白花纹、金瞳的猫占据中轴，穿红色织金长袍与立领，头戴有珠坠的金丝花冠，身后铺满暖金宫殿纹样。强调皮毛与锦缎的反差，下三分之一用华丽金色衬线写 Queen Meow。"
+  },
+  "assets/login-covers/cn/cover-08.jpg": {
+    "sha256": "e3a4117d48a1913a3051f7b4d7626bd87526c795188e762c29986daf0122437e",
+    "text": "绘制电影感武侠竖封。长发男子居中向前，粗麻棕袍和腰带在风中拉出斜线。左后用远山层层虚化，右后立一座旧木瓦门。用沙金天光、烟灰薄雾与褐色织物组织色调，下方叠一组古铜金大字 RISE OF DALANG。"
+  },
+  "assets/login-covers/cn/cover-09.jpg": {
+    "sha256": "a85f9ce5cbadf2449f930667c46db8b414a04e7142293f101ae72fa3940b092c",
+    "text": "制作热带漂流题材的竖版卡通封面。中间突出一块横木告示牌，圆厚金黄字分三行写 Tiny Castaway Club，牌顶停白色海鸥。前景安排水中探头的小动物和粉棕河马，后景铺明绿棕榈与山岛，用亮青海水、蜜棕木纹和柔亮立体材质营造晴天。"
+  },
+  "assets/login-covers/cn/cover-10.jpg": {
+    "sha256": "2c530f2445c2f9cb34959c34ec31109307a005a27a685c40044737bb43cc77c3",
+    "text": "制作高饱和休闲游戏竖封。明蓝晴空下先放橙金浮雕标题 WILD TILES，再让白色圆角方牌在中央堆成向下收束的牌阵，牌上点缀水果、闪电和四叶草。底部放热带小屋、浅金沙地和一排小动物，绿植与蓝海保持明亮通透。"
+  },
+  "assets/login-covers/cover-01.jpg": {
+    "sha256": "a4ba70682dd97089e80cef7cf70b34231003379091513a0e713749589eba847d",
+    "text": "构图使用第一人称低机位，底部以两只穿黑袖的手握住带金属辐条的旧方向盘。视线沿皇家长厅中轴往远处走，礼服宾客散列两边，明亮窗光与层叠水晶灯照出金饰和地板。画面中段用浅金衬线排 Royal Rumble 和较小的 Tiny Wheels。"
+  },
+  "assets/login-covers/cover-02.jpg": {
+    "sha256": "090b2f9c2aa57b603fce47735f2a8da6c36d22b5ae7cdd4f27fcde1b2e785e75",
+    "text": "设计一幅带悬疑氛围的古装竖海报。画面左半让束发男子侧身翻看一本褐色旧册，衣料粗哑，书架沉进暗部。右上斜射一道冷白窗光穿过青灰雾气，把大号深绿书法标题「晚唐陰陽司」竖排在右侧。整体使用墨黑、灰蓝和旧纸色。"
+  },
+  "assets/login-covers/cover-03.jpg": {
+    "sha256": "bc9bfe8893365c3fcaa39259073778886c8c16f4385aba707d961a2ab0b6c8bf",
+    "text": "制作神秘档案题材的竖版封面。墨绿旗袍女子背身侧回首，占画面中右，绒面衣服在肩腰处反出窄亮边。背后以巨大的对称兽眼和金褐毛状纹理围住人物，纸面带细密旧印刷质感，下部压奶金色的斜笔英文标题 The Occult Album。"
+  },
+  "assets/login-covers/cover-04.jpg": {
+    "sha256": "b7164ddb720d8fa2b520d80593571f4f540bf8403787531d5feef53af4c8ae2f",
+    "text": "制作写实喜剧风竖封。画面下半正视一只灰纹虎斑猫，头顶扣深色护目镜，穿有织带、围巾和厚布口袋的战术背心。后方是狭窄的暗色车舱，左边漏进暖窗光。用土褐、橄榄和钢黑衬托细腻猫毛，上方用磨损金属字排 TABBY IN TROUBLE。"
+  },
+  "assets/login-covers/cover-05.jpg": {
+    "sha256": "9303ca92fb428a0851e5f119727f842966c4cab3c1aef9564283d515e14ede5c",
+    "text": "设计复古侦探竖封。戴灰色报童帽和圆镜的女子居中，单手抬到镜框，另一手持有红蜡印的浅褐信封。前景压深色人字纹外套和皮手套，背景以放大的怀表、旧纸与冷蓝窗格组成。上方排列有磨损的金色窄体标题和浅金副标题条。"
+  },
+  "assets/login-covers/cover-06.jpg": {
+    "sha256": "a3a649e6f27792894cf9c6cc3cac99f657cbfa542a4ff1f700ed87486f8a8569",
+    "text": "绘制肩胸近景的暗金宫廷人物竖像。浅金卷发男子略仰头直视镜头，头戴细枝状金冠，右侧一只戴戒指的手轻托面颊。深黑高领织物散布细金纹，左侧暖金逆光勾亮发梢，背景收进深棕与黑，保持细腻半写实轮廓。"
+  },
+  "assets/login-covers/cover-07.jpg": {
+    "sha256": "6a1f9803751f14273e3e7e4de849a429e31c0bccbbcc28f04e5b52ccc9ae2282",
+    "text": "绘制胸腰以上的动漫人物竖像。深栗色长发女子居中侧目，厚刘海遮一点眉，暖金眼睛带红晕，双臂在画面下方交叠。用黑色 V 领针织上衣、带银环的细颈圈、柔和的桃粉虚焦背景突出干净线条与细颗粒阴影。"
+  },
+  "assets/login-covers/cover-08.jpg": {
+    "sha256": "c89ba2e5712492d8ca14bb489ebc6d1a037377311eaf5fa07e44c39d8e2077ab",
+    "text": "制作昏暗室内的近景人物竖像。卷曲湿黑发垂到眼前，男子稍俯首，一手在画面右上拨动细金属圆眼镜。用黑背心、细金链和暖灰肤色呈现细致的写实表面，背景以深木色和一小片暗绿色灯罩压出层次，光集中在脸颊与锁骨。"
+  },
+  "assets/login-covers/cover-09.jpg": {
+    "sha256": "05ad873cfa4b0ea56b1ca22b1a8e9b93e9a42fc30a3088d12e395006d724ce0e",
+    "text": "绘制充满活力的主播近景竖像。橙色卷发男子佩戴黑色包耳耳麦，略向镜头前倾微笑，白色连帽衫形成亮部。右侧紧贴一支黑色麦克风，在暗室背后点出蓝紫屏光和暖橙灯带，突出头发纹理、软布褶与轻亮眼神。"
+  },
+  "assets/login-covers/cover-10.jpg": {
+    "sha256": "e44c76fc68da8551e9d56daac5ace1aa766bde44289c39d7fa0f12a68e316ec1",
+    "text": "绘制夜间露台派对的动漫竖像。长金发女子在中心吹圆润粉色泡泡糖，一手做 V 形手势靠近脸旁，发侧装星形夹。白衬衣、酒红领带与蓝挂绳保持细褶，背景铺深蓝暮色和几串暖白灯泡，用粉色高光和清晰赛璐璐线稿塑造造型。"
+  },
+  "assets/login-covers/cover-11.jpg": {
+    "sha256": "39c771fa3d57df55dbac846368e3556cbf69506aab6d28c298d08618bf30c8c4",
+    "text": "制作高动势竖版冒险封面。暗甲虎斑猫戴斗笠，斜握长刀骑在向右奔跃的黑棕腊肠犬上，悬起的四肢和向左飘的披风形成对角线。底下用木板线条带过，背景是靛蓝夜空、金黄圆月和粉色花枝，顶部放金橙英文长标题。"
+  },
+  "assets/login-covers/cover-12.jpg": {
+    "sha256": "180135580f06ba89fa425f70266219d9c2a97a32972940f7a25935bdc51863d2",
+    "text": "设计明亮的海岛生存竖封。小企鹅穿层叠绿叶披肩、戴热带花冠，提着藤编小篮走在中间的砂石路上。左侧铺亮青水面与树林，右侧是木屋和小堆物资，上方悬厚实橙黄主标题 CASTAWAY。草叶清亮，木藤粗糙，动物皮毛柔软。"
+  },
+  "assets/login-covers/cover-13.jpg": {
+    "sha256": "5864cc14857f94bbf420c1ca61e1c36aca218f15950003ff5efac84510b24559",
+    "text": "制作一张假日派对风竖版封面。由车头正面低视角看一群玩具感小动物挤进青绿敞篷车，中心是熊猫，右侧猫戴紫色墨镜掌方向盘，上方有张翼猫头鹰和气球。前景车漆光滑，背景为棕榈与海蓝天空，底部用亮黄和橘红立体字排 Paw Paw Party。"
+  },
+  "assets/login-covers/cover-14.jpg": {
+    "sha256": "64479d2f951edb1d2d43c1843a36b18063ec30307df8fb6f5dbb2926e4ca1c81",
+    "text": "制作复古探险电影竖海报。米色磨损纸框环住画面，左上在岩崖顶摆古典神庙，雷光从钢蓝乌云中劈下，崖底叠巨浪与旧船。前景三名探险者呈高低错落的三角构图，使用旧橄榄、土棕和浅金，下部以仿旧金字排 The Oracle 与 Eyes of Ash。"
+  },
+  "assets/login-covers/cover-15.jpg": {
+    "sha256": "8c8555c6c111450e936a753b00bcec19fe44d6c04aa85f2a2e7cb20dd18096d2",
+    "text": "制作贴近人物脸部的竖版武侠海报。宽大的蓝黑编织斗笠斜压上半部，视线从阴影里的双眼落到近处带花纹刺青的肩臂，发丝向一侧飞散。以凉青背景、棕金肤色和黑蓝帽纹组织对比，右下叠粗笔奶金字 DAYDREAM VALKYRIE。"
+  },
+  "assets/login-covers/overseas/ansel-veilcroft.jpg": {
+    "sha256": "bc82cab5426e3e7374c94ac9ed1e089c9af3deeffa5c22ddda5271b7c0d88f36",
+    "text": "制作暖光室内背面半身竖像。银白短发男子背对镜头，向左垂头回望，大片龙纹横跨肩背，深衣滑到腰下形成暗色折线。从窗边照入的蜂蜜色光照亮皮肤与纹身边缘，背景用深木隔栅和暗褐保留空间。"
+  },
+  "assets/login-covers/overseas/beckett-hale-v9.jpg": {
+    "sha256": "8c1af5e5536d4f347afeb307b6e2bf6ba998a2e1260a38e04d57c5a4bba0a2d7",
+    "text": "制作紧窄的电影感竖幅胸腰像。黑发男子穿贴身黑短袖，略向前倾，带有黑灰纹身的手臂向画面前右方抬起。眼睛与发丝清晰，背后以夜间车辆、红橙灯和暖湿地面反光虚化，整体保留煤黑与砖红的厚重反差。"
+  },
+  "assets/login-covers/overseas/beckett-hale.jpg": {
+    "sha256": "e86f1f7b1cf60fc0d3a611e095043da25bbbcce42d23780b905217aa84714dc1",
+    "text": "制作低调冷黑的竖幅半身像。黑湿发男子略俯视镜头，嘴边有一根浅色细烟，穿宽松开襟黑衫，衣料叠上深黑内搭，袖下露出前臂纹身。以石墨、烟灰和冷白分出皮肤、布面和头发，远处只留一个小暖色圆光点。"
+  },
+  "assets/login-covers/overseas/caio-barreto.jpg": {
+    "sha256": "f09baf7cee76cc465b87a0c4ee575ab95abd16c1a91434828d3935da9ae8a387",
+    "text": "绘制深色会客厅内的电影人物竖封。穿低开襟黑西装的男子在中轴略仰头，一手举烟，颈胸纹身在开口处清楚。人物用暖琥珀侧光刻出面部，四周是暗棕木饰、虚化金色吊灯和一缕薄烟，黑衣保持哑光而有层次。"
+  },
+  "assets/login-covers/overseas/caio-nunes.jpg": {
+    "sha256": "8be2e24bfa064ed2d8f8484df63c1194b5b8a7ce116a9a89f69e5968158770df",
+    "text": "制作门廊边的写实人物竖像。卷黑发男子斜倚门框，穿松开领口的乳白亚麻衬衣，卷袖露出手臂，低处手持一只白杯。门框和一盏灯用蜂蜜色打暖，另一侧留蓝紫远山、花草和夜空。突出亚麻细纹、旧木和温暖皮肤。"
+  },
+  "assets/login-covers/overseas/camillo-cortese.jpg": {
+    "sha256": "7c00b0d2353795a20329ee173698a2ca93c61cc87bd6f6fb56585fc4ba79107c",
+    "text": "制作深色书房的坐姿近景竖像。让棕发男子略向一侧松靠在椅背，黑西装敞开，米白衬衣与松散黑领带呈斜线。前景突出手上的戒指与圆面腕表，皮革和织物带温润反光，暗棕木饰画框只在背景浅浅显出。"
+  },
+  "assets/login-covers/overseas/celeste-aubert.jpg": {
+    "sha256": "50bdd27e3c1658029c79ff2b9296f7a8de4f67e6178b969c0380c99b6838c88a",
+    "text": "设计暮色高层办公室的电影竖像。深发女子穿黑西装与卷袖白衬衣，双手撑在宽大深色大理石桌沿，构图向桌面的文件堆和电脑收束。后景以落地窗分格框住蓝橙交界的城市天际线，右侧暖木墙和柔光补足层次。"
+  },
+  "assets/login-covers/overseas/corbin-rennick.jpg": {
+    "sha256": "fbb055c28eeafc976f20238a764fe1aad3f7f8d69d0a59c3bf8489aa396e2933",
+    "text": "拍摄夜景室内的商务人物竖像。男子穿炭灰三件式西装和暗纹领带，稍微侧身站在落地窗边，一手插兜。把黑蓝城市散景放在左侧窗外，右后角留温白方灯，把平顺羊毛织纹、深肤色和冷调玻璃分开。"
+  },
+  "assets/login-covers/overseas/dane-whitlock.jpg": {
+    "sha256": "6e3f2a4d601761d6cbd25ea342808b3b05df209fae402cd4e497c2a457b92cb6",
+    "text": "制作蓝调时刻的街头人物竖封。让深发男子斜靠深蓝色汽车，一手握透明瓶，黑色短袖下露出大片手臂纹身，胸前留一条细银链。前景车漆仅反出窄冷光，背景叠树影与暖橙窗灯，画面保留海军蓝和黑色的低明度。"
+  },
+  "assets/login-covers/overseas/desmond-pryce.jpg": {
+    "sha256": "e6b618402c651b0fbe065e5effec832483353fedcdda45a9ec18246a0415a893",
+    "text": "制作约 9:16 的室内胸腰竖像。男子戴细圆眼镜、穿垂感黑背心，一手从右上抬到镜腿，微卷长刘海低垂。以修长裁切保留肩臂、细金链与完整领口，写实肤色受暖光轻照，背景沉在深木色与一点绿灯光中。"
+  },
+  "assets/login-covers/overseas/elion-sarrance.jpg": {
+    "sha256": "7a834956343ac0f56f25c5809335f16bc73bffd03778667c097df4ff72d13758",
+    "text": "创作修长的暗金宫廷竖像。金卷发男子慵坐在华丽雕花椅前，戴枝叶状细金冠，右手带金戒托腮。下半幅展开深黑织金长衣和繁复金饰，发顶从左上吃到窄金光，以黑棕暗部衬出金属、织锦和皮肤的层次。"
+  },
+  "assets/login-covers/overseas/ellis-kaminski.jpg": {
+    "sha256": "b7d552484c9ba65d84814bf561c2bcfc7e060238ec2933820c71a712d15cc0c3",
+    "text": "绘制纵向主播半身像。橘发青年戴黑色耳麦微笑，白色连帽衫下保留前臂与深色腕带，右侧摆有近镜头的黑麦克风。让白布折线和橙色发梢在画面中段最亮，深处放蓝紫设备灯和橙色暖光。"
+  },
+  "assets/login-covers/overseas/elspeth-vane.jpg": {
+    "sha256": "dad8752914707d33a3b831432fe35458e13eba5edf50497f80130b13b0e3d1aa",
+    "text": "制作古建筑内的学院风竖像。让浅金波浪发女子微笑面向镜头，两手持金属保温杯，发尾左染浅粉、右染青蓝。衣服采用蓝紫条纹西装、紫色针织背心与白领。背后左侧用冷蓝拱窗，右侧用暖棕砖墙照出发边和织物层次。"
+  },
+  "assets/login-covers/overseas/emeric-dane.jpg": {
+    "sha256": "22a428edf21d0fa777500e241c10ba85d30e65d8c865ab826c310241a054caed",
+    "text": "制作暗色哥特风的肩胸竖像。黑发男子坐在深绿绗缝皮椅前，一只戴金戒的手撑在唇边下方，目光压在刘海阴影里。用浅灰瓷感皮肤、洁白衬衣与暗酒红领带形成冷暖反差，椅背留少量古金雕花。"
+  },
+  "assets/login-covers/overseas/ewan-aldsworth.jpg": {
+    "sha256": "90be88984d7b0b8f9145bb44f277c8ca2f31c9a90c17c2a0e624f025f6f9fabc",
+    "text": "制作柔暖沙漠暮色中的竖幅近像。浅金碎发男子戴细圆镜，稍侧身靠在画面右侧的深色座椅边，穿褪色的灰橄榄无袖印花衫。衣面做成粗细轻微不匀的旧棉质感，左后方以土褐山脊搭配浅桃灰天色。"
+  },
+  "assets/login-covers/overseas/fergus-macrae.jpg": {
+    "sha256": "f2bf523b308a1f39415f347a26e0b2b4e95b5c59e0d2052871f63d1243d5363a",
+    "text": "创作冷色城市时尚竖封。用街巷居中的透视线对齐正面站立的黑发男子，低角度取到大腿；黑色三件式西装内配蓝白衬衫、细黑领带，一侧露浅色方巾。背景由电青高楼轮廓和少量暖窗灯组成，湿亮边光刻出衣褶。"
+  },
+  "assets/login-covers/overseas/ghislain-desrosiers.jpg": {
+    "sha256": "d0637c72f7c497c6613caa37401f08df5248d9e084a632dd95f475c54a1acc2a",
+    "text": "制作复古木质室内的坐姿竖像。红棕短发男子坐靠吧台，穿合身的白色卷袖衬衫与深灰长裤，双手低握一件白色小物，纹身袖在窗光里清楚。以左侧乳白窗光描出棉布折线，保留落在身后的深胡桃木、透明玻璃与暖棕阴影。"
+  },
+  "assets/login-covers/overseas/maxime-caron.jpg": {
+    "sha256": "d788220b0a442a495b698f088d89ac6455dd981f1ef655b9c4c07e9ef214e683",
+    "text": "绘制暗色影音房里的人物竖像。卷黑发男子松坐于深色座椅，耳机挂在颈间，穿敞领黑衣，双手和细链饰在画面下部。以弱琥珀光照亮侧脸和指节，背后左边留冷蓝屏光和悬臂设备的轮廓。"
+  },
+  "assets/login-covers/overseas/nico-ferraro.jpg": {
+    "sha256": "16fbeb2444087daede603caee373ef8209a8a87e6800d476445c35b8fb6c2fea",
+    "text": "制作深棕书房的豪华坐姿竖像。黑衬衣男子靠在皮扶手椅内，前伸的手握一杯琥珀色饮料，腕表在灯光下稍亮。前景左下摆金属棋子与棋盘，后方配黑灯罩和暖金灯座，以黑、古铜和胡桃棕塑造温厚写实的质感。"
+  },
+  "assets/login-covers/overseas/ottoline-reyes.jpg": {
+    "sha256": "216c21be9879d0f2f4a98142602c52019867037adaf3983f791d6d81486a5c7f",
+    "text": "制作冷色石拱下的学院人物竖像。直黑长发女子正面微仰头，深蓝西装配白领和暗色领带，一手紧贴领口整理。左侧露出蓝灰暮空与树影，右侧粗石墙接一线暖光，以煤蓝、石灰和微暖肤色完成低调层次。"
+  },
+  "assets/login-covers/overseas/ruari-mulvaney.jpg": {
+    "sha256": "e54fea389c855acda69b770de50eea82a0200ef85d9d8964ea4c2e26cc378412",
+    "text": "创作雨夜侧身回望的电影竖封。红棕短发男子背身扭头，黑色无袖皮衣在雨里发亮，肩背留出浅灰骷髅图案，臂上纹身由暗青反光显出。用细密斜雨线和一道纵贯后景的霓虹红灯突出黑青与烈红的冲突。"
+  },
+  "assets/login-covers/overseas/silas-vandermeer.jpg": {
+    "sha256": "33d9552875bac442c49d47f1f89cb3c8fc2c907dc6fbddb37f759090a91edcd7",
+    "text": "绘制冷灰调的暗室竖幅胸像。湿黑发男子正面低眉，深外套与浅内衬向两侧敞开，胸颈处有细纹身。近处一只手夹烟，薄烟向左侧墨绿窗光卷起。以低饱和灰绿、暖灰肤色和煤黑描出衣领、发丝与烟雾。"
+  },
+  "assets/login-covers/overseas/tilda-lowndes.jpg": {
+    "sha256": "e663110ea1f8ee4d9013a406ab265aa184b720ce14868aa4d8846a9e25f40b12",
+    "text": "制作暖调咖啡吧的半身人物竖像。深栗发女子穿深棕粗布围裙和黑背心，戴小圆耳环，两手端黑色杯子，露出彩色花纹纹身。前景以木台和纸张形成横线，后景用虚焦杯架与咖啡机，整体配色为奶咖、砖棕和微褪色的玫瑰绿。"
+  },
+  "assets/login-covers/overseas/valko.jpg": {
+    "sha256": "7ea92e64650ede077328d8967bb924c97f94572e0b0283d16534471eee3f6990",
+    "text": "制作极低机位的冷光人物竖封。短棕发男子穿黑西装配白衬衣与深领带，面向近处俯视，双手在前景合拢，一道深红长带从手间垂下。用几何冰蓝灯板斜切背景和黑衣边缘，让前景肤色与红带在蓝黑空间里醒目。"
+  },
+  "assets/login-covers/overseas/wystan-grimwade.jpg": {
+    "sha256": "d7a4f88699a42842e1836bce7640926584f56f85f72bdf4c6c5a0905e19d0622",
+    "text": "绘制古典拱廊内的学院气质竖像。黑棕卷发男子抱着磨损的深棕旧书站在中心，穿白领衬衣、暖棕条纹领带和深色 V 领针织层。左后方高窗漏入琥珀色斜光，石墙与木纹留在古金与焦棕的渐暗层次中。"
+  },
+  "assets/membership/chat-annual-gift-motion.webp": {
+    "sha256": "65e592497f0547e7343e7c7649f4019666b1d083fcb4a6e5c2847492452c2707",
+    "text": "制作方形透明底的糖果礼箱动图。从略高的三分之四正面固定取景，珊瑚粉箱体带两条深粉饰带和浅桃金扣。让箱盖向上翻开，露出堆满的杏粉枕形糖，几颗从内部跳出散落。糖纸带细亮透明褶，箱体用哑亮搪瓷和一层软接触阴影。"
+  },
+  "assets/membership/chat-annual-gift-poster.webp": {
+    "sha256": "d527b31b1fd2ab8028e55aa0dd2a1000cefbee9665a18b3ac4e8ec51b5ea82e6",
+    "text": "绘制敞开的年度糖果礼箱静帧。珊瑚粉箱体居中偏下，宽圆边的盖子向后直立，里面堆成浅桃粉与杏金糖果的小山，前沿地面散落三颗。以奶油亮边、缎面箱壁和透明扭糖纸区分材质，承托浅而软的阴影，外围透明。"
+  },
+  "assets/membership/credit-pack-mark.webp": {
+    "sha256": "d4cc53bfbecd0e0f0a9656744c7f0bac2045ec5208e487d33bcfaff6aacf8e14",
+    "text": "制作方形虚拟货币饰件。让粗圆环在左下，整体窄长的尾部斜向右上，从 V 形缺口分出两个尖角。圆孔内保持通透，厚壁用镜面树脂反射，在左缘聚集橙金高光，右半逐渐压成蔷薇粉和暗莓色，背景透明。"
+  },
+  "assets/membership/crown-3d.png": {
+    "sha256": "43830c4975a58e8aa77f321dac133c19bb0cefb5b9e24a102424f6371b02dabd",
+    "text": "制作单独的会员皇冠。用宽底和三个圆润尖峰勾出正视皇冠，中间最高，冠体中心镂空一颗圆角四芒星。高透树脂配抛光倒角，让左侧暖橙金、右侧深玫红，星孔和冠沿一圈细亮边，透明底便于叠放。"
+  },
+  "assets/membership/pro-hero.webp": {
+    "sha256": "f2fd58a74bb7378b1bc1a1deb3388eb56eb4733d24bb0e79fb8a57494ae66c0a",
+    "text": "制作深色会员主题竖版背景。用紧贴的多幅电影式人物小封面铺成几列错落矩形，中央突出暖金灯光下的暗衣人物，四周穿插冷蓝、墨绿、黑灰和棕红胸像。以低照度电影颗粒、柔化暗罩和低亮拼接边缘，让配图整体沉到可叠 UI 的暗色层。"
+  },
+  "assets/membership/retention-bonus-artwork-v1.webp": {
+    "sha256": "e5d8b29a37f919984e205619ee8c55580cfc6dc243f834b6b4e9d1fa04824509",
+    "text": "绘制会员挽留加赠的方形奖励素材。透明底中央的两粒方枕软糖并排停在下方，一颗浅蜜橙糖斜悬在上面，右上独立放饱满的小珊瑚粉加号。糖面用缎状浅粉与暖杏，透明包装扭成扇褶，保留轻薄接触影。"
+  },
+  "assets/membership/treat-single-v2.webp": {
+    "sha256": "1df4c1c399c153a08ffb6d23b8e0e7fd8c4228c971b93354610c38c38404b68b",
+    "text": "制作一颗由左下斜向右上的椭圆枕形糖。把糖心做成半透红粉体积，厚实透明外壳包成蜜橙左缘与莓粉右缘，两端糖纸张开成宽扇形。上缘亮面抛光高光清晰，输出透明方形素材。"
+  },
+  "assets/membership/treat-single-v3.webp": {
+    "sha256": "12e2e10e6ca188038346b48d17c746bc9b8e7a656547c1c8b0d635513dbac950",
+    "text": "制作右上倾斜的圆角方枕糖。主体为高抛光、微凸的玻璃糖面，上左有大块珍珠白反射，底缘折射琥珀橙，右半滑到淡玫粉。两端透明糖纸拧紧后展开尖扇褶，背景透明，轮廓留净边。"
+  },
+  "assets/membership/treat-single-v5-satin.webp": {
+    "sha256": "b87975121f10b161345bc79c3e741a6d5fdb7a491d9c07c43ff2e509d86222a4",
+    "text": "制作等角效果的单粒方枕糖。糖身占方形画面中央，以左下至右上的短对角线摆放；中部改用奶桃至浅酒粉的磨砂缎面，亮面收在圆弧倒角。包装两端呈清澈的浅棕粉透亮扇褶，外围透明。"
+  },
+  "assets/membership/treat-trio-v1-satin.webp": {
+    "sha256": "44dc86f8861faf0d56e80eccd5782bb7c36b820300fd16615f66aad7aec45eed",
+    "text": "制作由三颗扭结方糖组成的独立小组。让顶上一颗斜立，左侧一颗偏横在后，右下放一颗平正朝前，糖体彼此贴合形成不对称小三角。用雾面玫粉与暖奶杏糖壳、淡琥珀的透明包装褶和柔边高光，保持透明底。"
+  },
+  "assets/membership/treat-trio-v2-satin.webp": {
+    "sha256": "11ca835f9ed1b5bd2438b645af3be8f1d518a5f74468620cba7f244752c4cdf7",
+    "text": "设计三颗方枕糖的紧凑堆叠。顶部一颗横放，下面两颗分别向左右倾斜，前方的扭结糖纸交错伸出。上层奶桃，下左蜂蜜杏橙，下右偏淡紫玫粉。以宽而柔的缎面反光和窄亮琥珀倒角包裹透明轮廓。"
+  },
+  "assets/membership/treat-trio-v3-satin.webp": {
+    "sha256": "4b518ae6f03f7c9bcffbce15da638775c3f8b3a3bc9f18f1132b00ad540fc5cf",
+    "text": "制作低矮横向的缎面三糖组合。三颗圆角方糖排成两前一后的层次，前排近水平，后排高半颗，透明糖纸的扇尖对外展开。使用奶茶米色、淡粉和薄珊瑚橙边，压低糖面的高光强度，整组轮廓保持透明。"
+  },
+  "assets/membership/yoroll-wordmark.png": {
+    "sha256": "6ed53e2c56df00e1c9d7eab6e127ce6ac8110eef324ec6c0bff4819171397b28",
+    "text": "制作超宽的纯字标素材。将小写 yoroll 一行水平排开，使用均匀实心白色和粗几何无衬线字形。两个 o 保持圆整，y 的下伸部与两根 l 拉开高低层次，边缘平面干净，底部和字间为透明。"
+  },
+  "assets/notifications/app-migration-v2.png": {
+    "sha256": "595155bc14b69ab0ed4c8cb7d0b7e3ed23a705bd0474de39fa6667310d55c306",
+    "text": "制作方形应用迁移通知插画。左后放圆角个人档案浮雕牌，右前叠带三点气泡的聊天牌，从左上用宽弧箭头跨到右下。两牌呈杏橙到珊瑚粉的柔亮树脂渐变，深栗紫背景左上出暖光、右下泛玫红，底部压低柔影。"
+  },
+  "assets/notifications/character-updated-v2.png": {
+    "sha256": "3d8ef789d3fcb842906dd521be5d76c54356cb05609dafef82a1f62fe52aa614",
+    "text": "绘制角色资料更新的方形 3D 通知图。中央立圆角资料板，板上压带发型的肩胸人像和两条浅色信息线，一支粉橙粗铅笔斜靠在右前。凸起面使用透润磨砂树脂，左上金杏高光，右侧玫粉，背景为暗棕紫渐变。"
+  },
+  "assets/notifications/event-persona-customization-v2.png": {
+    "sha256": "f48641d3c5ddb745f6b99296111933eab4b04e74b552527f9508d6543659f5a0",
+    "text": "制作用户形象自定义提示图。两张圆角卡片在中间错开叠放，前卡有圆头半身浮雕与两道横槽，右上角挑出一颗四角星。厚软树脂从左侧蜜橙过渡到右侧珊瑚粉，借深梅灰背景和底部接触影拉开前后。"
+  },
+  "assets/notifications/event-story-discovery-v2.png": {
+    "sha256": "a613253b765874c3e1317d527fb25e7fdfae25d5b983642029ec57e94981ac2d",
+    "text": "制作发现故事的方形通知插画。横向摊开的圆润书本置于画面中下，立体罗盘从书脊后方直立，顶端留金属圆挂环。象牙桃色书页层层卷起，指南针用蜜橙与暖粉，背景安排深棕紫柔光和暖金左上光。"
+  },
+  "assets/notifications/inbox-welcome-v2.png": {
+    "sha256": "09f775620fe73a95046d3bfdc6130fb55bd3787e1a8c95763e2123fb261fe40c",
+    "text": "设计收件箱通知图。画面中央用圆润低托槽托住两张一前一后的消息卡，每张凸起对话框上有三个小圆点，右上留一枚金橙四角星。托盘由金杏过渡到粉珊瑚，整体呈柔光搪瓷质感，下方有低对比度暖影，底色近梅黑。"
+  },
+  "assets/notifications/review-approved-v2.png": {
+    "sha256": "8c996afef98ebf3faa1e8bca3b285251d03cf6a1117d52263a26ed00f83cdb16",
+    "text": "设计审核通过通知图。圆角人物档案卡正面微微侧转，右下叠一枚浮起的圆形通过章，用乳杏色粗勾占据章面。暖橙光从左上照到圆润粉色树脂，背景向暗棕紫渐变，在卡片脚下留下有层次的柔影。"
+  },
+  "assets/notifications/review-pending-v2.png": {
+    "sha256": "ed5727d80b91435f521410105120ac17ac554948099b13c452b8fc209272fb2a",
+    "text": "制作待审核状态的方形插画。左侧站一个圆角资料牌，上面有圆头肩像和两条短横线，右前放小沙漏，使外框、漏斗和黄色沙芯都清楚。使用淡橙至暖粉的凝胶树脂，与暗梅色背景和左上琥珀柔光配合。"
+  },
+  "assets/onboarding/gender-female-satin.webp": {
+    "sha256": "76c860f7d2731295e0ba25978be39767dda6e7d9e98d516d4d9bfac65c53886c",
+    "text": "制作正面居中的女性符号材质样片。上方为大镂空圆环，下方为短柄和左右对称的圆端横梁。整体使用银粉缎面树脂，窄倒角在左下透出金杏色、右缘透出柔珊瑚粉，保持干净的透明底。"
+  },
+  "assets/onboarding/gender-male-satin.webp": {
+    "sha256": "fae0f48993f7f2a592a0f8735fc36a57da35373e84ccb7f2a81fc03b29b5bb67",
+    "text": "绘制斜向右上延伸的男性符号。左下圆环占主要面积，右上连接宽而短的箭头，内孔与箭头转角保持清楚。用磨砂珍珠粉的厚实表面和琥珀橙抛光边，右边压浅玫红反光，透明画布。"
+  },
+  "assets/onboarding/gender-non-binary-satin.webp": {
+    "sha256": "1d40fed03cce09a6c879b62272589ce4844dacba64a097b45601dbda808410eb",
+    "text": "制作竖向非二元符号的独立材质图。大圆环置于下部，竖柄向上连接短臂对称的星号，两个部分沿中线对齐。用珍珠桃粉缎面表现凸面，左缘温暖蜜橙，右缘带玫粉和浅金边光，底色透明。"
+  },
+  "assets/referrals/invitation-gift-v1.webp": {
+    "sha256": "afd402ecc8ce1c87fbf7fd6e3d45663a47b400f156d9e26c5c05bc286e48ef1a",
+    "text": "绘制展开的邀请奖励礼盒。方橙盒置于中下方，粉缎蝴蝶结随顶盖斜向左上抬起，左右卷出长带。几颗浅粉方糖悬在盒口上方，金白星点围绕。使用珊瑚橙纸盒、丝缎带和折光糖纸，宽幅透明底保留动势。"
+  },
+  "assets/short-drama/membership-paywall-pro.webp": {
+    "sha256": "e4c49a2ef9200185d667de761f58e36cfbaf8e699b4ebbcf1996699f3e7d18fb",
+    "text": "制作横向透明底的 PRO 动效徽牌。以倒角圆矩形的烟棕玻璃作底，居中用高窄的暖铜到金色立体字写 PRO。让牌面轻轻转动，窄金框和玻璃表面的虹彩折光随角度掠过，保持字形清楚与暗琥珀底。"
+  },
+  "assets/short-drama/qte-glow.webp": {
+    "sha256": "bbc4f87f979cb579d6365e5678131ecabf9377de03de5b9acaffb38d76beec1c",
+    "text": "制作方形交互叠加用的单色圆形柔光。白色散射晕放在正中，用平滑的放射透明度把中心亮斑逐渐化开到全透明四角。亮度沿半径连续下降，四周边界很软，呈均匀漫射的灯光质感。"
+  },
+  "assets/short-drama/qte-swipe-guide.webp": {
+    "sha256": "beafa8712069d392f827ec3816ded5af1b7891ddaf12501582f9c7d51bffab50",
+    "text": "制作方形透明底的向上滑动光效。把几道同轴的上尖折线垂直套叠，上层宽 V 形双臂从银白尖顶渐隐，下层保留更细的冷白描线与透明缝。以白色面光和灰度 Alpha 表现薄雾感，左右斜边向外消散。"
+  },
+  "assets/tasks/checkin-v1.webp": {
+    "sha256": "f416cd7e48942cd1cf2656dd5f66c810f4ea3dc67f9e869d3f1daa06b6963762",
+    "text": "制作任务用的粉橙签到台历插画。以轻微侧面的方框台历居中，两枚厚圆装订环高出顶边，浅粉浮雕勾贴在正面，右侧露出支撑层。奶杏高光沿左上角，玫粉从右侧透出，圆润半透搪瓷质感配透明底。"
+  },
+  "assets/tasks/comment-v1.webp": {
+    "sha256": "89301eff4d68e2f3dbacaac85a6f81f671ded82e767fe283a4ebe5db0f47ec82",
+    "text": "绘制方形透明底的留言插画。中间放饱满圆椭圆气泡，把尾尖朝左下收拢，正面并列三枚凸起小圆点。表面用柔缎树脂，橙杏亮边集中左上，正面由桃粉向玫瑰粉过渡，保持圆润清楚的外轮廓。"
+  },
+  "assets/tasks/create-character-v1.webp": {
+    "sha256": "058fc11cde2f4956f2ae1947550fbcd220869a46b2160f9784c30d2d9f826cf3",
+    "text": "制作新角色任务的立体人物浮雕。短发人像在中轴呈头肩半身，侧分额发抬起，圆头与半圆肩自上而下衔接，右上单放一颗四角星。用蜂蜜橙至粉玫的凝胶渐变、软焦高光和透明背景。"
+  },
+  "assets/tasks/discord-v1.webp": {
+    "sha256": "26b3d4ae6a093924af980b1c7078fc39ba57e2cebcb3061cabc9ff609934bdad",
+    "text": "制作 Discord 社交任务的透明素材。正面放一枚紧凑的圆角手柄轮廓，上端有两处突起，左右脚之间保持空隙，中央两枚卵形眼孔镂空。使用厚实磨砂树脂，左上暖金橙，右下偏玫粉，边缘倒圆。"
+  },
+  "assets/tasks/facebook-v1.webp": {
+    "sha256": "875c0df4eb1a835c34180786d0d47c769912912e1630c4bb304cccb22cd997ad",
+    "text": "制作 Facebook 任务专用的立体小写 f。字形在方幅居中纵排，横杠伸到两侧，上段以圆弯过渡，长竖脚光滑饱满。采用半透粉橙树脂，蜂蜜色高光在弯角左侧，竖脚渐成淡粉，外底透明。"
+  },
+  "assets/tasks/instagram-v1.webp": {
+    "sha256": "9edf46dd14bb872e7c550b5c1ef4db6cf99ca9f2e91a1d8710090cdc7f554e4d",
+    "text": "制作 Instagram 任务的方形透明贴图。居中放粗边圆角相机框，大镂空圆环落在中间偏下，右上放一个实心小圆点。所有笔画采用厚缎面倒角，左上流亮橙金，右下融入珊瑚粉，与内部镂空形成清晰对照。"
+  },
+  "assets/tasks/invite-friends-v1.webp": {
+    "sha256": "35eaa33c49ba33e68c103200c66e2e7342ca396740c8ff37f126dd26daebac66",
+    "text": "制作邀请好友的透明人物组合。圆头半身剪影一前一后交叠，前左更高大，后右略小，中下部覆一枚软圆加号。用珍珠树脂的奶杏、蜜金与玫粉控制从左上到右下的渐变，保留圆身之间的边缘。"
+  },
+  "assets/tasks/persona-v1.webp": {
+    "sha256": "e3f429e7ea7f9bb6e5aedee06990aa8690f9da2598c2f7f899c9eab8b01ef492",
+    "text": "设计个人档案任务的小型 3D 卡面。让圆角矩形略抬右上，卡面左侧压一枚圆头肩像，右侧放两条饱满短横条。用暖金橙光晕勾左缘，正面海棠粉渐入浅桃，树脂表面柔亮，外底透明。"
+  },
+  "assets/tasks/redeem-code-v1.webp": {
+    "sha256": "a84db0a3e6ef5dbaf7b3c4a9156b9e4e5d093b366f1a022d78d675e638038666",
+    "text": "制作兑换任务的宽幅立体券。券身略向右上倾斜，两侧各挖一处半圆口，中央突出钥匙孔形，下腰两旁各有一条短横刻线。使用玫粉果冻材质，边缘由左侧蜜橙到右侧柔粉渐变，侧面有薄亮的圆角倒边和透明外底。"
+  },
+  "assets/tasks/tiktok-v1.webp": {
+    "sha256": "b315505c9b76651c8ecc37b55284711f24668c39c6500c5bdefae45a7eae2617",
+    "text": "制作 TikTok 任务用的单枚立体音符。方形画面中把圆润音符头放在左下，圆管状竖杆从中部上升，顶部短旗向右下回落。材质为半透缎光树脂，杆顶用亮金橙，圆头和旗端渐为玫粉，四周透明。"
+  },
+  "assets/tasks/x-v1.webp": {
+    "sha256": "3c61a06c47a0db0c9550e7fdddb0d7b30c0114c98a9911cc5cf30ff93de90783",
+    "text": "制作 X 社交任务用的透明立体字形。两道圆滑对角线在中央交叉，左上至右下的宽笔画内部留一条窄长镂空，四端略微圆钝。左侧和上缘点蜂蜜橙高光，右下呈淡珊瑚粉，保持细腻的磨砂玻璃质感。"
+  },
+  "assets/tasks/youtube-v1.webp": {
+    "sha256": "2343dd3377781d0b1aa3d3c14f3545a87c1f2984589a2deeff2d8d9b497e1b5b",
+    "text": "制作 YouTube 视频任务素材。横向圆角矩形居中，中央向右的三角孔保持清晰和通透。宽平正面做成软亮玻璃果冻，左上金橙浓、中央珊瑚红、右下浅玫粉，薄窄边线抛光，背景透明。"
+  },
+  "assets/yoroll-launch-icon.webp": {
+    "sha256": "273318debda7eaf447cecc571fc33bd97bf04b6bef6b67714b190ebe3c46cee1",
+    "text": "制作垂直居中的启动品牌组合。上部放大圆头幽灵和两枚椭圆眼孔，左下晕染雾蓝，右上染暖杏粉，足部过渡到淡紫。下方单独排白色粗体小写 yoroll，配较宽的上下间隔，整块图保持透明底。"
+  },
+  "ios/Yoroll/Images.xcassets/DailyTaskToken.imageset/daily-task-token.png": {
+    "sha256": "d986c4d88eaa49d51b5d334aa0b6eae7ee411af65fa8a36c781a7e52200829d1",
+    "text": "制作 iOS 任务资源用的 512 × 512 透明贴图。一枚中空圆环和向右上扬起的双尖尾连成一体，保留锐利 V 形缺口。用厚实透明树脂和圆润玻璃倒角，在左下叠亮黄橙，在右侧收成莓果粉高光。"
+  },
+  "ios/Yoroll/Images.xcassets/SplashScreenLegacy.imageset/image.png": {
+    "sha256": "938cef59266aa6f120e5a8d896dce5b7b4bede6719bd464f7999e1edd548b3b5",
+    "text": "制作 iOS 旧版启动页的标准倍率纯色资源。画布仅 1 × 1 像素，像素为纯蓝 #0000FF，Alpha 通道取 127/255。将它作为均匀的蓝色半透明平涂，可铺满启动背景。"
+  },
+  "ios/Yoroll/Images.xcassets/SplashScreenLegacy.imageset/image@2x.png": {
+    "sha256": "938cef59266aa6f120e5a8d896dce5b7b4bede6719bd464f7999e1edd548b3b5",
+    "text": "输出用于 iOS 旧版启动图 @2x 资源位的 1 × 1 像素色块。使用半透明的电光纯蓝，RGBA 字节为 0、0、255、127，保持单一色面供系统填充画布。"
+  },
+  "ios/Yoroll/Images.xcassets/SplashScreenLegacy.imageset/image@3x.png": {
+    "sha256": "938cef59266aa6f120e5a8d896dce5b7b4bede6719bd464f7999e1edd548b3b5",
+    "text": "为 iOS 旧版启动图 @3x 密度资源位制作 1 × 1 像素纯色底。像素固定为 #0000FF，Alpha 为 127/255，以这个单点铺成均匀的半透明饱和蓝。"
+  }
+}

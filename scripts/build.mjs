@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { cp, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,13 +12,14 @@ if (args.length && (!appPath || args.length !== 2)) {
   throw new Error('Usage: node scripts/build.mjs [--app-root /path/to/YorollApp]');
 }
 const outdir = appPath ? 'dist-app' : 'dist';
-await rm(join(repository, outdir), { recursive: true, force: true });
+const output = join(repository, outdir);
+await rm(output, { recursive: true, force: true });
 const catalog = await loadCatalog(repository);
 let dataId;
 let data;
 if (appPath) {
   const { buildAppInventory } = await import('./app-inventory.mjs');
-  const inventory = await buildAppInventory(appPath, join(repository, outdir));
+  const inventory = await buildAppInventory(appPath, output);
   const { sources, assets } = inventory;
   const motionCount = sources.reduce((count, source) => count + source.motions.length, 0);
   console.log(`Indexed ${sources.length} App UI source files, ${assets.length} assets and ${motionCount} motion calls.`);
@@ -27,8 +29,19 @@ if (appPath) {
   const artwork = join(repository, 'artwork');
   dataId = 'artwork-data';
   data = JSON.parse(await readFile(join(artwork, 'catalog.json'), 'utf8'));
-  await cp(artwork, join(repository, outdir, 'artwork'), { recursive: true });
+  await cp(artwork, join(output, 'artwork'), { recursive: true });
 }
+
+const referencePrompts = JSON.parse(await readFile(join(repository, 'playground/artwork-reference-prompts.json'), 'utf8'));
+const originals = join(output, appPath ? 'app-assets' : 'artwork/originals');
+await Promise.all(data.assets.map(async (asset) => {
+  const reference = referencePrompts[asset.path];
+  if (!reference || asset.prompts?.length || (appPath && asset.availability !== 'preview')) return;
+  const image = await readFile(join(originals, asset.path));
+  if (createHash('sha256').update(image).digest('hex') === reference.sha256) {
+    asset.referencePrompt = reference.text;
+  }
+}));
 const pageData = JSON.stringify(data).replaceAll('<', '\\u003c');
 
 const result = await build({
@@ -58,9 +71,11 @@ const result = await build({
 const [script, { cssBundle }] = Object.entries(result.metafile.outputs)
   .find(([, details]) => details.entryPoint === 'playground/main.tsx');
 
-await catalog.writeRegistry(join(repository, outdir));
+await catalog.writeRegistry(output);
+await writeFile(join(output, appPath ? 'app-inventory.json' : 'artwork/catalog.json'),
+  appPath ? JSON.stringify(data) : JSON.stringify(data, null, 2) + '\n');
 
-await writeFile(join(repository, outdir, 'index.html'), `<!doctype html>
+await writeFile(join(output, 'index.html'), `<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">

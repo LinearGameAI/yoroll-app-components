@@ -94,9 +94,11 @@ App 字体文件和完整源码索引保存在本机生成的 `dist-app/`。
 
 ## 公开素材图库
 
-[图素页](https://lineargameai.github.io/yoroll-app-components/#assets) 收录 App 原图、来自 `*.prompt.json` 和 `generation-prompt*.json` 的生成提示词，以及按风格整理的延展提示词。卡片可以下载原图、逐段复制已归档的提示词或复制全部生成步骤。
+[图素页](https://lineargameai.github.io/yoroll-app-components/#assets) 收录 App 原图、来自 `*.prompt.json` 和 `generation-prompt*.json` 的生成提示词，以及按风格整理的延展提示词。卡片可以下载原图、逐段复制已归档的提示词或复制全部生成步骤。根据单张原图补写的内容标为「后补参考提示词」，也可以在图库筛选和复制。
 
 图库快照在 `artwork/`。`originals/` 保留 App 文件路径和原始字节，`catalog.json` 记录源提交、图像路径和对应提示词。可从 YorollApp 的指定提交更新快照。
+
+后补参考词保存在 `playground/artwork-reference-prompts.json`。构建根据文件路径和 SHA-256 附加到对应原图，网页及其素材 JSON 会显示参考内容。
 
 ```sh
 npm run sync:artwork -- /absolute/path/to/YorollApp 0983ce7b2

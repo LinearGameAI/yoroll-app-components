@@ -175,6 +175,7 @@
 .prompt-stage + .prompt-stage { padding-top: 8px; border-top: 1px solid var(--line); }
 .asset-prompts { width: 100%; }
 .asset-prompts[open] > summary { margin-bottom: 8px; }
+.asset-reference-prompt > summary { color: var(--active); font-weight: 600; }
 .asset-prompts > .art-prompt + .art-prompt { margin-top: 8px; }
 .asset-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
 .art-families { margin-top: 0; }
@@ -183,7 +184,8 @@
 .art-style-summary strong { font-size: .875rem; }
 .art-style-summary p { margin: 4px 0 0; color: var(--subtle); font-size: .875rem; }
 .art-filter { display: inline-flex; align-items: center; gap: 8px; color: var(--subtle); font-size: .875rem; }
-.art-filter input, .type-range input { accent-color: var(--peach); }
+.art-filter select { padding: 6px 8px; border: 1px solid var(--line); border-radius: 7px; background: var(--card); color: var(--text); font: inherit; }
+.type-range input { accent-color: var(--peach); }
 .font-sample { min-height: 48px; padding: 7px 0; font-size: clamp(1.2rem, 3vw, 2rem); }
 .type-sample { display: block; margin: 4px 0; white-space: nowrap; }
 .type-reference, .type-colors { display: flex; align-items: center; flex-wrap: wrap; gap: 5px 8px; }

@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { copyFile, mkdir, readFile, realpath, stat, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, realpath, stat } from 'node:fs/promises';
 import { dirname, extname, isAbsolute, join, posix, relative } from 'node:path';
 import ts from 'typescript';
 import { readArtworkPrompts } from './artwork.mjs';
@@ -329,8 +329,5 @@ export async function buildAppInventory(appPath, outdir) {
     const prompts = artworkPrompts.get(file);
     assets.push(prompts ? { ...asset, prompts } : asset);
   }
-  const inventory = { revision, changed, themeColors, sources, assets, missing };
-  await mkdir(outdir, { recursive: true });
-  await writeFile(join(outdir, 'app-inventory.json'), JSON.stringify(inventory));
-  return inventory;
+  return { revision, changed, themeColors, sources, assets, missing };
 }

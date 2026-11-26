@@ -4,7 +4,7 @@ import { artStyles, artworkFamily } from './artStyles';
 import { CopyButton, DirectoryHeading, SourceLink } from './controls';
 import type { Asset, Inventory } from './inventoryData';
 
-type Artwork = Pick<Asset, 'path' | 'bytes' | 'previewUrl' | 'prompts'> &
+type Artwork = Pick<Asset, 'path' | 'bytes' | 'previewUrl' | 'prompts' | 'referencePrompt'> &
   Partial<Pick<Asset, 'availability' | 'usedBy'>>;
 type GalleryRoute = '#assets' | '#app-assets';
 
@@ -80,7 +80,7 @@ export function AssetsPage({ inventory, view }: { inventory: Inventory | null; v
     <>
       <DirectoryHeading title="图素">
         {guide ? '对照 App 代表素材、色板和材质。将延展提示词中的【占位文字】换成新素材的主题。'
-          : '按风格浏览 App 原图，下载素材并复制已归档的生成提示词。'}
+          : '按风格浏览 App 原图，下载素材并复制原始或后补参考提示词。'}
       </DirectoryHeading>
       <nav className="directory-tabs" aria-label="图素视图">
         <a href="#assets" aria-current={!guide ? 'page' : undefined}>素材图库</a>
@@ -94,7 +94,7 @@ export function AssetsPage({ inventory, view }: { inventory: Inventory | null; v
 }
 
 function ArtworkCard({ asset, revision }: { asset: Artwork; revision?: string }) {
-  const { path, previewUrl, bytes, usedBy, prompts } = asset;
+  const { path, previewUrl, bytes, usedBy, prompts, referencePrompt } = asset;
   const title = filename(path);
   const [dimensions, setDimensions] = useState('');
   const stages = (prompts ?? []).flatMap((record) => record.stages);
@@ -113,7 +113,9 @@ function ArtworkCard({ asset, revision }: { asset: Artwork; revision?: string })
         <strong>{title}</strong>
         <small>{families.get(artworkFamily(path))} · {dimensions && dimensions + ' · '}{formatSize.format(bytes / 1024)} KB</small>
         <div className="asset-actions">
-          {!!stages.length && <CopyButton code={copyText} label={stages.length > 1 ? '复制全部提示词' : '复制提示词'} />}
+          {stages.length
+            ? <CopyButton code={copyText} label={stages.length > 1 ? '复制全部提示词' : '复制提示词'} />
+            : referencePrompt && <CopyButton code={referencePrompt} label="复制参考提示词" />}
           {previewUrl && <a href={previewUrl} download={title} className="inline-source">下载原图</a>}
         </div>
         {revision && <>
@@ -151,7 +153,10 @@ function ArtworkCard({ asset, revision }: { asset: Artwork; revision?: string })
               </>}
             </div>
           ))}
-        </details> : <small>暂无已归档的原始提示词</small>}
+        </details> : referencePrompt ? <details className="asset-usage asset-prompts asset-reference-prompt">
+          <summary>后补参考提示词</summary>
+          <div className="art-prompt"><p>{referencePrompt}</p></div>
+        </details> : <small>暂无提示词</small>}
       </div>
     </article>
   );
@@ -162,7 +167,7 @@ export function ArtworkInventory({ assets, route, family, revision }: {
 }) {
   const category = family && families.has(family) ? family : 'all';
   const [query, setQuery] = useState('');
-  const [recordedOnly, setRecordedOnly] = useState(false);
+  const [promptFilter, setPromptFilter] = useState('all');
   const [limit, setLimit] = useState(pageSize);
   useEffect(() => setLimit(pageSize), [category]);
 
@@ -178,10 +183,12 @@ export function ArtworkInventory({ assets, route, family, revision }: {
   const keywords = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const shown = ordered.filter((asset) => {
     const assetCategory = artworkFamily(asset.path);
-    if ((category !== 'all' && category !== assetCategory) || (recordedOnly && !asset.prompts?.length)) return false;
+    if (category !== 'all' && category !== assetCategory) return false;
+    const promptType = asset.prompts?.length ? 'original' : asset.referencePrompt ? 'reference' : 'none';
+    if (promptFilter !== 'all' && promptFilter !== promptType) return false;
     if (!keywords.length) return true;
     const text = [
-      asset.path, families.get(assetCategory), ...(asset.usedBy ?? []),
+      asset.path, families.get(assetCategory), asset.referencePrompt, ...(asset.usedBy ?? []),
       ...(asset.prompts ?? []).flatMap((record) => [record.source, ...record.stages.map((stage) => stage.text)]),
     ].join(' ').toLowerCase();
     return keywords.every((word) => text.includes(word));
@@ -204,12 +211,21 @@ export function ArtworkInventory({ assets, route, family, revision }: {
           setQuery(event.currentTarget.value);
           setLimit(pageSize);
         }} />
-        <label className="art-filter"><input type="checkbox" checked={recordedOnly} onChange={(event) => {
-          setRecordedOnly(event.currentTarget.checked);
-          setLimit(pageSize);
-        }} />有原始提示词</label>
+        <label className="art-filter">
+          提示词类型
+          <select value={promptFilter} onChange={(event) => {
+            setPromptFilter(event.currentTarget.value);
+            setLimit(pageSize);
+          }}>
+            <option value="all">全部</option>
+            <option value="original">原始提示词</option>
+            <option value="reference">后补参考</option>
+          </select>
+        </label>
       </div>
-      <p className="directory-count" aria-live="polite">{shown.length} 张素材图 · {shown.filter((asset) => asset.prompts?.length).length} 张有原始提示词</p>
+      <p className="directory-count" aria-live="polite">
+        {shown.length} 张素材图 · {shown.filter((asset) => asset.prompts?.length).length} 张有原始提示词 · {shown.filter((asset) => asset.referencePrompt).length} 张有后补参考
+      </p>
       {!shown.length && <p className="empty">没有匹配的素材图。</p>}
       <div className="asset-grid">
         {shown.slice(0, limit).map((asset) => <ArtworkCard key={asset.path} asset={asset} revision={revision} />)}
