@@ -47,7 +47,7 @@ export async function loadAppPages(root, components) {
     if (entry.kind === 'screen' || entry.kind === 'debug') assert(parts.length, 'Missing preview for ' + entry.id);
     if (!parts.length || (entry.kind === 'layout' && !entry.states)) continue;
 
-    const recipe = { title: entry.title, shell: entry.shell, activeTab: entry.shell === 'tab' ? entry.id : undefined,
+    const recipe = { title: entry.title, appearance: entry.appearance, shell: entry.shell, activeTab: entry.shell === 'tab' ? entry.id : undefined,
       footer: entry.footer, secondary: entry.secondary, steps: entry.steps, completeLabel: entry.completeLabel, parts };
     const name = entry.id.split('-').map((part) => part[0].toUpperCase() + part.slice(1)).join('') + 'ScreenExample';
     const code = [

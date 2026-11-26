@@ -69,8 +69,8 @@ export { YPersonaCard } from './components/YPersonaCard';
 export type { YPersonaCardProps } from './components/YPersonaCard';
 export { YProfileHeader } from './components/YProfileHeader';
 export type { YProfileHeaderProps } from './components/YProfileHeader';
-export { YPlanCard } from './components/YPlanCard';
-export type { YPlanCardProps } from './components/YPlanCard';
+export { YPlanCard, YPurchaseBackdrop } from './components/YPlanCard';
+export type { YPlanCardProps, YPlanBenefit } from './components/YPlanCard';
 export { YBalanceCard } from './components/YBalanceCard';
 export type { YBalanceCardProps } from './components/YBalanceCard';
 export { YCreditPackCard } from './components/YCreditPackCard';
@@ -119,3 +119,7 @@ export { YStoryChoices } from './components/YStoryChoices';
 export type { YStoryChoicesProps, YStoryChoice } from './components/YStoryChoices';
 export { YVoiceCard } from './components/YVoiceCard';
 export type { YVoiceCardProps } from './components/YVoiceCard';
+export {
+  chatHeaderStyles, loginBackdropStyles, loginFormStyles, messageEmptyStyles, modelPickerStyles, profileAccountStyles, sharePreviewStyles, shareSheetStyles,
+  subscriptionButtonGradients, subscriptionButtonHighlight, subscriptionDockStyles,
+} from './appStyles';

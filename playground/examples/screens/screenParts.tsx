@@ -3,14 +3,14 @@ import {
   IconFavorite, IconFavoriteFilled, IconTreatsFilled,
 } from '@yoroll/rn-icon';
 import { Image } from 'expo-image';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import {
-  CarouselIndicatorDot, YAvatar, YBadge, YBalanceCard, YBanner, YButton, YCallPanel, YCheckInCard, YChoiceGroup,
+  CarouselIndicatorDot, TreatText, YAvatar, YBadge, YBalanceCard, YBanner, YButton, YCallPanel, YCheckInCard, YChoiceGroup,
   YComposer, YCreditPackCard, YDetailHeader, YDialog, YEpisodeGrid, YField, YFilterChip, YIconButton,
   YInboxRow, YListGroup, YListRow, YMediaCard, YMessageBubble, YPersonaCard, YPlanCard, YPlayerControls, YPlayPill,
   YProfileHeader, YSearchField, YSectionHeader, YSlider, YState, YStoryChoices, YStoryEnding, YSwitch, YTab,
   YTaskRow, YTextInput, YUploadGrid, YVoiceCard,
-  YWebCapsule, useTheme, type YMediaCardVariant, type YTabVariant,
+  YWebCapsule, profileAccountStyles, useTheme, type YMediaCardVariant, type YTabVariant,
 } from '@yoroll/app-components';
 import { CommentsPart, ConfirmPart, FullscreenPart, ModelPart, NoticeDialogPart, SharePart, SheetPart } from './screenOverlays';
 import { sectionContext, useScreenArtwork } from './sectionContext';
@@ -35,25 +35,60 @@ function Banner({ part }: PartProps) {
   const variant = part.variant === 'warning' ? 'warning' : part.variant === 'reward' ? 'reward' : 'info';
   const actionLabel = part.items?.[0];
   return <YBanner title={part.label} detail={part.detail} variant={variant}
-    artwork={variant === 'reward' ? <Image source={artwork('checkin')} style={StyleSheet.absoluteFill} contentFit="cover" /> : undefined}
+    artwork={variant === 'reward' ? <Image source={artwork('checkin')} style={StyleSheet.absoluteFill} contentFit="contain" /> : undefined}
+    reward={variant === 'reward' && part.label.includes('签到') ? <TreatText style={{ fontSize: 14, fontWeight: '700' }}>+10</TreatText> : undefined}
     action={actionLabel ? { label: clicked ? '已完成' : actionLabel, disabled: clicked, onPress: () => { setClicked(true); announce('已选择' + actionLabel); } } : undefined} />;
 }
 
 function Balance({ part }: PartProps) {
   const artwork = useScreenArtwork();
-  return <YBalanceCard title={part.label} amount={part.items?.[0] ?? '1,280'} detail={part.detail}
-    artwork={<Image source={artwork('treat')} contentFit="contain" style={StyleSheet.absoluteFill} />} />;
+  return <YBalanceCard title={part.label} amount={part.items?.[0] ?? '1,280'} detail={part.detail} candy={artwork('treat')} />;
+}
+
+function Account({ part }: PartProps) {
+  const artwork = useScreenArtwork();
+  const { announce } = useContext(sectionContext);
+  const { tokens, fonts } = useTheme();
+  const s = profileAccountStyles;
+  const bg = { backgroundColor: 'rgba(255,255,255,0.07)' };
+  return <View style={s.accountCards}>
+    <Pressable accessibilityRole="button" style={[s.accountCard, bg]} onPress={() => announce('打开会员权益')}>
+      <View style={[s.accountCardContent, s.membershipCardContent]}>
+        <Text style={[s.accountCardLabel, { color: tokens.textTertiary }]}>会员权益</Text>
+        <TreatText style={{ fontFamily: fonts.bebas, fontSize: 24, lineHeight: 25 }}>PLUS</TreatText>
+      </View>
+      <Image source={artwork('membershipCrown')} contentFit="contain" style={s.membershipCrown} />
+    </Pressable>
+    <View style={s.accountCardRow}>
+      {(part.items ?? ['Treats 余额', '任务中心']).map((label, index) =>
+        <Pressable accessibilityRole="button" key={label} style={[s.accountCard, styles.column, bg]} onPress={() => announce(label)}>
+          <View style={s.accountCardContent}>
+            <Text style={[s.accountCardLabel, { color: tokens.textTertiary }]}>{label}</Text>
+            <View style={s.accountCardPrimaryRow}>{index
+              ? <Text style={{ color: tokens.textSecondary, fontSize: 13, fontWeight: '600' }}>每日奖励</Text>
+              : <TreatText style={{ fontSize: 20, fontFamily: fonts.geologicaSemibold }}>1,280</TreatText>}</View>
+          </View>
+          <Image source={artwork(index ? 'checkin' : 'treatPile')} contentFit="contain" style={s.creditToken} />
+        </Pressable>)}
+    </View>
+  </View>;
 }
 
 function Cards({ part }: PartProps) {
   const artwork = useScreenArtwork();
-  const { announce } = useContext(sectionContext);
+  const { announce, tab } = useContext(sectionContext);
   const variant = (part.variant ?? 'profile') as YMediaCardVariant;
   const labels = part.items ?? names.slice(0, 2);
-  return <View style={variant === 'channel' ? styles.group : styles.columns}>
-    {labels.map((title, index) => <YMediaCard title={title} key={title} variant={variant} size="sm" cover={artwork(covers[index % covers.length])}
-      subtitle={part.detail} badge={index === 0 ? <YBadge label={part.label} variant="media" /> : undefined}
-      tags={variant === 'discover' ? ['互动', '剧情'] : undefined} style={variant === 'channel' ? undefined : styles.column}
+  const home = variant === 'home-feed';
+  const stacked = variant === 'channel' || home;
+  const images = home ? ['occult', 'royalty'] as const : variant === 'discover' || variant === 'character' || variant === 'chat'
+    ? ['night', 'storyteller', 'avatar'] as const : covers;
+  return <View style={stacked ? styles.group : styles.columns}>
+    {labels.map((title, index) => <YMediaCard title={title} key={title} variant={variant} size="sm" cover={artwork(images[index % images.length])}
+      subtitle={part.detail} badge={home && tab === '0' ? <YBadge label={index ? '互动游戏' : '互动短剧'} variant="media" /> :
+        !home && index === 0 ? <YBadge label={variant === 'discover' ? '12.8K' : part.label} variant="media" /> : undefined}
+      tags={variant === 'discover' ? ['奇幻', '剧情'] : undefined} style={stacked ? undefined : styles.column}
+      coverAction={home ? <YPlayPill label="游玩" onPress={() => announce('已选择' + title)} /> : undefined}
       onPress={() => announce('已打开' + title)} />)}
   </View>;
 }
@@ -143,7 +178,8 @@ function Identity({ part }: PartProps) {
   const [followed, setFollowed] = useState(false);
   const artwork = useScreenArtwork();
   return <YProfileHeader name={part.items?.[0] ?? '月光旅人'} subtitle={part.items?.[1]} bio={part.detail}
-    cover={artwork('forest')} badge={<YBadge label={part.label} variant="brand" />}
+    cover={artwork('basic')} avatar={artwork('avatar')}
+    badge={part.variant === 'author' ? <YBadge label={part.label} variant="brand" /> : undefined}
     stats={[{ id: 'following', label: '关注', value: '12' }, { id: 'followers', label: '粉丝', value: '1,284' }]}
     action={part.variant === 'author' ? <YButton size="sm" variant={followed ? 'secondary' : 'primary'}
       label={followed ? '已关注' : '关注'} onPress={() => setFollowed(!followed)} /> : undefined} />;
@@ -167,6 +203,7 @@ function Media({ part }: PartProps) {
   const [playing, setPlaying] = useState(false);
   const artwork = useScreenArtwork();
   const labels = part.items ?? names;
+  const images = part.variant === 'banner' ? ['royalty','occult','night'] as const : ['avatar','storyteller','night'] as const;
   if (part.variant === 'login') return <View style={styles.group}>
     <View style={styles.columns}>
       <YMediaCard variant="profile" title="雾岛来信" cover={artwork('coast')} style={styles.column} />
@@ -175,13 +212,13 @@ function Media({ part }: PartProps) {
     <YSectionHeader title={labels[0] ?? 'Yoroll'} subtitle={part.detail} />
   </View>;
   return <View style={styles.group}>
-    <YMediaCard variant={part.variant === 'drama' ? 'drama' : 'banner'} cover={artwork(covers[selected % covers.length])}
-      title={labels[selected] ?? part.label} subtitle={part.detail} onPress={() => setPlaying(!playing)} />
+    <YMediaCard variant={part.variant === 'drama' ? 'drama' : 'banner'} cover={artwork(images[selected % images.length])}
+      title={labels[selected] ?? part.label} subtitle={part.detail} onPress={() => setPlaying(!playing)}
+      coverAction={<YPlayPill label={playing ? '暂停预览' : '游玩'} hideIcon={playing} onPress={() => setPlaying(!playing)} />} />
     <View style={styles.hRow}>
       <View style={styles.hRow}>{labels.map((label, index) => <YIconButton key={label} size={32}
         label={'切换到' + label} icon={() => <CarouselIndicatorDot active={selected === index} />}
         onPress={() => { setSelected(index); setPlaying(false); }} />)}</View>
-      <YPlayPill label={playing ? '暂停预览' : '播放预览'} hideIcon={playing} size="sm" onPress={() => setPlaying(!playing)} />
     </View>
   </View>;
 }
@@ -203,9 +240,15 @@ function Messages({ part }: PartProps) {
 function Packs({ part }: PartProps) {
   const { announce } = useContext(sectionContext);
   const artwork = useScreenArtwork();
-  return <View style={styles.columns}>{(part.items ?? ['320', '1,000']).map((amount, index) => <View key={amount} style={styles.column}>
-    <YCreditPackCard amount={amount} price={index ? '¥30' : '¥12'} bonus={index ? '+120 加赠' : undefined} badge={index ? '推荐' : '入门'}
-      artwork={<Image source={artwork('treat')} style={styles.treat} contentFit="contain" />} onPurchase={() => announce('已选择 ' + amount + ' Treats')} />
+  const tones = ['newUser', 'firstChargeOffer', 'starter', 'firstChargeOffer', 'everydayTopUp', 'chatMore'] as const;
+  const badges = ['新人专享', '首充加赠', '入门', '首充加赠', '日常补给', '畅聊'];
+  const amounts = part.items ?? ['80', '180', '330', '730', '1,120', '4,500'];
+  return <View style={styles.columns}>{amounts.map((amount, index) => <View key={amount} style={styles.column}>
+    <YCreditPackCard amount={amount} price={['¥6', '¥12', '¥18', '¥30', '¥68', '¥198'][index % 6]}
+      bonus={index === 1 ? '含 10 Treats 加赠' : index === 3 ? '含 60 Treats 加赠' : undefined}
+      badge={badges[index % 6]} badgeTone={tones[index % 6]}
+      artworkSource={artwork(index < 2 ? 'treat' : index < 4 ? 'treatPile' : 'treatLarge')}
+      onPurchase={() => announce('已选择 ' + amount + ' Treats')} />
   </View>)}</View>;
 }
 
@@ -224,28 +267,61 @@ function Personas({ part }: PartProps) {
   </View>)}</View>;
 }
 
-function Plans({ part }: PartProps) {
-  const [active, setActive] = useState(0);
-  const cycle = part.variant === 'cycle';
+export function Plans({ part }: PartProps) {
+  const { tier, setTier } = useContext(sectionContext);
+  const artwork = useScreenArtwork();
+  const [annual, setAnnual] = useState(true);
+  if (part.variant === 'cycle') return <View style={styles.columns} accessibilityRole="radiogroup" accessibilityLabel={part.label}>
+    <YPlanCard title="按年订阅" variant="cycle" tier={tier} selected={annual} onSelect={() => setAnnual(true)} style={styles.column}
+      price={tier === 'plus' ? '¥418' : '¥298'} referencePrice={tier === 'plus' ? '¥698' : undefined}
+      offer={tier === 'plus' ? { label: '限时折扣', countdown: '02:18:36' } : undefined} />
+    <YPlanCard title="按月订阅" variant="cycle" tier={tier} selected={!annual} onSelect={() => setAnnual(false)}
+      style={styles.column} price={tier === 'plus' ? '¥68' : '¥48'} />
+  </View>;
+
+  const benefits = [
+    ['每月 Treats', 'creditBenefit', '1,000', '3,600'],
+    ['建议回复', 'suggestionsBenefit', '100 次', '不限'],
+    ['可创建人设数', 'personaBenefit', '5 个', '不限'],
+    ['语音通话', 'callingBenefit', '高级会员专享', '8 / 分钟'],
+    ['下载视频', 'videoBenefit', '高级会员专享', '无水印'],
+    ['下载图片', 'imageBenefit', '无水印', '无水印'],
+  ] as const;
   return <View style={styles.columns} accessibilityRole="radiogroup" accessibilityLabel={part.label}>
-    {(part.items ?? (cycle ? ['按年订阅', '按月订阅'] : ['Plus', 'Pro'])).map((title, index) => <YPlanCard key={title} title={title}
-      variant={cycle ? 'cycle' : 'benefits'} selected={index === active} onSelect={() => setActive(index)} style={styles.column}
-      price={cycle ? index ? '¥48' : '¥298' : index ? '3,600' : '1,000'} period={cycle ? undefined : 'Treats'}
-      referencePrice={cycle && !index ? '¥598' : undefined} features={cycle ? undefined : ['解锁更多互动', '每月获得 Treats']}
-      badge={!index && cycle ? <YBadge label="限时优惠" variant="brand" /> : undefined} />)}
+    {(['basic', 'plus'] as const).map((option) => <YPlanCard key={option} title={option === 'basic' ? 'PLUS' : 'ULTRA'}
+      tier={option} selected={tier === option} onSelect={() => setTier(option)} style={styles.column}
+      benefits={benefits.map(([label, image, basic, plus]) => ({ label, value: option === 'basic' ? basic : plus, artwork: artwork(image) }))}
+      current={option === 'basic' ? '当前方案' : undefined} />)}
   </View>;
 }
 
 function Player({ part }: PartProps) {
   const [time, setTime] = useState(28);
   const [playing, setPlaying] = useState(false);
+  const [wide, setWide] = useState(false);
   const { announce } = useContext(sectionContext);
   const artwork = useScreenArtwork();
-  return <View style={styles.group}>
-    <YMediaCard title={part.label} cover={artwork('night')} variant={part.variant === 'drama' ? 'banner' : 'game'} size="sm"
+  const drama = part.variant === 'drama';
+  const [liked, setLiked] = useState(false);
+  const controls = <YPlayerControls playing={playing} onToggle={() => setPlaying(!playing)} seconds={time} duration={120} onSeek={setTime}
+    labels={{ play: '播放', pause: '暂停', seek: '播放进度', fullscreen: wide ? '退出横屏' : '全屏' }} overlay={drama}
+    onFullscreen={() => { setWide(!wide); announce(wide ? '退出横屏' : '切换播放画幅'); }} />;
+  if (!drama) return <View style={styles.group}>
+    <YMediaCard title={part.label} cover={artwork('night')} variant="game" size="sm"
       subtitle={playing ? '播放中' : '已暂停'} onPress={() => setPlaying(!playing)} />
-    <YPlayerControls playing={playing} onToggle={() => setPlaying(!playing)} seconds={time} duration={120} onSeek={setTime}
-      labels={{ play: '播放', pause: '暂停', seek: '播放进度', fullscreen: '全屏' }} onFullscreen={() => announce('切换播放方向')} />
+    {controls}
+  </View>;
+
+  return <View style={[styles.drama, { aspectRatio: wide ? 16 / 9 : 9 / 16 }]}>
+    <Image source={artwork('night')} contentFit="cover" contentPosition="top" style={StyleSheet.absoluteFill} />
+    <View style={styles.dramaRail}>
+      <YIconButton icon={liked ? IconFavoriteFilled : IconFavorite} onPress={() => setLiked(!liked)}
+        label={liked ? '取消收藏' : '收藏'} variant="media" selected={liked} />
+    </View>
+    <View style={styles.dramaFooter}>
+      <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700', marginHorizontal: 12, marginBottom: 6 }}>星砂纪事 · 第 1 集</Text>
+      {controls}
+    </View>
   </View>;
 }
 
@@ -323,7 +399,7 @@ function Search({ part }: PartProps) {
   const labels = part.items ?? names;
   const filtered = labels.filter((item) => item.toLowerCase().includes(query.trim().toLowerCase()));
   return <View style={styles.group}>
-    <YSearchField value={query} onChangeText={setQuery} label={part.label} clearLabel="清空搜索" />
+    <YSearchField value={query} onChangeText={setQuery} label={part.label} clearLabel="清空搜索" variant={part.variant === 'entry' ? 'entry' : 'input'} />
     {part.variant === 'entry' ? null : filtered.length
       ? <Cards part={{ kind: 'cards', label: '结果', items: filtered, detail: part.detail, variant: 'channel' }} />
       : <YState state="empty" title="没有匹配的内容" />}
@@ -343,9 +419,14 @@ function Slider({ part }: PartProps) {
 
 function Tabs({ part }: PartProps) {
   const [active, setActive] = useState('0');
-  const { announce, setTab } = useContext(sectionContext);
-  const items = (part.items ?? ['全部', '最新']).map((label, index) => ({ key: String(index), label }));
-  return <YTab active={active} onChange={(key) => { setActive(key); setTab(key); announce('已切换' + items[Number(key)].label); }}
+  const { announce, setTab, uiBase } = useContext(sectionContext);
+  const illustrations = ['recommend', 'drama', 'filmgame', 'minigame'];
+  const items = (part.items ?? ['全部', '最新']).map((label, index) => ({
+    key: String(index), label,
+    icon: part.variant === 'pill' && illustrations[index] ? <Image source={uiBase + 'home/' + illustrations[index] + '.webp'}
+      style={{ width: 18, height: 18, opacity: String(index) === active ? 1 : 0.6 }} contentFit="contain" /> : undefined,
+  }));
+  return <YTab active={active} textLayout={part.detail === 'content' ? 'content' : 'equal'} onChange={(key) => { setActive(key); setTab(key); announce('已切换' + items[Number(key)].label); }}
     variant={(part.variant ?? 'text') as YTabVariant} items={items} />;
 }
 
@@ -386,7 +467,7 @@ function Section({ part }: PartProps) {
 }
 
 export const partRenderers: Record<ScreenPartKind, ComponentType<PartProps>> = {
-  actions: Actions, banner: Banner, balance: Balance, call: Call, cards: Cards, checkin: Checkin,
+  actions: Actions, account: Account, banner: Banner, balance: Balance, call: Call, cards: Cards, checkin: Checkin,
   comments: CommentsPart, confirm: ConfirmPart, choices: Choices, ending: Ending, detail: Detail, dialog: NoticeDialogPart, episodes: Episodes,
   fields: Fields, fullscreen: FullscreenPart, host: Host, identity: Identity, inbox: Inbox, media: Media,
   messages: Messages, model: ModelPart, notice: Banner, packs: Packs, personas: Personas, plans: Plans, player: Player,
@@ -400,7 +481,9 @@ const styles = StyleSheet.create({
   tags: { flexDirection: 'row', flexWrap: 'wrap', gap: 5 },
   columns: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   column: { flexBasis: '38%', flexGrow: 1, flexShrink: 1, minWidth: 120 },
+  drama: { position: 'relative', backgroundColor: '#0B0B0D', overflow: 'hidden' },
+  dramaRail: { position: 'absolute', right: 12, bottom: 108 },
+  dramaFooter: { position: 'absolute', bottom: 0, left: 0, right: 0 },
   host: { minHeight: 140, borderRadius: 12, gap: 14, justifyContent: 'center', padding: 16 },
   capsule: { alignSelf: 'flex-end' },
-  treat: { width: 44, height: 54 },
 });

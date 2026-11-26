@@ -11,6 +11,8 @@
   "scripts": {
     "check": "tsc --noEmit",
     "check:app-pages": "node scripts/app-pages.mjs",
+    "check:app-styles": "node scripts/sync-app-styles.mjs --check",
+    "sync:app-styles": "node scripts/sync-app-styles.mjs",
     "sync:artwork": "node scripts/sync-artwork.mjs",
     "build:app": "node scripts/build.mjs --app-root",
     "build": "node scripts/build.mjs"

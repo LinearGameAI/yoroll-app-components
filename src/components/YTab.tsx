@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Pressable, StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
 import { tabLabelTypography } from '../typography';
 import { useTheme } from '../theme';
+import { homePillStyles } from '../appStyles';
 import { tabMetrics } from '../foundations';
 
 export interface YTabItem {
@@ -77,17 +78,13 @@ export function YTab({ items, active, onChange, variant = 'underline', textLayou
                     padding: 8,
                     borderRadius: 8,
                   }
-                : isPill ? [styles.pill, {
-                    backgroundColor: isActive ? tokens.bgTertiary : tokens.bgSecondary,
-                    borderColor: isActive ? tokens.cardStroke : 'transparent',
-                  }] : isText ? styles.textTab : {
+                : isPill ? [homePillStyles.tabPill, isActive ? homePillStyles.tabPillActive : homePillStyles.tabPillIdle] : isText ? [styles.textTab, isContentWidth ? styles.contentTextTab : styles.equalTextTab] : {
                     paddingVertical: 10,
                     paddingHorizontal: 2,
                     borderBottomWidth: 2,
                     borderBottomColor: isActive ? tokens.textPrimary : 'transparent',
                   },
               isSeg && isActive && styles.segmentActive,
-              isContentWidth && styles.contentTextTab,
               { opacity: blocked ? 0.45 : pressed ? 0.7 : 1 },
             ]}
           >
@@ -114,10 +111,9 @@ export function YTab({ items, active, onChange, variant = 'underline', textLayou
 }
 
 const styles = StyleSheet.create({
-  textTab: { flex: 1, minWidth: 0, minHeight: tabMetrics.textMinHeight, paddingHorizontal: 8, paddingVertical: 10, alignItems: 'center', justifyContent: 'center' },
-  pill: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 4, paddingHorizontal: 8,
-    paddingVertical: 8, minHeight: 36, borderRadius: 8, borderWidth: StyleSheet.hairlineWidth },
-  contentTextTab: { flex: 0, flexShrink: 1, paddingHorizontal: 0 },
+  textTab: { minWidth: 0, minHeight: tabMetrics.textMinHeight, paddingHorizontal: 8, paddingVertical: 10, alignItems: 'center', justifyContent: 'center' },
+  equalTextTab: { flex: 1 },
+  contentTextTab: { flexGrow: 0, flexShrink: 1, flexBasis: 'auto', paddingHorizontal: 0 },
   shortLine: { position: 'absolute', bottom: 0, width: tabMetrics.indicatorWidth, height: tabMetrics.indicatorHeight, borderRadius: 1 },
   segmentActive: { shadowColor: '#000', shadowOpacity: 0.06, shadowOffset: { width: 0, height: 1 }, shadowRadius: 2 },
   row: {

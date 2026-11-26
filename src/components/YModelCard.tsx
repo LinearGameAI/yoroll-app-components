@@ -2,9 +2,9 @@ import type { ReactNode } from 'react';
 import { IconCheckedFilled, IconSingleunchecked, IconTreatsFilled } from '@yoroll/rn-icon';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
-import { cardMetrics, TREAT_TEXT_GRADIENT } from '../foundations';
+import { modelPickerStyles as s } from '../appStyles';
+import { TREAT_TEXT_GRADIENT } from '../foundations';
 import { useTheme } from '../theme';
-import { componentText } from '../typography';
 import { TreatText } from './TreatText';
 
 export interface YModelCardProps {
@@ -20,38 +20,43 @@ export interface YModelCardProps {
   disabled?: boolean;
   onSelect: () => void;
 }
-export function YModelCard({ title, description, price, referencePrice, countdown, badge, icon, selected, saving, disabled, onSelect }: YModelCardProps) {
-  const { tokens } = useTheme();
+
+export function YModelCard({
+  title, description, price, referencePrice, countdown, badge, icon, selected, saving, disabled, onSelect,
+}: YModelCardProps) {
+  const { tokens, fonts } = useTheme();
   const blocked = saving || disabled;
   return (
-    <Pressable accessibilityRole="radio" accessibilityState={{ checked: selected, disabled: blocked, busy: saving }}
-      disabled={blocked} onPress={onSelect} style={({ pressed }) => [styles.card, {
-        backgroundColor: tokens.bgTertiary, borderColor: selected ? tokens.orange : 'transparent', opacity: disabled ? 0.45 : pressed ? 0.82 : 1,
+    <Pressable accessibilityRole="radio" accessibilityState={{ checked: selected, disabled: blocked, busy: saving }} aria-checked={Boolean(selected)}
+      accessibilityLabel={[title, description, price].filter(Boolean).join(', ')}
+      disabled={blocked} onPress={onSelect} style={({ pressed }) => [s.modelOptionCard, {
+        backgroundColor: tokens.bgTertiary, opacity: disabled ? 0.45 : pressed ? 0.82 : 1,
       }]}>
-      {selected && <LinearGradient pointerEvents="none" colors={[tokens.bgPicked, 'transparent']}
-        start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={StyleSheet.absoluteFill} />}
-      <View style={styles.row}>
+      {selected && <LinearGradient pointerEvents="none" colors={[tokens.orange7, tokens.orange3, tokens.orange]}
+        locations={[0, 0.5, 1]} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={s.modelOptionSurface}>
+        <View style={[s.modelOptionInset, { backgroundColor: tokens.bgTertiary }]}>
+          <LinearGradient colors={[tokens.orange7 + '33', tokens.orange3 + '14', tokens.orange + '00']}
+            locations={[0, 0.4, 0.8]} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={StyleSheet.absoluteFill} />
+        </View>
+      </LinearGradient>}
+      <View style={s.modelOptionCardHeader}>
         {icon}
-        <Text style={[componentText.modelTitle, styles.title, { color: tokens.textPrimary }]}>{title}</Text>
-        {badge}
+        <View style={s.modelOptionHeading}>
+          <Text style={[s.modelOptionName, { color: tokens.textPrimary, fontFamily: fonts.disp }]}>{title}</Text>
+          {badge}
+        </View>
         {saving ? <ActivityIndicator color={tokens.orange} /> : selected
-          ? <IconCheckedFilled size={20} color={tokens.orange} /> : <IconSingleunchecked size={20} color={tokens.textTertiary} />}
+          ? <IconCheckedFilled size={20} color={tokens.orange} /> : <IconSingleunchecked size={20} color={tokens.textTertiary} style={{ opacity: 0.5 }} />}
       </View>
-      {description && <Text style={[componentText.modelBody, { color: tokens.textSecondary }]}>{description}</Text>}
-      {(price || countdown) && <View style={styles.row}>
-        {price && <><IconTreatsFilled size={14} color={TREAT_TEXT_GRADIENT[0]} />
-          <TreatText style={componentText.modelPrice}>{price}</TreatText></>}
-        {referencePrice && <Text style={[componentText.modelBody, styles.reference, { color: tokens.textTertiary }]}>{referencePrice}</Text>}
-        {countdown && <Text style={[componentText.modelBody, styles.timer, { color: tokens.textSecondary }]}>{countdown}</Text>}
+      {description && <Text style={[s.modelOptionDescription, { color: tokens.textSecondary, fontFamily: fonts.sans }]}>{description}</Text>}
+      {(price || countdown) && <View style={s.modelPriceRow}>
+        <View style={s.modelPriceAmounts}>
+          {price && <><IconTreatsFilled size={14} color={TREAT_TEXT_GRADIENT[0]} />
+            <TreatText numberOfLines={1} style={[s.modelOptionPrice, { fontFamily: fonts.geologicaSemibold }]}>{price}</TreatText></>}
+          {referencePrice && <Text numberOfLines={1} style={[s.modelAuxiliaryText, s.modelOriginalPrice, { color: tokens.textTertiary }]}>{referencePrice}</Text>}
+        </View>
+        {countdown && <Text style={[s.modelAuxiliaryText, s.modelOfferCountdown, { color: tokens.textTertiary }]}>{countdown}</Text>}
       </View>}
     </Pressable>
   );
 }
-const styles = StyleSheet.create({
-  card: { borderWidth: 1, borderRadius: cardMetrics.model.radius, overflow: 'hidden', gap: 8,
-    paddingHorizontal: cardMetrics.model.paddingH, paddingVertical: cardMetrics.model.paddingV },
-  row: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 6 },
-  title: { flex: 1, minWidth: 52 },
-  reference: { textDecorationLine: 'line-through' },
-  timer: { marginLeft: 'auto', fontVariant: ['tabular-nums'] },
-});

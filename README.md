@@ -78,6 +78,17 @@ function SectionTitle({ children }: { children: string }) {
 
 [YButton 源码清单](https://lineargameai.github.io/yoroll-app-components/r/ybutton.json) · [资料表单的 TSX 和依赖](https://lineargameai.github.io/yoroll-app-components/r/profile-form.json)
 
+## App 样式来源
+
+`src/appStyles.ts` 由 `scripts/sync-app-styles.mjs` 从指定版本的 YorollApp 源码提取。它收录直接用在预览和组件中的配色、圆角、字级、间距、尺寸与视图样式。会员、Treats、角色卡、聊天模型与分享等组件同时使用对应的 App 图素。页面预览的文案和数据是示例，按设备和渠道变化的 App 内容仍由各自宿主提供。
+
+页面使用 App 随附的 Geologica SemiBold 和 Bebas Neue 文件。授权文本随字体提供。[Geologica OFL](playground/fonts/OFL-Geologica.txt) · [Bebas Neue OFL](playground/fonts/OFL-BebasNeue.txt) · [Bebas Neue 官方源](https://raw.githubusercontent.com/google/fonts/main/ofl/bebasneue/OFL.txt)
+
+```sh
+npm run check:app-styles -- /absolute/path/to/YorollApp
+npm run sync:app-styles -- /absolute/path/to/YorollApp
+```
+
 ## 按 App 页面复用
 
 从页面索引可以按业务、路由和组件名称查找。页面详情提供可操作的组合预览、各界面区域的组件映射、App 状态及源码位置。组件详情也可返回相关页面。
@@ -103,7 +114,7 @@ npm run build:app -- /absolute/path/to/YorollApp
 
 **设计 Token → 字体与字号** 提供已核对的字体、字号、行高、字重、字距和对应 Token，本机版也能预览 App 字体文件。**App 索引 → 字体与字号** 可搜索 App 源码中的实际排版属性和表达式。索引来自静态扫描，运行时取值以对应实现为准。
 
-App 字体文件和完整源码索引保存在本机生成的 `dist-app/`。
+完整源码索引和 App 其余字体文件保存在本机生成的 `dist-app/`。
 
 ## 公开素材图库
 

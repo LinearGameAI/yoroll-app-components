@@ -20,13 +20,12 @@
       "source": ["src/screens/HomeScreen.tsx"],
       "shell": "tab",
       "parts": [
-        {"part": {"kind": "section", "label": "发现新的互动内容"}, "source": ["src/screens/HomeScreen.tsx", 1624], "related": ["NavigationBarMaterial"]},
-        {"part": {"kind": "tabs", "label": "频道胶囊", "items": ["全部", "短剧", "互动游戏"], "variant": "pill"}, "source": ["src/screens/HomeScreen.tsx", 1973]},
-        {"part": {"kind": "search", "label": "搜索内容", "variant": "entry"}, "source": ["src/screens/HomeScreen.tsx", 1720]},
-        {"part": {"kind": "media", "label": "焦点轮播", "items": ["雾岛来信", "星砂纪事", "森林来客"], "detail": "焦点推荐 · 互动剧情"}, "source": ["src/screens/HomeScreen.tsx", 1806]},
-        {"part": {"kind": "cards", "label": "游戏与短剧卡", "items": ["雾岛来信", "星砂纪事"], "variant": "game", "detail": "互动内容"}, "source": ["src/screens/HomeScreen.tsx", 1619]}
+        {"part": {"kind": "tabs", "label": "频道胶囊", "items": ["推荐", "互动短剧", "互动影游", "小游戏"], "variant": "pill"}, "source": ["src/screens/HomeScreen.tsx", 1973], "related": ["YTopBar", "YSearchField"]},
+        {"part": {"kind": "media", "label": "焦点轮播", "items": ["Royal Rumble · Tiny Wheels", "The Occult Album", "月光旅人"], "detail": "焦点推荐 · 互动剧情"}, "source": ["src/screens/HomeScreen.tsx", 1806]},
+        {"part": {"kind": "cards", "label": "游戏与短剧卡", "items": ["The Occult Album", "Royal Rumble · Tiny Wheels"], "variant": "home-feed", "detail": "2.8 万次游玩 · 剧情"}, "source": ["src/screens/HomeScreen.tsx", 1619], "related": ["YPlayPill", "NavigationBarMaterial"]}
       ],
-      "states": ["首屏骨架", "焦点图切换", "频道选中", "继续播放", "列表分页"]
+      "states": ["首屏骨架", "焦点图切换", "频道选中", "继续播放", "列表分页"],
+      "appearance": "home"
     },
     {
       "id": "game-detail",
@@ -102,14 +101,14 @@
       "source": ["src/screens/chat/DiscoverScreen.tsx"],
       "shell": "tab",
       "parts": [
-        {"part": {"kind": "search", "label": "搜索角色", "variant": "entry"}, "source": ["src/screens/chat/DiscoverScreen.tsx", 634]},
-        {"part": {"kind": "tabs", "label": "发现排序", "items": ["推荐", "探索", "新角色"], "variant": "text"}, "source": ["src/screens/chat/DiscoverScreen.tsx", 137]},
+        {"part": {"kind": "tabs", "label": "发现排序", "items": ["推荐", "探索", "新角色"], "variant": "text"}, "source": ["src/screens/chat/DiscoverScreen.tsx", 137], "related": ["YTopBar", "YSearchField", "YFilterChip"]},
         {"part": {"kind": "banner", "label": "探索互动活动", "items": ["查看活动"], "detail": "有新的故事与互动活动。"}, "source": ["src/screens/chat/DiscoverScreen.tsx", 148]},
         {"part": {"kind": "cards", "label": "发现角色卡", "items": ["月光旅人", "海岸来客"], "variant": "discover", "detail": "互动角色"}, "source": ["src/screens/chat/DiscoverScreen.tsx", 487]},
         {"part": {"kind": "sheet", "label": "筛选角色", "items": ["全部类型", "幻想", "解谜", "浪漫"]}, "source": ["src/screens/chat/DiscoverScreen.tsx", 798]},
         {"part": {"kind": "sheet", "label": "创作入口", "items": ["创建角色", "创建群聊角色"]}, "source": ["src/screens/chat/DiscoverScreen.tsx", 793]}
       ],
-      "states": ["头部折叠", "活动轮播", "双列角色", "筛选", "搜索覆盖层", "创作菜单", "空态", "加载更多"]
+      "states": ["头部折叠", "活动轮播", "双列角色", "筛选", "搜索覆盖层", "创作菜单", "空态", "加载更多"],
+      "appearance": "discover"
     },
     {
       "id": "search",
@@ -163,7 +162,8 @@
         {"part": {"kind": "share", "label": "分享聊天内容"}, "source": ["src/screens/chat/ChatScreen.tsx", 2239]},
         {"part": {"kind": "banner", "label": "Treats 余额不足", "items": ["查看余额"], "variant": "warning", "detail": "余额将影响需要 Treats 的操作。"}, "source": ["src/screens/chat/ChatScreen.tsx", 1880]}
       ],
-      "states": ["加载历史", "角色与用户气泡", "旁白与心理", "等待回复", "流式回复", "语音录入", "模型与新会话", "设置与发送", "发送失败", "反馈与分享", "余额与生成确认"]
+      "states": ["加载历史", "角色与用户气泡", "旁白与心理", "等待回复", "流式回复", "语音录入", "模型与新会话", "设置与发送", "发送失败", "反馈与分享", "余额与生成确认"],
+      "appearance": "chat"
     },
     {
       "id": "live-call",
@@ -233,11 +233,12 @@
       "source": ["src/screens/chat/MessagesScreen.tsx"],
       "shell": "tab",
       "parts": [
-        {"part": {"kind": "tabs", "label": "聊天与通知", "items": ["聊天", "通知"], "variant": "segment"}, "source": ["src/screens/chat/MessagesScreen.tsx", 298]},
+        {"part": {"kind": "tabs", "label": "聊天与通知", "items": ["聊天", "通知"], "variant": "text", "detail": "content"}, "source": ["src/screens/chat/MessagesScreen.tsx", 298]},
         {"part": {"kind": "inbox", "label": "会话与通知列表", "items": ["月光旅人", "海风"], "variant": "mixed"}, "source": ["src/screens/chat/MessagesScreen.tsx", 219]},
         {"part": {"kind": "dialog", "label": "带图通知弹窗", "items": ["查看通知"], "detail": "新的互动活动已开放。"}, "source": ["src/screens/chat/MessagesScreen.tsx", 325]}
       ],
-      "states": ["聊天与通知页签", "未读", "时间", "空态", "骨架", "通知弹窗", "滑动管理"]
+      "states": ["聊天与通知页签", "未读", "时间", "空态", "骨架", "通知弹窗", "滑动管理"],
+      "appearance": "inbox"
     },
     {
       "id": "notifications",
@@ -400,7 +401,8 @@
         {"part": {"kind": "actions", "label": "登录方式", "items": ["使用邮箱", "使用 Apple 登录", "使用 Google 登录"]}, "source": ["app/(auth)/login.tsx", 180]},
         {"part": {"kind": "section", "label": "服务条款与隐私政策", "detail": "登录页的可访问入口。"}, "source": ["app/(auth)/login.tsx"]}
       ],
-      "states": ["封面背景", "邮箱与第三方入口", "授权中", "失败"]
+      "states": ["封面背景", "邮箱与第三方入口", "授权中", "失败"],
+      "appearance": "login"
     },
     {
       "id": "login-email",
@@ -457,16 +459,15 @@
       "source": ["src/screens/MeScreen.tsx"],
       "shell": "tab",
       "parts": [
-        {"part": {"kind": "identity", "label": "资料与身份", "items": ["月光旅人", "个人资料与关注"], "detail": "互动故事创作者。"}, "source": ["src/screens/MeScreen.tsx", 137]},
-        {"part": {"kind": "plans", "label": "会员入口", "items": ["会员权益", "升级入口"]}, "source": ["src/screens/MeScreen.tsx", 166]},
-        {"part": {"kind": "balance", "label": "Treats", "items": ["1,280"], "detail": "进入任务中心或会员权益。"}, "source": ["src/screens/MeScreen.tsx", 226]},
-        {"part": {"kind": "rows", "label": "个人入口", "items": ["设置", "邀请好友", "兑换码", "任务中心"]}, "source": ["src/screens/MeScreen.tsx", 241]},
+        {"part": {"kind": "identity", "label": "资料与身份", "items": ["月光旅人", "UID 100001"], "detail": "互动故事创作者。"}, "source": ["src/screens/MeScreen.tsx", 137]},
+        {"part": {"kind": "account", "label": "会员、Treats 与任务入口", "items": ["Treats 余额", "任务中心"]}, "source": ["src/screens/MeScreen.tsx", 151]},
         {"part": {"kind": "tabs", "label": "内容分类", "items": ["最近玩过", "收藏", "创作"], "variant": "segment"}, "source": ["src/components/ProfileContentTabs.tsx", 39], "related": ["YFilterChip"]},
         {"part": {"kind": "cards", "label": "最近游玩", "items": ["雾岛来信", "星砂纪事"], "variant": "profile", "detail": "最近游玩"}, "source": ["src/screens/MeScreen.tsx", 284]},
         {"part": {"kind": "personas", "label": "我的创作", "items": ["海岸来客", "月光旅人"], "variant": "owned"}, "source": ["src/components/MyCharacterCard.tsx", 12]},
         {"part": {"kind": "uploads", "label": "修改资料背景", "detail": "选择图片并交由 App 的裁剪工具。"}, "source": ["src/screens/MeScreen.tsx", 290]}
       ],
-      "states": ["资料头", "会员与 Treats", "最近玩过", "收藏", "创作和状态筛选", "背景裁剪", "登录态"]
+      "states": ["资料头", "会员与 Treats", "最近玩过", "收藏", "创作和状态筛选", "背景裁剪", "登录态"],
+      "appearance": "profile"
     },
     {
       "id": "edit-profile",
@@ -593,12 +594,13 @@
       "source": ["src/screens/MembershipScreen.tsx"],
       "footer": "继续订阅",
       "parts": [
-        {"part": {"kind": "plans", "label": "Plus / Pro 权益对比", "items": ["Plus", "Pro"]}, "source": ["src/screens/membership/MembershipOffers.tsx", 127]},
+        {"part": {"kind": "plans", "label": "PLUS / ULTRA 权益对比", "items": ["PLUS", "ULTRA"]}, "source": ["src/screens/membership/MembershipOffers.tsx", 127]},
         {"part": {"kind": "plans", "label": "选择订阅周期", "items": ["按年订阅", "按月订阅"], "variant": "cycle"}, "source": ["src/screens/membership/MembershipOffers.tsx", 225]},
         {"part": {"kind": "banner", "label": "会员升级", "items": ["查看权益"], "variant": "reward", "detail": "会员档位与可领取的权益。"}, "source": ["src/screens/membership/MembershipUpgradeBanner.tsx", 28]},
         {"part": {"kind": "sheet", "label": "购买确认与恢复", "items": ["继续订阅", "恢复购买"]}, "source": ["src/screens/MembershipScreen.tsx", 759]}
       ],
-      "states": ["会员视觉", "权益对比", "档位", "月付与年付", "折扣价格", "价格加载", "当前已订阅", "购买状态"]
+      "states": ["会员视觉", "权益对比", "档位", "月付与年付", "折扣价格", "价格加载", "当前已订阅", "购买状态"],
+      "appearance": "membership"
     },
     {
       "id": "treat-packs",
@@ -609,12 +611,13 @@
       "source": ["src/screens/MembershipScreen.tsx", 111],
       "note": "价格与金额是示例。正式购买与恢复由 App 接入 IAP。",
       "parts": [
-        {"part": {"kind": "balance", "label": "Treats 余额", "items": ["1,280"], "detail": "可用于聊天、模型与互动剧情。"}, "source": ["src/screens/membership/TreatBalanceCard.tsx", 17]},
-        {"part": {"kind": "packs", "label": "充值与加赠", "items": ["320", "1,000", "2,600", "6,500"]}, "source": ["src/screens/membership/CreditPackRow.tsx", 43]},
+        {"part": {"kind": "balance", "label": "Treats 余额", "items": ["1,280"], "detail": "购买获得的 Treats 永不过期"}, "source": ["src/screens/membership/TreatBalanceCard.tsx", 17]},
+        {"part": {"kind": "packs", "label": "充值与加赠", "items": ["80", "180", "330", "730", "1,120", "4,500"]}, "source": ["src/screens/membership/CreditPackRow.tsx", 43]},
         {"part": {"kind": "banner", "label": "新用户加赠", "variant": "reward", "detail": "图素、金额、角标和促销价格。"}, "source": ["src/screens/membership/CreditPackRow.tsx", 49]},
         {"part": {"kind": "rows", "label": "账户记录", "items": ["Treats 流水"]}, "source": ["src/screens/MembershipScreen.tsx", 826]}
       ],
-      "states": ["余额加载", "价格占位", "正常档位", "首充加赠", "推荐", "价格失败重试", "购买结果"]
+      "states": ["余额加载", "价格占位", "正常档位", "首充加赠", "推荐", "价格失败重试", "购买结果"],
+      "appearance": "treats"
     },
     {
       "id": "credit-history",
@@ -644,11 +647,13 @@
         {"part": {"kind": "sheet", "label": "输入兑换码", "items": ["输入兑换码", "查看邀请规则"]}, "source": ["src/referrals/RedemptionSheet.tsx"]},
         {"part": {"kind": "toggles", "label": "提醒", "items": ["提醒我签到"]}, "source": ["src/components/DailyCheckinDialog.tsx"]}
       ],
-      "states": ["加载", "已领取与待领取", "今日签到", "邀请", "兑换", "刷新", "错误与为空"]
+      "states": ["加载", "已领取与待领取", "今日签到", "邀请", "兑换", "刷新", "错误与为空"],
+      "appearance": "tasks"
     },
     {
       "id": "drama",
       "title": "短剧播放",
+      "appearance": "drama",
       "group": "media",
       "kind": "screen",
       "route": "app/short-drama.tsx",

@@ -92,7 +92,7 @@ function PagePreview({ entry }: { entry: PageEntry }) {
         </div>}
         <div className="page-stage">
           <div className="page-phone" aria-label={entry.title + '页面预览'}>
-            <ScreenComposition recipe={example.recipe} state={state} artworkBase={__APP_INVENTORY__ ? undefined : './artwork/originals/assets/'}
+            <ScreenComposition recipe={example.recipe} state={state} artworkBase={__APP_INVENTORY__ ? undefined : './artwork/originals/assets/'} uiBase="./app-ui/"
               onBack={() => { window.location.hash = '#pages'; }} onNavigateTab={(id) => { window.location.hash = pageHref(id); }}
               onReset={() => setState('ready')} />
           </div>

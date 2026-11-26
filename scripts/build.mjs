@@ -72,6 +72,8 @@ const [script, { cssBundle }] = Object.entries(result.metafile.outputs)
   .find(([, details]) => details.entryPoint === 'playground/main.tsx');
 
 await catalog.writeRegistry(output);
+await cp(join(repository, 'playground/app-ui'), join(output, 'app-ui'), { recursive: true });
+await cp(join(repository, 'playground/fonts'), join(output, 'fonts'), { recursive: true });
 await cp(join(repository, 'playground/homepage'), join(output, 'homepage'), { recursive: true });
 await writeFile(join(output, appPath ? 'app-inventory.json' : 'artwork/catalog.json'),
   appPath ? JSON.stringify(data) : JSON.stringify(data, null, 2) + '\n');
@@ -81,6 +83,7 @@ await writeFile(join(output, 'index.html'), `<!doctype html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./fonts/app-fonts.css">
     <meta name="description" content="Yoroll App 的 React Native 组件、设计 Token、动效规则和图素目录。">
     <title>Yoroll App 组件库</title>
     <link rel="stylesheet" href="./${cssBundle.slice(outdir.length + 1)}">

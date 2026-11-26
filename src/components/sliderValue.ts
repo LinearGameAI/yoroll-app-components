@@ -6,6 +6,7 @@ export interface YSliderProps {
   step?: number;
   onChange: (value: number) => void;
   disabled?: boolean;
+  variant?: 'appearance' | 'playback';
 }
 
 export function steppedValue(value: number, min: number, max: number, step: number) {

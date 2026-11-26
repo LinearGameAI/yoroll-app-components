@@ -19,7 +19,7 @@ export function YChoiceGroup({ items, value, onChange, label }: YChoiceGroupProp
       {items.map(({ key, label: title, detail, disabled }) => {
         const checked = key === value;
         return (
-          <Pressable key={key} accessibilityRole="radio" accessibilityState={{ checked, disabled }} onPress={() => onChange(key)}
+          <Pressable key={key} accessibilityRole="radio" accessibilityState={{ checked, disabled }} aria-checked={checked} onPress={() => onChange(key)}
             disabled={disabled} style={({ pressed }) => [styles.row, {
               backgroundColor: checked ? tokens.bgHighlight : tokens.bgCard, opacity: disabled ? 0.4 : pressed ? 0.7 : 1,
             }]}>

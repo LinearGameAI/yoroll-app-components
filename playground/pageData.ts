@@ -14,6 +14,7 @@ export interface PageEntry {
   parts?: PagePart[];
   note?: string;
   states?: string[];
+  appearance?: import('./examples/screens/screenModel').ScreenRecipe['appearance'];
   shell?: 'tab' | 'full' | 'detail' | 'standard';
   footer?: string;
   steps?: string[];

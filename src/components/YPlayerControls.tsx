@@ -14,12 +14,13 @@ export interface YPlayerControlsProps {
   labels: { play: string; pause: string; seek: string; fullscreen?: string };
   onFullscreen?: () => void;
   actions?: ReactNode;
+  overlay?: boolean;
 }
-export function YPlayerControls({ playing, onToggle, seconds, duration, onSeek, labels, onFullscreen, actions }: YPlayerControlsProps) {
+export function YPlayerControls({ playing, onToggle, seconds, duration, onSeek, labels, onFullscreen, actions, overlay }: YPlayerControlsProps) {
   return (
     <YorollThemeProvider>
-      <View style={styles.root}>
-        <YSlider label={labels.seek} min={0} max={Math.max(1, duration)} value={seconds} disabled={duration <= 0} onChange={onSeek} />
+      <View style={[styles.root, overlay && styles.overlay]}>
+        <YSlider variant="playback" label={labels.seek} min={0} max={Math.max(1, duration)} value={seconds} disabled={duration <= 0} onChange={onSeek} />
         <View style={styles.actions}>
           <YIconButton icon={playing ? IconPauseFilled : IconPlayFilled} variant="media"
             onPress={onToggle} label={playing ? labels.pause : labels.play} />
@@ -33,6 +34,7 @@ export function YPlayerControls({ playing, onToggle, seconds, duration, onSeek, 
 }
 const styles = StyleSheet.create({
   root: { backgroundColor: '#17171A', borderRadius: 12, padding: 12 },
+  overlay: { borderRadius: 0, backgroundColor: 'rgba(11,11,13,0.55)', padding: 0, paddingBottom: 2 },
   actions: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   extras: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', flexWrap: 'wrap', gap: 4 },
 });

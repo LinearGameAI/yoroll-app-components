@@ -15,7 +15,7 @@ export interface YFilterChipProps {
 export function YFilterChip({ label, selected = false, disabled, variant = 'pill', onPress }: YFilterChipProps) {
   const { tokens } = useTheme();
   return (
-    <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: selected, disabled }}
+    <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: selected, disabled }} aria-checked={selected}
       disabled={disabled} onPress={onPress} style={({ pressed }) => [
         styles.target, { opacity: disabled ? 0.4 : pressed ? 0.65 : 1 },
       ]}>

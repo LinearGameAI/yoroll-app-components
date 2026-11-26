@@ -2,6 +2,7 @@ export const screenParts = {
   actions: ['YButton', 'YIconButton'],
   banner: ['YBanner'],
   balance: ['YBalanceCard'],
+  account: ['YBalanceCard', 'YPlanCard', 'YIconButton'],
   call: ['YCallPanel', 'YIconButton'],
   cards: ['YMediaCard', 'YBadge'],
   checkin: ['YCheckInCard', 'YTaskRow', 'TreatText'],
@@ -52,6 +53,7 @@ export interface ScreenPart {
 }
 export interface ScreenRecipe {
   title: string;
+  appearance?: 'home' | 'discover' | 'inbox' | 'chat' | 'membership' | 'treats' | 'profile' | 'login' | 'tasks' | 'drama';
   parts: readonly ScreenPart[];
   shell?: 'tab' | 'full' | 'detail' | 'standard';
   footer?: string;

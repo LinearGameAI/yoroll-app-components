@@ -261,7 +261,8 @@ export function TypographySection({ inventory }: { inventory: Inventory | null }
         <h2>App 展示字体</h2>
         <div className="type-font-grid">
           {customFonts.map(({ name, key, file, usage, sample, path, line }) => {
-            const src = inventory?.assets.find((asset) => asset.path === 'assets/fonts/' + file)?.previewUrl;
+            const publicFont = name === customFontNames.geologicaSemibold || name === customFontNames.bebas;
+            const src = publicFont ? './fonts/' + file : inventory?.assets.find((asset) => asset.path === 'assets/fonts/' + file)?.previewUrl;
             return <article className="reference-card reference-body" key={name}>
               {src && <FontSample src={src} text={sample} />}
               <h3>{name}</h3><code>{key ?? '通过 useFonts 注册'}</code><p>{usage}</p>

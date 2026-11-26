@@ -1,8 +1,9 @@
 import { useMemo, useRef, type ReactNode } from 'react';
-import { Animated, Easing, KeyboardAvoidingView, PanResponder, Platform, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Animated, Easing, KeyboardAvoidingView, PanResponder, Platform, ScrollView, StyleSheet, Text, View, useWindowDimensions, type StyleProp, type TextStyle } from 'react-native';
 import { IconClose } from '@yoroll/rn-icon';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { modelSheetStyles } from '../appStyles';
 import { bottomSheetBottomPadding, layout, sheetMetrics } from '../foundations';
 import { motionTokens } from '../motion';
 import { YorollThemeProvider } from '../theme';
@@ -14,6 +15,9 @@ import { YIconButton } from './YIconButton';
 export interface YSheetProps {
   visible: boolean;
   title?: string;
+  titleStyle?: StyleProp<TextStyle>;
+  titleAlign?: 'left' | 'center';
+  showHandle?: boolean;
   subtitle?: string;
   variant?: 'standard' | 'model' | 'drama';
   children: ReactNode;
@@ -28,7 +32,7 @@ export interface YSheetProps {
   bottomPadding?: number;
 }
 export function YSheet({
-  visible, title, subtitle, variant = 'standard', children, footer, onClose, closeLabel = 'Close sheet',
+  visible, title, subtitle, titleStyle, titleAlign = 'left', showHandle, variant = 'standard', children, footer, onClose, closeLabel = 'Close sheet',
   dismissible = true, dismissOnBackdrop = dismissible, scroll = true, maxHeight, maxWidth, bottomPadding,
 }: YSheetProps) {
   const { height } = useWindowDimensions();
@@ -66,10 +70,14 @@ export function YSheet({
         }]}>
           {isDrama && <LinearGradient pointerEvents="none" colors={['#342832', darkTokens.bgPrimary]} style={styles.glow} />}
           <View collapsable={false} {...drag.panHandlers} style={styles.dragZone}>
-            {isDrama && <View style={styles.handle} />}
+            {(showHandle ?? isDrama) && <View style={isDrama ? styles.handle : modelSheetStyles.handle} />}
           </View>
-          {title && <View style={styles.heading}>
-            <Text accessibilityRole="header" style={[typography.navigationTitle, styles.text]}>{title}</Text>
+          {title && <View style={[
+            styles.heading, isModel && modelSheetStyles.heading, titleAlign === 'center' && styles.centerHeading,
+          ]}>
+            <Text accessibilityRole="header" style={[
+              isModel ? modelSheetStyles.title : styles.standardTitle, styles.text, titleAlign === 'center' && styles.centerTitle, titleStyle,
+            ]}>{title}</Text>
             {subtitle && <Text style={[typography.profileDetail, styles.secondary]}>{subtitle}</Text>}
           </View>}
           <YorollThemeProvider mode="dark">
@@ -91,6 +99,9 @@ const styles = StyleSheet.create({
   handle: { width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.1)' },
   glow: { position: 'absolute', left: 0, right: 0, top: 0, height: 160 },
   heading: { minHeight: 28, marginBottom: 10, marginLeft: 4, marginRight: layout.tapTarget, gap: 4 },
+  centerHeading: { marginLeft: layout.tapTarget, alignItems: 'center' },
+  centerTitle: { textAlign: 'center' },
+  standardTitle: { fontSize: 20, lineHeight: 26, fontWeight: '700' },
   text: { color: darkTokens.textPrimary },
   secondary: { color: darkTokens.textSecondary },
   body: { flexGrow: 0, flexShrink: 1, gap: 8 },

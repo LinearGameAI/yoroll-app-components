@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { controlMetrics } from '../foundations';
 import { useTheme } from '../theme';
@@ -10,6 +10,7 @@ export interface YBottomNavItem {
   label: string;
   icon: NavIcon;
   activeIcon?: NavIcon;
+  iconSize?: number;
   unread?: boolean;
 }
 export interface YBottomNavProps {
@@ -32,18 +33,17 @@ export function YBottomNav({ items, active, onChange, safeArea = true }: YBottom
       paddingBottom: (android ? metrics.androidInset : 0) + inset,
       backgroundColor: tokens.tabBarBg, borderTopColor: tokens.cardStroke,
     }]}>
-      {items.map(({ key, label, icon, activeIcon, unread }) => {
+      {items.map(({ key, label, icon, activeIcon, iconSize, unread }) => {
         const selected = key === active;
         const Icon = selected && activeIcon ? activeIcon : icon;
         const color = selected ? tokens.textPrimary : tokens.textTertiary;
         return (
-          <Pressable key={key} accessibilityRole="tab" accessibilityState={{ selected }} accessibilityLabel={label}
+          <Pressable key={key} accessibilityRole="tab" accessibilityState={{ selected }} aria-selected={selected} accessibilityLabel={label}
             onPress={() => onChange(key)} style={({ pressed }) => [styles.item, { opacity: pressed ? 0.65 : 1 }]}>
             <View>
-              <Icon size={metrics.icon} color={color} />
+              <Icon size={iconSize ?? metrics.icon} color={color} />
               {unread && <View style={[styles.dot, { backgroundColor: tokens.textWrong }]} />}
             </View>
-            <Text numberOfLines={1} style={{ color, fontSize: 10, lineHeight: 14 }}>{label}</Text>
           </Pressable>
         );
       })}
