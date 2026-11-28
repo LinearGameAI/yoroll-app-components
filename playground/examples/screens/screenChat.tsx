@@ -3,6 +3,7 @@ import { IconBackward, IconMoreHorizontal, IconPhonecall } from '@yoroll/rn-icon
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   YAvatar, YComposer, YIconButton, YMessageBubble, YSheet, chatHeaderStyles, darkTokens,
 } from '@yoroll/app-components';
@@ -13,11 +14,11 @@ import type { ScreenPart } from './screenModel';
 
 const layoutStyles = StyleSheet.create({
   background: { ...StyleSheet.absoluteFillObject, backgroundColor: '#0B0B0D' },
-  top: { position: 'relative', minHeight: 54, paddingTop: 5, paddingBottom: 5, backgroundColor: 'rgba(11,11,13,0.46)' },
+  top: { position: 'relative', paddingBottom: 5, backgroundColor: 'rgba(11,11,13,0.46)' },
   body: { flex: 1, minHeight: 0 },
   list: { flex: 1, minHeight: 0 },
   listContent: { flexGrow: 1, justifyContent: 'flex-end', paddingHorizontal: 12, paddingTop: 56, paddingBottom: 10, gap: 12 },
-  composer: { paddingHorizontal: 12, paddingTop: 8, paddingBottom: 12, gap: 6 },
+  composer: { paddingHorizontal: 12, paddingTop: 8, gap: 6 },
   notice: { textAlign: 'center', fontSize: 10, lineHeight: 15, color: 'rgba(245,245,243,0.52)' },
 });
 
@@ -32,8 +33,9 @@ export function ChatBackdrop() {
 
 export function ChatHeader({ model, onBack }: { model: ScreenPart; onBack?: () => void }) {
   const art = useScreenArtwork();
+  const { top } = useSafeAreaInsets();
   const { announce } = useContext(sectionContext);
-  return <View style={[chatHeaderStyles.topBar, layoutStyles.top]}>
+  return <View style={[chatHeaderStyles.topBar, layoutStyles.top, { minHeight: top + 54, paddingTop: top + 5 }]}>
     <YIconButton icon={IconBackward} label="返回页面索引" iconSize={22} size={40} color={darkTokens.textPrimary} onPress={onBack ?? (() => {})} />
     <View style={chatHeaderStyles.titleWrap}>
       <YAvatar name="月光旅人" src={art('night')} size={34} />
@@ -51,6 +53,7 @@ export function ChatConversation({ message, layers }: { message: ScreenPart; lay
   const [open, setOpen] = useState(false);
   const { announce } = useContext(sectionContext);
   const art = useScreenArtwork();
+  const { bottom } = useSafeAreaInsets();
   return <View style={layoutStyles.body}>
     <ScrollView style={layoutStyles.list} contentContainerStyle={layoutStyles.listContent} keyboardShouldPersistTaps="handled">
       <YMessageBubble variant="narration" onPhoto text={message.detail ?? '夜色里的灯塔忽明忽暗。'} />
@@ -58,7 +61,7 @@ export function ChatConversation({ message, layers }: { message: ScreenPart; lay
       <YMessageBubble variant="thought" onPhoto text="也许下一班船会带来一封新信。" />
       {messages.map((text, index) => <YMessageBubble key={index} variant="user" onPhoto text={text} />)}
     </ScrollView>
-    <View style={layoutStyles.composer}>
+    <View style={[layoutStyles.composer, { paddingBottom: bottom + 12 }]}>
       <YComposer value={draft} onChangeText={setDraft} placeholder="输入消息" sendLabel="发送" voiceLabel="语音输入"
         addLabel="聊天操作" onAdd={() => setOpen(true)} onVoice={() => announce('语音输入')}
         onSend={(text) => { setMessages((previous) => [...previous, text]); setDraft(''); }} onPhoto />

@@ -1,0 +1,156 @@
+.page-phone {
+  position: relative;
+  border-radius: 10.4% / 4.8%;
+  background: #101013;
+  box-shadow: 0 0 0 4px #161619, 0 0 0 5px #4b4b52, 0 0 0 6px #121214, 0 16px 42px rgba(0, 0, 0, 0.24);
+}
+
+.page-phone::before,
+.page-phone::after {
+  position: absolute;
+  width: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, #333337, #62626a);
+  content: '';
+}
+
+.page-phone::before {
+  top: 17%;
+  left: -7px;
+  height: 4.5%;
+  box-shadow: 0 42px #4b4b52;
+}
+
+.page-phone::after {
+  top: 20%;
+  right: -7px;
+  height: 7%;
+}
+
+.page-phone-screen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  isolation: isolate;
+}
+
+.page-phone-viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  transform-origin: top left;
+  isolation: isolate;
+}
+
+.page-phone-viewport * { scrollbar-width: none; }
+
+.phone-app { display: flex; flex: 1; flex-direction: column; min-height: 0; }
+.phone-overlay-target { position: absolute; inset: 0; z-index: 10; pointer-events: none; }
+.phone-overlay-layer { position: absolute; inset: 0; display: flex; flex-direction: column; outline: none; pointer-events: auto; }
+.phone-overlay-layer[inert] { pointer-events: none; }
+
+.phone-status {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 23px 0 25px;
+  color: #151517;
+  font: 650 15px/1 -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  pointer-events: none;
+}
+
+.phone-status[data-on-dark="true"] {
+  color: #f9f8fa;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.phone-time { width: 57px; text-align: center; font-variant-numeric: tabular-nums; }
+
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 190px;
+  height: 29px;
+  transform: translateX(-50%);
+  border-radius: 0 0 18px 18px;
+  background: #08080a;
+}
+
+.phone-notch::before {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 36px;
+  height: 4px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #1c1c21;
+  content: '';
+}
+
+.phone-notch::after {
+  position: absolute;
+  top: 10px;
+  left: calc(50% + 26px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 40%, #232539 1px, #111119 3px, #0b0b0f);
+  content: '';
+}
+
+.phone-status-icons { display: flex; align-items: center; gap: 5px; }
+.phone-signal { display: flex; align-items: end; gap: 2px; height: 11px; }
+.phone-signal i { width: 2.75px; border-radius: 0.75px; background: currentColor; }
+.phone-signal i:nth-child(1) { height: 4px; }
+.phone-signal i:nth-child(2) { height: 6px; }
+.phone-signal i:nth-child(3) { height: 9px; }
+.phone-signal i:nth-child(4) { height: 11px; }
+
+.phone-wifi {
+  width: 15px;
+  height: 11px;
+  clip-path: polygon(0 0, 100% 0, 99% 28%, 50% 100%, 1% 28%);
+  background: radial-gradient(circle at 50% 100%, currentColor 1.8px, transparent 1.9px 3.7px,
+    currentColor 3.8px 5.6px, transparent 5.7px 7.4px, currentColor 7.5px 9.6px, transparent 9.7px);
+}
+
+.phone-battery {
+  position: relative;
+  width: 24px;
+  height: 11px;
+  margin-right: 2px;
+  border: 1px solid color-mix(in srgb, currentColor 58%, transparent);
+  border-radius: 3px;
+}
+
+.phone-battery::before,
+.phone-battery::after {
+  position: absolute;
+  background: currentColor;
+  content: '';
+}
+
+.phone-battery::before { inset: 1px 3px 1px 1px; border-radius: 1.5px; }
+.phone-battery::after { top: 2px; right: -3px; width: 1.5px; height: 5px; border-radius: 0 2px 2px 0; opacity: 0.6; }
+
+.phone-home-indicator {
+  position: absolute;
+  z-index: 20;
+  left: calc(50% - 67px);
+  bottom: 8px;
+  width: 134px;
+  height: 5px;
+  border-radius: 999px;
+  background: #f8f8f8;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}

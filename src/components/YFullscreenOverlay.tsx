@@ -14,7 +14,7 @@ export interface YFullscreenOverlayProps {
 export function YFullscreenOverlay({ visible, title, onClose, closeLabel = 'Back', children, footer }: YFullscreenOverlayProps) {
   const motion = useOverlayMotion(visible);
   return (
-    <OverlayHost {...motion} visible={visible} onClose={onClose}>
+    <OverlayHost {...motion} visible={visible} label={title} placement="top" onClose={onClose}>
       <Animated.View style={[styles.screen, { opacity: motion.progress }]}>
         <YScreenLayout title={title} onBack={onClose} backLabel={closeLabel} footer={footer}>{children}</YScreenLayout>
       </Animated.View>

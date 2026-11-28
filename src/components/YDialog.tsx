@@ -38,7 +38,7 @@ export function YDialog({
   const notice = dialogMetrics.notice;
   const bodyColor = featuresArtwork ? '#D8D8DC' : tokens.textSecondary;
   return (
-    <OverlayHost {...motion} visible={visible} onClose={onClose} onBackdropPress={dismissOnBackdrop ? onClose : undefined}
+    <OverlayHost {...motion} visible={visible} label={title} onClose={onClose} onBackdropPress={dismissOnBackdrop ? onClose : undefined}
       backdrop={featuresArtwork ? notice.backdrop : centered.backdrop}
       style={[styles.center, { paddingTop: insets.top + 12, paddingBottom: insets.bottom + 12 }]}>
       <Animated.View style={[styles.stack, {

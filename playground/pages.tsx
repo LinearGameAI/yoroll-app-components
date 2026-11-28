@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useMemo, useState } from 'react';
 import { IconAngleright, IconSearch } from '@yoroll/rn-icon';
 import { screenExamples } from 'app-page-recipes';
 import { DirectoryHeading, Segmented, SourceLink } from './controls';
@@ -6,6 +6,7 @@ import { CodeBlock, routeFor } from './docs';
 import { ScreenComposition } from './examples/screens/screen-composition';
 import type { ScreenState } from './examples/screens/screenModel';
 import { availablePreviewStates, componentsForPage, componentsForPart, findPage, pageEntries, pageGroups, pageHref, pageKinds, sourceRevision, type PageEntry } from './pageData';
+import { PhonePreview } from './phonePreview';
 import './pages.css';
 
 declare const __APP_INVENTORY__: boolean;
@@ -73,35 +74,6 @@ export function PagesDirectory() {
   </>;
 }
 
-const phoneSize = { width: 375, height: 812 };
-const phoneFrameStyle = {
-  width: 'min(100%, ' + phoneSize.width + 'px)',
-  aspectRatio: phoneSize.width + ' / ' + phoneSize.height,
-};
-
-function PhonePreview({ label, children }: { label: string; children: ReactNode }) {
-  const frameRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
-
-  useLayoutEffect(() => {
-    const frame = frameRef.current;
-    if (!frame) return;
-    const resize = (width: number) => setScale(width / phoneSize.width);
-    resize(frame.getBoundingClientRect().width);
-    const observer = new ResizeObserver(([entry]) => resize(entry.contentRect.width));
-    observer.observe(frame);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={frameRef} className="page-phone" role="group" aria-label={label} style={phoneFrameStyle}>
-      <div className="page-phone-viewport" style={{ ...phoneSize, transform: 'scale(' + scale + ')' }}>
-        {children}
-      </div>
-    </div>
-  );
-}
-
 function PagePreview({ entry }: { entry: PageEntry }) {
   const [view, setView] = useState<'preview' | 'code'>('preview');
   const [state, setState] = useState<ScreenState>('ready');
@@ -109,6 +81,9 @@ function PagePreview({ entry }: { entry: PageEntry }) {
   const states = previewStates.filter(({ key }) => available[key]);
   const example = screenExamples[entry.id];
   if (!example) return null;
+  const appearance = example.recipe.appearance;
+  const statusOverArtwork = appearance === 'chat' || appearance === 'login' || appearance === 'membership'
+    || appearance === 'treats' || appearance === 'tasks' || appearance === 'profile' && state === 'ready';
   return <section className="page-preview" aria-labelledby="page-preview-title">
     <h2 id="page-preview-title">页面组合</h2>
     <div className="preview-panel">
@@ -120,7 +95,7 @@ function PagePreview({ entry }: { entry: PageEntry }) {
           <Segmented items={states} value={state} onChange={setState} label="预览页面状态" />
         </div>}
         <div className="page-stage">
-          <PhonePreview label={entry.title + '页面预览'}>
+          <PhonePreview label={entry.title + '页面预览'} statusOverArtwork={statusOverArtwork}>
             <ScreenComposition recipe={example.recipe} state={state} artworkBase={__APP_INVENTORY__ ? undefined : './artwork/originals/assets/'} uiBase="./app-ui/"
               onBack={() => { window.location.hash = '#pages'; }} onNavigateTab={(id) => { window.location.hash = pageHref(id); }}
               onReset={() => setState('ready')} />

@@ -1,4 +1,4 @@
-import { useMemo, useRef, type ReactNode } from 'react';
+import { useContext, useMemo, useRef, type ReactNode } from 'react';
 import { Animated, Easing, KeyboardAvoidingView, PanResponder, Platform, ScrollView, StyleSheet, Text, View, useWindowDimensions, type StyleProp, type TextStyle } from 'react-native';
 import { IconClose } from '@yoroll/rn-icon';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -9,7 +9,7 @@ import { motionTokens } from '../motion';
 import { YorollThemeProvider } from '../theme';
 import { darkTokens } from '../tokens';
 import { typography } from '../typography';
-import { OverlayHost, useOverlayMotion } from './overlayHost';
+import { OverlayHost, OverlayViewportContext, useOverlayMotion } from './overlayHost';
 import { YIconButton } from './YIconButton';
 
 export interface YSheetProps {
@@ -35,7 +35,8 @@ export function YSheet({
   visible, title, subtitle, titleStyle, titleAlign = 'left', showHandle, variant = 'standard', children, footer, onClose, closeLabel = 'Close sheet',
   dismissible = true, dismissOnBackdrop = dismissible, scroll = true, maxHeight, maxWidth, bottomPadding,
 }: YSheetProps) {
-  const { height } = useWindowDimensions();
+  const { height: windowHeight } = useWindowDimensions();
+  const height = useContext(OverlayViewportContext)?.height ?? windowHeight;
   const insets = useSafeAreaInsets();
   const isModel = variant === 'model';
   const isDrama = variant === 'drama';
@@ -59,7 +60,7 @@ export function YSheet({
   const radius = isModel ? sheetMetrics.modelPickerRadius : sheetMetrics.radius;
   const inset = isDrama ? 16 : layout.gutter;
   return (
-    <OverlayHost {...motion} visible={visible} onClose={dismissible ? onClose : undefined}
+    <OverlayHost {...motion} visible={visible} label={title ?? closeLabel} placement="bottom" onClose={dismissible ? onClose : undefined}
       onBackdropPress={dismissOnBackdrop ? onClose : undefined}
       backdrop={isModel ? sheetMetrics.modelPickerBackdrop : isDrama ? 'transparent' : sheetMetrics.backdrop}>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.host} pointerEvents="box-none">

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react';
 import { AccessibilityInfo, Animated, Easing, Modal, Platform, Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 
 const durations = { enterMs: 180, exitMs: 150 };
@@ -31,10 +31,14 @@ export function useOverlayMotion(visible: boolean, timing = durations) {
   return { present, progress };
 }
 
+type OverlayPlacement = 'top' | 'center' | 'bottom';
+
 export interface OverlayHostProps {
   present: boolean;
   visible: boolean;
   progress: Animated.Value;
+  label?: string;
+  placement?: OverlayPlacement;
   onClose?: () => void;
   onBackdropPress?: () => void;
   backdrop?: string;
@@ -42,17 +46,37 @@ export interface OverlayHostProps {
   children: ReactNode;
 }
 
-export function OverlayHost({ present, visible, progress, onClose, onBackdropPress, backdrop, style, children }: OverlayHostProps) {
+export interface OverlayLayerProps {
+  children: ReactNode;
+  label?: string;
+  placement: OverlayPlacement;
+  onRequestClose: () => void;
+}
+
+export const OverlayViewportContext = createContext<{
+  height: number;
+  Layer: ComponentType<OverlayLayerProps>;
+} | null>(null);
+
+export function OverlayHost({ present, visible, progress, label, placement = 'center', onClose, onBackdropPress, backdrop, style, children }: OverlayHostProps) {
+  const viewport = useContext(OverlayViewportContext);
   const requestClose = () => { if (visible) onClose?.(); };
   if (!present) return null;
+  const surface = (
+    <View accessibilityViewIsModal style={[styles.root, style]} pointerEvents={visible ? 'auto' : 'none'}>
+      {backdrop && <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundColor: backdrop, opacity: progress }]} />}
+      {onBackdropPress && <Pressable accessible={false} focusable={false}
+        importantForAccessibility="no-hide-descendants" style={StyleSheet.absoluteFill} onPress={onBackdropPress} />}
+      {children}
+    </View>
+  );
+  if (viewport) {
+    const { Layer } = viewport;
+    return <Layer label={label} placement={placement} onRequestClose={requestClose}>{surface}</Layer>;
+  }
   return (
     <Modal transparent visible animationType="none" onRequestClose={requestClose} statusBarTranslucent navigationBarTranslucent>
-      <View accessibilityViewIsModal style={[styles.root, style]} pointerEvents={visible ? 'auto' : 'none'}>
-        {backdrop && <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundColor: backdrop, opacity: progress }]} />}
-        {onBackdropPress && <Pressable accessible={false} focusable={false}
-          importantForAccessibility="no-hide-descendants" style={StyleSheet.absoluteFill} onPress={onBackdropPress} />}
-        {children}
-      </View>
+      {surface}
     </Modal>
   );
 }

@@ -5,9 +5,10 @@ import {
 } from '@yoroll/rn-icon';
 import { Image } from 'expo-image';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   TreatText, YActionBar, YBottomNav, YButton, YIconButton, YPurchaseBackdrop, YScreenLayout, YSearchField, YState, YTab, YToast, YTopBar,
-  messageEmptyStyles, subscriptionButtonGradients, subscriptionButtonHighlight, subscriptionDockStyles, useTheme, type YBottomNavItem,
+  layout, messageEmptyStyles, subscriptionButtonGradients, subscriptionButtonHighlight, subscriptionDockStyles, useTheme, type YBottomNavItem,
 } from '@yoroll/app-components';
 import { ChatBackdrop, ChatConversation, ChatHeader } from './screenChat';
 import { LoginBackdrop, LoginMethods } from './screenLogin';
@@ -34,8 +35,9 @@ export interface ScreenCompositionProps {
 }
 
 function PurchaseDock({ cycle, title, tier, announce }: { cycle: ScreenPart; title: string; tier: PreviewTier; announce: (message: string) => void }) {
+  const { bottom } = useSafeAreaInsets();
   const s = subscriptionDockStyles;
-  return <View style={[s.purchaseDock, styles.purchaseDock]}>
+  return <View style={[s.purchaseDock, styles.purchaseDock, { paddingBottom: bottom + 6 }]}>
     <Plans part={cycle} />
     <YButton label={title} size="xl" fullWidth style={s.purchaseButton} textStyle={s.purchaseButtonText}
       backgroundGradient={subscriptionButtonGradients[tier]} backgroundHighlightGradient={subscriptionButtonHighlight}
@@ -57,6 +59,7 @@ export function ScreenComposition({
   const [discoverQuery, setDiscoverQuery] = useState('');
   const [message, setMessage] = useState('');
   const { tokens } = useTheme();
+  const insets = useSafeAreaInsets();
   const announce = (value: string) => setMessage(value);
   const ready = state === 'ready';
   const isLastStep = !recipe.steps || step === recipe.steps.length - 1;
@@ -68,6 +71,7 @@ export function ScreenComposition({
   const conversation = look === 'chat' ? recipe.parts.find((part) => part.kind === 'messages') : undefined;
   const chat = !!model && !!conversation;
   const profile = look === 'profile';
+  const edgeToEdge = chat || profile || look === 'inbox' || look === 'drama';
   const title = recipe.shell === 'full' || look === 'inbox' ? undefined : recipe.title;
 
   let header: ReactNode;
@@ -75,7 +79,7 @@ export function ScreenComposition({
   if (look === 'home') header = <YTopBar leftSlot={<View style={styles.brand}>
     <Image source={uiBase + 'home/wordmark.webp'} style={styles.homeLogo} contentFit="contain" accessibilityLabel="Yoroll" />
   </View>} rightSlot={<YIconButton icon={IconSearch} label="搜索" iconSize={22} onPress={() => announce('打开搜索')} />} />;
-  if (look === 'discover') header = <View style={styles.discoverHeader}>
+  if (look === 'discover') header = <View style={[styles.discoverHeader, { minHeight: insets.top + layout.topBarH, paddingTop: insets.top }]}>
     <Pressable accessibilityRole="button" accessibilityLabel="Treats 余额 1,280" onPress={() => announce('查看 Treats 余额')} style={styles.treatsEntry}>
       <IconTreatsFilled size={15} color={tokens.orange7} /><TreatText style={{ fontSize: 13, fontFamily: 'GeologicaSemiBold' }}>1,280</TreatText>
     </Pressable>
@@ -107,15 +111,24 @@ export function ScreenComposition({
         : recipe.secondary ? { label: recipe.secondary, onPress: () => announce('已选择' + recipe.secondary) } : undefined} />
     ) : undefined;
   const feedback = { loading: '正在加载' + recipe.title, empty: '暂无相关内容', error: '加载失败，请重试' };
+  const contentPadding = edgeToEdge ? 0 : 16;
+  const topPadding = look === 'inbox' ? 8 : look === 'login' ? 12 : contentPadding;
+  const bottomPadding = look === 'login' ? 24 : look === 'membership' ? 20 : contentPadding;
 
   return (
     <sectionContext.Provider value={{ artworkBase, uiBase, announce, tab, setTab, tier, setTier }}>
       <View style={styles.frame}>
         <YScreenLayout title={title} header={header} background={background} onBack={back}
           backLabel={step > 0 ? '上一步' : '返回页面索引'} footer={footer} scroll={!chat}
-          edgeToEdge={chat || profile || look === 'inbox' || look === 'drama'}
-          contentStyle={look === 'membership' ? styles.purchaseBody : look === 'login' ? styles.loginContent :
-            look === 'inbox' ? styles.inboxContent : look === 'discover' ? styles.discoverContent : undefined}>
+          edgeToEdge={edgeToEdge}
+          contentStyle={[
+            look === 'membership' && styles.purchaseBody,
+            look === 'login' && styles.loginContent,
+            look === 'discover' && styles.discoverContent,
+            !header && !title && { paddingTop: insets.top + topPadding },
+            profile && !ready && { paddingTop: insets.top + layout.topBarH },
+            !footer && (!chat || !ready) && { paddingBottom: insets.bottom + bottomPadding },
+          ]}>
           {ready && recipe.steps && <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.stepBar}>
             <YTab variant="pill" active={String(step)} onChange={(key) => setStep(Number(key))}
               items={recipe.steps.map((label, index) => ({ key: String(index), label }))} />
@@ -135,7 +148,7 @@ export function ScreenComposition({
               label: state === 'error' ? '重试' : '恢复预览', onPress: onReset,
             } : undefined} />}
         </YScreenLayout>
-        {message && <View pointerEvents="none" style={[styles.toast, cycle && { bottom: 236 }]}>
+        {message && <View pointerEvents="none" style={[styles.toast, { bottom: insets.bottom + (cycle ? 236 : 72) }]}>
           <YToast message={message} onHidden={() => setMessage('')} />
         </View>}
       </View>
@@ -147,19 +160,18 @@ const styles = StyleSheet.create({
   frame: { flex: 1, minHeight: 0, minWidth: 0 },
   brand: { paddingHorizontal: 12 },
   homeLogo: { width: 112, height: 26 },
-  discoverHeader: { minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12 },
+  discoverHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12 },
   discoverSearch: { flex: 1, minWidth: 0 },
   treatsEntry: { flexDirection: 'row', alignItems: 'center', minHeight: 36, gap: 4 },
   discoverContent: { paddingTop: 4 },
-  inboxContent: { paddingTop: 8 },
   messageEmpty: { minHeight: 380 },
-  loginContent: { flexGrow: 1, justifyContent: 'flex-end', paddingBottom: 24 },
+  loginContent: { flexGrow: 1, justifyContent: 'flex-end' },
   clear: { backgroundColor: 'transparent' },
   profileHeader: { position: 'absolute', top: 0, left: 0, right: 0, zIndex: 3, backgroundColor: 'transparent' },
   purchaseBody: { paddingTop: 8, paddingBottom: 20 },
-  purchaseDock: { backgroundColor: 'rgba(11,10,13,0.90)', paddingBottom: 6 },
+  purchaseDock: { backgroundColor: 'rgba(11,10,13,0.90)' },
   stepBar: { flexGrow: 0, flexShrink: 0 },
   hidden: { display: 'none' },
   inset: { paddingHorizontal: 12 },
-  toast: { position: 'absolute', bottom: 72, left: 12, right: 12 },
+  toast: { position: 'absolute', left: 12, right: 12 },
 });
