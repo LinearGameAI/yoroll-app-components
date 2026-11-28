@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { IconAngleright, IconSearch } from '@yoroll/rn-icon';
 import { screenExamples } from 'app-page-recipes';
 import { DirectoryHeading, Segmented, SourceLink } from './controls';
@@ -73,6 +73,35 @@ export function PagesDirectory() {
   </>;
 }
 
+const phoneSize = { width: 375, height: 812 };
+const phoneFrameStyle = {
+  width: 'min(100%, ' + phoneSize.width + 'px)',
+  aspectRatio: phoneSize.width + ' / ' + phoneSize.height,
+};
+
+function PhonePreview({ label, children }: { label: string; children: ReactNode }) {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useLayoutEffect(() => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    const resize = (width: number) => setScale(width / phoneSize.width);
+    resize(frame.getBoundingClientRect().width);
+    const observer = new ResizeObserver(([entry]) => resize(entry.contentRect.width));
+    observer.observe(frame);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={frameRef} className="page-phone" role="group" aria-label={label} style={phoneFrameStyle}>
+      <div className="page-phone-viewport" style={{ ...phoneSize, transform: 'scale(' + scale + ')' }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 function PagePreview({ entry }: { entry: PageEntry }) {
   const [view, setView] = useState<'preview' | 'code'>('preview');
   const [state, setState] = useState<ScreenState>('ready');
@@ -91,11 +120,11 @@ function PagePreview({ entry }: { entry: PageEntry }) {
           <Segmented items={states} value={state} onChange={setState} label="预览页面状态" />
         </div>}
         <div className="page-stage">
-          <div className="page-phone" aria-label={entry.title + '页面预览'}>
+          <PhonePreview label={entry.title + '页面预览'}>
             <ScreenComposition recipe={example.recipe} state={state} artworkBase={__APP_INVENTORY__ ? undefined : './artwork/originals/assets/'} uiBase="./app-ui/"
               onBack={() => { window.location.hash = '#pages'; }} onNavigateTab={(id) => { window.location.hash = pageHref(id); }}
               onReset={() => setState('ready')} />
-          </div>
+          </PhonePreview>
         </div>
       </> : <div className="page-preview-code">
         <p>下载示例及其页面组合文件，可在 React Native 项目内复用。</p>

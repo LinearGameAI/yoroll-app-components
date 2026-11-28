@@ -21,8 +21,9 @@
 .page-state-controls { display: flex; justify-content: center; padding: 8px; border-bottom: 1px solid var(--line); }
 .page-stage { display: grid; justify-items: center; padding: 18px 12px; isolation: isolate; background:
   radial-gradient(ellipse at top, color-mix(in srgb, var(--peach) 11%, transparent), transparent 66%), var(--surface); }
-.page-phone { width: min(100%, 390px); height: clamp(465px, 72svh, 680px); overflow: hidden;
-  border: 1px solid var(--line); border-radius: 22px; display: flex; flex-direction: column; box-shadow: 0 18px 48px rgba(0,0,0,.18); }
+.page-phone { position: relative; overflow: hidden; border-radius: 22px;
+  box-shadow: 0 0 0 1px var(--line), 0 18px 48px rgba(0,0,0,.18); }
+.page-phone-viewport { position: absolute; top: 0; left: 0; display: flex; flex-direction: column; transform-origin: top left; }
 .page-preview .doc-links { margin-top: 12px; }
 .page-preview-code { padding: 12px; }
 .page-preview-code p { font-size: 13px; color: var(--subtle); }
